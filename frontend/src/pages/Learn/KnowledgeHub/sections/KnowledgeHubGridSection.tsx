@@ -1,5 +1,5 @@
 import React from 'react';
-import { Article } from '../../../../data/blogData';
+import { Article } from '../../../../types/blog';
 import { ArticleCard } from '../../../../components/cards/ArticleCard';
 import { BookOpen } from 'lucide-react';
 

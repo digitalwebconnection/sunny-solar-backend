@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Clock, ArrowRight, Calendar } from 'lucide-react';
-import { Article } from '../../data/blogData';
+import { Article } from '../../types/blog';
 import { Badge } from '../ui/Badge';
 
 export interface ArticleCardProps {

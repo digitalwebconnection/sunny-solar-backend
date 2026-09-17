@@ -654,7 +654,7 @@ export const KnowledgeDetailPage: React.FC = () => {
 
   // Retrieve rich technical data if available, or fallback to static map
   const defaultRich = richArticlesMap[article.slug];
-  const richData = {
+  const richData: RichArticleData = {
     blueprintTitle:
       article.blueprintTitle || defaultRich?.blueprintTitle || '2025 Technical Decision Matrix',
     blueprintBadge:
@@ -794,8 +794,8 @@ export const KnowledgeDetailPage: React.FC = () => {
                 <div className="flex items-center gap-3">
                   <div className="w-11 h-11 rounded-2xl bg-amber-500 text-white flex items-center justify-center font-bold text-sm shadow-xs">
                     {article.author
-                      .split(' ')
-                      .map((n) => n[0])
+                      ?.split(' ')
+                      .map((n: string) => n[0])
                       .join('')}
                   </div>
                   <div>
@@ -825,7 +825,7 @@ export const KnowledgeDetailPage: React.FC = () => {
                   <span>Key Takeaways at a Glance</span>
                 </h2>
                 <ul className="space-y-3">
-                  {article.keyTakeaways.map((takeaway, idx) => (
+                  {article.keyTakeaways?.map((takeaway: string, idx: number) => (
                     <li
                       key={idx}
                       className="flex items-start gap-2.5 text-xs sm:text-sm text-amber-950 leading-relaxed font-medium"
