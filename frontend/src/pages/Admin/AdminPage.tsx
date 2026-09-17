@@ -1015,7 +1015,7 @@ export const AdminPage: React.FC = () => {
     return (
       <div className="min-h-screen bg-slate-50 flex flex-col justify-center items-center px-4 py-12 relative overflow-hidden font-sans">
         {/* Subtle decorative background gradients */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[350px] bg-gradient-to-b from-amber-100/50 to-transparent rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-200 h-87.5 bg-linear-to-b from-amber-100/50 to-transparent rounded-full blur-3xl pointer-events-none" />
 
         <div className="w-full max-w-md bg-white border border-slate-200/90 rounded-3xl p-8 sm:p-10 shadow-xl shadow-slate-200/40 relative z-10">
           {/* Logo & Header */}
@@ -1070,7 +1070,7 @@ export const AdminPage: React.FC = () => {
             <button
               type="submit"
               disabled={loginLoading}
-              className="w-full mt-2 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-bold py-3 px-4 rounded-xl shadow-lg shadow-amber-500/20 disabled:opacity-50 cursor-pointer flex items-center justify-center gap-2 transition-all"
+              className="w-full mt-2 bg-linear-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-bold py-3 px-4 rounded-xl shadow-lg shadow-amber-500/20 disabled:opacity-50 cursor-pointer flex items-center justify-center gap-2 transition-all"
             >
               {loginLoading ? (
                 <>
@@ -1314,7 +1314,7 @@ export const AdminPage: React.FC = () => {
             {activeTab === 'knowledge' ? (
               <button
                 onClick={handleOpenCreateKnowledge}
-                className="bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-bold px-4 py-2.5 rounded-xl text-xs flex items-center gap-2 shadow-md shadow-amber-500/20 cursor-pointer transition-all"
+                className="bg-linear-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-bold px-4 py-2.5 rounded-xl text-xs flex items-center gap-2 shadow-md shadow-amber-500/20 cursor-pointer transition-all"
               >
                 <Plus className="w-4 h-4" />
                 <span>New Knowledge Guide</span>
@@ -1322,7 +1322,7 @@ export const AdminPage: React.FC = () => {
             ) : (
               <button
                 onClick={handleOpenCreate}
-                className="bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-bold px-4 py-2.5 rounded-xl text-xs flex items-center gap-2 shadow-md shadow-amber-500/20 cursor-pointer transition-all"
+                className="bg-linear-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-bold px-4 py-2.5 rounded-xl text-xs flex items-center gap-2 shadow-md shadow-amber-500/20 cursor-pointer transition-all"
               >
                 <Plus className="w-4 h-4" />
                 <span>Create Article</span>
@@ -1701,7 +1701,7 @@ export const AdminPage: React.FC = () => {
 
                   <button
                     onClick={handleOpenCreateKnowledge}
-                    className="bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-bold px-3.5 py-2 rounded-xl text-xs flex items-center gap-1.5 cursor-pointer transition-colors shadow-xs"
+                    className="bg-linear-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-bold px-3.5 py-2 rounded-xl text-xs flex items-center gap-1.5 cursor-pointer transition-colors shadow-xs"
                   >
                     <Plus className="w-3.5 h-3.5" />
                     <span>New Guide</span>
@@ -1867,10 +1867,10 @@ export const AdminPage: React.FC = () => {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-xs overflow-y-auto">
           <div className="bg-white rounded-2xl w-full max-w-3xl max-h-[94vh] flex flex-col shadow-2xl overflow-hidden my-4 border border-slate-200">
             {/* Modal Header */}
-            <div className="bg-gradient-to-r from-orange-500 to-amber-500 px-6 py-4 flex items-center justify-between text-white">
+            <div className="bg-linear-to-r from-orange-500 to-amber-500 px-6 py-4 flex items-center justify-between text-white">
               <div className="flex items-center gap-2">
                 <div className="w-6 h-6 border-2 border-white rounded-md flex items-center justify-center">
-                  <Plus className="w-4 h-4 text-white stroke-[3]" />
+                  <Plus className="w-4 h-4 text-white stroke-3" />
                 </div>
                 <h3 className="text-lg font-black tracking-wide text-white">
                   {editingBlog ? 'Edit Blog' : 'Add New Blog'}
@@ -2256,7 +2256,7 @@ export const AdminPage: React.FC = () => {
                       value={formData.content}
                       onChange={(e) => setFormData({ ...formData, content: e.target.value })}
                       placeholder="Write your article body here. You can use standard HTML or formatted text..."
-                      className="w-full bg-[#162132] text-slate-100 p-4 font-mono text-xs focus:outline-none resize-y min-h-[220px]"
+                      className="w-full bg-[#162132] text-slate-100 p-4 font-mono text-xs focus:outline-none resize-y min-h-55"
                     />
                   </div>
                 </div>
@@ -2348,7 +2348,7 @@ export const AdminPage: React.FC = () => {
                 <button
                   type="submit"
                   disabled={formLoading}
-                  className="bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-bold px-6 py-2.5 rounded-xl shadow-md shadow-orange-500/20 disabled:opacity-50 cursor-pointer text-xs flex items-center gap-2 transition-all"
+                  className="bg-linear-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-bold px-6 py-2.5 rounded-xl shadow-md shadow-orange-500/20 disabled:opacity-50 cursor-pointer text-xs flex items-center gap-2 transition-all"
                 >
                   {formLoading && (
                     <div className="w-3.5 h-3.5 border-2 border-white/20 border-t-white rounded-full animate-spin" />
@@ -2368,7 +2368,7 @@ export const AdminPage: React.FC = () => {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-xs overflow-y-auto">
           <div className="bg-white rounded-2xl w-full max-w-4xl max-h-[94vh] flex flex-col shadow-2xl overflow-hidden my-4 border border-slate-200">
             {/* Modal Header */}
-            <div className="bg-gradient-to-r from-orange-500 to-amber-500 px-6 py-4 flex items-center justify-between text-white">
+            <div className="bg-linear-to-r from-orange-500 to-amber-500 px-6 py-4 flex items-center justify-between text-white">
               <div className="flex items-center gap-2.5">
                 <div className="w-7 h-7 border-2 border-white rounded-lg flex items-center justify-center">
                   <BookOpen className="w-4 h-4 text-white stroke-[2.5]" />
@@ -2710,7 +2710,7 @@ export const AdminPage: React.FC = () => {
                   </div>
 
                   {showContentPreview ? (
-                    <div className="border border-slate-200 rounded-2xl p-6 bg-slate-50 min-h-[250px] prose max-w-none text-slate-800 text-sm">
+                    <div className="border border-slate-200 rounded-2xl p-6 bg-slate-50 min-h-62.5 prose max-w-none text-slate-800 text-sm">
                       <div dangerouslySetInnerHTML={{ __html: knowledgeFormData.content || '<p class="text-slate-400 italic">No content written yet.</p>' }} />
                     </div>
                   ) : (
@@ -2801,7 +2801,7 @@ export const AdminPage: React.FC = () => {
                         value={knowledgeFormData.content}
                         onChange={(e) => setKnowledgeFormData({ ...knowledgeFormData, content: e.target.value })}
                         placeholder="Write detailed technical content here. HTML tags such as <h2>, <p>, <ul>, <li>, and <strong> are fully supported."
-                        className="w-full bg-[#162132] text-slate-100 p-4 font-mono text-xs focus:outline-none resize-y min-h-[250px]"
+                        className="w-full bg-[#162132] text-slate-100 p-4 font-mono text-xs focus:outline-none resize-y min-h-62.5"
                       />
                     </div>
                   )}
@@ -3142,7 +3142,7 @@ export const AdminPage: React.FC = () => {
                 <button
                   type="submit"
                   disabled={knowledgeFormLoading}
-                  className="bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-bold px-6 py-2.5 rounded-xl shadow-md shadow-orange-500/20 disabled:opacity-50 cursor-pointer text-xs flex items-center gap-2 transition-all"
+                  className="bg-linear-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-bold px-6 py-2.5 rounded-xl shadow-md shadow-orange-500/20 disabled:opacity-50 cursor-pointer text-xs flex items-center gap-2 transition-all"
                 >
                   {knowledgeFormLoading && (
                     <div className="w-3.5 h-3.5 border-2 border-white/20 border-t-white rounded-full animate-spin" />

@@ -454,7 +454,7 @@ export const KnowledgeDetailPage: React.FC = () => {
 
                   {/* Comparison / Diagnostic Matrix Table */}
                   <div className="p-5 sm:p-6 overflow-x-auto">
-                    <table className="w-full text-left text-xs border-collapse min-w-[540px]">
+                    <table className="w-full text-left text-xs border-collapse min-w-135">
                       <thead>
                         <tr className="border-b border-slate-800 text-slate-400 font-semibold">
                           {richData.matrixHeaders.map((header, hIdx) => (
@@ -709,7 +709,7 @@ export const KnowledgeDetailPage: React.FC = () => {
             </div>
 
             {/* Free Assessment & Sizing Calculator CTA Box */}
-            <div className="bg-gradient-to-br from-amber-500 to-orange-500 text-white rounded-2xl p-6 shadow-md">
+            <div className="bg-linear-to-br from-amber-500 to-orange-500 text-white rounded-2xl p-6 shadow-md">
               <span className="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-white/20 text-white uppercase tracking-wider mb-2.5">
                 Free Assessment
               </span>
