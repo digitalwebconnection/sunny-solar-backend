@@ -222,20 +222,11 @@ export const AdminPage: React.FC = () => {
     isPublished: true
   });
 
-  useEffect(() => {
-    if (isAuthenticated) {
-      loadDashboardData();
+  const loadDashboardData = async (silent: boolean = false) => {
+    if (!silent) {
+      setLoadingBlogs(true);
+      setLoadingKnowledge(true);
     }
-  }, [isAuthenticated]);
-
-  const showToast = (type: 'success' | 'error', message: string) => {
-    setToast({ type, message });
-    setTimeout(() => setToast(null), 3500);
-  };
-
-  const loadDashboardData = async () => {
-    setLoadingBlogs(true);
-    setLoadingKnowledge(true);
     try {
       const [statsRes, blogsRes, knowledgeRes] = await Promise.all([
         api.getStats().catch(() => null),
@@ -247,11 +238,50 @@ export const AdminPage: React.FC = () => {
       if (blogsRes?.data) setBlogs(blogsRes.data);
       if (knowledgeRes?.data) setKnowledgeItems(knowledgeRes.data);
     } catch (err: any) {
-      showToast('error', err.message || 'Failed to fetch data from MongoDB');
+      if (!silent) {
+        showToast('error', err.message || 'Failed to fetch data from MongoDB');
+      }
     } finally {
-      setLoadingBlogs(false);
-      setLoadingKnowledge(false);
+      if (!silent) {
+        setLoadingBlogs(false);
+        setLoadingKnowledge(false);
+      }
     }
+  };
+
+  // Auto-refresh: Automatically syncs data from DB every 8 seconds & on window focus,
+  // so whenever anyone adds, edits, or deletes an article or guide, the admin list auto-refreshes!
+  useEffect(() => {
+    if (!isAuthenticated) return;
+
+    // Initial load with spinner
+    loadDashboardData(false);
+
+    // Background interval for live auto-refresh
+    const intervalId = setInterval(() => {
+      // Only auto-refresh if no edit/create modal is actively open to avoid interrupting input
+      if (!isModalOpen && !isKnowledgeModalOpen) {
+        loadDashboardData(true);
+      }
+    }, 8000);
+
+    // Auto-refresh when admin switches back to this browser tab
+    const handleFocus = () => {
+      if (!isModalOpen && !isKnowledgeModalOpen) {
+        loadDashboardData(true);
+      }
+    };
+    window.addEventListener('focus', handleFocus);
+
+    return () => {
+      clearInterval(intervalId);
+      window.removeEventListener('focus', handleFocus);
+    };
+  }, [isAuthenticated, isModalOpen, isKnowledgeModalOpen]);
+
+  const showToast = (type: 'success' | 'error', message: string) => {
+    setToast({ type, message });
+    setTimeout(() => setToast(null), 3500);
   };
 
   // =========================================================================
@@ -607,7 +637,7 @@ export const AdminPage: React.FC = () => {
         prev.map((b) => (b._id === blog._id ? { ...b, isPublished: res.isPublished } : b))
       );
       showToast('success', `Article is now ${res.isPublished ? 'Live' : 'Draft'}.`);
-      api.getStats().then((res) => setStats(res.stats)).catch(() => null);
+      await loadDashboardData(true);
     } catch (err: any) {
       showToast('error', err.message || 'Could not update status');
     }
@@ -627,7 +657,7 @@ export const AdminPage: React.FC = () => {
         prev.map((b) => (b._id === id ? { ...b, isDeleted: true, isPublished: false, deletedAt: new Date().toISOString() } : b))
       );
       showToast('success', 'Removed from website & active list. Safely preserved in database!');
-      api.getStats().then((res) => setStats(res.stats)).catch(() => null);
+      await loadDashboardData(true);
     } catch (err: any) {
       showToast('error', err.message || 'Failed to remove article');
     }
@@ -640,7 +670,7 @@ export const AdminPage: React.FC = () => {
         prev.map((b) => (b._id === id ? { ...b, isDeleted: false, deletedAt: undefined } : b))
       );
       showToast('success', `"${title}" restored successfully from database!`);
-      api.getStats().then((res) => setStats(res.stats)).catch(() => null);
+      await loadDashboardData(true);
     } catch (err: any) {
       showToast('error', err.message || 'Failed to restore article');
     }
@@ -734,7 +764,7 @@ export const AdminPage: React.FC = () => {
       }
 
       setIsModalOpen(false);
-      api.getStats().then((res) => setStats(res.stats)).catch(() => null);
+      await loadDashboardData(true);
     } catch (err: any) {
       showToast('error', err.message || 'Error saving article');
     } finally {
@@ -752,7 +782,7 @@ export const AdminPage: React.FC = () => {
         prev.map((k) => (k._id === item._id ? { ...k, isPublished: res.isPublished } : k))
       );
       showToast('success', `Knowledge guide is now ${res.isPublished ? 'Live' : 'Draft'}.`);
-      api.getStats().then((res) => setStats(res.stats)).catch(() => null);
+      await loadDashboardData(true);
     } catch (err: any) {
       showToast('error', err.message || 'Could not update guide status');
     }
@@ -772,7 +802,7 @@ export const AdminPage: React.FC = () => {
         prev.map((k) => (k._id === id ? { ...k, isDeleted: true, isPublished: false, deletedAt: new Date().toISOString() } : k))
       );
       showToast('success', 'Removed from website & active list. Safely preserved in database!');
-      api.getStats().then((res) => setStats(res.stats)).catch(() => null);
+      await loadDashboardData(true);
     } catch (err: any) {
       showToast('error', err.message || 'Failed to remove knowledge guide');
     }
@@ -785,7 +815,7 @@ export const AdminPage: React.FC = () => {
         prev.map((k) => (k._id === id ? { ...k, isDeleted: false, deletedAt: undefined } : k))
       );
       showToast('success', `"${title}" restored successfully from database!`);
-      api.getStats().then((res) => setStats(res.stats)).catch(() => null);
+      await loadDashboardData(true);
     } catch (err: any) {
       showToast('error', err.message || 'Failed to restore knowledge guide');
     }
@@ -913,7 +943,7 @@ export const AdminPage: React.FC = () => {
       }
 
       setIsKnowledgeModalOpen(false);
-      api.getStats().then((res) => setStats(res.stats)).catch(() => null);
+      await loadDashboardData(true);
     } catch (err: any) {
       showToast('error', err.message || 'Error saving Knowledge guide');
     } finally {
@@ -1258,11 +1288,23 @@ export const AdminPage: React.FC = () => {
           </div>
 
           <div className="flex items-center gap-3">
+            {/* Auto-Refresh / Live Sync Badge */}
+            <div
+              className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 bg-emerald-50 text-emerald-700 border border-emerald-200/70 rounded-xl text-xs font-semibold select-none"
+              title="Real-time auto-refresh active. Syncs with database automatically every 8 seconds, on tab focus, and immediately after any add, edit, or delete action."
+            >
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+              </span>
+              <span>Auto-Sync ON</span>
+            </div>
+
             <button
-              onClick={loadDashboardData}
+              onClick={() => loadDashboardData(false)}
               disabled={loadingBlogs || loadingKnowledge}
               className="p-2.5 bg-slate-100 hover:bg-slate-200/80 rounded-xl text-slate-600 transition-colors cursor-pointer"
-              title="Refresh Data"
+              title="Refresh Data Now"
             >
               <RefreshCw
                 className={`w-4 h-4 ${loadingBlogs || loadingKnowledge ? 'animate-spin text-amber-600' : ''}`}
