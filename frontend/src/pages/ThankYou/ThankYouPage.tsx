@@ -1,0 +1,152 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { CheckCircle2, Phone, Mail, Clock, ArrowRight, ShieldCheck, Sparkles, Home } from 'lucide-react';
+import { Button } from '../../components/ui/Button';
+
+export const ThankYouPage: React.FC = () => {
+  return (
+    <div className="min-h-screen bg-slate-50 pt-28 pb-20 overflow-hidden relative">
+      {/* Background ambient solar glow */}
+      <div className="absolute top-10 right-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-20 left-10 w-80 h-80 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
+
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 relative z-10 text-center">
+        {/* Animated Checkmark Badge */}
+        <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-emerald-100 text-emerald-600 shadow-xl shadow-emerald-500/20 mb-6 border-2 border-emerald-300">
+          <CheckCircle2 className="w-10 h-10 animate-bounce" />
+        </div>
+
+        {/* Eyebrow */}
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider text-emerald-800 bg-emerald-50 border border-emerald-200 shadow-2xs mb-4">
+          <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
+          <span>Inquiry Successfully Received</span>
+        </div>
+
+        {/* Heading */}
+        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-slate-950 tracking-tight leading-tight">
+          Thank You! We’ve Received Your{' '}
+          <span className="bg-linear-to-r from-[#ed5001] via-[#f06e02] to-[#f4a304] bg-clip-text text-transparent">
+            Solar & Battery Request
+          </span>
+        </h1>
+
+        <p className="mt-4 text-base sm:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
+          Master Electrician Trent Palmer and our engineering team are already reviewing your details. Here is exactly what will happen next:
+        </p>
+
+        {/* 3-Step Next Steps Timeline */}
+        <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-5 text-left">
+          {/* Step 1 */}
+          <div className="bg-white rounded-2xl p-6 border border-slate-200/90 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden">
+            <div className="w-9 h-9 rounded-xl bg-orange-50 border border-orange-200 text-[#ed5001] flex items-center justify-center font-bold text-sm mb-4">
+              01
+            </div>
+            <h3 className="font-bold text-slate-900 text-base mb-1.5 flex items-center gap-2">
+              <span>3D Satellite Roof Audit</span>
+            </h3>
+            <p className="text-xs text-slate-600 leading-relaxed">
+              We analyze your roof pitch, orientation, sun hours, and any nearby shading using high-resolution aerial mapping.
+            </p>
+            <span className="inline-block mt-3 text-[11px] font-semibold text-orange-700 bg-orange-50 px-2 py-0.5 rounded-md">
+              Within 2–4 Hours
+            </span>
+          </div>
+
+          {/* Step 2 */}
+          <div className="bg-white rounded-2xl p-6 border border-slate-200/90 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden">
+            <div className="w-9 h-9 rounded-xl bg-blue-50 border border-blue-200 text-[#1d4ed8] flex items-center justify-center font-bold text-sm mb-4">
+              02
+            </div>
+            <h3 className="font-bold text-slate-900 text-base mb-1.5 flex items-center gap-2">
+              <span>Fixed-Price Proposal</span>
+            </h3>
+            <p className="text-xs text-slate-600 leading-relaxed">
+              You receive an itemized proposal with tier-1 equipment options, expected bill reductions, and verified government rebates.
+            </p>
+            <span className="inline-block mt-3 text-[11px] font-semibold text-blue-700 bg-blue-50 px-2 py-0.5 rounded-md">
+              Same-Day Delivery
+            </span>
+          </div>
+
+          {/* Step 3 */}
+          <div className="bg-white rounded-2xl p-6 border border-slate-200/90 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden">
+            <div className="w-9 h-9 rounded-xl bg-emerald-50 border border-emerald-200 text-[#265e11] flex items-center justify-center font-bold text-sm mb-4">
+              03
+            </div>
+            <h3 className="font-bold text-slate-900 text-base mb-1.5 flex items-center gap-2">
+              <span>Zero-Pressure Advice</span>
+            </h3>
+            <p className="text-xs text-slate-600 leading-relaxed">
+              No high-pressure sales reps. Speak directly with licensed electrical installers to ask any technical or financial questions.
+            </p>
+            <span className="inline-block mt-3 text-[11px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md">
+              Master Electrician direct
+            </span>
+          </div>
+        </div>
+
+        {/* Immediate Contact Box */}
+        <div className="mt-10 bg-linear-to-r from-slate-900 via-slate-950 to-slate-900 rounded-2xl p-6 sm:p-8 text-white border border-slate-800 shadow-xl flex flex-col sm:flex-row items-center justify-between gap-6 text-left">
+          <div>
+            <span className="text-xs font-mono font-bold text-amber-400 uppercase tracking-wider block mb-1">
+              Need Immediate Assistance?
+            </span>
+            <h4 className="text-lg sm:text-xl font-bold text-white">
+              Speak Directly with Trent Palmer, Lead Electrician
+            </h4>
+            <p className="text-xs text-slate-400 mt-1 max-w-lg">
+              Gold Coast, Brisbane, and Sunshine Coast customer support lines are open Monday–Saturday, 7:00 AM – 5:30 PM.
+            </p>
+          </div>
+
+          <div className="flex flex-col sm:flex-row items-center gap-3 shrink-0 w-full sm:w-auto">
+            <a
+              href="tel:1300786697"
+              className="w-full sm:w-auto px-5 py-3 rounded-xl bg-linear-to-r from-[#ed5001] to-[#f06e02] hover:from-[#c84300] hover:to-[#ed5001] text-white font-bold text-sm flex items-center justify-center gap-2 shadow-lg shadow-[#ed5001]/25 transition-all"
+            >
+              <Phone className="w-4 h-4" />
+              <span>1300 SUNNY (786 697)</span>
+            </a>
+            <a
+              href="mailto:info@sunnysolar.com.au"
+              className="w-full sm:w-auto px-4 py-3 rounded-xl bg-white/10 hover:bg-white/15 text-white font-medium text-xs flex items-center justify-center gap-2 border border-white/10 transition-all"
+            >
+              <Mail className="w-4 h-4" />
+              <span>Email Support</span>
+            </a>
+          </div>
+        </div>
+
+        {/* Return / Explore Links */}
+        <div className="mt-10 flex flex-wrap items-center justify-center gap-4 text-xs font-semibold">
+          <Button
+            to="/"
+            variant="outline"
+            size="md"
+            icon={<Home className="w-4 h-4" />}
+          >
+            Return to Homepage
+          </Button>
+          <Button
+            to="/projects"
+            variant="ghost"
+            size="md"
+            icon={<ArrowRight className="w-4 h-4" />}
+          >
+            Explore Completed Case Studies
+          </Button>
+          <Button
+            to="/reviews"
+            variant="ghost"
+            size="md"
+            icon={<ArrowRight className="w-4 h-4" />}
+          >
+            Read Customer Reviews (4.98★)
+          </Button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default ThankYouPage;

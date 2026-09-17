@@ -1,0 +1,45 @@
+import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useSmoothScroll } from '../common/SmoothScroll';
+
+export const ScrollToTop: React.FC = () => {
+  const { pathname } = useLocation();
+  const { lenis } = useSmoothScroll();
+  const [isNavigating, setIsNavigating] = useState(false);
+
+  useEffect(() => {
+    if (lenis) {
+      lenis.scrollTo(0, { immediate: true });
+    } else {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'instant'
+      });
+    }
+
+    setIsNavigating(true);
+    const timer = setTimeout(() => {
+      setIsNavigating(false);
+    }, 450);
+
+    return () => clearTimeout(timer);
+  }, [pathname, lenis]);
+
+  return (
+    <AnimatePresence>
+      {isNavigating && (
+        <motion.div
+          initial={{ scaleX: 0, opacity: 1 }}
+          animate={{ scaleX: 1, opacity: [1, 1, 0] }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+          style={{ originX: 0 }}
+          className="fixed top-0 left-0 right-0 h-1 bg-linear-to-r from-[#ed5001] via-[#f06e02] to-[#f4a304] z-9999 shadow-sm shadow-[#ed5001]/50 pointer-events-none"
+        />
+      )}
+    </AnimatePresence>
+  );
+};
+

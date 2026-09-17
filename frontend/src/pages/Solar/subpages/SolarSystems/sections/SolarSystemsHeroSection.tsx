@@ -1,0 +1,106 @@
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import { Calculator, ArrowRight } from 'lucide-react';
+import { Button } from '@/components/ui/Button';
+
+export const SolarSystemsHeroSection: React.FC = () => {
+  const [activeTab] = useState<'6.6' | '10' | '13.2' | '15+'>('10');
+
+  const capacityDetails = {
+    '6.6': {
+      label: '6.6 kW Essential',
+      output: '24–28 kWh / day',
+      savings: '$1,800–$2,400 / yr',
+      bestFor: '2-3 Bedroom Homes • Moderate Day Usage',
+      panels: '15x 440W N-Type TOPCon Panels',
+    },
+    '10': {
+      label: '10.0 kW Family Choice',
+      output: '38–44 kWh / day',
+      savings: '$2,800–$3,600 / yr',
+      bestFor: 'Ducted Air Conditioning & Swimming Pools',
+      panels: '23x 440W All-Black Modules',
+      isPopular: true,
+    },
+    '13.2': {
+      label: '13.2 kW Max Single-Phase',
+      output: '52–62 kWh / day',
+      savings: '$3,800–$5,200 / yr',
+      bestFor: 'Large Households, Multi-Split AC & EV Charging',
+      panels: '30x 440W REC Alpha Pure-R Panels',
+    },
+    '15+': {
+      label: '15.0 kW+ Three-Phase / Acreage',
+      output: '65–85 kWh / day',
+      savings: '$5,400–$7,800 / yr',
+      bestFor: 'Acreages, Workshops & Heated Pools',
+      panels: '34-45x 440W Dual-Glass Bifacial Panels',
+    },
+  };
+
+  return (
+    <section className="relative pt-28 sm:pt-40 pb-16 sm:pb-20 bg-linear-to-b from-amber-500/10 via-amber-500/5 to-white overflow-hidden border-b border-slate-200/60">
+      {/* Ambient background glow discs */}
+      <div className="absolute top-10 right-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-36 left-10 w-80 h-80 bg-amber-400/10 rounded-full blur-3xl pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+        {/* Eyebrow badge */}
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider text-[#1d4ed8] bg-blue-50 border border-blue-200/90 shadow-2xs mb-4">
+          <span className="w-2 h-2 rounded-full bg-[#1d4ed8] animate-pulse" />
+          <span>Tier-1 N-Type Photovoltaics &amp; Inverters</span>
+        </div>
+
+        {/* Main Title */}
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="text-4xl sm:text-5xl lg:text-5xl font-serif font-bold text-slate-950 tracking-tight leading-[1.12] max-w-4xl mx-auto"
+        >
+          Engineered Solar Systems{' '} <br />
+          <span className="bg-linear-to-r from-amber-500 via-orange-500 to-amber-600 bg-clip-text text-transparent">
+            Built for Peak Yield.
+          </span>
+        </motion.h1>
+
+        {/* Narrative Subtitle */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="mt-5 text-base sm:text-lg text-slate-900 max-w-6xl mx-auto leading-relaxed"
+        >
+          Every roof has unique pitch, orientation, and shading. Explore our signature residential kilowatt packages, head-to-head Tier-1 hardware comparisons, and live savings estimates.
+        </motion.p>
+
+        {/* Action Buttons */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="mt-8 flex flex-wrap items-center justify-center gap-4"
+        >
+          <Button
+            to="/calculators/system-size"
+            variant="primary"
+            size="lg"
+            icon={<Calculator className="w-4 h-4" />}
+          >
+            Open System Size Calculator
+          </Button>
+          <Button
+            to="/get-started/free-assessment"
+            variant="outline"
+            size="lg"
+            icon={<ArrowRight className="w-4 h-4" />}
+          >
+            Get Free 3D Roof Simulation
+          </Button>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
+export default SolarSystemsHeroSection;

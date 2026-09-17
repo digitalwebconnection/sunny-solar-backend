@@ -1,0 +1,161 @@
+import React from 'react';
+import { motion } from 'framer-motion';
+import { 
+  ArrowRight, 
+  BatteryCharging, 
+  ShieldCheck, 
+  Zap, 
+  Award, 
+  Calculator, 
+  Sun, 
+  CheckCircle2, 
+  Activity,
+  CloudRain
+} from 'lucide-react';
+import { Button } from '../../../components/ui/Button';
+import { Badge } from '../../../components/ui/Badge';
+import { Breadcrumbs } from '../../../components/layout/Breadcrumbs';
+
+export const BatteriesHeroSection: React.FC = () => {
+  return (
+    <section className="relative pt-28 sm:pt-36 pb-16 sm:pb-20 bg-gradient-to-b from-emerald-500/10 via-amber-500/5 to-white border-b border-slate-200/60 overflow-hidden">
+      {/* Ambient solar, battery emerald, and solar blue glows */}
+      <div className="absolute top-10 right-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-20 left-1/3 w-80 h-80 bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-40 left-10 w-80 h-80 bg-amber-400/10 rounded-full blur-3xl pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-6 relative z-10">
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center mt-6">
+          
+          {/* Left Column: High-Impact Value Proposition */}
+          <div className="lg:col-span-7 space-y-6">
+            
+            {/* Top Eyebrow Badge */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider text-[#1d4ed8] bg-blue-50 border border-blue-200/90 shadow-2xs">
+              <span className="w-2 h-2 rounded-full bg-[#1d4ed8] animate-pulse" />
+              <span>Smart Storage • Blackout Protection</span>
+            </div>
+
+            {/* Headline */}
+            <motion.h1
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.1 }}
+              className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-slate-950 tracking-tight leading-[1.14]"
+            >
+              Store Daytime Sunshine.{' '}
+              <span className="bg-gradient-to-r from-emerald-600 via-amber-600 to-orange-500 bg-clip-text text-transparent">
+                Power Your Nights & Outages.
+              </span>
+            </motion.h1>
+
+            {/* Narrative Subtitle */}
+            <motion.p
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.15 }}
+              className="text-sm sm:text-base text-slate-600 leading-relaxed max-w-xl"
+            >
+              Retailers pay just 3¢ to 5¢ for daytime solar export, but charge up to 45¢/kWh the moment the sun sets. A home battery stores your solar surplus to eliminate peak evening power bills and protect your household when Queensland storms knock out the grid.
+            </motion.p>
+
+            {/* Primary Action Buttons */}
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.2 }}
+              className="flex flex-wrap items-center gap-3 pt-1"
+            >
+              <Button
+                to="/get-started/free-assessment"
+                variant="accent-green"
+                size="md"
+                className="font-bold shadow-md"
+                icon={<ArrowRight className="w-4 h-4" />}
+              >
+                Claim Battery Assessment
+              </Button>
+              <Button
+                to="/calculators/battery-savings"
+                variant="outline"
+                size="md"
+                icon={<Calculator className="w-4 h-4" />}
+              >
+                Calculate Battery Savings
+              </Button>
+            </motion.div>
+
+        
+          </div>
+
+          {/* Right Column: Hero Visual with Live Telemetry Overlay */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="lg:col-span-5 relative"
+          >
+            {/* Main Visual Image Card */}
+            <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white aspect-[4/3] bg-slate-950 group">
+              <img
+                src="/images/solutions/battery-hero.jpg"
+                alt="Tesla Powerwall & Premium Home Battery Storage System"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent" />
+              
+              {/* Top Floating Badge */}
+              <div className="absolute top-4 left-4 flex items-center gap-2 bg-slate-900/80 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/20 text-white text-xs font-semibold">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+                <span>Storm Watch Enabled</span>
+              </div>
+
+              {/* Bottom Telemetry HUD */}
+              <div className="absolute bottom-4 left-4 right-4 text-white">
+                <div className="bg-slate-900/90 backdrop-blur-md rounded-2xl p-4 border border-white/15 space-y-3">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <BatteryCharging className="w-4 h-4 text-emerald-400" />
+                      <span className="text-xs font-bold uppercase tracking-wider text-emerald-300">Live Battery Telemetry</span>
+                    </div>
+                    <span className="text-xs font-mono font-bold text-emerald-400 bg-emerald-500/20 px-2 py-0.5 rounded">98% Charged</span>
+                  </div>
+
+                  <div className="grid grid-cols-3 gap-2 text-center text-xs pt-1 border-t border-white/10">
+                    <div className="bg-white/5 rounded-lg p-1.5">
+                      <div className="text-[10px] text-slate-400">Usable Store</div>
+                      <div className="font-bold text-white">13.5 kWh</div>
+                    </div>
+                    <div className="bg-white/5 rounded-lg p-1.5">
+                      <div className="text-[10px] text-slate-400">Grid Draw</div>
+                      <div className="font-bold text-emerald-400">0.0 kW (Off)</div>
+                    </div>
+                    <div className="bg-white/5 rounded-lg p-1.5">
+                      <div className="text-[10px] text-slate-400">Home Load</div>
+                      <div className="font-bold text-amber-300">2.4 kW</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Floating Glass Pill */}
+            <div className="absolute -bottom-5 -left-4 sm:-left-6 bg-white rounded-2xl p-3.5 shadow-xl border border-slate-200/80 flex items-center gap-3 z-20">
+              <div className="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-600 flex items-center justify-center shrink-0">
+                <Activity className="w-5 h-5" />
+              </div>
+              <div>
+                <div className="text-xs font-bold text-slate-900">92%+ Self-Consumption</div>
+                <div className="text-[11px] text-slate-500">Average household grid independence</div>
+              </div>
+            </div>
+          </motion.div>
+
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default BatteriesHeroSection;
