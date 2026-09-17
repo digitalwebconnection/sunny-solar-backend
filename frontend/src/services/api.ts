@@ -72,6 +72,14 @@ export const api = {
 
   getStats: () => request('/admin/stats'),
 
+  // Image Upload to Cloudinary
+  uploadImage: (image: string, folder: string = 'sunny-solar'): Promise<{ success: boolean; url: string; public_id?: string; message?: string }> =>
+    request('/upload', {
+      method: 'POST',
+      body: JSON.stringify({ image, folder })
+    }),
+
+
   // Public Blogs
   getBlogs: (category?: string, search?: string) => {
     const params = new URLSearchParams();

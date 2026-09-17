@@ -1,5 +1,6 @@
 import Knowledge from '../models/Knowledge.js';
 import { shouldTrackView } from '../utils/viewTracker.js';
+import { uploadToCloudinary } from '../config/cloudinary.js';
 
 // Default initial Knowledge guides for seamless startup
 const initialKnowledgeGuides = [
@@ -352,6 +353,16 @@ export const createKnowledge = async (req, res, next) => {
       slug = `${slug}-${Date.now()}`;
     }
 
+    // Upload base64 image to Cloudinary if provided
+    if (imageUrl && imageUrl.startsWith('data:image/')) {
+      try {
+        const uploadRes = await uploadToCloudinary(imageUrl, 'sunny-solar/knowledge');
+        imageUrl = uploadRes.url;
+      } catch (uploadErr) {
+        console.error('Failed to upload knowledge guide image to Cloudinary:', uploadErr.message);
+      }
+    }
+
     if (typeof keyTakeaways === 'string') {
       keyTakeaways = keyTakeaways.split('\n').map((k) => k.trim()).filter(Boolean);
     }
@@ -410,6 +421,16 @@ export const updateKnowledge = async (req, res, next) => {
 
     if (updateData.views !== undefined) {
       updateData.views = Math.max(0, parseInt(updateData.views) || 0);
+    }
+
+    // Upload base64 image to Cloudinary if provided
+    if (updateData.imageUrl && updateData.imageUrl.startsWith('data:image/')) {
+      try {
+        const uploadRes = await uploadToCloudinary(updateData.imageUrl, 'sunny-solar/knowledge');
+        updateData.imageUrl = uploadRes.url;
+      } catch (uploadErr) {
+        console.error('Failed to upload updated knowledge guide image to Cloudinary:', uploadErr.message);
+      }
     }
 
     if (typeof updateData.keyTakeaways === 'string') {

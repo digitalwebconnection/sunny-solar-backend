@@ -480,25 +480,46 @@ export const AdminPage: React.FC = () => {
   };
 
   // =========================================================================
-  // IMAGE UPLOAD HANDLERS
+  // IMAGE UPLOAD HANDLERS (CLOUDINARY)
   // =========================================================================
+  const [uploadingBlogImage, setUploadingBlogImage] = useState(false);
+  const [uploadingKnowledgeImage, setUploadingKnowledgeImage] = useState(false);
+
   const handleKnowledgeImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
 
-    if (file.size > 5 * 1024 * 1024) {
-      showToast('error', 'Image size should be less than 5MB');
+    if (file.size > 10 * 1024 * 1024) {
+      showToast('error', 'Image size should be less than 10MB');
       return;
     }
 
     const reader = new FileReader();
-    reader.onload = () => {
+    reader.onload = async () => {
       if (typeof reader.result === 'string') {
+        const base64Data = reader.result;
+        // Immediate local preview so UI updates without delay
         setKnowledgeFormData((prev) => ({
           ...prev,
-          imageUrl: reader.result as string
+          imageUrl: base64Data
         }));
-        showToast('success', 'Guide image uploaded successfully!');
+
+        setUploadingKnowledgeImage(true);
+        try {
+          const res = await api.uploadImage(base64Data, 'sunny-solar/knowledge');
+          if (res?.url) {
+            setKnowledgeFormData((prev) => ({
+              ...prev,
+              imageUrl: res.url
+            }));
+            showToast('success', 'Image uploaded to Cloudinary successfully!');
+          }
+        } catch (uploadErr: any) {
+          console.warn('Cloudinary upload fallback to controller auto-upload:', uploadErr);
+          showToast('error', `Cloudinary direct upload failed: ${uploadErr.message || 'Will upload on save'}`);
+        } finally {
+          setUploadingKnowledgeImage(false);
+        }
       }
     };
     reader.onerror = () => {
@@ -511,19 +532,37 @@ export const AdminPage: React.FC = () => {
     const file = e.target.files?.[0];
     if (!file) return;
 
-    if (file.size > 5 * 1024 * 1024) {
-      showToast('error', 'Image size should be less than 5MB');
+    if (file.size > 10 * 1024 * 1024) {
+      showToast('error', 'Image size should be less than 10MB');
       return;
     }
 
     const reader = new FileReader();
-    reader.onload = () => {
+    reader.onload = async () => {
       if (typeof reader.result === 'string') {
+        const base64Data = reader.result;
+        // Immediate local preview
         setFormData((prev) => ({
           ...prev,
-          imageUrl: reader.result as string
+          imageUrl: base64Data
         }));
-        showToast('success', 'Article image uploaded successfully!');
+
+        setUploadingBlogImage(true);
+        try {
+          const res = await api.uploadImage(base64Data, 'sunny-solar/blogs');
+          if (res?.url) {
+            setFormData((prev) => ({
+              ...prev,
+              imageUrl: res.url
+            }));
+            showToast('success', 'Image uploaded to Cloudinary successfully!');
+          }
+        } catch (uploadErr: any) {
+          console.warn('Cloudinary upload fallback to controller auto-upload:', uploadErr);
+          showToast('error', `Cloudinary direct upload failed: ${uploadErr.message || 'Will upload on save'}`);
+        } finally {
+          setUploadingBlogImage(false);
+        }
       }
     };
     reader.onerror = () => {
@@ -1993,6 +2032,12 @@ export const AdminPage: React.FC = () => {
                             e.target.src = '/images/blog/default.jpg';
                           }}
                         />
+                        {uploadingBlogImage && (
+                          <div className="absolute inset-0 bg-slate-900/80 flex flex-col items-center justify-center gap-2 text-white z-10 backdrop-blur-xs">
+                            <div className="w-6 h-6 border-2 border-amber-400 border-t-transparent rounded-full animate-spin"></div>
+                            <span className="text-xs font-semibold text-amber-300">Uploading to Cloudinary...</span>
+                          </div>
+                        )}
                         <div className="absolute inset-0 bg-slate-900/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2.5">
                           <label className="bg-white text-slate-900 hover:bg-slate-100 px-3.5 py-2 rounded-xl text-xs font-bold shadow-md cursor-pointer flex items-center gap-1.5 transition-colors">
                             <Upload className="w-3.5 h-3.5 text-amber-600" />
@@ -2015,22 +2060,31 @@ export const AdminPage: React.FC = () => {
                         </div>
                       </div>
                     ) : (
-                      <label className="flex flex-col items-center justify-center border-2 border-dashed border-slate-300 hover:border-amber-500 hover:bg-amber-50/40 rounded-2xl p-6 cursor-pointer transition-all mb-3 text-center group bg-slate-50/60">
-                        <div className="w-12 h-12 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
-                          <Upload className="w-6 h-6" />
-                        </div>
-                        <span className="text-xs font-bold text-slate-800">
-                          Click to upload Article Image
-                        </span>
-                        <span className="text-[11px] text-slate-400 mt-0.5">
-                          PNG, JPG, WEBP or GIF (Up to 5MB)
-                        </span>
-                        <input
-                          type="file"
-                          accept="image/*"
-                          onChange={handleBlogImageUpload}
-                          className="hidden"
-                        />
+                      <label className="flex flex-col items-center justify-center border-2 border-dashed border-slate-300 hover:border-amber-500 hover:bg-amber-50/40 rounded-2xl p-6 cursor-pointer transition-all mb-3 text-center group bg-slate-50/60 relative">
+                        {uploadingBlogImage ? (
+                          <div className="flex flex-col items-center justify-center gap-2 py-4 text-amber-600">
+                            <div className="w-8 h-8 border-2 border-amber-500 border-t-transparent rounded-full animate-spin"></div>
+                            <span className="text-xs font-bold">Uploading to Cloudinary...</span>
+                          </div>
+                        ) : (
+                          <>
+                            <div className="w-12 h-12 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
+                              <Upload className="w-6 h-6" />
+                            </div>
+                            <span className="text-xs font-bold text-slate-800">
+                              Click to upload Article Image
+                            </span>
+                            <span className="text-[11px] text-slate-400 mt-0.5">
+                              Cloudinary Cloud Storage (PNG, JPG, WEBP)
+                            </span>
+                            <input
+                              type="file"
+                              accept="image/*"
+                              onChange={handleBlogImageUpload}
+                              className="hidden"
+                            />
+                          </>
+                        )}
                       </label>
                     )}
 
@@ -2497,6 +2551,12 @@ export const AdminPage: React.FC = () => {
                             e.target.src = '/images/blog/solar-system-size.jpg';
                           }}
                         />
+                        {uploadingKnowledgeImage && (
+                          <div className="absolute inset-0 bg-slate-900/80 flex flex-col items-center justify-center gap-2 text-white z-10 backdrop-blur-xs">
+                            <div className="w-6 h-6 border-2 border-amber-400 border-t-transparent rounded-full animate-spin"></div>
+                            <span className="text-xs font-semibold text-amber-300">Uploading to Cloudinary...</span>
+                          </div>
+                        )}
                         <div className="absolute inset-0 bg-slate-900/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2.5">
                           <label className="bg-white text-slate-900 hover:bg-slate-100 px-3.5 py-2 rounded-xl text-xs font-bold shadow-md cursor-pointer flex items-center gap-1.5 transition-colors">
                             <Upload className="w-3.5 h-3.5 text-amber-600" />
@@ -2519,22 +2579,31 @@ export const AdminPage: React.FC = () => {
                         </div>
                       </div>
                     ) : (
-                      <label className="flex flex-col items-center justify-center border-2 border-dashed border-slate-300 hover:border-amber-500 hover:bg-amber-50/40 rounded-2xl p-6 cursor-pointer transition-all mb-3 text-center group bg-slate-50/60">
-                        <div className="w-12 h-12 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
-                          <Upload className="w-6 h-6" />
-                        </div>
-                        <span className="text-xs font-bold text-slate-800">
-                          Click to upload Knowledge Guide Image
-                        </span>
-                        <span className="text-[11px] text-slate-400 mt-0.5">
-                          PNG, JPG, WEBP or GIF (Up to 5MB)
-                        </span>
-                        <input
-                          type="file"
-                          accept="image/*"
-                          onChange={handleKnowledgeImageUpload}
-                          className="hidden"
-                        />
+                      <label className="flex flex-col items-center justify-center border-2 border-dashed border-slate-300 hover:border-amber-500 hover:bg-amber-50/40 rounded-2xl p-6 cursor-pointer transition-all mb-3 text-center group bg-slate-50/60 relative">
+                        {uploadingKnowledgeImage ? (
+                          <div className="flex flex-col items-center justify-center gap-2 py-4 text-amber-600">
+                            <div className="w-8 h-8 border-2 border-amber-500 border-t-transparent rounded-full animate-spin"></div>
+                            <span className="text-xs font-bold">Uploading to Cloudinary...</span>
+                          </div>
+                        ) : (
+                          <>
+                            <div className="w-12 h-12 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
+                              <Upload className="w-6 h-6" />
+                            </div>
+                            <span className="text-xs font-bold text-slate-800">
+                              Click to upload Knowledge Guide Image
+                            </span>
+                            <span className="text-[11px] text-slate-400 mt-0.5">
+                              Cloudinary Cloud Storage (PNG, JPG, WEBP)
+                            </span>
+                            <input
+                              type="file"
+                              accept="image/*"
+                              onChange={handleKnowledgeImageUpload}
+                              className="hidden"
+                            />
+                          </>
+                        )}
                       </label>
                     )}
 

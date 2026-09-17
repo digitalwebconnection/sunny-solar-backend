@@ -1,5 +1,6 @@
 import Blog from '../models/Blog.js';
 import { shouldTrackView } from '../utils/viewTracker.js';
+import { uploadToCloudinary } from '../config/cloudinary.js';
 
 const initialArticles = [
   {
@@ -256,6 +257,16 @@ export const createBlog = async (req, res, next) => {
       slug = `${slug}-${Date.now()}`;
     }
 
+    // Upload base64 image to Cloudinary if provided
+    if (imageUrl && imageUrl.startsWith('data:image/')) {
+      try {
+        const uploadRes = await uploadToCloudinary(imageUrl, 'sunny-solar/blogs');
+        imageUrl = uploadRes.url;
+      } catch (uploadErr) {
+        console.error('Failed to upload blog image to Cloudinary:', uploadErr.message);
+      }
+    }
+
     // Ensure keyTakeaways is array if string provided
     if (typeof keyTakeaways === 'string') {
       keyTakeaways = keyTakeaways.split('\n').map(k => k.trim()).filter(Boolean);
@@ -311,6 +322,16 @@ export const updateBlog = async (req, res, next) => {
 
     if (updateData.views !== undefined) {
       updateData.views = Math.max(0, parseInt(updateData.views) || 0);
+    }
+
+    // Upload base64 image to Cloudinary if provided
+    if (updateData.imageUrl && updateData.imageUrl.startsWith('data:image/')) {
+      try {
+        const uploadRes = await uploadToCloudinary(updateData.imageUrl, 'sunny-solar/blogs');
+        updateData.imageUrl = uploadRes.url;
+      } catch (uploadErr) {
+        console.error('Failed to upload updated blog image to Cloudinary:', uploadErr.message);
+      }
     }
 
     // Format keyTakeaways if passed as string
