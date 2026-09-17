@@ -1,15 +1,16 @@
 const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
 
-// Token helpers
+// Token helpers (stored in localStorage)
 export const getAdminToken = (): string | null => {
-  return localStorage.getItem('sunny_admin_token');
+  return localStorage.getItem('sunny_admin_Jwt_token') || localStorage.getItem('sunny_admin_token');
 };
 
 export const setAdminToken = (token: string): void => {
-  localStorage.setItem('sunny_admin_token', token);
+  localStorage.setItem('sunny_admin_Jwt_token', token);
 };
 
 export const removeAdminToken = (): void => {
+  localStorage.removeItem('sunny_admin_Jwt_token');
   localStorage.removeItem('sunny_admin_token');
   localStorage.removeItem('sunny_admin_user');
 };
