@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { articlesData } from '../../../data/blogData';
 import { KnowledgeHubHeroSection } from './sections/KnowledgeHubHeroSection';
 import { KnowledgeHubGridSection } from './sections/KnowledgeHubGridSection';
 import { api } from '../../../services/api';
@@ -16,8 +15,8 @@ const categories = [
 
 export const KnowledgeHubPage: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('All Guides');
-  const [articles, setArticles] = useState<Article[]>(articlesData);
-  const [loading, setLoading] = useState(false);
+  const [articles, setArticles] = useState<Article[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     let isMounted = true;
@@ -25,22 +24,17 @@ export const KnowledgeHubPage: React.FC = () => {
       setLoading(true);
       try {
         const res = await api.getKnowledge(selectedCategory);
-        if (isMounted && res?.data && res.data.length > 0) {
-          setArticles(res.data);
-          setLoading(false);
-          return;
+        if (isMounted) {
+          setArticles(res?.data || []);
         }
       } catch (err) {
-        // Fallback to static articlesData
-      }
-
-      if (isMounted) {
-        const fallback =
-          selectedCategory === 'All Guides'
-            ? articlesData
-            : articlesData.filter((a) => a.category === selectedCategory);
-        setArticles(fallback);
-        setLoading(false);
+        if (isMounted) {
+          setArticles([]);
+        }
+      } finally {
+        if (isMounted) {
+          setLoading(false);
+        }
       }
     };
 
@@ -79,6 +73,7 @@ export const KnowledgeHubPage: React.FC = () => {
       <KnowledgeHubGridSection
         articles={articles}
         basePath="/learn/knowledge-hub"
+        loading={loading}
       />
     </div>
   );

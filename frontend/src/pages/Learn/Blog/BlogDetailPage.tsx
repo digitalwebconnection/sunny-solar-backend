@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Navigate } from 'react-router-dom';
-import { articlesData } from '../../../data/blogData';
 import { Breadcrumbs } from '../../../components/layout/Breadcrumbs';
 import { Badge } from '../../../components/ui/Badge';
 import { Button } from '../../../components/ui/Button';
@@ -21,9 +20,7 @@ import type { Article } from '../../../types/blog';
 
 export const BlogDetailPage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
-  const [article, setArticle] = useState<Article | null>(() => {
-    return articlesData.find((a) => a.slug === slug) || null;
-  });
+  const [article, setArticle] = useState<Article | null>(null);
   const [loading, setLoading] = useState(true);
   const [isLongContentOpen, setIsLongContentOpen] = useState(false);
 
@@ -31,22 +28,25 @@ export const BlogDetailPage: React.FC = () => {
     let isMounted = true;
     const fetchArticle = async () => {
       if (!slug) return;
+      setLoading(true);
       try {
         const isPreview = new URLSearchParams(window.location.search).get('preview') === 'true';
         const res = await api.getBlogBySlug(isPreview ? `${slug}?preview=true` : slug);
-        if (isMounted && res?.data) {
-          setArticle(res.data);
-          setLoading(false);
-          return;
+        if (isMounted) {
+          if (res?.data) {
+            setArticle(res.data);
+          } else {
+            setArticle(null);
+          }
         }
       } catch (err) {
-        // Fallback to static data
-      }
-
-      if (isMounted) {
-        const local = articlesData.find((a) => a.slug === slug) || null;
-        setArticle(local);
-        setLoading(false);
+        if (isMounted) {
+          setArticle(null);
+        }
+      } finally {
+        if (isMounted) {
+          setLoading(false);
+        }
       }
     };
 

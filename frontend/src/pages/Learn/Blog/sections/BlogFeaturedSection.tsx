@@ -1,11 +1,41 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { articlesData } from '../../../../data/blogData';
+import { api } from '../../../../services/api';
+import type { Article } from '../../../../types/blog';
 import { Badge } from '../../../../components/ui/Badge';
 import { Calendar, Clock, ArrowRight, Sparkles, CheckCircle2 } from 'lucide-react';
 
-export const BlogFeaturedSection: React.FC = () => {
-  const featured = articlesData[0];
+interface BlogFeaturedSectionProps {
+  featuredArticle?: Article | null;
+}
+
+export const BlogFeaturedSection: React.FC<BlogFeaturedSectionProps> = ({ featuredArticle: propFeatured }) => {
+  const [featured, setFeatured] = useState<Article | null>(propFeatured || null);
+
+  useEffect(() => {
+    if (propFeatured !== undefined) {
+      setFeatured(propFeatured);
+      return;
+    }
+
+    let isMounted = true;
+    const fetchFeatured = async () => {
+      try {
+        const res = await api.getBlogs();
+        if (isMounted && res?.data && res.data.length > 0) {
+          setFeatured(res.data[0]);
+        }
+      } catch (err) {
+        if (isMounted) setFeatured(null);
+      }
+    };
+
+    fetchFeatured();
+
+    return () => {
+      isMounted = false;
+    };
+  }, [propFeatured]);
 
   if (!featured) return null;
 

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { articlesData } from '../../../../data/blogData';
 import { ArticleCard } from '../../../../components/cards/ArticleCard';
 import { Newspaper } from 'lucide-react';
 import { api } from '../../../../services/api';
@@ -16,8 +15,8 @@ const categories = [
 
 export const BlogGridSection: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('All Articles');
-  const [articles, setArticles] = useState<Article[]>(articlesData);
-  const [loading, setLoading] = useState(false);
+  const [articles, setArticles] = useState<Article[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     let isMounted = true;
@@ -25,23 +24,18 @@ export const BlogGridSection: React.FC = () => {
       setLoading(true);
       try {
         const res = await api.getBlogs(selectedCategory);
-        if (isMounted && res?.data && res.data.length > 0) {
-          setArticles(res.data);
-          return;
+        if (isMounted) {
+          setArticles(res?.data || []);
         }
       } catch (err) {
-        // Silently fallback to static data if backend is offline
+        if (isMounted) {
+          setArticles([]);
+        }
+      } finally {
+        if (isMounted) {
+          setLoading(false);
+        }
       }
-
-      // Fallback
-      if (isMounted) {
-        const fallback =
-          selectedCategory === 'All Articles'
-            ? articlesData
-            : articlesData.filter((a) => a.category === selectedCategory);
-        setArticles(fallback);
-      }
-      if (isMounted) setLoading(false);
     };
 
     fetchArticles();
@@ -78,7 +72,12 @@ export const BlogGridSection: React.FC = () => {
         </div>
       </div>
 
-      {articles.length === 0 ? (
+      {loading ? (
+        <div className="py-20 flex flex-col items-center justify-center">
+          <div className="w-10 h-10 border-3 border-amber-500/20 border-t-amber-500 rounded-full animate-spin mb-3" />
+          <p className="text-xs text-slate-500 font-medium">Loading articles from database...</p>
+        </div>
+      ) : articles.length === 0 ? (
         <div className="bg-white rounded-2xl border border-slate-200 p-12 text-center max-w-md mx-auto">
           <Newspaper className="w-12 h-12 text-slate-400 mx-auto mb-3" />
           <h4 className="text-base font-bold text-slate-800">No articles in this category</h4>

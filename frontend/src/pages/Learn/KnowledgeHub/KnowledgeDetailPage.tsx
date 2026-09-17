@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Navigate, Link } from 'react-router-dom';
-import { articlesData } from '../../../data/blogData';
 import { Breadcrumbs } from '../../../components/layout/Breadcrumbs';
 import { Badge } from '../../../components/ui/Badge';
 import { Button } from '../../../components/ui/Button';
@@ -96,16 +95,13 @@ const defaultCategoryConfig = {
   standardRef: 'Clean Energy Council Approved Hardware Standards',
 };
 
-/* -------------------------------------------------------------------------- */
-/* RICH TECHNICAL ARTICLES DATA (Specialized Blueprint & FAQs)                */
-/* -------------------------------------------------------------------------- */
-interface RichArticleData {
+export interface RichArticleData {
   blueprintTitle: string;
   blueprintBadge: string;
   quickStats: { label: string; value: string }[];
   matrixHeaders: string[];
   matrixRows: { feature: string; col1: string; col2: string; col3?: string }[];
-  deepDiveSections: {
+  deepDiveSections?: {
     title: string;
     paragraphs: string[];
     highlightBox?: {
@@ -113,442 +109,8 @@ interface RichArticleData {
       text: string;
     };
   }[];
-  faqs: { question: string; answer: string }[];
+  faqs?: { question: string; answer: string }[];
 }
-
-const richArticlesMap: Record<string, RichArticleData> = {
-  'what-size-solar-system-do-i-need': {
-    blueprintTitle: '2025 Residential Solar Sizing Decision Matrix',
-    blueprintBadge: 'Engineering Sizing Guide',
-    quickStats: [
-      { label: 'Baseline Sizing', value: '6.6 kW' },
-      { label: 'Modern Sweet Spot', value: '8.8 kW' },
-      { label: 'Avg Daily Output', value: '26 - 38 kWh' },
-      { label: 'Typical Payback', value: '2.8 - 3.4 Yrs' },
-    ],
-    matrixHeaders: ['Metric / Requirement', 'Entry: 6.6 kW', 'Sweet Spot: 8.8 kW', 'Electrified: 10-13.2 kW'],
-    matrixRows: [
-      {
-        feature: 'Number of Panels',
-        col1: '15 - 16 Panels (440W)',
-        col2: '20 - 22 Panels (440W)',
-        col3: '24 - 30 Panels (440W)',
-      },
-      {
-        feature: 'Inverter AC Capacity',
-        col1: '5.0 kW (1-Phase)',
-        col2: '6.6 kW (1-Phase)',
-        col3: '8.2 - 10 kW (3-Phase)',
-      },
-      {
-        feature: 'Required Roof Area',
-        col1: 'Approx. 32 m²',
-        col2: 'Approx. 44 m²',
-        col3: 'Approx. 58 - 65 m²',
-      },
-      {
-        feature: 'Ideal Household Profile',
-        col1: '1-2 people, gas hot water, no ducted A/C',
-        col2: '3-5 people, ducted A/C, swimming pool',
-        col3: 'Large family, EV charging, 2x Heat pumps',
-      },
-      {
-        feature: 'Battery Readiness',
-        col1: 'Covers nighttime basic baseload',
-        col2: 'Generates enough daytime surplus to fill 10-13kWh battery',
-        col3: 'Ideal for 15-25kWh battery + EV overnight charging',
-      },
-    ],
-    deepDiveSections: [
-      {
-        title: '1. Why the Outdated "5kW Rule" Is Costing Homeowners Money',
-        paragraphs: [
-          'Five years ago, a 5kW solar system was the cookie-cutter standard across Queensland. Today, that sizing recommendation is thoroughly obsolete. Modern households have electrified: induction cooking, ducted reverse-cycle air conditioning, heat pump water heaters, and electric vehicles have pushed typical daily consumption from 14 kWh to 24-35 kWh.',
-          'Because the federal Small-scale Renewable Energy Scheme (STC rebate) provides an upfront point-of-sale discount for systems up to 100kW, the incremental cost to upgrade from 6.6kW to 8.8kW is remarkably low — typically around $1,200 to $1,800. In return, you receive up to 35% more electricity every single day.',
-        ],
-        highlightBox: {
-          title: 'The Golden Rule of Modern Solar Sizing',
-          text: 'Never size your solar system just for today’s power bill. Sizing your roof array to cover future battery storage and electric vehicles now avoids having to pay double for a second installer callout and switchboard upgrade 24 months down the road.',
-        },
-      },
-      {
-        title: '2. The 133% Oversizing Rule Explained (CEC Engineering Standard)',
-        paragraphs: [
-          'One of the most common questions homeowners ask is: "Why does my quote specify 8.8kW of panels when the inverter is only rated for 6.6kW?"',
-          'Under Clean Energy Council guidelines and AS/NZS 5033 standards, solar arrays are permitted to be oversized up to 133% of the inverter’s nominal AC rating. Solar panels rarely operate at 100% of their lab-tested Standard Test Condition (STC) capacity due to Queensland’s intense rooftop heat, morning haze, and seasonal sun angles.',
-          'By pairing an 8.8kW array with a 6.6kW inverter, your system reaches peak output earlier at 8:30 AM and maintains peak generation until 4:30 PM. While minor "inverter clipping" occurs for a brief 90 minutes around midday in midsummer, the total daily harvest gained in morning and late afternoon far outweighs any clipped energy.',
-        ],
-      },
-      {
-        title: '3. Network Export Limits: Single-Phase vs Three-Phase in Queensland',
-        paragraphs: [
-          'In Southeast Queensland, your local Distribution Network Service Provider (DNSP) — either Energex or Ergon Energy — dictates how much power you can export back into the electrical grid.',
-          'On a standard single-phase residential supply, Energex permits a maximum inverter capacity of 5kVA with a 5kW export limit. However, through modern smart hybrid inverters with dynamic export management, you can install a 6.6kW or 8kW inverter with panel capacity up to 10kW, programmatically capping grid export at 5kW while routing all surplus generation straight into your home appliances or battery.',
-        ],
-      },
-    ],
-    faqs: [
-      {
-        question: 'Will my inverter overheat if I oversize panels up to 133%?',
-        answer:
-          'No. Quality tier-1 inverters (like Sungrow, Fronius, and Enphase) are engineered with integrated heat sinks and smart thermal throttling. Inverters only draw the electrical current they require; extra panel capacity does not force excess current through the electronics.',
-      },
-      {
-        question: 'What if my roof does not face true North?',
-        answer:
-          'East- and West-facing roofs are now highly desirable! While North delivers peak midday harvest, an East-West split generates power during the critical morning rush (7:00 AM - 9:00 AM) and evening peak (4:00 PM - 7:00 PM), maximizing direct household consumption.',
-      },
-      {
-        question: 'Can I install a 6.6kW system today and add more panels later?',
-        answer:
-          'Adding panels to an existing system later is often difficult and expensive because Australian electrical standards (AS/NZS 5033) update frequently. Adding panels later typically requires replacing the inverter, upgrading switchboard wiring, and re-certifying the entire system. It is vastly more economical to max out your roof on day one.',
-      },
-    ],
-  },
-  'tesla-powerwall-3-vs-sungrow-sbr': {
-    blueprintTitle: 'Tesla Powerwall 3 vs Sungrow SBR: Architectural Breakdown',
-    blueprintBadge: 'Battery Hardware Face-off',
-    quickStats: [
-      { label: 'Powerwall Capacity', value: '13.5 kWh' },
-      { label: 'Sungrow Modular', value: '9.6 - 25.6 kWh' },
-      { label: 'Continuous Surge', value: '11.5 kW vs 5-10 kW' },
-      { label: 'Warranty Retention', value: '70% at 10 Yrs' },
-    ],
-    matrixHeaders: ['Feature / Specification', 'Tesla Powerwall 3', 'Sungrow SBR High-Voltage'],
-    matrixRows: [
-      {
-        feature: 'Usable Battery Capacity',
-        col1: '13.5 kWh per chassis',
-        col2: 'Modular: 9.6, 12.8, 16.0, 19.2, or 25.6 kWh',
-      },
-      {
-        feature: 'Continuous Output (On-Grid/Backup)',
-        col1: '11.5 kW continuous power',
-        col2: '5.0 kW to 10.0 kW (depends on hybrid inverter model)',
-      },
-      {
-        feature: 'Motor Starting Surge (LRA)',
-        col1: '185 LRA (Starts heavy ducted A/C effortlessly)',
-        col2: '35 - 50 A (Adequate for standard appliances)',
-      },
-      {
-        feature: 'Cell Chemistry',
-        col1: 'Nickel Manganese Cobalt (NMC)',
-        col2: 'Cobalt-Free Lithium Iron Phosphate (LiFePO4)',
-      },
-      {
-        feature: 'Inverter Architecture',
-        col1: 'Integrated 6x MPPT solar inverter chassis',
-        col2: 'DC-coupled to external Sungrow Hybrid Inverter',
-      },
-      {
-        feature: 'Three-Phase Compatibility',
-        col1: 'Single-phase backup; 3 units needed for full 3-phase',
-        col2: 'Native balanced 3-phase hybrid support with 1 battery stack',
-      },
-    ],
-    deepDiveSections: [
-      {
-        title: '1. Inverter Architecture: Integrated vs Modular Split-System',
-        paragraphs: [
-          'The fundamental difference between Tesla Powerwall 3 and the Sungrow SBR system lies in their architecture. The Powerwall 3 is an all-in-one system: the battery cells, battery management system (BMS), and an 11.5kW solar string inverter with 6 MPPT trackers are housed inside a single streamlined enclosure.',
-          'Sungrow employs a modular split-system philosophy. The SBR battery consists of stackable 3.2kWh modular bricks that connect directly into an external Sungrow hybrid inverter (such as the SH5.0RS or SH10RS). This allows you to start with 9.6kWh and add additional modules down the track as your budget allows.',
-        ],
-        highlightBox: {
-          title: 'Master Electrician Verdict on Inverter Failure',
-          text: 'If an inverter fault occurs on Powerwall 3, both solar generation and battery storage go offline during warranty replacement. With Sungrow, the battery stack and inverter are separate components, making field service and individual component replacement straightforward.',
-        },
-      },
-      {
-        title: '2. Chemistry Deep-Dive: LiFePO4 vs NMC Thermal Profiles',
-        paragraphs: [
-          'Sungrow utilizes Lithium Iron Phosphate (LiFePO4 / LFP) prismatic cells. LFP is widely recognized by battery engineers as the safest residential chemistry available: it is completely cobalt-free, has a thermal runaway threshold exceeding 270°C, and offers superior cycle longevity in hot Australian garages.',
-          'Tesla Powerwall 3 utilizes advanced NMC chemistry with liquid thermal cooling. NMC provides higher energy density, allowing Tesla to deliver 13.5kWh and 11.5kW of continuous power in a compact wall footprint. Tesla’s proprietary glycol liquid cooling loop ensures optimal cell temperature even during 40°C heatwaves.',
-        ],
-      },
-      {
-        title: '3. Blackout Emergency Power Supply & Surge Performance',
-        paragraphs: [
-          'Where the Tesla Powerwall 3 stands in a class of its own is peak locked-rotor surge capability. With 11.5kW of continuous output and up to 185 LRA surge, Powerwall 3 can effortlessly start high-draw inductive loads — such as 16kW ducted air conditioners or borehole water pumps — without tripping into safety protection during a blackout.',
-          'Sungrow SBR delivers whole-home backup when paired with their Backup Box, switching over in under 20 milliseconds (fast enough that desktop computers and clocks never reboot). However, for homes with large multi-zone ducted A/C, you may need a soft-starter on your compressor or load-shedding contactors.',
-        ],
-      },
-    ],
-    faqs: [
-      {
-        question: 'Can Tesla Powerwall 3 be added to my existing solar system?',
-        answer:
-          'Yes, but because Powerwall 3 includes its own integrated 11.5kW solar inverter, it can either replace your old solar inverter entirely or be AC-coupled to your existing array using a Tesla Gateway 2.',
-      },
-      {
-        question: 'Can I add more battery modules to Sungrow SBR later?',
-        answer:
-          'Yes. Sungrow allows modules to be added within the first 2-3 years. If you start with a 3-module 9.6kWh stack, you can easily expand to 4 modules (12.8kWh) or up to 8 modules (25.6kWh) as your power consumption grows.',
-      },
-      {
-        question: 'Which system has better app monitoring?',
-        answer:
-          'The Tesla mobile app is widely considered the gold standard for intuitive UI, real-time storm watch weather tracking, and EV charging integration. Sungrow’s iSolarCloud provides deeper technical data, string-level voltage metrics, and trade diagnostic tools preferred by electrical engineers.',
-      },
-    ],
-  },
-  'solar-rebates-and-feed-in-tariffs-explained': {
-    blueprintTitle: 'Australian Solar Financial Engine: STC Rebate & FiT Breakdown',
-    blueprintBadge: 'Economics & ROI Analysis',
-    quickStats: [
-      { label: 'STC Rebate Value', value: '$2,400 - $3,600' },
-      { label: 'Avg Feed-in Tariff', value: '4 - 7c / kWh' },
-      { label: 'Avoided Grid Cost', value: '34 - 38c / kWh' },
-      { label: 'Effective ROI', value: '22% - 28% p.a.' },
-    ],
-    matrixHeaders: ['Financial Mechanism', 'How It Works', 'Current 2025 Value', 'Homeowner Strategy'],
-    matrixRows: [
-      {
-        feature: 'Small-scale Technology Certificates (STC)',
-        col1: 'Federal point-of-sale rebate based on 10-year expected generation',
-        col2: 'Deducts approx. $380 - $420 per kW of panels directly off invoice',
-        col3: 'Maximize panel footprint on initial install before annual rebate phase-down',
-      },
-      {
-        feature: 'Feed-in Tariff (FiT)',
-        col1: 'Retailer credit for excess solar electricity exported to grid',
-        col2: '4.5c to 7.0c per exported kWh in Southeast QLD',
-        col3: 'Exporting power for pennies is dead; avoid sending power to the grid',
-      },
-      {
-        feature: 'Self-Consumption (Avoided Cost)',
-        col1: 'Powering appliances directly with rooftop solar energy',
-        col2: 'Saves 34c to 38c per kWh otherwise purchased from AGL/Origin/Alinta',
-        col3: 'Run heat pumps, pool filtration, and dishwashers between 10am and 3pm',
-      },
-      {
-        feature: 'Solar Battery Storage',
-        col1: 'Storing daytime solar surplus for evening peak tariff discharge',
-        col2: 'Displaces peak evening grid electricity (up to 42c/kWh)',
-        col3: 'Adds blackout resilience and eliminates 85-95% of retail quarterly bill',
-      },
-    ],
-    deepDiveSections: [
-      {
-        title: '1. The STC Federal Rebate: How the Point-of-Sale Discount Works',
-        paragraphs: [
-          'The Australian federal government solar rebate is administered through the Clean Energy Regulator under the Small-scale Renewable Energy Scheme (SRES). It is not a government tax refund that you claim at tax time; instead, it is an upfront point-of-sale discount.',
-          'When you install an accredited system, Clean Energy Council approved installers generate Small-scale Technology Certificates (STCs) based on your postcode rating zone and total kW capacity. On an 8.8kW system in Brisbane or the Gold Coast, STCs immediately shave between $2,800 and $3,400 off your quote.',
-        ],
-        highlightBox: {
-          title: 'Important: The Annual STC Deeming Period Phase-Down',
-          text: 'The SRES scheme is legislated to end on December 31, 2030. Every year on January 1st, the certificate multiplier drops by one year. Waiting another year to install solar automatically reduces your federal rebate discount by roughly 9-10%.',
-        },
-      },
-      {
-        title: '2. Why Feed-in Tariffs Dropped from 44c to 5c/kWh',
-        paragraphs: [
-          'Homeowners who remember Queensland’s 44-cent Solar Bonus Scheme in 2010 are often shocked to see 2025 feed-in tariffs sitting at 4c to 6c per kWh. This drop is not a retailer conspiracy — it reflects the wholesale physics of the National Electricity Market (NEM).',
-          'With over 3.5 million Australian homes generating clean solar simultaneously at 1:00 PM, midday wholesale electricity prices frequently collapse to zero or negative values. Retail energy providers cannot pay 20 cents for electricity that is essentially free on the wholesale market.',
-        ],
-      },
-      {
-        title: '3. The Modern ROI Formula: Squeezing Maximum Value from Avoided Cost',
-        paragraphs: [
-          'Because exported electricity earns only 5c/kWh while imported electricity costs 34c/kWh, the financial secret of solar is 100% self-consumption.',
-          'Every single kilowatt-hour you divert into running your swimming pool chlorinator, hot water heat pump, ducted air conditioning, or EV charger saves you 34 cents immediately. By shifting daytime loads into your solar production window, an 8.8kW solar system generates over $2,100 to $2,800 in annual tax-free savings, achieving complete capital payback in under 3.2 years.',
-        ],
-      },
-    ],
-    faqs: [
-      {
-        question: 'Do I have to apply for the STC solar rebate myself?',
-        answer:
-          'No. Your CEC Accredited installer calculates the STCs and applies them as a direct discount line-item on your final quote. You sign an STC assignment form on the day of commissioning.',
-      },
-      {
-        question: 'Can I switch energy retailers to get a higher feed-in tariff?',
-        answer:
-          'Be very careful! Retailers that advertise higher feed-in tariffs (e.g. 10c/kWh) often compensate by charging significantly higher daily supply charges (e.g. $1.35/day) or higher evening peak rates (44c/kWh). Always calculate total annual net bill impact rather than chasing FiT alone.',
-      },
-      {
-        question: 'Is a solar battery mandatory to get a good return on investment?',
-        answer:
-          'No. A well-sized solar array without a battery still yields an outstanding 22% to 28% annual return on investment simply through daytime self-consumption. A battery is an upgrade for blackout security and evening independence.',
-      },
-    ],
-  },
-  'signs-your-existing-solar-system-is-failing': {
-    blueprintTitle: '5-Point Solar System Health & Fire Safety Audit',
-    blueprintBadge: 'Safety & Diagnostic Standard',
-    quickStats: [
-      { label: 'Highest Risk', value: 'Pre-2018 DC Isolators' },
-      { label: 'Inverter Lifespan', value: '7 - 10 Years' },
-      { label: 'Degradation Alert', value: '>15% Output Drop' },
-      { label: 'Audit Standard', value: 'AS/NZS 5033:2021' },
-    ],
-    matrixHeaders: ['Diagnostic Check', 'Warning Sign / Symptom', 'Risk Level', 'Mandatory Action'],
-    matrixRows: [
-      {
-        feature: '1. Inverter Status Lights',
-        col1: 'Solid red light, flashing orange, or blank LCD screen',
-        col2: 'High (System is completely offline or in fault mode)',
-        col3: 'Check error code (Isolation/Ground fault); do not attempt rebooting yourself',
-      },
-      {
-        feature: '2. Rooftop DC Isolator Switch',
-        col1: 'Discolored/burnt casing, water droplets inside switch, cracked UV plastic',
-        col2: 'Critical Fire Hazard (Major cause of Australian rooftop fires)',
-        col3: 'Isolate via switchboard and contact a licensed CEC electrician immediately',
-      },
-      {
-        feature: '3. Quarterly Generation Slump',
-        col1: 'Power bill suddenly spikes; quarterly harvest dropped >25% vs last year',
-        col2: 'Moderate Financial Drain',
-        col3: 'Book a full I-V curve tracer audit to identify failed panel strings',
-      },
-      {
-        feature: '4. Panel Micro-cracks & Browning',
-        col1: 'Snail trails, EVA browning, delaminated white backsheet, broken glass',
-        col2: 'High (Hotspots can cause thermal glass shatter and DC arc faults)',
-        col3: 'Thermal imaging inspection to check for failed bypass diodes',
-      },
-      {
-        feature: '5. Switchboard RCD / Breaker Trips',
-        col1: 'Solar circuit breaker trips intermittently on rainy or humid mornings',
-        col2: 'High (Indicates moisture entering cabling or isolator conduits)',
-        col3: 'Perform 1,000V insulation resistance test on DC strings',
-      },
-    ],
-    deepDiveSections: [
-      {
-        title: '1. The Silent Rooftop Crisis: Why 1 in 3 Older Systems Have Faults',
-        paragraphs: [
-          'Australia has installed rooftop solar faster than any nation on earth, with over 3.5 million systems operating. However, independent audits by state safety regulators indicate that nearly one in three systems over six years old suffer from unaddressed electrical faults.',
-          'Because solar systems work silently without moving parts, an inverter shutdown or blown fuse often goes completely unnoticed for months. Homeowners only realize their system stopped generating when an unexpectedly massive $900 quarterly power bill lands in their mailbox.',
-        ],
-        highlightBox: {
-          title: 'The Pre-2018 Rooftop DC Isolator Alert',
-          text: 'Between 2012 and 2018, Australian standards mandated rooftop DC isolator switches. Unfortunately, harsh Australian UV radiation degraded cheap polycarbonate enclosures, allowing rain ingress that caused internal DC electrical arcing and rooftop fires. Newer standards allow isolators to be safely omitted when panels are enclosed in heavy-duty conduit.',
-        },
-      },
-      {
-        title: '2. Decoding Inverter Error Codes: Ground Faults vs Grid Voltage High',
-        paragraphs: [
-          'When an inverter displays a red fault light, it has triggered its internal protective relays. Two error types dominate:',
-          'Isolation Faults (ISO Low / Earth Fault): Moisture has penetrated the DC wiring, connectors, or solar panel backsheet, causing current to leak to the roof frame. This is a severe shock hazard and the inverter refuses to start.',
-          'Grid Overvoltage (AC Overvoltage >253V): On sunny days, neighborhood solar generation pushes street grid voltage above the legal Australian ceiling of 253V. The inverter throttles output or shuts down to protect home appliances.',
-        ],
-      },
-      {
-        title: '3. What Happens During a Professional 24-Point Solar Health Check',
-        paragraphs: [
-          'A certified Clean Energy Council solar health check goes far beyond spraying panels with a garden hose. A licensed solar electrician performs:',
-          '• High-voltage DC insulation resistance testing at 1,000V to detect cable degradation.\n• Infrared thermal imaging to detect hidden cell hotspots and failing bypass diodes.\n• Rooftop isolator torque and seal integrity inspection.\n• Switchboard breaker and surge protection verification.\n• Generation benchmark verification against local irradiance satellite data.',
-        ],
-      },
-    ],
-    faqs: [
-      {
-        question: 'How often should a residential solar system be inspected?',
-        answer:
-          'The Clean Energy Council recommends a comprehensive electrical health inspection every 2 to 3 years. Systems over 5 years old should be inspected annually to ensure fire safety seals remain watertight.',
-      },
-      {
-        question: 'Can I replace just my inverter if my panels are still functioning?',
-        answer:
-          'Yes! Upgrading an old 5kW string inverter to a modern smart hybrid inverter (like Sungrow or GoodWe) restores full generation and immediately makes your home battery-ready. However, your installer must verify that existing panel open-circuit voltages comply with modern standards.',
-      },
-      {
-        question: 'Do dirty panels really cause a significant drop in power?',
-        answer:
-          'Light dust typically causes a 3-5% drop, which is usually washed away by regular rain. However, heavy bird droppings, lichen, or sap from nearby gum trees can block individual cells, creating localized hot spots that drop string output by up to 20-30%.',
-      },
-    ],
-  },
-  'n-type-topcon-vs-perc-solar-panels': {
-    blueprintTitle: 'N-Type TOPCon vs P-Type PERC: Silicon Cell Physics Comparison',
-    blueprintBadge: 'Next-Gen Cell Engineering',
-    quickStats: [
-      { label: 'TOPCon Temp Coeff', value: '-0.26% / °C' },
-      { label: 'PERC Temp Coeff', value: '-0.38% / °C' },
-      { label: 'Initial LID', value: '0.0% (Zero)' },
-      { label: '30-Yr Yield Retention', value: '87.4% Output' },
-    ],
-    matrixHeaders: ['Technical Parameter', 'N-Type TOPCon (Tunnel Oxide)', 'P-Type PERC (Older Standard)'],
-    matrixRows: [
-      {
-        feature: 'Silicon Base Doping',
-        col1: 'N-Type (Phosphorus-doped; zero Boron-Oxygen defects)',
-        col2: 'P-Type (Boron-doped; prone to Light-Induced Degradation)',
-      },
-      {
-        feature: 'Temperature Coefficient (Pmax)',
-        col1: '-0.26% to -0.30% / °C (High heat resilience)',
-        col2: '-0.36% to -0.40% / °C (Significant summer power drop)',
-      },
-      {
-        feature: 'Loss at 65°C Roof Surface (Summer)',
-        col1: '10.4% derating (Generates 89.6% of rated watts)',
-        col2: '15.2% derating (Generates only 84.8% of rated watts)',
-      },
-      {
-        feature: 'Light-Induced Degradation (LID)',
-        col1: '0.0% (Immune to first-year boron-oxygen loss)',
-        col2: '1.5% to 2.5% loss in the first 6 months of sunlight',
-      },
-      {
-        feature: 'Bifaciality Factor',
-        col1: '80% to 85% rear capture efficiency',
-        col2: '65% to 70% rear capture efficiency',
-      },
-      {
-        feature: '30-Year Linear Warranty',
-        col1: '87.4% retained power guaranteed at Year 30',
-        col2: '80.2% retained power guaranteed at Year 25',
-      },
-    ],
-    deepDiveSections: [
-      {
-        title: '1. Silicon Physics: Why N-Type TOPCon Eliminated Recombination',
-        paragraphs: [
-          'For over a decade, P-type PERC (Passivated Emitter and Rear Cell) panels dominated the global residential market. However, manufacturing advances have allowed TOPCon (Tunnel Oxide Passivated Contact) to conquer the market with dramatically superior silicon physics.',
-          'In traditional P-type silicon, boron atoms react with trace oxygen under initial sunlight exposure, creating Boron-Oxygen defects that cause immediate Light-Induced Degradation (LID). N-type silicon uses phosphorus instead of boron, completely eliminating LID and preventing minority carrier recombination through an ultra-thin 1.5nm tunnel oxide layer.',
-        ],
-        highlightBox: {
-          title: 'The Real-World Queensland Summer Impact',
-          text: 'Solar panels are rated at Standard Test Conditions (STC) of 25°C. On a 35°C Brisbane summer afternoon, dark rooftop panels regularly reach 65°C to 70°C. Under these blistering conditions, TOPCon panels produce 8% to 12% more kilowatt-hours every single afternoon than standard PERC panels.',
-        },
-      },
-      {
-        title: '2. Dual-Glass Encapsulation and Coastal Salt Spray Durability',
-        paragraphs: [
-          'Most modern Tier-1 TOPCon panels (such as AIKO, Trina Vertex S+, and JinkoSolar Tiger Neo) are manufactured with dual-glass encapsulation (2.0mm tempered glass on the front and 2.0mm on the rear) replacing the traditional plastic polymer backsheet.',
-          'For homes on the Gold Coast, Sunshine Coast, or Moreton Bay, dual-glass construction provides an impermeable barrier against salt mist corrosion, coastal humidity, and moisture ingress that historically degraded internal silver busbars in cheaper panels.',
-        ],
-      },
-      {
-        title: '3. Financial Payoff: Is TOPCon Worth the Extra $20 per Panel?',
-        paragraphs: [
-          'With production scale rapidly maturing, the price premium for N-Type TOPCon panels has collapsed to less than $15-$25 per panel compared to older stock PERC modules.',
-          'Over a 25-year operating lifespan, that nominal $300-$400 upfront difference on a 20-panel system generates over 18,000 additional kilowatt-hours of harvest. That equates to more than $5,400 in additional avoided grid electricity costs, making TOPCon an indisputable engineering choice.',
-        ],
-      },
-    ],
-    faqs: [
-      {
-        question: 'Is TOPCon the same as HJT (Heterojunction) or ABC (All-Back-Contact)?',
-        answer:
-          'They are related N-type technologies. TOPCon uses passivated tunnel oxide contacts. HJT combines crystalline silicon with amorphous silicon layers. ABC (All-Back-Contact) moves all electrical busbars to the rear for maximum light absorption. All three represent premium N-type silicon.',
-      },
-      {
-        question: 'Do TOPCon panels generate more power on overcast or rainy days?',
-        answer:
-          'Yes. Because N-type silicon has higher low-light spectral sensitivity in the infrared and diffuse wavelength bands, TOPCon panels start harvesting earlier at dawn and maintain output deeper into dusk or through overcast weather.',
-      },
-      {
-        question: 'Which manufacturers produce Tier-1 TOPCon panels in Australia?',
-        answer:
-          'Leading Clean Energy Council approved manufacturers including AIKO, Trina Solar, JinkoSolar, Longi, and Canadian Solar have transitioned their flagship residential product lines to N-Type TOPCon technology.',
-      },
-    ],
-  },
-};
 
 /* -------------------------------------------------------------------------- */
 /* MAIN COMPONENT                                                             */
@@ -557,30 +119,38 @@ export const KnowledgeDetailPage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
   const [copied, setCopied] = useState(false);
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
-  const [article, setArticle] = useState<any>(() => {
-    return articlesData.find((a) => a.slug === slug) || null;
-  });
+  const [article, setArticle] = useState<any>(null);
+  const [allGuides, setAllGuides] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     let isMounted = true;
     const fetchGuide = async () => {
       if (!slug) return;
+      setLoading(true);
       try {
-        const res = await api.getKnowledgeBySlug(slug);
-        if (isMounted && res?.data) {
-          setArticle(res.data);
-          setLoading(false);
-          return;
+        const [res, listRes] = await Promise.all([
+          api.getKnowledgeBySlug(slug),
+          api.getKnowledge()
+        ]);
+        if (isMounted) {
+          if (res?.data) {
+            setArticle(res.data);
+          } else {
+            setArticle(null);
+          }
+          if (listRes?.data) {
+            setAllGuides(listRes.data);
+          }
         }
       } catch (err) {
-        // Fallback to static
-      }
-
-      if (isMounted) {
-        const local = articlesData.find((a) => a.slug === slug) || null;
-        setArticle(local);
-        setLoading(false);
+        if (isMounted) {
+          setArticle(null);
+        }
+      } finally {
+        if (isMounted) {
+          setLoading(false);
+        }
       }
     };
 
@@ -638,44 +208,43 @@ export const KnowledgeDetailPage: React.FC = () => {
     );
   }
 
-  const articleIndex = articlesData.findIndex((a) => a.slug === slug);
-  const prevArticle = articleIndex > 0 ? articlesData[articleIndex - 1] : null;
+  const articleIndex = allGuides.findIndex((a) => a.slug === slug);
+  const prevArticle = articleIndex > 0 ? allGuides[articleIndex - 1] : null;
   const nextArticle =
-    articleIndex !== -1 && articleIndex < articlesData.length - 1
-      ? articlesData[articleIndex + 1]
+    articleIndex !== -1 && articleIndex < allGuides.length - 1
+      ? allGuides[articleIndex + 1]
       : null;
 
-  const relatedArticles = articlesData
+  const relatedArticles = allGuides
     .filter((a) => a.slug !== article.slug)
     .slice(0, 3);
 
   const config = categoryConfig[article.category] || defaultCategoryConfig;
   const CategoryIcon = config.icon;
 
-  // Retrieve rich technical data if available, or fallback to static map
-  const defaultRich = richArticlesMap[article.slug];
+  // Retrieve rich technical data directly from database article
   const richData: RichArticleData = {
     blueprintTitle:
-      article.blueprintTitle || defaultRich?.blueprintTitle || '2025 Technical Decision Matrix',
+      article.blueprintTitle || '2025 Technical Decision Matrix',
     blueprintBadge:
-      article.blueprintBadge || defaultRich?.blueprintBadge || 'Engineering Sizing Guide',
+      article.blueprintBadge || 'Engineering Sizing Guide',
     quickStats:
       article.quickStats && article.quickStats.length > 0
         ? article.quickStats
-        : defaultRich?.quickStats || [],
+        : [],
     matrixHeaders:
       article.matrixHeaders && article.matrixHeaders.length > 0
         ? article.matrixHeaders
-        : defaultRich?.matrixHeaders || [],
+        : [],
     matrixRows:
       article.matrixRows && article.matrixRows.length > 0
         ? article.matrixRows
-        : defaultRich?.matrixRows || [],
-    deepDiveSections: defaultRich?.deepDiveSections || [],
+        : [],
+    deepDiveSections: article.deepDiveSections || [],
     faqs:
       article.faqs && article.faqs.length > 0
         ? article.faqs
-        : defaultRich?.faqs || []
+        : []
   };
 
   const handleCopyLink = () => {
