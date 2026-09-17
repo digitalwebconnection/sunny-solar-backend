@@ -6,12 +6,53 @@ import { errorHandler, notFoundHandler } from './middleware/errorHandler.js';
 
 const app = express();
 
+// Helper to get allowed origins (splits comma-separated CLIENT_URL and includes local dev)
+export const getAllowedOrigins = () => {
+  const rawOrigins = process.env.CLIENT_URL || '';
+  const configuredOrigins = rawOrigins
+    .split(',')
+    .map((url) => url.trim().replace(/\/$/, ''))
+    .filter(Boolean);
+
+  const defaultOrigins = [
+    'http://localhost:5173',
+    'http://localhost:3000',
+    'http://127.0.0.1:5173',
+    'http://localhost:5000',
+  ];
+
+  return Array.from(new Set([...defaultOrigins, ...configuredOrigins]));
+};
+
 // Middlewares
 app.use(morgan('dev'));
-app.use(cors({
-  origin: process.env.CLIENT_URL || 'http://localhost:5173',
-  credentials: true
-}));
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      // Allow requests with no origin (like mobile apps, curl, Postman, or server-to-server)
+      if (!origin) return callback(null, true);
+
+      const allowedOrigins = getAllowedOrigins();
+      const cleanOrigin = origin.replace(/\/$/, '');
+
+      if (
+        allowedOrigins.includes(cleanOrigin) ||
+        allowedOrigins.includes('*') ||
+        cleanOrigin.includes('localhost') ||
+        cleanOrigin.includes('127.0.0.1')
+      ) {
+        return callback(null, true);
+      }
+
+      console.warn(`[CORS Blocked] Origin "${origin}" not in allowed list:`, allowedOrigins);
+      return callback(new Error(`CORS blocked for origin: ${origin}`));
+    },
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+  })
+);
+app.options('*', cors());
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ limit: '50mb', extended: true }));
 

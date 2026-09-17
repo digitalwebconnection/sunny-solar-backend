@@ -1,7 +1,5 @@
-import dotenv from 'dotenv';
-dotenv.config();
-
-import app from './app.js';
+import 'dotenv/config';
+import app, { getAllowedOrigins } from './app.js';
 import { connectDB } from './config/db.js';
 
 const PORT = process.env.PORT || 5000;
@@ -19,6 +17,7 @@ const startServer = async () => {
       console.log(`📝 Blogs API: http://localhost:${PORT}/api/blogs`);
       console.log(`🔐 Admin API: http://localhost:${PORT}/api/admin`);
       console.log(`⚙️  Environment: ${process.env.NODE_ENV || 'development'}`);
+      console.log(`🌐 Allowed CORS Origins: ${getAllowedOrigins().join(', ')}`);
       console.log(`=================================`);
     });
   } catch (error) {
