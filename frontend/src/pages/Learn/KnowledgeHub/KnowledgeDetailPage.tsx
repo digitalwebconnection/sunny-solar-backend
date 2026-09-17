@@ -411,7 +411,7 @@ export const KnowledgeDetailPage: React.FC = () => {
               {/* -------------------------------------------------------------- */}
               {/* SECTION: TECHNICAL KNOWLEDGE BLUEPRINT / SPEC MATRIX           */}
               {/* -------------------------------------------------------------- */}
-              {richData && (
+              {richData && (richData.quickStats.length > 0 || richData.matrixRows.length > 0) && (
                 <div
                   id="technical-blueprint"
                   className="mt-8 rounded-2xl border border-slate-200/90 bg-slate-900 text-white overflow-hidden shadow-sm"
@@ -487,7 +487,7 @@ export const KnowledgeDetailPage: React.FC = () => {
               {/* SECTION: DEEP DIVE ARTICLES CONTENT                            */}
               {/* -------------------------------------------------------------- */}
               <div id="deep-dive" className="mt-10 space-y-8">
-                {richData ? (
+                {richData.deepDiveSections && richData.deepDiveSections.length > 0 ? (
                   richData.deepDiveSections.map((sec, sIdx) => (
                     <div key={sIdx} className="space-y-4">
                       <h2 className="text-lg sm:text-xl font-bold text-slate-900 leading-snug">
@@ -677,7 +677,7 @@ export const KnowledgeDetailPage: React.FC = () => {
                 >
                   ⚡ Key Takeaways at a Glance
                 </a>
-                {richData && (
+                {richData && (richData.quickStats.length > 0 || richData.matrixRows.length > 0) && (
                   <a
                     href="#technical-blueprint"
                     className="block p-2 rounded-xl text-slate-600 hover:text-amber-600 hover:bg-amber-50/60 transition-colors font-medium"
@@ -697,7 +697,7 @@ export const KnowledgeDetailPage: React.FC = () => {
                 >
                   🛡️ Master Electrician Standards
                 </a>
-                {richData && richData.faqs && (
+                {richData && richData.faqs && richData.faqs.length > 0 && (
                   <a
                     href="#faq-summary"
                     className="block p-2 rounded-xl text-slate-600 hover:text-amber-600 hover:bg-amber-50/60 transition-colors font-medium"
