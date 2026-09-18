@@ -117,7 +117,7 @@ export const ServiceAreasTeaserSection: React.FC = () => {
             className="lg:col-span-5 space-y-2"
           >
             {/* Headline */}
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#18181b] tracking-tight font-serif leading-[1.15]">
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-[#18181b] tracking-tight font-serif leading-[1.15]">
               Proudly Powering <br />
               <span className="text-transparent bg-clip-text bg-linear-to-r from-[#ed5001] via-[#f06e02] to-[#f4a304] inline-block hover:scale-[1.01] transition-transform origin-left">
                 South East Queensland
@@ -135,7 +135,7 @@ export const ServiceAreasTeaserSection: React.FC = () => {
                 to="/service-areas"
                 variant="primary"
                 size="md"
-                className="group relative overflow-hidden rounded-xl shadow-lg shadow-[#ed5001]/25 bg-linear-to-r from-[#ed5001] via-[#f06e02] to-[#f4a304] hover:from-[#c84300] hover:to-[#ed5001] text-white border-0 font-bold px-7 py-3.5 transition-all duration-300 hover:shadow-[#ed5001]/40 hover:-translate-y-0.5"
+                className="w-full sm:w-auto group relative overflow-hidden rounded-xl shadow-lg shadow-[#ed5001]/25 bg-linear-to-r from-[#ed5001] via-[#f06e02] to-[#f4a304] hover:from-[#c84300] hover:to-[#ed5001] text-white border-0 font-bold px-7 py-3.5 transition-all duration-300 hover:shadow-[#ed5001]/40 hover:-translate-y-0.5 justify-center"
                 icon={
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform duration-300" />
                 }

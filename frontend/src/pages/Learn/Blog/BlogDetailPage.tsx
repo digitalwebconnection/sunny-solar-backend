@@ -215,7 +215,7 @@ export const BlogDetailPage: React.FC = () => {
 
           <div className="mt-6 pt-6 border-t border-slate-200/80 flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-amber-500 to-orange-500 text-white flex items-center justify-center font-black text-sm shadow-md shadow-amber-500/20">
+              <div className="w-10 h-10 rounded-full bg-linear-to-tr from-amber-500 to-orange-500 text-white flex items-center justify-center font-black text-sm shadow-md shadow-amber-500/20">
                 {article.author
                   ? article.author
                     .split(' ')
@@ -250,7 +250,7 @@ export const BlogDetailPage: React.FC = () => {
         </div>
 
         {article.imageUrl && (
-          <div className="my-8 rounded-2xl overflow-hidden shadow-lg border border-slate-200/70 aspect-[16/9] bg-slate-900">
+          <div className="my-8 rounded-2xl overflow-hidden shadow-lg border border-slate-200/70 aspect-video bg-slate-900">
             <img
               src={article.imageUrl}
               alt={article.title}

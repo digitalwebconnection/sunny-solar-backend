@@ -2,10 +2,13 @@ import React, { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Plus, Minus, HelpCircle, ArrowRight } from 'lucide-react';
+import { CursorCard } from '@/components/ui/CursorCard';
 
 interface FAQ {
   question: string;
   answer: string;
+  image: string;
+  description: string;
 }
 
 const faqs: FAQ[] = [
@@ -13,23 +16,30 @@ const faqs: FAQ[] = [
     question: 'How long does a residential solar installation take?',
     answer:
       'Most standard residential installations (6.6kW to 13.2kW) are completed in a single day. Our team arrives around 7:00 AM, secures the roof, mounts the panels, completes the electrical wiring and inverter setup, and performs thorough safety testing by mid-afternoon.',
+    image: '/images/projects/project-rooftop-array.jpg',
+    description: 'Precision single-day rooftop installation by Master Electricians.',
   },
   {
     question: 'What warranties come with a Sunny Solar system?',
     answer:
       'You receive a 25-year panel product and performance warranty, a 10-to-15 year inverter warranty, and our comprehensive 10-year workmanship guarantee. If any part of your system underperforms, we manage the replacement directly.',
+    image: '/images/projects/panel-engineering.jpg',
+    description: '25-year panel performance & 10-year comprehensive workmanship warranty.',
   },
   {
     question: 'Will a home battery keep my power on during a blackout?',
     answer:
       'Yes. Systems equipped with backup capabilities (like Tesla Powerwall 3 or Sungrow EPS) automatically disconnect from the grid during an outage within milliseconds, keeping your lights, refrigeration, Wi-Fi, and essential circuits running seamlessly.',
+    image: '/images/projects/project-battery-storage.jpg',
+    description: 'Instant millisecond blackout backup protection with Tesla & Sungrow.',
   },
   {
     question: 'How do Australian Federal STC solar rebates work?',
     answer:
       'Small-scale Technology Certificates (STCs) provide an immediate point-of-sale discount based on your system’s expected clean energy output. On a typical 10kW system, STCs reduce upfront costs by $2,800 to $3,600. We claim these directly on your behalf so you only pay the net price.',
+    image: '/images/projects/tesla-solar-roof.jpg',
+    description: 'Immediate point-of-sale government STC discounts applied to your quote.',
   },
-
 ];
 
 export const FAQSection: React.FC = () => {
@@ -41,7 +51,7 @@ export const FAQSection: React.FC = () => {
   };
 
   // Filter FAQs based on real-time search query
-  const filteredFaqs = useMemo(() => {
+  const filteredFaqs = useMemo(() => {  
     if (!searchQuery.trim()) return faqs;
     const query = searchQuery.toLowerCase().trim();
     return faqs.filter(
@@ -65,7 +75,7 @@ export const FAQSection: React.FC = () => {
 
 
             {/* Main Headline */}
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-extrabold text-[#232d4b] tracking-tight leading-[1.15] mb-8">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl text-center md:text-left font-serif font-extrabold text-[#232d4b] tracking-tight leading-[1.15] mb-8">
               Frequently Asked <br className="hidden sm:inline" />
               Questions
             </h2>
@@ -78,29 +88,36 @@ export const FAQSection: React.FC = () => {
 
                   return (
                     <div key={index} className="transition-colors duration-150">
-                      <button
-                        type="button"
-                        onClick={() => toggleFAQ(index)}
-                        className="w-full py-4 sm:py-5 flex items-center justify-between gap-4 text-left cursor-pointer focus:outline-none group"
-                        aria-expanded={isOpen}
+                      <CursorCard
+                        as="div"
+                        image={faq.image}
+                        description={faq.description}
+                        className="w-full"
                       >
-                        <span
-                          className={`font-bold text-base sm:text-lg transition-colors duration-150 pr-2 ${isOpen
-                            ? 'text-[#ed5001]'
-                            : 'text-slate-800 group-hover:text-[#ed5001]'
-                            }`}
+                        <button
+                          type="button"
+                          onClick={() => toggleFAQ(index)}
+                          className="w-full py-4 sm:py-5 flex items-center justify-between gap-4 text-left cursor-pointer focus:outline-none group"
+                          aria-expanded={isOpen}
                         >
-                          {faq.question}
-                        </span>
+                          <span
+                            className={`font-bold text-base sm:text-lg transition-colors duration-150 pr-2 ${isOpen
+                              ? 'text-[#ed5001]'
+                              : 'text-slate-800 group-hover:text-[#ed5001]'
+                              }`}
+                          >
+                            {faq.question}
+                          </span>
 
-                        <div className="shrink-0 flex items-center justify-center w-6 h-6 text-slate-400 group-hover:text-slate-600 transition-colors">
-                          {isOpen ? (
-                            <Minus className="w-4 h-4 text-[#ed5001] stroke-[2.5]" />
-                          ) : (
-                            <Plus className="w-4 h-4 text-slate-400 group-hover:text-slate-600 stroke-[2.5]" />
-                          )}
-                        </div>
-                      </button>
+                          <div className="shrink-0 flex items-center justify-center w-6 h-6 text-slate-400 group-hover:text-slate-600 transition-colors">
+                            {isOpen ? (
+                              <Minus className="w-4 h-4 text-[#ed5001] stroke-[2.5]" />
+                            ) : (
+                              <Plus className="w-4 h-4 text-slate-400 group-hover:text-slate-600 stroke-[2.5]" />
+                            )}
+                          </div>
+                        </button>
+                      </CursorCard>
 
                       <AnimatePresence initial={false}>
                         {isOpen && (
@@ -155,8 +172,8 @@ export const FAQSection: React.FC = () => {
           </div>
 
           {/* Right Column: High-Res FAQ 3D Character Illustration */}
-          <div className="lg:col-span-5 flex items-center justify-center">
-            <div className="relative w-full max-w-115 sm:max-w-145 lg:max-w-none">
+          <div className="lg:col-span-5 hidden  md:flex items-center justify-center">
+            <div className="relative w-full max-w-sm sm:max-w-md lg:max-w-none">
 
               {/* Soft warm aura glow behind the illustration */}
               <div className="absolute -inset-4 bg-linear-to-tr from-amber-100/40 via-orange-50/25 to-slate-100/50  blur-2xl -z-10 pointer-events-none" />

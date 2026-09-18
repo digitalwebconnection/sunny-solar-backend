@@ -55,7 +55,7 @@ export const IsSolarRightQuizSection: React.FC = () => {
                 <Home className="w-4 h-4 text-amber-500" />
                 Property Ownership Status
               </label>
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <button
                   type="button"
                   onClick={() => setOwnsHome(true)}
@@ -93,7 +93,7 @@ export const IsSolarRightQuizSection: React.FC = () => {
                 <Layers className="w-4 h-4 text-amber-500" />
                 Roof Type & Material
               </label>
-              <div className="grid grid-cols-3 gap-2.5">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-2.5">
                 {[
                   { id: 'tin', label: 'Colorbond / Tin', sub: 'Standard metal' },
                   { id: 'tile', label: 'Tile / Slate', sub: 'Concrete / ceramic' },
@@ -124,7 +124,7 @@ export const IsSolarRightQuizSection: React.FC = () => {
                 <Sun className="w-4 h-4 text-amber-500" />
                 Sunlight & Shading Conditions
               </label>
-              <div className="grid grid-cols-3 gap-2.5">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-2.5">
                 {[
                   { id: 'none', label: 'Full Sun', sub: 'Zero tree shade' },
                   { id: 'morning', label: 'Minor Shade', sub: 'Early / late sun' },

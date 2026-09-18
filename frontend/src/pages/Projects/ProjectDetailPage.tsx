@@ -143,43 +143,43 @@ export const ProjectDetailPage: React.FC = () => {
           </p>
 
           {/* Key Executive Metrics Ribbon */}
-          <div className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 p-3 rounded-3xl bg-slate-50 border border-slate-200/80">
-            <div className="p-4 rounded-2xl bg-white border border-slate-100 shadow-xs">
-              <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider block">
+          <div className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-4 p-2.5 sm:p-3 rounded-3xl bg-slate-50 border border-slate-200/80">
+            <div className="p-3 sm:p-4 rounded-2xl bg-white border border-slate-100 shadow-xs">
+              <span className="text-[10px] sm:text-[11px] font-bold text-slate-500 uppercase tracking-wider block">
                 Annual Dollar Savings
               </span>
-              <span className="text-xl sm:text-2xl font-extrabold text-amber-900 flex items-center gap-1.5 mt-1">
-                <Zap className="w-5 h-5 text-amber-500 shrink-0" />
+              <span className="text-lg sm:text-2xl font-extrabold text-amber-900 flex items-center gap-1.5 mt-1">
+                <Zap className="w-4 h-4 sm:w-5 sm:h-5 text-amber-500 shrink-0" />
                 {project.annualSavings}
               </span>
             </div>
 
-            <div className="p-4 rounded-2xl bg-white border border-slate-100 shadow-xs">
-              <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider block">
+            <div className="p-3 sm:p-4 rounded-2xl bg-white border border-slate-100 shadow-xs">
+              <span className="text-[10px] sm:text-[11px] font-bold text-slate-500 uppercase tracking-wider block">
                 Carbon Offset
               </span>
-              <span className="text-xl sm:text-2xl font-extrabold text-emerald-900 flex items-center gap-1.5 mt-1">
-                <ShieldCheck className="w-5 h-5 text-emerald-600 shrink-0" />
+              <span className="text-lg sm:text-2xl font-extrabold text-emerald-900 flex items-center gap-1.5 mt-1">
+                <ShieldCheck className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-600 shrink-0" />
                 {project.co2Offset}
               </span>
             </div>
 
-            <div className="p-4 rounded-2xl bg-white border border-slate-100 shadow-xs">
-              <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider block">
+            <div className="p-3 sm:p-4 rounded-2xl bg-white border border-slate-100 shadow-xs">
+              <span className="text-[10px] sm:text-[11px] font-bold text-slate-500 uppercase tracking-wider block">
                 Estimated Payback
               </span>
-              <span className="text-xl sm:text-2xl font-extrabold text-slate-950 flex items-center gap-1.5 mt-1">
-                <Award className="w-5 h-5 text-amber-500 shrink-0" />
+              <span className="text-lg sm:text-2xl font-extrabold text-slate-950 flex items-center gap-1.5 mt-1">
+                <Award className="w-4 h-4 sm:w-5 sm:h-5 text-amber-500 shrink-0" />
                 {project.paybackPeriod || '3.5 Years'}
               </span>
             </div>
 
-            <div className="p-4 rounded-2xl bg-white border border-slate-100 shadow-xs">
-              <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider block">
+            <div className="p-3 sm:p-4 rounded-2xl bg-white border border-slate-100 shadow-xs">
+              <span className="text-[10px] sm:text-[11px] font-bold text-slate-500 uppercase tracking-wider block">
                 Self-Consumption
               </span>
-              <span className="text-xl sm:text-2xl font-extrabold text-slate-950 flex items-center gap-1.5 mt-1">
-                <TrendingUp className="w-5 h-5 text-sky-600 shrink-0" />
+              <span className="text-lg sm:text-2xl font-extrabold text-slate-950 flex items-center gap-1.5 mt-1">
+                <TrendingUp className="w-4 h-4 sm:w-5 sm:h-5 text-sky-600 shrink-0" />
                 {project.selfConsumption || '94%'}
               </span>
             </div>

@@ -47,13 +47,13 @@ export const BlogFeaturedSection: React.FC<BlogFeaturedSectionProps> = ({ featur
       >
         <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch">
           {/* Image Side */}
-          <div className="lg:col-span-7 relative min-h-[280px] sm:min-h-[360px] bg-slate-900">
+          <div className="lg:col-span-7 relative min-h-70 sm:min-h-90 bg-slate-900">
             <img
               src={featured.imageUrl}
               alt={featured.title}
               className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 opacity-90"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent" />
+            <div className="absolute inset-0 bg-linear-to-t from-slate-950/80 via-slate-950/20 to-transparent" />
             
             <div className="absolute top-4 left-4">
               <span className="text-xs font-black uppercase tracking-wider bg-amber-500 text-slate-950 px-3 py-1 rounded-md shadow-xs flex items-center gap-1.5">

@@ -21,36 +21,6 @@ const phrases = [
   'For Real Savings',
 ];
 
-const trustBeltItems = [
-  {
-    icon: ShieldCheck,
-    label: '25-Year Performance Warranty',
-    iconColor: 'text-sky-400',
-  },
-  {
-    icon: Zap,
-    label: 'Up to 85% Bill Reduction',
-    iconColor: 'text-[#f4a304]',
-  },
-  {
-    icon: CheckCircle2,
-    label: '$0 Upfront Payment Options',
-    iconColor: 'text-emerald-400',
-  },
-  {
-    icon: Sparkles,
-    label: 'Fast 3D Roof Engineering',
-    iconColor: 'text-blue-400',
-  },
-];
-
-const trustBeltRepeated = [
-  ...trustBeltItems,
-  ...trustBeltItems,
-  ...trustBeltItems,
-  ...trustBeltItems,
-];
-
 export const HeroSection: React.FC = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -104,8 +74,7 @@ export const HeroSection: React.FC = () => {
   };
 
   return (
-    <>
-      <section className="relative min-h-[500px] lg:min-h-auto flex items-center overflow-hidden">
+    <section className="relative min-h-[500px] lg:min-h-auto flex items-center overflow-hidden">
       {/* Full-width Responsive Background Image (Clearly Visible) */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <img
@@ -115,14 +84,14 @@ export const HeroSection: React.FC = () => {
         />
 
         {/* Light Overlay to keep image clearly visible while ensuring text contrast */}
-        <div className="absolute inset-0 bg-black/35 sm:bg-linear-to-t sm:from-black/85 sm:via-black/50 sm:to-black/30" />
+        <div className="absolute inset-0 bg-black/55 sm:bg-linear-to-t sm:from-black/85 sm:via-black/50 sm:to-black/30" />
         
         {/* Subtle deep solar panel blue ambient aura */}
         <div className="absolute -top-24 right-1/4 w-[500px] h-[500px] bg-blue-600/15 rounded-full blur-[140px] pointer-events-none" />
       </div>
 
       {/* Hero Content & Small Form Grid */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-42 pb-14 ">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 sm:pt-36 lg:pt-42 pb-10 sm:pb-14">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           {/* Upper-Left Concise Content Block with Text Animations */}
           <motion.div
@@ -178,7 +147,7 @@ export const HeroSection: React.FC = () => {
             >
               <a
                 href="#hero-quote-form"
-                className="group inline-flex items-center justify-center gap-2 font-bold px-6 py-2.5 rounded-lg bg-linear-to-r from-[#ed5001] via-[#f06e02] to-[#f4a304] text-white shadow-md hover:shadow-xl hover:shadow-[#ed5001]/30 hover:scale-[1.02] active:scale-[0.98] transition-all text-sm cursor-pointer"
+                className="group inline-flex items-center justify-center gap-2 font-bold px-6 py-2.5 rounded-lg bg-linear-to-r from-[#ed5001] via-[#f06e02] to-[#f4a304] text-white shadow-md hover:shadow-xl hover:shadow-[#ed5001]/30 hover:scale-[1.02] active:scale-[0.98] transition-all text-sm cursor-pointer w-full sm:w-auto"
               >
                 <span>Get Free Quote</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
@@ -347,52 +316,6 @@ export const HeroSection: React.FC = () => {
      
       </div>
     </section>
-
-    {/* Running Belt Below Hero Section */}
-    <div 
-      className="w-full bg-[#0a0f1d] border-y border-white/10 py-3 sm:py-3.5 relative overflow-hidden z-20 shadow-md select-none group"
-      aria-label="Sunny Solar Guarantees and Key Benefits"
-    >
-      {/* Subtle edge fade masks */}
-      <div className="pointer-events-none absolute inset-y-0 left-0 w-12 sm:w-28 bg-gradient-to-r from-[#0a0f1d] to-transparent z-10" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 w-12 sm:w-28 bg-gradient-to-l from-[#0a0f1d] to-transparent z-10" />
-
-      {/* Infinite Marquee Track */}
-      <div className="flex w-max animate-marquee">
-        {/* Track 1 */}
-        <div className="flex items-center shrink-0">
-          {trustBeltRepeated.map((item, idx) => {
-            const Icon = item.icon;
-            return (
-              <div key={`belt-track1-${idx}`} className="flex items-center">
-                <div className="flex items-center gap-2 px-4 sm:px-6 text-white/90 text-xs sm:text-sm font-medium tracking-wide">
-                  <Icon className={`w-4 h-4 ${item.iconColor} shrink-0`} />
-                  <span className="whitespace-nowrap">{item.label}</span>
-                </div>
-                <span className="w-1.5 h-1.5 rounded-full bg-white/20 mx-1 sm:mx-2 shrink-0" />
-              </div>
-            );
-          })}
-        </div>
-
-        {/* Track 2 (Clone for seamless infinite loop) */}
-        <div className="flex items-center shrink-0" aria-hidden="true">
-          {trustBeltRepeated.map((item, idx) => {
-            const Icon = item.icon;
-            return (
-              <div key={`belt-track2-${idx}`} className="flex items-center">
-                <div className="flex items-center gap-2 px-4 sm:px-6 text-white/90 text-xs sm:text-sm font-medium tracking-wide">
-                  <Icon className={`w-4 h-4 ${item.iconColor} shrink-0`} />
-                  <span className="whitespace-nowrap">{item.label}</span>
-                </div>
-                <span className="w-1.5 h-1.5 rounded-full bg-white/20 mx-1 sm:mx-2 shrink-0" />
-              </div>
-            );
-          })}
-        </div>
-      </div>
-    </div>
-  </>
   );
 };
 

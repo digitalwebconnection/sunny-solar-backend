@@ -129,7 +129,7 @@ export const SolarSavingsCalcSection: React.FC = () => {
               <label className="text-sm font-semibold text-slate-900 block mb-2">
                 Daytime Home Occupancy (9am – 4pm)
               </label>
-              <div className="grid grid-cols-3 gap-2.5">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-2.5">
                 {[
                   { id: 'high', label: 'All Day', sub: 'WFH / Retired' },
                   { id: 'medium', label: 'Part of Day', sub: 'Flexible hours' },

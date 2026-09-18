@@ -97,7 +97,7 @@ export const AddBatteryBackupSection: React.FC = () => {
               The backup gateway instantly forms a localized private mini-grid. Your existing solar inverter re-engages and continues harvesting solar daylight to power your home and refill the battery.
             </p>
 
-            <div className="mt-3 grid grid-cols-2 gap-2 text-[11px] text-slate-700 pt-3 border-t border-emerald-100">
+            <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px] text-slate-700 pt-3 border-t border-emerald-100">
               <span className="flex items-center gap-1.5 text-emerald-700 font-medium">
                 ✓ Continuous refrigeration & lights
               </span>
@@ -108,7 +108,7 @@ export const AddBatteryBackupSection: React.FC = () => {
           </div>
 
           {/* Small Feature Pill Bar */}
-          <div className="grid grid-cols-3 gap-2">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
             <div className="bg-slate-50 border border-slate-300/70 p-2.5 rounded-xl text-center">
               <span className="text-[10px] font-bold text-slate-600 uppercase block">Switch Speed</span>
               <span className="text-xs font-extrabold text-slate-900 mt-0.5 block">&lt;10 ms</span>

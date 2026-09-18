@@ -12,7 +12,7 @@ import heroBg from '../../../assets/hero-installer.jpg';
 
 export const ServicesOverviewSection: React.FC = () => {
   return (
-    <section className="py-20 lg:py-14 bg-white relative overflow-hidden">
+    <section className="py-10 lg:py-14 bg-white relative overflow-hidden">
       {/* Subtle Ambient Glows - no extra containers/content */}
       <div className="absolute top-1/4 -left-32 w-96 h-96 bg-[#265e11]/5 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-10 right-0 w-[480px] h-[480px] bg-[#ed5001]/5 rounded-full blur-3xl pointer-events-none" />
@@ -31,7 +31,7 @@ export const ServicesOverviewSection: React.FC = () => {
             </div>
 
             {/* Main Headline */}
-            <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-serif font-extrabold text-[#18181b] tracking-tight leading-[1.15]">
+            <h2 className="text-2xl sm:text-4xl lg:text-[44px] text-center  md:text-left font-serif font-extrabold text-[#18181b] tracking-tight leading-[1.15]">
               We Don’t Just Sell Panels. <br />
               <span className="text-transparent bg-clip-text bg-linear-to-r from-[#ed5001] via-[#f06e02] to-[#f4a304]">
                 We Engineer 25-Year Peace of Mind.
@@ -49,12 +49,12 @@ export const ServicesOverviewSection: React.FC = () => {
             </div>
 
             {/* Action Buttons */}
-            <div className="pt-2 flex flex-wrap items-center gap-4">
+            <div className="pt-2 flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
               <Button
                 to="/about"
                 variant="primary"
                 size="md"
-                className="rounded-lg shadow-lg shadow-[#ed5001]/20 bg-gradient-to-r from-[#ed5001] via-[#f06e02] to-[#f4a304] hover:from-[#c84300] hover:to-[#ed5001] text-white border-0 font-bold px-6 py-3 transition-all duration-300 hover:shadow-[#ed5001]/35 hover:-translate-y-0.5"
+                className="w-full sm:w-auto rounded-lg shadow-lg shadow-[#ed5001]/20 bg-gradient-to-r from-[#ed5001] via-[#f06e02] to-[#f4a304] hover:from-[#c84300] hover:to-[#ed5001] text-white border-0 font-bold px-6 py-3 transition-all duration-300 hover:shadow-[#ed5001]/35 hover:-translate-y-0.5"
                 icon={<ArrowRight className="w-4 h-4" />}
               >
                 Learn More About Us
@@ -62,7 +62,7 @@ export const ServicesOverviewSection: React.FC = () => {
 
               <a
                 href="tel:1300786697"
-                className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-xl border border-slate-200 hover:border-[#1d4ed8] text-slate-800 hover:text-[#1d4ed8] font-bold text-sm bg-white hover:bg-blue-50/40 transition-all duration-300 shadow-xs hover:shadow hover:-translate-y-0.5"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-5 py-2.5 rounded-xl border border-slate-200 hover:border-[#1d4ed8] text-slate-800 hover:text-[#1d4ed8] font-bold text-sm bg-white hover:bg-blue-50/40 transition-all duration-300 shadow-xs hover:shadow hover:-translate-y-0.5"
               >
                 <div className="w-7 h-7 rounded-lg bg-blue-50 border border-blue-200/60 flex items-center justify-center text-[#1d4ed8]">
                   <Phone className="w-3.5 h-3.5" />

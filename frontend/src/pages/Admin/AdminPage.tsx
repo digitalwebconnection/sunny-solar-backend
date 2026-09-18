@@ -1083,18 +1083,20 @@ export const AdminPage: React.FC = () => {
             </button>
           </form>
 
-          {/* Quick Demo Fill Credentials Button */}
+          {/* Quick Demo Fill Credentials Button (DEV Only) */}
           <div className="mt-6 pt-5 border-t border-slate-100 flex flex-col items-center gap-3">
-            <button
-              type="button"
-              onClick={() => {
-                setEmail(import.meta.env.VITE_ADMIN_EMAIL || 'admin@sunnysolar.com.au');
-                setPassword(import.meta.env.VITE_ADMIN_PASSWORD || 'Admin@12345');
-              }}
-              className="text-xs text-amber-700 hover:text-amber-800 font-semibold bg-amber-50 hover:bg-amber-100/80 px-3 py-1.5 rounded-lg transition-colors cursor-pointer"
-            >
-              Auto-fill Credentials from .env
-            </button>
+            {import.meta.env.DEV && (
+              <button
+                type="button"
+                onClick={() => {
+                  setEmail(import.meta.env.VITE_ADMIN_EMAIL || 'admin@sunnysolar.com.au');
+                  setPassword(import.meta.env.VITE_ADMIN_PASSWORD || 'Admin@12345');
+                }}
+                className="text-xs text-amber-700 hover:text-amber-800 font-semibold bg-amber-50 hover:bg-amber-100/80 px-3 py-1.5 rounded-lg transition-colors cursor-pointer"
+              >
+                Auto-fill Credentials from .env (Local Dev Only)
+              </button>
+            )}
             <a
               href="/"
               className="text-xs text-slate-400 hover:text-slate-700 transition-colors flex items-center gap-1"

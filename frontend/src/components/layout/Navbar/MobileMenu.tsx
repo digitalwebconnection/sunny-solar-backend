@@ -50,31 +50,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
 
       {/* Drawer */}
       <div className={`fixed inset-y-0 right-0 w-[85vw] max-w-sm bg-white shadow-2xl z-50 flex flex-col overflow-y-auto transition-transform duration-300 ease-out ${isVisible ? 'translate-x-0' : 'translate-x-full'}`}>
-        {/* Drawer Header */}
-        <div className="p-4 border-b border-slate-100 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="w-9 h-9 rounded-xl bg-linear-to-br from-[#ed5001] to-[#f06e02] flex items-center justify-center text-white shadow-sm font-black text-lg">
-              ☀️
-            </div>
-            <div>
-              <span className="font-extrabold text-slate-900 tracking-tight block leading-tight">
-                Sunny Solar
-              </span>
-              <span className="text-[10px] text-[#265e11] font-bold uppercase tracking-wider block">
-                Residential & Battery
-              </span>
-            </div>
-          </div>
 
-          <button
-            type="button"
-            onClick={onClose}
-            className="p-2.5 min-w-11 min-h-11 flex items-center justify-center rounded-xl text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors cursor-pointer"
-            aria-label="Close menu"
-          >
-            <X className="w-5 h-5" />
-          </button>
-        </div>
 
         {/* Links with Accordion Submenus */}
         <div className="p-4 flex-1 divide-y divide-slate-100 space-y-1">
@@ -93,9 +69,8 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
                     >
                       <span>{section.title}</span>
                       <ChevronDown
-                        className={`w-4 h-4 transition-transform ${
-                          isExpanded ? 'rotate-180 text-[#ed5001]' : 'text-slate-400'
-                        }`}
+                        className={`w-4 h-4 transition-transform ${isExpanded ? 'rotate-180 text-[#ed5001]' : 'text-slate-400'
+                          }`}
                       />
                     </button>
 
@@ -165,7 +140,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
             variant="primary"
             size="md"
             fullWidth
-            className="rounded-full bg-linear-to-r from-[#ed5001] via-[#f06e02] to-[#f4a304] hover:from-[#c84300] hover:to-[#ed5001] text-white border-0 shadow-lg shadow-[#ed5001]/25"
+            className="rounded-full  bg-linear-to-r from-[#ed5001] via-[#f06e02] to-[#f4a304] hover:from-[#c84300] hover:to-[#ed5001] text-white border-0 shadow-lg shadow-[#ed5001]/25"
             icon={<ArrowRight className="w-4 h-4" />}
           >
             Free Solar Assessment

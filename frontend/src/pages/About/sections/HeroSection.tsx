@@ -18,14 +18,14 @@ export const HeroSection: React.FC = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative min-h-160 bg-white overflow-hidden">
+    <section ref={sectionRef} className="relative min-h-0 lg:min-h-160 bg-white overflow-hidden">
       {/* Ambient solar blue backdrop aura */}
       <div className="absolute top-10 left-10 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
 
       {/* Left side — typography and Right side image */}
-      <div className="relative grid grid-cols-1 lg:grid-cols-2  min-h-160 lg:min-h-155">
+      <div className="relative grid grid-cols-1 lg:grid-cols-2 min-h-0 lg:min-h-155">
         {/* Left content panel */}
-        <div className="relative z-20 flex items-center justify-center   px-6 sm:px-12 lg:px-16 xl:px-8 ">
+        <div className="relative z-20 flex items-center justify-center px-6 sm:px-12 lg:px-16 xl:px-8 pb-8 lg:pb-0">
           <div className="max-w-2xl ">
 
             {/* Eyebrow Badge */}
@@ -65,7 +65,7 @@ export const HeroSection: React.FC = () => {
 
             {/* Call to action buttons */}
             <motion.div
-              className="mt-8 flex flex-wrap items-center gap-3 sm:gap-4"
+              className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4"
               initial={{ opacity: 0, y: 20 }}
               animate={isVisible ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.4 }}
@@ -74,6 +74,7 @@ export const HeroSection: React.FC = () => {
                 to="/get-started"
                 variant="primary"
                 size="md"
+                className="w-full sm:w-auto justify-center"
                 icon={<ArrowRight className="w-4 h-4" />}
               >
                 Get Free Assessment
@@ -82,6 +83,7 @@ export const HeroSection: React.FC = () => {
                 to="/about/trent"
                 variant="outline"
                 size="md"
+                className="w-full sm:w-auto justify-center"
                 icon={<ArrowRight className="w-4 h-4" />}
               >
                 Meet Founder Trent

@@ -24,7 +24,7 @@ export const protect = async (req, res, next) => {
   try {
     const decoded = jwt.verify(
       token,
-      process.env.JWT_SECRET || 'sunny_solar_default_secret_key_change_me'
+      process.env.JWT_SECRET 
     );
 
     const admin = await Admin.findById(decoded.id).select('-password');

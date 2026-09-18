@@ -7,9 +7,9 @@ import Knowledge from '../models/Knowledge.js';
 const generateToken = (id) => {
   return jwt.sign(
     { id },
-    process.env.JWT_SECRET || 'sunny_solar_default_secret_key_change_me',
+    process.env.JWT_SECRET ,
     {
-      expiresIn: process.env.JWT_EXPIRES_IN || '7d'
+      expiresIn: process.env.JWT_EXPIRES_IN 
     }
   );
 };

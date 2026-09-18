@@ -205,7 +205,7 @@ export const Footer: React.FC = () => {
 
       {/* Bottom Bar */}
       <div className="bg-[#0a1420] border-t border-white/5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/90 text-center sm:text-left">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 pb-20 lg:pb-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/90 text-center sm:text-left">
           <span>© {new Date().getFullYear()} Sunny Solar Energy Pty Ltd. All rights reserved.</span>
           <div className="flex flex-wrap items-center justify-center gap-4">
             <Link to="/legal/privacy-policy" className="underline underline-offset-2 hover:text-white transition-colors">Privacy Policy</Link>

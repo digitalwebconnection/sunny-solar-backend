@@ -89,7 +89,7 @@ export function TestimonialsCard({
                
 
                 {/* Image Card Stack */}
-                <div className="row-start-2  col-start-1 md:row-start-1 row-span-3 relative w-full aspect-square" style={{ maxWidth: `${width}px` }}>
+                <div className="row-start-2  col-start-1 md:row-start-1 mt-9 md:mt-0 row-span-3 relative w-full aspect-square" style={{ maxWidth: `${width}px` }}>
                     <AnimatePresence custom={direction}>
                         {items.map((item, index) => {
                             const isActive = index === activeIndex;
@@ -154,7 +154,7 @@ export function TestimonialsCard({
                 </div>
 
                 {/* Text Area */}
-                <div className="col-start-1 md:col-start-2  md:row-start-1 flex flex-col justify-center min-h-30 pl-4 ">
+                <div className="col-start-1 md:col-start-2 md:row-start-1 flex flex-col justify-center min-h-30 pl-0 sm:pl-4">
                     <AnimatePresence mode="wait">
                         <motion.div
                             key={activeItem.id}
@@ -163,10 +163,10 @@ export function TestimonialsCard({
                             exit={{ opacity: 0, y: -25 }}
                             transition={{ duration: 0.35 }}
                         >
-                            <h3 className="text-3xl font-bold text-neutral-900  font-serif mb-4">
+                            <h3 className="text-2xl sm:text-3xl font-bold text-neutral-900 font-serif mb-2 sm:mb-4">
                                 {activeItem.title}
                             </h3>
-                            <p className="text-lg text-neutral-600 dark:text-neutral-400 mt-2 leading-relaxed">
+                            <p className="text-sm sm:text-base md:text-lg text-neutral-600 dark:text-neutral-400 mt-2 leading-relaxed">
                                 {activeItem.description}
                             </p>
                         </motion.div>
@@ -174,7 +174,7 @@ export function TestimonialsCard({
                 </div>
 
                 {/* Navigation Controls */}
-                <div className="col-start-1 md:col-start-2 md:row-start-3 flex gap-2  m-auto -mt-2 md:mt-4  md:m-0 pl-4 md:pl-10">
+                <div className="col-start-1 md:col-start-2 md:row-start-3 flex gap-2 m-auto -mt-2 md:mt-4 md:m-0 pl-0 sm:pl-4 md:pl-10">
                 {showNavigation && items.length > 1 && (
                     <>
                         <button

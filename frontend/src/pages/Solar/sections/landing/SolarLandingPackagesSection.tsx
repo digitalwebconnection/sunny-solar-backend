@@ -89,7 +89,7 @@ export const SolarLandingPackagesSection: React.FC = () => {
           {packages.map((pkg, idx) => (
             <div
               key={idx}
-              className={`rounded-xl p-8 transition-all duration-300 relative flex flex-col justify-between ${pkg.popular
+              className={`rounded-xl p-5 sm:p-8 transition-all duration-300 relative flex flex-col justify-between ${pkg.popular
                 ? 'bg-slate-950 text-white shadow-2xl border-2 border-amber-500 scale-100 lg:-translate-y-2'
                 : 'bg-white text-slate-900 border border-slate-200/90 shadow-sm hover:shadow-xl'
                 }`}

@@ -118,11 +118,12 @@ export const ThankYouPage: React.FC = () => {
         </div>
 
         {/* Return / Explore Links */}
-        <div className="mt-10 flex flex-wrap items-center justify-center gap-4 text-xs font-semibold">
+        <div className="mt-10 flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center justify-center gap-3 sm:gap-4 text-xs font-semibold">
           <Button
             to="/"
             variant="outline"
             size="md"
+            className="w-full sm:w-auto justify-center"
             icon={<Home className="w-4 h-4" />}
           >
             Return to Homepage
@@ -131,6 +132,7 @@ export const ThankYouPage: React.FC = () => {
             to="/projects"
             variant="ghost"
             size="md"
+            className="w-full sm:w-auto justify-center"
             icon={<ArrowRight className="w-4 h-4" />}
           >
             Explore Completed Case Studies
@@ -139,6 +141,7 @@ export const ThankYouPage: React.FC = () => {
             to="/reviews"
             variant="ghost"
             size="md"
+            className="w-full sm:w-auto justify-center"
             icon={<ArrowRight className="w-4 h-4" />}
           >
             Read Customer Reviews (4.98★)

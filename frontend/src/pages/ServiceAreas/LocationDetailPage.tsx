@@ -25,7 +25,7 @@ export const LocationDetailPage: React.FC = () => {
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 space-y-12">
         {/* Localized Banner */}
-        <div className="bg-white rounded-3xl border border-slate-200/80 p-8 sm:p-12 shadow-sm">
+        <div className="bg-white rounded-3xl border border-slate-200/80 p-5 sm:p-12 shadow-sm">
           <div className="flex flex-wrap items-center gap-3 mb-4">
             <Badge variant="amber" icon={<MapPin className="w-3.5 h-3.5" />}>
               {area.region}
@@ -46,11 +46,12 @@ export const LocationDetailPage: React.FC = () => {
             {area.headline}. {area.description}
           </p>
 
-          <div className="mt-8 pt-6 border-t border-slate-100 flex flex-wrap gap-4">
+          <div className="mt-8 pt-6 border-t border-slate-100 flex flex-col sm:flex-row flex-wrap gap-4">
             <Button
               to="/get-started/free-assessment"
               variant="primary"
               size="lg"
+              className="w-full sm:w-auto justify-center"
               icon={<ArrowRight className="w-5 h-5" />}
             >
               Get Free {area.name} Solar Assessment
@@ -58,7 +59,7 @@ export const LocationDetailPage: React.FC = () => {
 
             <a
               href="tel:1300786697"
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl border border-slate-300 font-bold text-slate-800 hover:bg-slate-50 transition-colors"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl border border-slate-300 font-bold text-slate-800 hover:bg-slate-50 transition-colors w-full sm:w-auto"
             >
               <Phone className="w-4 h-4 text-amber-500" />
               1300 SUNNY (786 697)
@@ -68,7 +69,7 @@ export const LocationDetailPage: React.FC = () => {
 
         {/* Local Highlights & Suburbs */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
-          <div className="md:col-span-7 bg-white rounded-3xl border border-slate-200/80 p-8 shadow-sm space-y-6">
+          <div className="md:col-span-7 bg-white rounded-3xl border border-slate-200/80 p-5 sm:p-8 shadow-sm space-y-6">
             <h3 className="text-xl font-extrabold text-slate-900 flex items-center gap-2">
               <ShieldCheck className="w-5 h-5 text-emerald-600" />
               Why Homeowners in {area.name} Choose Sunny Solar
@@ -89,7 +90,7 @@ export const LocationDetailPage: React.FC = () => {
             </div>
           </div>
 
-          <div className="md:col-span-5 bg-white rounded-3xl border border-slate-200/80 p-8 shadow-sm space-y-4">
+          <div className="md:col-span-5 bg-white rounded-3xl border border-slate-200/80 p-5 sm:p-8 shadow-sm space-y-4">
             <h3 className="text-xl font-extrabold text-slate-900 flex items-center gap-2">
               <MapPin className="w-5 h-5 text-amber-500" />
               Suburbs We Service in {area.name}
@@ -117,7 +118,7 @@ export const LocationDetailPage: React.FC = () => {
         </div> 
 
         {/* Local CTA */}
-        <div className="bg-slate-900 text-white rounded-3xl p-8 sm:p-12 border border-slate-800 text-center space-y-4">
+        <div className="bg-slate-900 text-white rounded-3xl p-5 sm:p-12 border border-slate-800 text-center space-y-4">
           <Badge variant="navy">Local Fast Track</Badge>
           <h2 className="text-2xl sm:text-3xl font-extrabold">
             Schedule Your On-Site Solar Assessment in {area.name}
@@ -130,6 +131,7 @@ export const LocationDetailPage: React.FC = () => {
               to="/get-started/free-assessment"
               variant="primary"
               size="lg"
+              className="w-full sm:w-auto justify-center"
               icon={<ArrowRight className="w-5 h-5" />}
             >
               Book Free {area.name} Assessment

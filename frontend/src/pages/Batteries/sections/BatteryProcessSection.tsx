@@ -267,7 +267,7 @@ export const BatteryProcessSection: React.FC = () => {
             </div>
 
             {/* Stepper Node Buttons */}
-            <div className="grid grid-cols-4 gap-4 relative z-10">
+            <div className="grid grid-cols-4 gap-2 sm:gap-4 relative z-10">
               {steps.map((step, idx) => {
                 const IconComp = step.icon;
                 const isActive = activeStep === idx;
@@ -281,26 +281,26 @@ export const BatteryProcessSection: React.FC = () => {
                   >
                     {/* Node circle */}
                     <div
-                      className={`w-14 h-14 rounded-xl flex items-center justify-center transition-all duration-300 font-mono font-bold text-base shadow-sm ${
+                      className={`w-10 h-10 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center transition-all duration-300 font-mono font-bold text-xs sm:text-base shadow-sm ${
                         isActive
-                          ? 'bg-emerald-600 text-white shadow-emerald-500/30 shadow-lg scale-110 ring-4 ring-emerald-500/20'
+                          ? 'bg-emerald-600 text-white shadow-emerald-500/30 shadow-lg scale-105 sm:scale-110 ring-2 sm:ring-4 ring-emerald-500/20'
                           : isPassed
                           ? 'bg-emerald-100 text-emerald-800 border-2 border-emerald-500/40'
                           : 'bg-white text-slate-500 border-2 border-slate-300 group-hover:border-slate-400 group-hover:text-slate-800'
                       }`}
                     >
                       {isPassed ? (
-                        <Check className="w-6 h-6 stroke-[2.5]" />
+                        <Check className="w-4 h-4 sm:w-6 sm:h-6 stroke-[2.5]" />
                       ) : (
                         <span>{step.num}</span>
                       )}
                     </div>
 
                     {/* Step Title & Subtitle */}
-                    <div className="mt-3.5 space-y-1">
+                    <div className="mt-2 sm:mt-3.5 space-y-0.5 sm:space-y-1">
                       <div className="flex items-center justify-center gap-1">
                         <span
-                          className={`text-xs font-mono uppercase tracking-wider font-semibold ${
+                          className={`text-[10px] sm:text-xs font-mono uppercase tracking-wider font-semibold ${
                             isActive ? 'text-emerald-700' : 'text-slate-500'
                           }`}
                         >
@@ -308,7 +308,7 @@ export const BatteryProcessSection: React.FC = () => {
                         </span>
                       </div>
                       <p
-                        className={`text-sm font-bold transition-colors ${
+                        className={`text-xs sm:text-sm font-bold transition-colors ${
                           isActive
                             ? 'text-slate-950 font-extrabold'
                             : 'text-slate-700 group-hover:text-slate-950'

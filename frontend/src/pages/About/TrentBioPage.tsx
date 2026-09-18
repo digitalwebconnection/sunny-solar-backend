@@ -15,7 +15,7 @@ export const TrentBioPage: React.FC = () => {
       />
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 space-y-12">
-        <div className="bg-white rounded-3xl border border-slate-200/80 p-8 sm:p-12 shadow-sm grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+        <div className="bg-white rounded-3xl border border-slate-200/80 p-5 sm:p-12 shadow-sm grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
           {/* Photo */}
           <div className="md:col-span-5">
             <div className="rounded-3xl overflow-hidden shadow-xl aspect-3/4 bg-slate-900 relative">
@@ -63,13 +63,13 @@ export const TrentBioPage: React.FC = () => {
               </div>
             </div>
 
-            <div className="pt-4 flex flex-wrap gap-3">
+            <div className="pt-4 flex flex-col sm:flex-row flex-wrap gap-3">
               <Button
                 to="/get-started/free-assessment"
                 variant="primary"
                 size="md"
                 icon={<ArrowRight className="w-4 h-4" />}
-                className="shadow-md"
+                className="w-full sm:w-auto justify-center shadow-md"
               >
                 Request a Design Consultation
               </Button>
@@ -77,6 +77,7 @@ export const TrentBioPage: React.FC = () => {
                 to="/projects"
                 variant="outline"
                 size="md"
+                className="w-full sm:w-auto justify-center"
               >
                 View Completed Projects
               </Button>
@@ -84,6 +85,7 @@ export const TrentBioPage: React.FC = () => {
                 to="/reviews"
                 variant="outline"
                 size="md"
+                className="w-full sm:w-auto justify-center"
               >
                 Read Homeowner Reviews
               </Button>

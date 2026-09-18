@@ -12,7 +12,7 @@ export const PrivacyPolicyPage: React.FC = () => {
       />
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mt-10">
-        <div className="bg-white rounded-3xl border border-slate-200/80 p-8 sm:p-12 shadow-sm space-y-6 text-sm text-slate-700 leading-relaxed">
+        <div className="bg-white rounded-3xl border border-slate-200/80 p-5 sm:p-12 shadow-sm space-y-6 text-sm text-slate-700 leading-relaxed">
           <section className="space-y-3">
             <h2 className="text-xl font-bold text-slate-900">1. Information We Collect</h2>
             <p>

@@ -2,9 +2,9 @@ import crypto from 'crypto';
 
 const getCloudinaryConfig = () => {
   return {
-    cloudName: process.env.CLOUDINARY_CLOUD_NAME || 'mvbnilgl',
-    apiKey: process.env.CLOUDINARY_API_KEY || '248243291868158',
-    apiSecret: process.env.CLOUDINARY_API_SECRET || 'V1WJiBCiktM254SyW--d-x2nXZ4',
+    cloudName: process.env.CLOUDINARY_CLOUD_NAME,
+    apiKey: process.env.CLOUDINARY_API_KEY,
+    apiSecret: process.env.CLOUDINARY_API_SECRET ,
   };
 };
 

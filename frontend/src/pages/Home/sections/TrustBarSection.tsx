@@ -155,7 +155,7 @@ export const TrustBarSection: React.FC = () => {
   };
 
   return (
-    <section className="bg-white py-16 lg:py-14 relative overflow-hidden">
+    <section className="bg-white py-10 lg:py-14 relative overflow-hidden">
       {/* Ambient blurs */}
       <div className="absolute -top-40 -left-40 w-[500px] h-[500px] rounded-full blur-[120px] pointer-events-none" style={{ background: `${active.accentColor}10` }} />
       <div className="absolute -bottom-40 -right-40 w-[500px] h-[500px] bg-slate-200/40 rounded-full blur-[120px] pointer-events-none" />
@@ -180,7 +180,7 @@ export const TrustBarSection: React.FC = () => {
                     animate="center"
                     exit="exit"
                     transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                    className="flex flex-col gap-5"
+                    className="flex flex-col  gap-5"
                   >
                     {/* Icon badge */}
                     <div
@@ -192,7 +192,7 @@ export const TrustBarSection: React.FC = () => {
 
                     {/* Big number */}
                     <div className="flex items-baseline gap-2">
-                      <span className="text-6xl sm:text-7xl lg:text-8xl font-extrabold font-serif tracking-tight text-slate-900 leading-none">
+                      <span className="text-5xl sm:text-7xl lg:text-8xl font-extrabold font-serif tracking-tight text-slate-900 leading-none">
                         <AnimatedNumber
                           target={active.target}
                           decimals={active.decimals}
@@ -265,7 +265,7 @@ export const TrustBarSection: React.FC = () => {
 
           {/* ── RIGHT: Fixed Summary Card ── */}
           <div className="order-1 lg:order-2">
-            <div className="bg-slate-950 rounded-lg p-8 sm:p-10 lg:p-6 relative overflow-hidden shadow-2xl">
+            <div className="bg-slate-950 rounded-lg p-4 sm:p-10 lg:p-6 relative overflow-hidden shadow-2xl">
               {/* Decorative glow */}
               <div className="absolute -top-20 -right-20 w-60 h-60 rounded-full blur-[80px] pointer-events-none" style={{ background: `${active.accentColor}25` }} />
               <div className="absolute -bottom-20 -left-20 w-60 h-60 bg-white/5 rounded-full blur-[80px] pointer-events-none" />
@@ -284,7 +284,7 @@ export const TrustBarSection: React.FC = () => {
                
 
                 {/* Mini stat pills */}
-                <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-2.5 sm:gap-3">
                   {stats.map((stat, idx) => {
                     const StatIcon = stat.icon;
                     const isActive = idx === activeIndex;
@@ -295,7 +295,7 @@ export const TrustBarSection: React.FC = () => {
                           goTo(idx, idx > activeIndex ? 'down' : 'up');
                           resetTimer();
                         }}
-                        className="group relative text-left rounded-xl p-4 transition-all duration-300 overflow-hidden cursor-pointer"
+                        className="group relative text-left rounded-xl p-3 sm:p-4 transition-all duration-300 overflow-hidden cursor-pointer"
                         style={{
                           backgroundColor: isActive ? `${stat.accentColor}15` : 'rgba(255,255,255,0.03)',
                           borderWidth: '1px',

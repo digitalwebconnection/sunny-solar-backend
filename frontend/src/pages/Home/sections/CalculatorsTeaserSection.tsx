@@ -9,8 +9,17 @@ import {
   ArrowRight,
   Calculator,
   Sparkles,
-  CheckCircle2,
 } from 'lucide-react';
+import advisorAvatar from '@/assets/main .png';
+
+/* ── Logo brand colors (consistent across all cards) ── */
+const BRAND = {
+  orange: '#ed5001',
+  orangeLight: '#f06e02',
+  gold: '#f4a304',
+  green: '#265e11',
+  blue: '#155dfc',
+};
 
 interface CalculatorItem {
   id: string;
@@ -18,12 +27,8 @@ interface CalculatorItem {
   number: string;
   title: string;
   description: string;
-  badge: string;
   highlight: string;
-  features: string[];
-  timeEstimate: string;
   icon: React.ComponentType<{ className?: string }>;
-  accentColor: string;
 }
 
 const calculators: CalculatorItem[] = [
@@ -33,13 +38,9 @@ const calculators: CalculatorItem[] = [
     number: '01',
     title: 'Solar Savings Calculator',
     description:
-      'Calculate your quarterly and 10-year electricity bill reductions based on current utility spend.',
-    badge: 'Most Popular',
+      'Calculate your quarterly and 10-year electricity bill reductions based on your current utility spend.',
     highlight: '~78% Bill Reduction',
-    features: ['Quarterly savings breakdown', '10-year projection model', 'Feed-in tariff analysis'],
-    timeEstimate: '60 seconds',
     icon: DollarSign,
-    accentColor: '#ed5001',
   },
   {
     id: 'system-size',
@@ -48,12 +49,8 @@ const calculators: CalculatorItem[] = [
     title: 'System Size Calculator',
     description:
       'Determine the ideal solar array capacity (6.6kW to 15kW+) tailored for your roof geometry, pool, and EV.',
-    badge: 'Smart Sizing',
     highlight: 'Tailored kW Fit',
-    features: ['Roof geometry analysis', 'EV & pool load matching', 'Panel layout optimization'],
-    timeEstimate: '90 seconds',
     icon: Layers,
-    accentColor: '#1d4ed8',
   },
   {
     id: 'battery-savings',
@@ -62,12 +59,8 @@ const calculators: CalculatorItem[] = [
     title: 'Battery Savings & Backup',
     description:
       'Model nighttime peak-tariff avoidance and whole-home storm blackout protection with Tesla or Sungrow.',
-    badge: 'High Value',
     highlight: 'Peak Tariff Defense',
-    features: ['Peak-tariff avoidance model', 'Blackout protection sizing', 'Tesla & Sungrow comparison'],
-    timeEstimate: '90 seconds',
     icon: BatteryCharging,
-    accentColor: '#265e11',
   },
   {
     id: 'payback',
@@ -76,28 +69,26 @@ const calculators: CalculatorItem[] = [
     title: 'Payback & Break-Even ROI',
     description:
       'Determine your exact break-even timeline, internal rate of return, and government STC rebate values.',
-    badge: 'Financial Model',
     highlight: '3.2 – 4.5 Year Payback',
-    features: ['Break-even timeline', 'Internal rate of return', 'STC rebate calculator'],
-    timeEstimate: '2 minutes',
     icon: Clock,
-    accentColor: '#0284c7',
   },
 ];
 
 export const CalculatorsTeaserSection: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const active = calculators[activeIndex];
-  const Icon = active.icon;
 
   const resetTimer = useCallback(() => {
     if (timerRef.current) clearInterval(timerRef.current);
-    timerRef.current = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % calculators.length);
-    }, 5000);
-  }, []);
+    if (!isPaused) {
+      timerRef.current = setInterval(() => {
+        setActiveIndex((prev) => (prev + 1) % calculators.length);
+      }, 5000);
+    }
+  }, [isPaused]);
 
   useEffect(() => {
     resetTimer();
@@ -112,216 +103,285 @@ export const CalculatorsTeaserSection: React.FC = () => {
   };
 
   return (
-    <section className="py-16 lg:py-14 bg-white relative overflow-hidden border-t border-slate-200/70">
-      {/* Subtle ambient light accents */}
-      <div className="absolute top-1/4 -left-20 w-80 h-80 bg-[#265e11]/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-10 -right-20 w-80 h-80 bg-[#ed5001]/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute top-1/2 left-1/3 w-96 h-96 bg-[#1d4ed8]/5 rounded-full blur-3xl pointer-events-none" />
+    <section className="py-14 sm:py-10 lg:py-14 bg-white relative overflow-hidden border-t border-slate-200/70">
+      {/* Subtle ambient light accents with smooth floating animation */}
+      <motion.div
+        animate={{
+          scale: [1, 1.25, 1],
+          x: [0, 25, 0],
+          y: [0, -15, 0],
+          opacity: [0.35, 0.65, 0.35],
+        }}
+        transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
+        className="absolute top-1/4 -left-20 w-80 h-80 bg-[#265e11]/10 rounded-full blur-3xl pointer-events-none"
+      />
+      <motion.div
+        animate={{
+          scale: [1, 1.3, 1],
+          x: [0, -30, 0],
+          y: [0, 20, 0],
+          opacity: [0.35, 0.6, 0.35],
+        }}
+        transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
+        className="absolute bottom-10 -right-20 w-80 h-80 bg-[#ed5001]/10 rounded-full blur-3xl pointer-events-none"
+      />
+      <motion.div
+        animate={{
+          scale: [1, 1.2, 1],
+          opacity: [0.25, 0.5, 0.25],
+        }}
+        transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
+        className="absolute top-1/2 left-1/3 w-96 h-96 bg-[#155dfc]/08 rounded-full blur-3xl pointer-events-none"
+      />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
-        {/* Section Header */}
-        <div className="text-center max-w-5xl mx-auto mb-12 sm:mb-14">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider text-[#1d4ed8] bg-blue-50/90 border border-blue-200/70 shadow-2xs mb-4">
-            <Calculator className="w-3.5 h-3.5 text-[#1d4ed8]" />
-            <span>Interactive Solar &amp; Battery Calculators</span>
-          </div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-6 relative z-10">
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#18181b] tracking-tight font-serif leading-[1.15]">
+        {/* Section Header with Scroll Reveal Animation */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-40px' }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
+          className="text-center max-w-5xl mx-auto mb-10 sm:mb-12"
+        >
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-[#18181b] tracking-tight font-serif leading-[1.15]">
             Know Your Numbers Before <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ed5001] via-[#f06e02] to-[#f4a304]">
               Speaking to Anyone
             </span>
           </h2>
+        </motion.div>
 
-          <p className="mt-4 text-base sm:text-lg text-slate-900 leading-relaxed max-w-4xl mx-auto">
-            Select a specialized calculation engine below to see your potential quarterly savings, ideal system size, and battery payback in under 60 seconds—without high-pressure sales calls.
-          </p>
-        </div>
+        {/* ══════════════════════════════════════════════════════════════
+            ONE UNIFIED MASTER BOX CONTAINER
+           ══════════════════════════════════════════════════════════════ */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-30px' }}
+          transition={{ duration: 0.6, ease: 'easeOut', delay: 0.1 }}
+          className="relative border border-slate-200/90 bg-white shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden group/card"
+        >
 
-        {/* ── Tab Selector ── */}
-        <div className="flex flex-wrap justify-center gap-3 mb-10">
-          {calculators.map((calc, idx) => {
-            const TabIcon = calc.icon;
-            const isActive = idx === activeIndex;
-            return (
-              <button
-                key={calc.id}
-                onClick={() => handleSelect(idx)}
-                className="relative flex items-center gap-2.5 px-5 py-3 rounded-xl font-semibold text-sm transition-all duration-300 cursor-pointer overflow-hidden border"
-                style={{
-                  backgroundColor: isActive ? `${calc.accentColor}0d` : 'transparent',
-                  borderColor: isActive ? `${calc.accentColor}40` : '#e2e8f0',
-                  color: isActive ? calc.accentColor : '#64748b',
-                }}
-              >
-                <TabIcon className="w-4 h-4" />
-                <span className="hidden sm:inline">{calc.title}</span>
-                <span className="sm:hidden">{calc.number}</span>
+          <div className="grid grid-cols-1 lg:grid-cols-12 min-h-[440px]">
 
-                {/* Active indicator bar */}
-                {isActive && (
-                  <motion.div
-                    layoutId="calculator-tab-indicator"
-                    className="absolute bottom-0 left-0 right-0 h-[3px] rounded-full"
-                    style={{ backgroundColor: calc.accentColor }}
-                    transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-                  />
-                )}
-              </button>
-            );
-          })}
-        </div>
+            {/* ── LEFT SIDE: AVATAR ── */}
+            <div className="lg:col-span-4 relative bg-gradient-to-b from-[#155dfc] via-[#1a6cf0] to-[#0f4bb5] overflow-hidden flex flex-col justify-end min-h-[380px] lg:min-h-full group/avatar">
+              <motion.div
+                animate={{ scale: [1, 1.25, 1], opacity: [0.15, 0.35, 0.15] }}
+                transition={{ repeat: Infinity, duration: 6, ease: 'easeInOut' }}
+                className="absolute top-0 right-0 w-64 h-64 bg-white/20 rounded-full blur-2xl pointer-events-none"
+              />
+              <motion.div
+                animate={{ scale: [1, 1.3, 1], opacity: [0.2, 0.4, 0.2] }}
+                transition={{ repeat: Infinity, duration: 7, ease: 'easeInOut', delay: 1 }}
+                className="absolute bottom-0 left-0 w-64 h-64 bg-[#ed5001]/30 rounded-full blur-2xl pointer-events-none"
+              />
+              <img
+                src={advisorAvatar}
+                alt="Trent Palmer - Sunny Solar Master Electrician Advisor"
+                className="w-full h-full object-fill object-top max-h-[460px] sm:max-h-[400px] lg:max-h-none lg:absolute lg:inset-0 transition-transform duration-700 ease-out group-hover/avatar:scale-105"
+              />
+            </div>
 
-        {/* ── Showcase Area ── */}
-        <div className="relative rounded-xl border border-slate-300/80 overflow-hidden bg-slate-50/50 min-h-100 sm:min-h-90">
-          {/* Decorative ambient glow */}
-          <div
-            className="absolute -top-32 -right-32 w-80 h-80 rounded-full blur-[100px] pointer-events-none transition-colors duration-700"
-            style={{ backgroundColor: `${active.accentColor}12` }}
-          />
-          <div
-            className="absolute -bottom-32 -left-32 w-80 h-80 rounded-full blur-[100px] pointer-events-none transition-colors duration-700"
-            style={{ backgroundColor: `${active.accentColor}08` }}
-          />
-
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={active.id}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-              className="relative z-10 grid lg:grid-cols-2 gap-10 lg:gap-16 p-8 sm:p-10 lg:p-6 items-center"
+            {/* ── RIGHT SIDE: CALCULATOR DETAILS ── */}
+            <div
+              className="lg:col-span-8 p-6 sm:p-8 lg:p-10 flex flex-col justify-between relative bg-white"
+              onMouseEnter={() => setIsPaused(true)}
+              onMouseLeave={() => setIsPaused(false)}
             >
-              {/* Left: Content */}
-              <div className="flex flex-col gap-6">
-                {/* Number + Badge */}
-                <div className="flex items-center gap-4">
-                  <span
-                    className="text-7xl sm:text-8xl font-extrabold font-serif leading-none select-none opacity-15"
-                    style={{ color: active.accentColor }}
-                  >
-                    {active.number}
-                  </span>
-                  <div className="flex flex-col gap-2">
-                    <span
-                      className="inline-flex self-start items-center px-3 py-1 rounded-full text-xs font-bold border"
-                      style={{
-                        backgroundColor: `${active.accentColor}0d`,
-                        color: active.accentColor,
-                        borderColor: `${active.accentColor}30`,
-                      }}
-                    >
-                      {active.badge}
-                    </span>
-                    <span className="text-xs text-slate-400 font-medium">⏱️ {active.timeEstimate}</span>
-                  </div>
+              {/* Subtle ambient glows for brand colors */}
+              <div
+                className="absolute -top-24 -right-24 w-80 h-80 rounded-full blur-[100px] pointer-events-none"
+                style={{ backgroundColor: `${BRAND.blue}12` }}
+              />
+              <div
+                className="absolute -bottom-24 right-1/4 w-72 h-72 rounded-full blur-[100px] pointer-events-none"
+                style={{ backgroundColor: `${BRAND.green}08` }}
+              />
+
+              <div>
+                {/* ── Tab Selector: Circular Number + Short Title ── */}
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3 mb-7">
+                  {calculators.map((calc, idx) => {
+                    const isActive = idx === activeIndex;
+                    return (
+                      <motion.button
+                        key={calc.id}
+                        onClick={() => handleSelect(idx)}
+                        whileHover={{ y: -2, scale: 1.01 }}
+                        whileTap={{ scale: 0.98 }}
+                        className={`relative flex items-center gap-2.5 sm:gap-3 px-3 py-3 rounded-xl font-semibold text-sm transition-all duration-300 cursor-pointer overflow-hidden border text-left ${
+                          isActive
+                            ? 'bg-blue-50/80 border-[#155dfc] shadow-sm shadow-[#155dfc]/15'
+                            : 'bg-slate-50/80 hover:bg-blue-50/40 border-slate-200/80 hover:border-blue-200'
+                        }`}
+                      >
+                        {/* Circular Number Badge in Brand Blue with animated pop */}
+                        <motion.span
+                          animate={isActive ? { scale: [1, 1.1, 1] } : { scale: 1 }}
+                          transition={{ duration: 0.3 }}
+                          className={`shrink-0 w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center text-xs font-extrabold transition-all duration-300 ${
+                            isActive
+                              ? 'bg-gradient-to-br from-[#155dfc] to-[#0f4bb5] text-white shadow-md shadow-[#155dfc]/30'
+                              : 'bg-slate-200/70 text-slate-600'
+                          }`}
+                        >
+                          {calc.number}
+                        </motion.span>
+
+                        {/* Title */}
+                        <span
+                          className={`truncate text-left leading-tight text-xs sm:text-sm font-bold transition-colors duration-300 ${
+                            isActive ? 'text-[#155dfc]' : 'text-slate-700'
+                          }`}
+                        >
+                          {calc.title.split(' ')[0]}
+                        </span>
+
+                        {/* Active bottom accent bar incorporating brand trio */}
+                        {isActive && (
+                          <motion.div
+                            layoutId="active-calc-tab-bar"
+                            className="absolute bottom-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#155dfc] via-[#ed5001] to-[#265e11]"
+                            transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                          />
+                        )}
+                      </motion.button>
+                    );
+                  })}
                 </div>
 
-                {/* Title */}
-                <h3 className="text-3xl sm:text-4xl font-extrabold text-slate-900 font-serif leading-snug tracking-tight">
-                  {active.title}
-                </h3>
-
-                {/* Description */}
-                <p className="text-lg text-slate-500 leading-relaxed max-w-lg">
-                  {active.description}
-                </p>
-
-                {/* CTA */}
-                <Link
-                  to={`/calculators/${active.slug}`}
-                  className="inline-flex self-start items-center gap-2.5 px-7 py-3.5 rounded-xl text-white font-bold text-base shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 mt-2"
-                  style={{
-                    background: `linear-gradient(135deg, ${active.accentColor}, ${active.accentColor}cc)`,
-                    boxShadow: `0 8px 24px ${active.accentColor}25`,
-                  }}
-                >
-                  <Calculator className="w-5 h-5" />
-                  <span>Launch Calculator</span>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </div>
-
-              {/* Right: Feature highlights + key stat */}
-              <div className="flex flex-col gap-6">
-                {/* Highlight stat card */}
-                <div
-                  className="rounded-2xl p-6 sm:p-8 border relative overflow-hidden"
-                  style={{
-                    backgroundColor: `${active.accentColor}08`,
-                    borderColor: `${active.accentColor}20`,
-                  }}
-                >
-                  <div className="absolute -top-8 -right-8 w-24 h-24 rounded-full blur-2xl pointer-events-none" style={{ backgroundColor: `${active.accentColor}15` }} />
-                  <div className="relative z-10">
-                    <div className="text-sm font-semibold text-slate-500 mb-2">Key Outcome</div>
-                    <div
-                      className="text-3xl sm:text-4xl font-extrabold font-serif tracking-tight"
-                      style={{ color: active.accentColor }}
-                    >
-                      {active.highlight}
+                {/* ── Active Calculator Content with Smooth Animated Transitions ── */}
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={active.id}
+                    initial={{ opacity: 0, y: 16, filter: 'blur(3px)' }}
+                    animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                    exit={{ opacity: 0, y: -16, filter: 'blur(3px)' }}
+                    transition={{ duration: 0.32, ease: 'easeOut' }}
+                    className="flex flex-col gap-5"
+                  >
+                    {/* Number / Icon Badge in Brand Blue + Title Row */}
+                    <div className="flex items-center gap-3.5 sm:gap-4">
+                      <motion.div
+                        initial={{ scale: 0.75, rotate: -10 }}
+                        animate={{ scale: 1, rotate: 0 }}
+                        transition={{ type: 'spring', damping: 14, stiffness: 220 }}
+                      >
+                        {React.createElement(active.icon, {
+                          className:
+                            'w-10 h-10 sm:w-11 sm:h-11 p-2.5 rounded-xl bg-gradient-to-br from-[#155dfc] to-[#0f4bb5] text-white shrink-0 shadow-md shadow-[#155dfc]/25',
+                        })}
+                      </motion.div>
+                      <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 font-serif tracking-tight">
+                        {active.title}
+                      </h3>
                     </div>
-                  </div>
-                </div>
 
-                {/* Feature list */}
-                <div className="space-y-4">
-                  <div className="text-sm font-bold text-slate-800 uppercase tracking-wider">What you'll discover</div>
-                  {active.features.map((feature, i) => (
+                    {/* Description */}
+                    <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+                      {active.description}
+                    </p>
+
+                    {/* Key Projected Outcome Box in Brand Green */}
                     <motion.div
-                      key={feature}
-                      initial={{ opacity: 0, x: 20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.15 + i * 0.1, duration: 0.4, ease: 'easeOut' }}
-                      className="flex items-center gap-3"
+                      initial={{ scale: 0.97, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      transition={{ duration: 0.3, delay: 0.08 }}
+                      className="rounded-2xl p-4 sm:p-5 lg:p-6 border border-[#265e11]/20 bg-gradient-to-br from-[#265e11]/[0.06] via-emerald-50/40 to-white relative overflow-hidden flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 shadow-xs group/outcome"
                     >
-                      <CheckCircle2
-                        className="w-5 h-5 shrink-0"
-                        style={{ color: active.accentColor }}
+                      {/* Ambient soft glow */}
+                      <div
+                        className="absolute top-0 right-0 w-36 h-36 rounded-full blur-2xl pointer-events-none"
+                        style={{ backgroundColor: `${BRAND.green}12` }}
                       />
-                      <span className="text-base text-slate-600 font-medium">{feature}</span>
+
+                      {/* Continuous subtle animated shimmer sheen */}
+                      <motion.div
+                        animate={{ x: ['-100%', '200%'] }}
+                        transition={{ repeat: Infinity, duration: 5, ease: 'linear', repeatDelay: 3 }}
+                        className="absolute inset-0 w-1/2 bg-gradient-to-r from-transparent via-white/40 to-transparent skew-x-12 pointer-events-none"
+                      />
+
+                      <div className="relative z-10">
+                        <div
+                          className="text-xs font-bold uppercase tracking-wider"
+                          style={{ color: BRAND.green }}
+                        >
+                          Key Projected Outcome
+                        </div>
+                        <motion.div
+                          key={active.highlight}
+                          initial={{ scale: 0.9, opacity: 0 }}
+                          animate={{ scale: 1, opacity: 1 }}
+                          transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+                          className="text-2xl sm:text-3xl lg:text-4xl font-black font-serif tracking-tight mt-0.5"
+                          style={{ color: BRAND.green }}
+                        >
+                          {active.highlight}
+                        </motion.div>
+                      </div>
+
+                      <div className="relative z-10 flex items-center">
+                        <div
+                          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border text-xs font-bold shadow-xs"
+                          style={{ borderColor: `${BRAND.green}30`, color: BRAND.green }}
+                        >
+                          <motion.div
+                            animate={{ rotate: [0, 18, -18, 0], scale: [1, 1.15, 1] }}
+                            transition={{ repeat: Infinity, duration: 3, ease: 'easeInOut' }}
+                          >
+                            <Sparkles className="w-3.5 h-3.5" style={{ color: BRAND.orange }} />
+                          </motion.div>
+                          <span>Instant Results</span>
+                        </div>
+                      </div>
                     </motion.div>
-                  ))}
-                </div>
 
-                {/* Decorative icon */}
-                <div className="hidden lg:flex justify-end mt-2">
-                  <div
-                    className="w-20 h-20 rounded-2xl flex items-center justify-center opacity-10"
-                    style={{ backgroundColor: active.accentColor }}
-                  >
-                    <Icon className="w-10 h-10 text-white" />
-                  </div>
-                </div>
+                    {/* Launch Button in Brand Orange with Hover Shimmer */}
+                    <div className="pt-2 flex flex-wrap items-center gap-3">
+                      <motion.div
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                        className="w-full sm:w-auto"
+                      >
+                        <Link
+                          to={`/calculators/${active.slug}`}
+                          className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 sm:px-7 py-3.5 rounded-xl text-white font-bold text-sm sm:text-base bg-gradient-to-r from-[#ed5001] via-[#f06e02] to-[#f4a304] hover:from-[#c84300] hover:to-[#ed5001] shadow-md shadow-[#ed5001]/25 hover:shadow-xl hover:shadow-[#ed5001]/35 transition-all duration-300 group relative overflow-hidden"
+                        >
+                          {/* Animated Shimmer sweep on hover */}
+                          <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/25 to-transparent skew-x-12 pointer-events-none" />
+                          <Calculator className="w-4 h-4 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6" />
+                          <span>Launch {active.title}</span>
+                          <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5" />
+                        </Link>
+                      </motion.div>
+                    </div>
+                  </motion.div>
+                </AnimatePresence>
               </div>
-            </motion.div>
-          </AnimatePresence>
 
-          {/* Progress bar along bottom */}
-          <div className="absolute bottom-0 left-0 right-0 h-1 bg-slate-200/50">
-            <motion.div
-              key={activeIndex}
-              className="h-full rounded-full"
-              style={{ backgroundColor: active.accentColor }}
-              initial={{ width: '0%' }}
-              animate={{ width: '100%' }}
-              transition={{ duration: 5, ease: 'linear' }}
-            />
+            </div>
+
           </div>
-        </div>
 
-        {/* Bottom CTA Button */}
-        <div className="mt-10 sm:mt-12 text-center">
-          <Link
-            to="/calculators"
-            className="inline-flex items-center gap-2 px-7 py-3 rounded-xl bg-gradient-to-r from-[#ed5001] via-[#f06e02] to-[#f4a304] hover:from-[#c84300] hover:to-[#ed5001] text-white font-bold text-sm shadow-md shadow-[#ed5001]/20 hover:shadow-[#ed5001]/35 hover:-translate-y-0.5 transition-all duration-300"
-          >
-            <span>Explore All 8 Specialized Calculators</span>
-            <ArrowRight className="w-4 h-4" />
-          </Link>
-        </div>
+          {/* Progress Bar with unified tri-color brand gradient & glowing tip */}
+          <div className="h-1.5 w-full bg-slate-100 relative overflow-hidden">
+            <motion.div
+              key={`${activeIndex}-${isPaused}`}
+              className="h-full bg-gradient-to-r from-[#155dfc] via-[#ed5001] to-[#265e11] relative"
+              initial={{ width: '0%' }}
+              animate={{ width: isPaused ? '0%' : '100%' }}
+              transition={{ duration: 5, ease: 'linear' }}
+            >
+              {/* Luminous glow at leading edge */}
+              <div className="absolute right-0 top-0 bottom-0 w-3 bg-white/70 blur-xs" />
+            </motion.div>
+          </div>
+
+        </motion.div>
+
 
       </div>
     </section>
@@ -329,3 +389,5 @@ export const CalculatorsTeaserSection: React.FC = () => {
 };
 
 export default CalculatorsTeaserSection;
+
+

@@ -128,7 +128,7 @@ export const FeaturedProjectsSection: React.FC = () => {
   }));
 
   return (
-    <section className="py-20 lg:py-14 bg-slate-50 relative overflow-hidden border-t border-slate-200/70">
+    <section className="py-10 lg:py-14 bg-slate-50 relative overflow-hidden border-t border-slate-200/70">
       {/* Ambient background glows */}
       <div className="absolute top-1/4 right-0 w-125 h-125 bg-[#ed5001]/5 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-10 left-0 w-125 h-125 bg-[#265e11]/5 rounded-full blur-[120px] pointer-events-none" />
@@ -144,14 +144,14 @@ export const FeaturedProjectsSection: React.FC = () => {
             <span>Builder &amp; Developer Solar Partner</span>
           </div>
 
-          <h2 className="text-4xl sm:text-5xl lg:text-5xl font-extrabold text-[#18181b] tracking-tight font-serif leading-[1.15]">
+          <h2 className="text-2xl sm:text-5xl lg:text-5xl font-extrabold text-[#18181b] tracking-tight font-serif leading-[1.15]">
             Why Queensland Builders Choose <br className="hidden sm:block" />
             <span className="text-transparent bg-clip-text bg-linear-to-r from-[#ed5001] via-[#f06e02] to-[#f4a304]">
               Sunny Solar
             </span>
           </h2>
 
-          <p className="mt-6 text-lg sm:text-xl text-slate-600 leading-relaxed max-w-5xl mx-auto">
+          <p className="mt-6 text-md sm:text-xl text-slate-600 leading-relaxed max-w-5xl mx-auto">
             From frame-stage pre-wire to final Form 16 sign-off, we partner with custom builders, architects, and developers to deliver flawless solar without trade bottlenecks.
           </p>
         </div>

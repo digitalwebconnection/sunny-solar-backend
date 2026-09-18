@@ -85,13 +85,13 @@ export const SolarLandingHeroSection: React.FC = () => {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.2 }}
-              className="flex flex-wrap items-center gap-3 pt-1"
+              className="flex flex-col sm:flex-row sm:items-center gap-3 pt-1"
             >
               <Button
                 to="/get-started/free-assessment"
                 variant="primary"
                 size="md"
-                className="font-bold shadow-md"
+                className="w-full sm:w-auto font-bold shadow-md justify-center"
                 icon={<ArrowRight className="w-4 h-4" />}
               >
                 Get Free 3D Roof Proposal
@@ -100,6 +100,7 @@ export const SolarLandingHeroSection: React.FC = () => {
                 to="/calculators/solar-savings"
                 variant="outline"
                 size="md"
+                className="w-full sm:w-auto justify-center"
                 icon={<Calculator className="w-4 h-4" />}
               >
                 Calculate Savings

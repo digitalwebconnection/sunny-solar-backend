@@ -139,7 +139,7 @@ export const SystemSizeCalcSection: React.FC = () => {
               <label className="text-sm font-semibold text-slate-900 block mb-2">
                 Air Conditioning Setup
               </label>
-              <div className="grid grid-cols-3 gap-2.5">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-2.5">
                 {[
                   { id: 'ducted', label: 'Ducted A/C', sub: 'Whole house' },
                   { id: 'split', label: 'Split Systems', sub: '1 - 3 units' },

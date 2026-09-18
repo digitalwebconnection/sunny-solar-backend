@@ -38,7 +38,7 @@ export const SavingsProfilesSection: React.FC = () => {
               </div>
             </div>
 
-            <div className="p-6">
+            <div className="p-4 sm:p-6">
               <div className="flex items-center gap-2 mb-2">
                 <Home className="w-4 h-4 text-amber-500" />
                 <h3 className="text-lg font-bold text-slate-900">The Everyday Suburban Home</h3>
@@ -49,15 +49,15 @@ export const SavingsProfilesSection: React.FC = () => {
 
               {/* 3 Small Stat Containers Inside */}
               <div className="grid grid-cols-3 gap-2 mt-5">
-                <div className="bg-slate-50 border border-slate-200/70 rounded-xl p-2.5 text-center">
+                <div className="bg-slate-50 border border-slate-200/70 rounded-xl p-1.5 sm:p-2.5 text-center">
                   <p className="text-[10px] font-bold text-slate-500 uppercase">Annual Cut</p>
                   <p className="text-sm font-extrabold text-emerald-600 mt-0.5">$2,180</p>
                 </div>
-                <div className="bg-slate-50 border border-slate-200/70 rounded-xl p-2.5 text-center">
+                <div className="bg-slate-50 border border-slate-200/70 rounded-xl p-1.5 sm:p-2.5 text-center">
                   <p className="text-[10px] font-bold text-slate-500 uppercase">5-Yr Total</p>
                   <p className="text-sm font-extrabold text-slate-900 mt-0.5">$10,900</p>
                 </div>
-                <div className="bg-slate-50 border border-slate-200/70 rounded-xl p-2.5 text-center">
+                <div className="bg-slate-50 border border-slate-200/70 rounded-xl p-1.5 sm:p-2.5 text-center">
                   <p className="text-[10px] font-bold text-slate-500 uppercase">Grid Drop</p>
                   <p className="text-sm font-extrabold text-amber-600 mt-0.5">-68%</p>
                 </div>
@@ -92,7 +92,7 @@ export const SavingsProfilesSection: React.FC = () => {
               </div>
             </div>
 
-            <div className="p-6">
+            <div className="p-4 sm:p-6">
               <div className="flex items-center gap-2 mb-2">
                 <Zap className="w-4 h-4 text-emerald-500" />
                 <h3 className="text-lg font-bold text-slate-900">High Daytime Energy Consumer</h3>
@@ -103,15 +103,15 @@ export const SavingsProfilesSection: React.FC = () => {
 
               {/* 3 Small Stat Containers Inside */}
               <div className="grid grid-cols-3 gap-2 mt-5">
-                <div className="bg-slate-50 border border-slate-200/70 rounded-xl p-2.5 text-center">
+                <div className="bg-slate-50 border border-slate-200/70 rounded-xl p-1.5 sm:p-2.5 text-center">
                   <p className="text-[10px] font-bold text-slate-500 uppercase">Annual Cut</p>
                   <p className="text-sm font-extrabold text-emerald-600 mt-0.5">$3,450</p>
                 </div>
-                <div className="bg-slate-50 border border-slate-200/70 rounded-xl p-2.5 text-center">
+                <div className="bg-slate-50 border border-slate-200/70 rounded-xl p-1.5 sm:p-2.5 text-center">
                   <p className="text-[10px] font-bold text-slate-500 uppercase">5-Yr Total</p>
                   <p className="text-sm font-extrabold text-slate-900 mt-0.5">$17,250</p>
                 </div>
-                <div className="bg-slate-50 border border-slate-200/70 rounded-xl p-2.5 text-center">
+                <div className="bg-slate-50 border border-slate-200/70 rounded-xl p-1.5 sm:p-2.5 text-center">
                   <p className="text-[10px] font-bold text-slate-500 uppercase">Grid Drop</p>
                   <p className="text-sm font-extrabold text-emerald-600 mt-0.5">-81%</p>
                 </div>
@@ -146,7 +146,7 @@ export const SavingsProfilesSection: React.FC = () => {
               </div>
             </div>
 
-            <div className="p-6">
+            <div className="p-4 sm:p-6">
               <div className="flex items-center gap-2 mb-2">
                 <BatteryCharging className="w-4 h-4 text-blue-500" />
                 <h3 className="text-lg font-bold text-slate-900">Solar + Battery Storage Hybrid</h3>
@@ -157,15 +157,15 @@ export const SavingsProfilesSection: React.FC = () => {
 
               {/* 3 Small Stat Containers Inside */}
               <div className="grid grid-cols-3 gap-2 mt-5">
-                <div className="bg-slate-50 border border-slate-200/70 rounded-xl p-2.5 text-center">
+                <div className="bg-slate-50 border border-slate-200/70 rounded-xl p-1.5 sm:p-2.5 text-center">
                   <p className="text-[10px] font-bold text-slate-500 uppercase">Annual Cut</p>
                   <p className="text-sm font-extrabold text-emerald-600 mt-0.5">$4,120</p>
                 </div>
-                <div className="bg-slate-50 border border-slate-200/70 rounded-xl p-2.5 text-center">
+                <div className="bg-slate-50 border border-slate-200/70 rounded-xl p-1.5 sm:p-2.5 text-center">
                   <p className="text-[10px] font-bold text-slate-500 uppercase">5-Yr Total</p>
                   <p className="text-sm font-extrabold text-slate-900 mt-0.5">$20,600</p>
                 </div>
-                <div className="bg-slate-50 border border-slate-200/70 rounded-xl p-2.5 text-center">
+                <div className="bg-slate-50 border border-slate-200/70 rounded-xl p-1.5 sm:p-2.5 text-center">
                   <p className="text-[10px] font-bold text-slate-500 uppercase">Grid Drop</p>
                   <p className="text-sm font-extrabold text-blue-600 mt-0.5">-94%</p>
                 </div>

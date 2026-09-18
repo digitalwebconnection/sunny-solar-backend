@@ -1,6 +1,7 @@
 export const CONTACT_INFO = {
   COMPANY_NAME: 'Sunny Solar',
-  PHONE: '1300 000 000',
+  PHONE: '1300 786 697',
+  PHONE_DISPLAY: '1300 SUNNY (786 697)',
   EMAIL: 'info@sunnysolar.com.au',
   LOCATION: 'Gold Coast & Brisbane, QLD',
   FOUNDER: 'Trent Palmer',

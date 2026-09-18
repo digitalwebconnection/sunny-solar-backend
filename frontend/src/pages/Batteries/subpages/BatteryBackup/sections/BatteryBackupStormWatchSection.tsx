@@ -21,7 +21,7 @@ export const BatteryBackupStormWatchSection: React.FC = () => {
             When a cyclone, hail squall, or severe thunderstorm warning is issued by the Bureau of Meteorology, our smart battery systems automatically enter emergency standby. The battery halts power export and immediately tops up to 100% capacity from available solar or off-peak grid power before the storm strikes.
           </p>
 
-          <div className="grid grid-cols-2 gap-4 pt-2">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 pt-2">
             <div className="bg-white/5 p-3 rounded-xl border border-white/10">
               <div className="text-xs font-bold text-white">Live BOM Weather Feed</div>
               <div className="text-[11px] text-slate-400">Syncs every 15 minutes</div>
@@ -37,6 +37,7 @@ export const BatteryBackupStormWatchSection: React.FC = () => {
               to="/get-started/free-assessment"
               variant="accent-green"
               size="md"
+              className="w-full sm:w-auto justify-center"
               icon={<ArrowRight className="w-4 h-4" />}
             >
               Get Storm Resilience Proposal

@@ -128,7 +128,7 @@ export const BatterySizeCalcSection: React.FC = () => {
                 <Wind className="w-4 h-4 text-sky-500" />
                 Do you run Air Conditioning in the evening (5 PM – 11 PM)?
               </label>
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <button
                   type="button"
                   onClick={() => setEveningAc(true)}
@@ -166,7 +166,7 @@ export const BatterySizeCalcSection: React.FC = () => {
                 <Zap className="w-4 h-4 text-amber-500" />
                 Kitchen Cooktop & Oven Type
               </label>
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <button
                   type="button"
                   onClick={() => setCookingType('electric')}
@@ -204,7 +204,7 @@ export const BatterySizeCalcSection: React.FC = () => {
                 <ShieldCheck className="w-4 h-4 text-emerald-600" />
                 Blackout Backup Preference
               </label>
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <button
                   type="button"
                   onClick={() => setBackupGoal('whole')}
