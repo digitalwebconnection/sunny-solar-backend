@@ -34,7 +34,7 @@ export const Footer: React.FC = () => {
   return (
     <footer>
       {/* Tricolor brand accent bar (Eco Green -> Solar Blue -> Solar Orange) */}
-      <div className="h-1 w-full bg-gradient-to-r from-[#265e11] via-[#1d4ed8] via-[#0284c7] to-[#ed5001]" />
+      <div className="h-1 w-full bg-linear-to-r from-[#265e11] via-[#1d4ed8] to-[#ed5001]" />
 
       {/* Main Footer */}
       <div className="bg-white border-t border-slate-200 relative overflow-hidden">

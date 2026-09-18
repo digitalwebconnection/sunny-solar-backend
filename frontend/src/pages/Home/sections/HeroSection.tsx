@@ -74,7 +74,7 @@ export const HeroSection: React.FC = () => {
   };
 
   return (
-    <section className="relative min-h-[500px] lg:min-h-auto flex items-center overflow-hidden">
+    <section className="relative min-h-125 lg:min-h-auto flex items-center overflow-hidden">
       {/* Full-width Responsive Background Image (Clearly Visible) */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <img
@@ -87,7 +87,7 @@ export const HeroSection: React.FC = () => {
         <div className="absolute inset-0 bg-black/55 sm:bg-linear-to-t sm:from-black/85 sm:via-black/50 sm:to-black/30" />
         
         {/* Subtle deep solar panel blue ambient aura */}
-        <div className="absolute -top-24 right-1/4 w-[500px] h-[500px] bg-blue-600/15 rounded-full blur-[140px] pointer-events-none" />
+        <div className="absolute -top-24 right-1/4 w-125 h-125 bg-blue-600/15 rounded-full blur-[140px] pointer-events-none" />
       </div>
 
       {/* Hero Content & Small Form Grid */}
@@ -109,7 +109,7 @@ export const HeroSection: React.FC = () => {
             </div>
 
             {/* Animated Headline with Dynamic Cycling Highlight */}
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-white tracking-tight leading-[1.18] drop-shadow-md min-h-[76px] sm:min-h-[92px] lg:min-h-[116px]">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-white tracking-tight leading-[1.18] drop-shadow-md min-h-19 sm:min-h-23 lg:min-h-29">
               Smarter Solar & Battery{' '}
               <br className="hidden sm:inline" />
               <span className="inline-block relative">

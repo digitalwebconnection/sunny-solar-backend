@@ -72,7 +72,7 @@ export const ApprovedBrandsSection: React.FC = () => {
                 <img
                   src={brand.logo}
                   alt={`${brand.name} Logo`}
-                  className="h-9 sm:h-12 md:h-14 w-auto max-w-[150px] sm:max-w-[180px] object-contain drop-shadow-2xs select-none"
+                  className="h-9 sm:h-12 md:h-14 w-auto max-w-37.5 sm:max-w-45 object-contain drop-shadow-2xs select-none"
                   loading="lazy"
                 />
               </div>
@@ -90,7 +90,7 @@ export const ApprovedBrandsSection: React.FC = () => {
                 <img
                   src={brand.logo}
                   alt={`${brand.name} Logo`}
-                  className="h-9 sm:h-12 md:h-14 w-auto max-w-[150px] sm:max-w-[180px] object-contain drop-shadow-2xs select-none"
+                  className="h-9 sm:h-12 md:h-14 w-auto max-w-37.5 sm:max-w-45 object-contain drop-shadow-2xs select-none"
                   loading="lazy"
                 />
               </div>

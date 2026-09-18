@@ -29,7 +29,7 @@ export const SavingsProfilesSection: React.FC = () => {
                 alt="Brisbane suburban family enjoying solar savings"
                 className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-slate-950/70 via-transparent to-transparent" />
               <div className="absolute bottom-3 left-3 right-3 flex justify-between items-center text-white">
                 <span className="text-xs font-bold bg-amber-500/90 text-slate-950 px-2.5 py-0.5 rounded-md uppercase tracking-wider">
                   Brisbane • 4-Bed Home
@@ -83,7 +83,7 @@ export const SavingsProfilesSection: React.FC = () => {
                 alt="Gold Coast high consumption solar setup"
                 className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-slate-950/70 via-transparent to-transparent" />
               <div className="absolute bottom-3 left-3 right-3 flex justify-between items-center text-white">
                 <span className="text-xs font-bold bg-emerald-500/90 text-slate-950 px-2.5 py-0.5 rounded-md uppercase tracking-wider">
                   Gold Coast • Pool & EV
@@ -137,7 +137,7 @@ export const SavingsProfilesSection: React.FC = () => {
                 alt="Sunshine coast solar and battery retrofit savings"
                 className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-slate-950/70 via-transparent to-transparent" />
               <div className="absolute bottom-3 left-3 right-3 flex justify-between items-center text-white">
                 <span className="text-xs font-bold bg-blue-500/90 text-slate-950 px-2.5 py-0.5 rounded-md uppercase tracking-wider">
                   Sunshine Coast • Retrofit

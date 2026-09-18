@@ -15,7 +15,7 @@ export const ServicesOverviewSection: React.FC = () => {
     <section className="py-10 lg:py-14 bg-white relative overflow-hidden">
       {/* Subtle Ambient Glows - no extra containers/content */}
       <div className="absolute top-1/4 -left-32 w-96 h-96 bg-[#265e11]/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-10 right-0 w-[480px] h-[480px] bg-[#ed5001]/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-10 right-0 w-120 h-120 bg-[#ed5001]/5 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute top-1/3 right-1/4 w-80 h-80 bg-blue-600/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -54,7 +54,7 @@ export const ServicesOverviewSection: React.FC = () => {
                 to="/about"
                 variant="primary"
                 size="md"
-                className="w-full sm:w-auto rounded-lg shadow-lg shadow-[#ed5001]/20 bg-gradient-to-r from-[#ed5001] via-[#f06e02] to-[#f4a304] hover:from-[#c84300] hover:to-[#ed5001] text-white border-0 font-bold px-6 py-3 transition-all duration-300 hover:shadow-[#ed5001]/35 hover:-translate-y-0.5"
+                className="w-full sm:w-auto rounded-lg shadow-lg shadow-[#ed5001]/20 bg-linear-to-r from-[#ed5001] via-[#f06e02] to-[#f4a304] hover:from-[#c84300] hover:to-[#ed5001] text-white border-0 font-bold px-6 py-3 transition-all duration-300 hover:shadow-[#ed5001]/35 hover:-translate-y-0.5"
                 icon={<ArrowRight className="w-4 h-4" />}
               >
                 Learn More About Us
@@ -75,7 +75,7 @@ export const ServicesOverviewSection: React.FC = () => {
           {/* Right Column: Sleek Modern Visual Showcase */}
           <div className="lg:col-span-6 relative">
             {/* Offset Decorative Layered Backdrop */}
-            <div className="absolute -bottom-4 -right-4 w-full h-full rounded-xl bg-gradient-to-br from-[#1d4ed8]/15 via-[#f4a304]/15 to-[#ed5001]/20 border border-slate-200/50 -z-10 hidden lg:block" />
+            <div className="absolute -bottom-4 -right-4 w-full h-full rounded-xl bg-linear-to-br from-[#1d4ed8]/15 via-[#f4a304]/15 to-[#ed5001]/20 border border-slate-200/50 -z-10 hidden lg:block" />
 
             {/* Ambient Background Aura */}
             <div className="absolute -top-6 -left-6 w-84 h-84 bg-[#265e11]/50 rounded-full blur-2xl -z-10 hidden lg:block" />

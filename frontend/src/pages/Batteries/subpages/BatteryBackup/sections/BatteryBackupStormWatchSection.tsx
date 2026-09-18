@@ -45,13 +45,13 @@ export const BatteryBackupStormWatchSection: React.FC = () => {
           </div>
         </div>
 
-        <div className="lg:col-span-5 h-80 lg:h-full min-h-[340px] relative">
+        <div className="lg:col-span-5 h-80 lg:h-full min-h-85 relative">
           <img
             src="/images/solutions/battery-storm.jpg"
             alt="Home illuminated during severe thunderstorm blackout"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-slate-950 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-linear-to-t lg:bg-linear-to-r from-slate-950 via-transparent to-transparent" />
         </div>
 
       </div>

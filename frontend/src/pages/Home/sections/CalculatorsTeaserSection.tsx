@@ -146,7 +146,7 @@ export const CalculatorsTeaserSection: React.FC = () => {
         >
           <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-[#18181b] tracking-tight font-serif leading-[1.15]">
             Know Your Numbers Before <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ed5001] via-[#f06e02] to-[#f4a304]">
+            <span className="text-transparent bg-clip-text bg-linear-to-r from-[#ed5001] via-[#f06e02] to-[#f4a304]">
               Speaking to Anyone
             </span>
           </h2>
@@ -163,10 +163,10 @@ export const CalculatorsTeaserSection: React.FC = () => {
           className="relative border border-slate-200/90 bg-white shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden group/card"
         >
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 min-h-[440px]">
+          <div className="grid grid-cols-1 lg:grid-cols-12 min-h-110">
 
             {/* ── LEFT SIDE: AVATAR ── */}
-            <div className="lg:col-span-4 relative bg-gradient-to-b from-[#155dfc] via-[#1a6cf0] to-[#0f4bb5] overflow-hidden flex flex-col justify-end min-h-[380px] lg:min-h-full group/avatar">
+            <div className="lg:col-span-4 relative bg-linear-to-b from-[#155dfc] via-[#1a6cf0] to-[#0f4bb5] overflow-hidden flex flex-col justify-end min-h-95 lg:min-h-full group/avatar">
               <motion.div
                 animate={{ scale: [1, 1.25, 1], opacity: [0.15, 0.35, 0.15] }}
                 transition={{ repeat: Infinity, duration: 6, ease: 'easeInOut' }}
@@ -180,7 +180,7 @@ export const CalculatorsTeaserSection: React.FC = () => {
               <img
                 src={advisorAvatar}
                 alt="Trent Palmer - Sunny Solar Master Electrician Advisor"
-                className="w-full h-full object-fill object-top max-h-[460px] sm:max-h-[400px] lg:max-h-none lg:absolute lg:inset-0 transition-transform duration-700 ease-out group-hover/avatar:scale-105"
+                className="w-full h-full object-fill object-top max-h-115 sm:max-h-100 lg:max-h-none lg:absolute lg:inset-0 transition-transform duration-700 ease-out group-hover/avatar:scale-105"
               />
             </div>
 
@@ -223,7 +223,7 @@ export const CalculatorsTeaserSection: React.FC = () => {
                           transition={{ duration: 0.3 }}
                           className={`shrink-0 w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center text-xs font-extrabold transition-all duration-300 ${
                             isActive
-                              ? 'bg-gradient-to-br from-[#155dfc] to-[#0f4bb5] text-white shadow-md shadow-[#155dfc]/30'
+                              ? 'bg-linear-to-br from-[#155dfc] to-[#0f4bb5] text-white shadow-md shadow-[#155dfc]/30'
                               : 'bg-slate-200/70 text-slate-600'
                           }`}
                         >
@@ -243,7 +243,7 @@ export const CalculatorsTeaserSection: React.FC = () => {
                         {isActive && (
                           <motion.div
                             layoutId="active-calc-tab-bar"
-                            className="absolute bottom-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#155dfc] via-[#ed5001] to-[#265e11]"
+                            className="absolute bottom-0 left-0 right-0 h-0.75 bg-linear-to-r from-[#155dfc] via-[#ed5001] to-[#265e11]"
                             transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                           />
                         )}
@@ -289,7 +289,7 @@ export const CalculatorsTeaserSection: React.FC = () => {
                       initial={{ scale: 0.97, opacity: 0 }}
                       animate={{ scale: 1, opacity: 1 }}
                       transition={{ duration: 0.3, delay: 0.08 }}
-                      className="rounded-2xl p-4 sm:p-5 lg:p-6 border border-[#265e11]/20 bg-gradient-to-br from-[#265e11]/[0.06] via-emerald-50/40 to-white relative overflow-hidden flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 shadow-xs group/outcome"
+                      className="rounded-2xl p-4 sm:p-5 lg:p-6 border border-[#265e11]/20 bg-linear-to-br from-[#265e11]/6 via-emerald-50/40 to-white relative overflow-hidden flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 shadow-xs group/outcome"
                     >
                       {/* Ambient soft glow */}
                       <div
@@ -301,7 +301,7 @@ export const CalculatorsTeaserSection: React.FC = () => {
                       <motion.div
                         animate={{ x: ['-100%', '200%'] }}
                         transition={{ repeat: Infinity, duration: 5, ease: 'linear', repeatDelay: 3 }}
-                        className="absolute inset-0 w-1/2 bg-gradient-to-r from-transparent via-white/40 to-transparent skew-x-12 pointer-events-none"
+                        className="absolute inset-0 w-1/2 bg-linear-to-r from-transparent via-white/40 to-transparent skew-x-12 pointer-events-none"
                       />
 
                       <div className="relative z-10">
@@ -348,10 +348,10 @@ export const CalculatorsTeaserSection: React.FC = () => {
                       >
                         <Link
                           to={`/calculators/${active.slug}`}
-                          className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 sm:px-7 py-3.5 rounded-xl text-white font-bold text-sm sm:text-base bg-gradient-to-r from-[#ed5001] via-[#f06e02] to-[#f4a304] hover:from-[#c84300] hover:to-[#ed5001] shadow-md shadow-[#ed5001]/25 hover:shadow-xl hover:shadow-[#ed5001]/35 transition-all duration-300 group relative overflow-hidden"
+                          className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 sm:px-7 py-3.5 rounded-xl text-white font-bold text-sm sm:text-base bg-linear-to-r from-[#ed5001] via-[#f06e02] to-[#f4a304] hover:from-[#c84300] hover:to-[#ed5001] shadow-md shadow-[#ed5001]/25 hover:shadow-xl hover:shadow-[#ed5001]/35 transition-all duration-300 group relative overflow-hidden"
                         >
                           {/* Animated Shimmer sweep on hover */}
-                          <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/25 to-transparent skew-x-12 pointer-events-none" />
+                          <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-linear-to-r from-transparent via-white/25 to-transparent skew-x-12 pointer-events-none" />
                           <Calculator className="w-4 h-4 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6" />
                           <span>Launch {active.title}</span>
                           <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5" />
@@ -370,7 +370,7 @@ export const CalculatorsTeaserSection: React.FC = () => {
           <div className="h-1.5 w-full bg-slate-100 relative overflow-hidden">
             <motion.div
               key={`${activeIndex}-${isPaused}`}
-              className="h-full bg-gradient-to-r from-[#155dfc] via-[#ed5001] to-[#265e11] relative"
+              className="h-full bg-linear-to-r from-[#155dfc] via-[#ed5001] to-[#265e11] relative"
               initial={{ width: '0%' }}
               animate={{ width: isPaused ? '0%' : '100%' }}
               transition={{ duration: 5, ease: 'linear' }}

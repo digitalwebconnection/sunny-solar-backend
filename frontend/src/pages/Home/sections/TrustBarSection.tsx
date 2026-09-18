@@ -157,8 +157,8 @@ export const TrustBarSection: React.FC = () => {
   return (
     <section className="bg-white py-10 lg:py-14 relative overflow-hidden">
       {/* Ambient blurs */}
-      <div className="absolute -top-40 -left-40 w-[500px] h-[500px] rounded-full blur-[120px] pointer-events-none" style={{ background: `${active.accentColor}10` }} />
-      <div className="absolute -bottom-40 -right-40 w-[500px] h-[500px] bg-slate-200/40 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute -top-40 -left-40 w-125 h-125 rounded-full blur-[120px] pointer-events-none" style={{ background: `${active.accentColor}10` }} />
+      <div className="absolute -bottom-40 -right-40 w-125 h-125 bg-slate-200/40 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
@@ -170,7 +170,7 @@ export const TrustBarSection: React.FC = () => {
 
 
               {/* Animated content area */}
-              <div className="flex-1 min-h-[280px] sm:min-h-[260px] flex flex-col justify-center relative overflow-hidden">
+              <div className="flex-1 min-h-70 sm:min-h-65 flex flex-col justify-center relative overflow-hidden">
                 <AnimatePresence mode="wait" custom={direction}>
                   <motion.div
                     key={activeIndex}

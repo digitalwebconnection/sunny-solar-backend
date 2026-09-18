@@ -200,7 +200,7 @@ export const ProjectDetailPage: React.FC = () => {
           </div>
 
           {/* Main Large Showcase Image Viewer */}
-          <div className="relative rounded-3xl overflow-hidden shadow-xl bg-slate-950 aspect-[16/9] sm:aspect-[21/9] lg:aspect-[2/1] group border border-slate-200/80">
+          <div className="relative rounded-3xl overflow-hidden shadow-xl bg-slate-950 aspect-video sm:aspect-21/9 lg:aspect-2/1 group border border-slate-200/80">
             <AnimatePresence mode="wait">
               <motion.img
                 key={gallery[activeImageIndex].url}
@@ -215,7 +215,7 @@ export const ProjectDetailPage: React.FC = () => {
             </AnimatePresence>
 
             {/* Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-transparent to-slate-950/20 pointer-events-none" />
+            <div className="absolute inset-0 bg-linear-to-t from-slate-950/85 via-transparent to-slate-950/20 pointer-events-none" />
 
             {/* Top Zoom & Tag */}
             <div className="absolute top-4 inset-x-4 flex items-center justify-between z-10 pointer-events-none">
@@ -327,7 +327,7 @@ export const ProjectDetailPage: React.FC = () => {
         {/* ============================================================ */}
         {/* 4. CUSTOMER QUOTE & VERIFIED TESTIMONIAL BOX                 */}
         {/* ============================================================ */}
-        <div className="bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900 text-white rounded-3xl p-8 sm:p-12 border border-slate-800 shadow-xl relative overflow-hidden">
+        <div className="bg-linear-to-br from-slate-900 via-slate-950 to-slate-900 text-white rounded-3xl p-8 sm:p-12 border border-slate-800 shadow-xl relative overflow-hidden">
           <div className="absolute top-6 right-6 opacity-10">
             <Quote className="w-32 h-32 text-amber-400" />
           </div>
@@ -345,7 +345,7 @@ export const ProjectDetailPage: React.FC = () => {
 
             <div className="mt-8 pt-6 border-t border-slate-800 flex flex-wrap items-center justify-between gap-4">
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center text-slate-950 font-black text-base shadow-sm">
+                <div className="w-12 h-12 rounded-full bg-linear-to-br from-amber-400 to-orange-500 flex items-center justify-center text-slate-950 font-black text-base shadow-sm">
                   {project.customerQuote.author.charAt(0)}
                 </div>
                 <div>

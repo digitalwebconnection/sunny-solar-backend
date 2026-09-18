@@ -46,7 +46,7 @@ const trustBeltRepeated = [
 export const TrustMarqueeSection: React.FC = () => {
   return (
     <section 
-      className="w-full bg-linear-to-r from-[#ed5001] via-[#f06e02] to-[#f4a304] py-3.5 sm:py-2 relative overflow-hidden z-20 shadow-lg select-none group border-t border-amber-300/30 border-b border-orange-700/20"
+      className="w-full bg-linear-to-r from-[#ed5001] via-[#f06e02] to-[#f4a304] py-3.5 sm:py-2 relative overflow-hidden z-20 shadow-lg select-none group border-t border-b border-orange-700/20"
       aria-label="Sunny Solar Guarantees and Key Benefits"
     >
       {/* Edge gradient masks for seamless fade */}

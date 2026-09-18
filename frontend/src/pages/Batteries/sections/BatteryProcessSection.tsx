@@ -230,7 +230,7 @@ export const BatteryProcessSection: React.FC = () => {
   }, [isPaused, activeStep, steps.length]);
 
   return (
-    <section className="relative py-20 lg:py-14 bg-gradient-to-b from-slate-50 via-white to-slate-50/70 border-t border-slate-200/80 overflow-hidden">
+    <section className="relative py-20 lg:py-14 bg-linear-to-b from-slate-50 via-white to-slate-50/70 border-t border-slate-200/80 overflow-hidden">
      
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
@@ -241,7 +241,7 @@ export const BatteryProcessSection: React.FC = () => {
           
           <h2 className="text-3xl sm:text-4xl lg:text-5xl max-w-3xl mx-auto font-serif font-bold text-slate-950 tracking-tight leading-[1.15]">
             How We Install Your <br className="hidden sm:inline" />
-            <span className="bg-gradient-to-r from-emerald-600 via-teal-600 to-amber-600 bg-clip-text text-transparent">
+            <span className="bg-linear-to-r from-emerald-600 via-teal-600 to-amber-600 bg-clip-text text-transparent">
               Home Battery System
             </span>
           </h2>
@@ -257,7 +257,7 @@ export const BatteryProcessSection: React.FC = () => {
             {/* Connecting conduit line */}
             <div className="absolute top-7 left-12 right-12 h-1 bg-slate-200 rounded-full z-0">
               <motion.div
-                className="h-full bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full"
+                className="h-full bg-linear-to-r from-emerald-500 to-teal-500 rounded-full"
                 initial={false}
                 animate={{
                   width: `${(activeStep / (steps.length - 1)) * 100}%`,
@@ -365,7 +365,7 @@ export const BatteryProcessSection: React.FC = () => {
                 initial={{ width: '0%' }}
                 animate={{ width: '100%' }}
                 transition={{ duration: 8, ease: 'linear' }}
-                className="h-full bg-gradient-to-r from-emerald-500 via-teal-500 to-amber-500"
+                className="h-full bg-linear-to-r from-emerald-500 via-teal-500 to-amber-500"
               />
             ) : (
               <div className="h-full bg-amber-400 w-full opacity-80" />

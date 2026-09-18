@@ -16,7 +16,7 @@ import { Breadcrumbs } from '../../../../components/layout/Breadcrumbs';
 
 export const SolarLandingHeroSection: React.FC = () => {
   return (
-    <section className="relative pt-28 sm:pt-36 pb-12 sm:pb-16 bg-gradient-to-b from-amber-500/10 via-amber-500/5 to-white border-b border-slate-200/60 overflow-hidden">
+    <section className="relative pt-28 sm:pt-36 pb-12 sm:pb-16 bg-linear-to-b from-amber-500/10 via-amber-500/5 to-white border-b border-slate-200/60 overflow-hidden">
       {/* Subtle ambient solar glow */}
       <div className="absolute top-10 right-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute top-36 left-10 w-80 h-80 bg-orange-300/10 rounded-full blur-3xl pointer-events-none" />
@@ -65,7 +65,7 @@ export const SolarLandingHeroSection: React.FC = () => {
               className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-slate-950 tracking-tight leading-[1.12]"
             >
               High-Yield Solar{' '}
-              <span className="bg-gradient-to-r from-amber-500 via-amber-600 to-orange-600 bg-clip-text text-transparent">
+              <span className="bg-linear-to-r from-amber-500 via-amber-600 to-orange-600 bg-clip-text text-transparent">
                 Engineered for Peak Sun.
               </span>
             </motion.h1>
@@ -124,7 +124,7 @@ export const SolarLandingHeroSection: React.FC = () => {
                 alt="Solar Installation on Queensland Home"
                 className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-500"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent pointer-events-none" />
+              <div className="absolute inset-0 bg-linear-to-t from-slate-950/70 via-transparent to-transparent pointer-events-none" />
 
               {/* Bottom Clean Status Strip */}
               <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white text-xs bg-slate-950/75 backdrop-blur-md px-3.5 py-2 rounded-xl border border-white/10">

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShieldCheck, Award, Sun, Zap, CheckCircle2, Star, BatteryCharging, Sparkles } from 'lucide-react';
+
 
 /**
  * PreferSunnySolarSection
@@ -10,11 +10,11 @@ import { ShieldCheck, Award, Sun, Zap, CheckCircle2, Star, BatteryCharging, Spar
 export const PreferSunnySolarSection: React.FC = () => {
   return (
     <section 
-      className="relative py-16 sm:py-20 lg:py-24 bg-gradient-to-b from-white via-amber-50/40 to-slate-50 border-y border-amber-100/70 overflow-hidden"
+      className="relative py-16 sm:py-20 lg:py-24 bg-linear-to-b from-white via-amber-50/40 to-slate-50 border-y border-amber-100/70 overflow-hidden"
       aria-label="Why Most Australians Prefer Sunny Solar"
     >
       {/* Dynamic ambient backlight glows */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[850px] h-[400px] bg-gradient-to-r from-amber-300/15 via-orange-200/20 to-yellow-200/15 blur-3xl rounded-full pointer-events-none" />
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-212.5 h-100 bg-linear-to-r from-amber-300/15 via-orange-200/20 to-yellow-200/15 blur-3xl rounded-full pointer-events-none" />
       <div className="absolute bottom-10 left-10 w-72 h-72 bg-amber-400/10 blur-3xl rounded-full pointer-events-none" />
       <div className="absolute top-10 right-10 w-72 h-72 bg-orange-400/10 blur-3xl rounded-full pointer-events-none" />
 
@@ -24,9 +24,9 @@ export const PreferSunnySolarSection: React.FC = () => {
         <div className="text-center max-w-6xl mx-auto mb-12 sm:mb-10">
           
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
+          <h2 className="text-3xl sm:text-4xl font-serif lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
             Why Most Australians Prefer{' '} <br />
-            <span className="bg-gradient-to-r from-[#ed5001] via-orange-500 to-[#f4a304] bg-clip-text text-transparent inline-block">
+            <span className="bg-linear-to-r from-[#ed5001] via-orange-500 to-[#f4a304] bg-clip-text text-transparent inline-block">
              Sunny Solar
             </span>
             ?
@@ -45,7 +45,7 @@ export const PreferSunnySolarSection: React.FC = () => {
              ══════════════════════════════════════════════════════════════ */}
           <div className="group relative transition-all duration-300 transform hover:-translate-y-2 flex flex-col items-center text-center">
             {/* Top glowing accent border */}
-            <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-transparent via-[#ed5001] to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-t-2xl" />
+            <div className="absolute inset-x-0 top-0 h-1 bg-linear-to-r from-transparent via-[#ed5001] to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-t-2xl" />
 
             {/* Emblem Container */}
             <div className="w-36 h-40 sm:w-40 sm:h-44 relative flex items-center justify-center filter drop-shadow-[0_8px_18px_rgba(217,119,6,0.22)] group-hover:drop-shadow-[0_14px_28px_rgba(237,80,1,0.32)] transition-all transform group-hover:scale-105 duration-300">
@@ -200,7 +200,7 @@ export const PreferSunnySolarSection: React.FC = () => {
               CARD 2: 72,000+ HOMES POWERED (SOLAR RESIDENCE & NEXUS)
              ══════════════════════════════════════════════════════════════ */}
           <div className="group relative transition-all duration-300 transform hover:-translate-y-2 flex flex-col items-center text-center">
-            <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-transparent via-[#ed5001] to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-t-2xl" />
+            <div className="absolute inset-x-0 top-0 h-1 bg-linear-to-r from-transparent via-[#ed5001] to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-t-2xl" />
 
             {/* Emblem Container */}
             <div className="w-36 h-40 sm:w-40 sm:h-44 relative flex items-center justify-center filter drop-shadow-[0_8px_18px_rgba(245,158,11,0.25)] group-hover:drop-shadow-[0_14px_28px_rgba(245,158,11,0.38)] transition-all transform group-hover:scale-105 duration-300">
@@ -338,7 +338,7 @@ export const PreferSunnySolarSection: React.FC = () => {
               CARD 3: 1.3M+ PANELS INSTALLED (TIER-1 PV ARRAY MEDALLION)
              ══════════════════════════════════════════════════════════════ */}
           <div className="group relativetransition-all duration-300 transform hover:-translate-y-2 flex flex-col items-center text-center">
-            <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-transparent via-[#ed5001] to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-t-2xl" />
+            <div className="absolute inset-x-0 top-0 h-1 bg-linear-to-r from-transparent via-[#ed5001] to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-t-2xl" />
 
             {/* Emblem Container */}
             <div className="w-36 h-40 sm:w-40 sm:h-44 relative flex items-center justify-center filter drop-shadow-[0_8px_18px_rgba(2,132,199,0.22)] group-hover:drop-shadow-[0_14px_28px_rgba(2,132,199,0.36)] transition-all transform group-hover:scale-105 duration-300">
@@ -478,7 +478,7 @@ export const PreferSunnySolarSection: React.FC = () => {
               CARD 4: 800MW+ CLEAN ENERGY (DYNAMIC POWER CORE & BATTERY)
              ══════════════════════════════════════════════════════════════ */}
           <div className="group relative transition-all duration-300 transform hover:-translate-y-2 flex flex-col items-center text-center">
-            <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-transparent via-[#ed5001] to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-t-2xl" />
+            <div className="absolute inset-x-0 top-0 h-1 bg-linear-to-r from-transparent via-[#ed5001] to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-t-2xl" />
 
             {/* Emblem Container */}
             <div className="w-36 h-40 sm:w-40 sm:h-44 relative flex items-center justify-center filter drop-shadow-[0_8px_18px_rgba(16,185,129,0.22)] group-hover:drop-shadow-[0_14px_28px_rgba(16,185,129,0.36)] transition-all transform group-hover:scale-105 duration-300">

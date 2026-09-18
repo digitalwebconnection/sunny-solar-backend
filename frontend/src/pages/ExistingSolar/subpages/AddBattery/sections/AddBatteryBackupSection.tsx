@@ -1,6 +1,6 @@
 import React from 'react';
-import { ShieldAlert, Zap, Sun, CheckCircle2, AlertTriangle, CloudLightning, ArrowRight, ShieldCheck, PhoneCall } from 'lucide-react';
-import { Button } from '../../../../../components/ui/Button';
+import { AlertTriangle, CloudLightning,  ShieldCheck } from 'lucide-react';
+
 
 export const AddBatteryBackupSection: React.FC = () => {
   return (
@@ -24,13 +24,13 @@ export const AddBatteryBackupSection: React.FC = () => {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 items-stretch mb-10">
 
         {/* Left Side: Storm Visual with Overlaid Floating Metrics */}
-        <div className="lg:col-span-6 bg-slate-900 overflow-hidden border border-slate-800 shadow-md relative min-h-[340px] sm:min-h-[420px] flex flex-col justify-end group">
+        <div className="lg:col-span-6 bg-slate-900 overflow-hidden border border-slate-800 shadow-md relative min-h-85 sm:min-h-105 flex flex-col justify-end group">
           <img
             src="/images/solutions/battery-storm.jpg"
             alt="Queensland severe summer storm with resilient battery powered home"
             className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 opacity-85"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent" />
+          <div className="absolute inset-0 bg-linear-to-t from-slate-950/90 via-slate-950/40 to-transparent" />
 
           {/* Overlaid Bottom Content */}
           <div className="relative z-10 p-6 sm:p-8 text-white">

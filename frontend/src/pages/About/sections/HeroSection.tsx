@@ -105,7 +105,7 @@ export const HeroSection: React.FC = () => {
               alt="Sunny Solar installation crew on a rooftop"
               className="w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-white/40" />
+            <div className="absolute inset-0 bg-linear-to-l from-transparent via-transparent to-white/40" />
           </div>
 
 
@@ -119,7 +119,7 @@ export const HeroSection: React.FC = () => {
           alt="Sunny Solar installation crew on a rooftop"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-white/60" />
+        <div className="absolute inset-0 bg-linear-to-t from-white via-transparent to-white/60" />
       </div>
 
     </section>

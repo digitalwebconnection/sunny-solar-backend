@@ -88,7 +88,7 @@ export function CursorCard({
                   y: springY,
                 }}
                 className={cn(
-                  'fixed top-0 left-0 pointer-events-none z-50 w-[240px]',
+                  'fixed top-0 left-0 pointer-events-none z-50 w-60',
                   'bg-white dark:bg-neutral-900 p-3 shadow-2xl rounded-xl border border-neutral-200/90 dark:border-neutral-800 backdrop-blur-xs'
                 )}
               >
