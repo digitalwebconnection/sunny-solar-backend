@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Helmet } from 'react-helmet-async';
 import {
   Lock,
   Mail,
   Plus,
   Trash2,
   Edit3,
-  Eye,
-  EyeOff,
+
   FileText,
   BarChart2,
   CheckCircle2,
@@ -131,9 +131,9 @@ export const AdminPage: React.FC = () => {
   // Active navigation tab: 'articles' | 'knowledge' | 'overview'
   const [activeTab, setActiveTab] = useState<'articles' | 'knowledge' | 'overview'>('articles');
 
-  // Login form state loaded from .env
-  const [email, setEmail] = useState(import.meta.env.VITE_ADMIN_EMAIL || 'admin@sunnysolar.com.au');
-  const [password, setPassword] = useState(import.meta.env.VITE_ADMIN_PASSWORD || 'Admin@12345');
+  // Login form state - defaults to empty in production for security
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [loginLoading, setLoginLoading] = useState(false);
   const [loginError, setLoginError] = useState<string | null>(null);
 
@@ -1014,6 +1014,10 @@ export const AdminPage: React.FC = () => {
   if (!isAuthenticated) {
     return (
       <div className="min-h-screen bg-slate-50 flex flex-col justify-center items-center px-4 py-12 relative overflow-hidden font-sans">
+        <Helmet>
+          <title>Admin Login | Sunny Solar Management Portal</title>
+          <meta name="description" content="Sign in to Sunny Solar administrative and editorial management portal." />
+        </Helmet>
         {/* Subtle decorative background gradients */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-200 h-87.5 bg-linear-to-b from-amber-100/50 to-transparent rounded-full blur-3xl pointer-events-none" />
 
@@ -1114,6 +1118,10 @@ export const AdminPage: React.FC = () => {
   // --------------------------------------------------------------------------
   return (
     <div className="min-h-screen bg-[#f8fafc] text-slate-900 flex font-sans antialiased">
+      <Helmet>
+        <title>Admin Dashboard | Sunny Solar Management Portal</title>
+        <meta name="description" content="Sunny Solar internal administration, lead management, and content management dashboard." />
+      </Helmet>
       {/* Toast Notification */}
       {toast && (
         <div

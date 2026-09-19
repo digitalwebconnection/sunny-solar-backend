@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { PageHeader } from '../../components/layout/PageHeader';
 import { faqData } from '../../data/faqData';
 import { Accordion } from '../../components/ui/Accordion';
@@ -18,6 +19,13 @@ export const FAQPage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-slate-50 pb-20">
+      <Helmet>
+        <title>Solar & Battery Frequently Asked Questions | Sunny Solar</title>
+        <meta
+          name="description"
+          content="Answers to common questions about solar panel efficiency, STC government rebates, feed-in tariffs, and battery storage life."
+        />
+      </Helmet>
       <PageHeader
         badge="Help & Knowledge"
         title="Frequently Asked"
@@ -56,11 +64,11 @@ export const FAQPage: React.FC = () => {
           </p>
           <div className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center justify-center gap-3 sm:gap-4 pt-2">
             <a
-              href="tel:1300786697"
+              href="tel:1300030479"
               className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl border border-slate-300 font-bold text-sm text-slate-800 hover:bg-slate-50 transition-colors w-full sm:w-auto"
             >
               <Phone className="w-4 h-4 text-amber-500" />
-              Call 1300 SUNNY
+              Call 1300 030 479
             </a>
             <Button to="/get-started/free-assessment" variant="primary" size="md" className="w-full sm:w-auto justify-center">
               Ask Via Online Assessment

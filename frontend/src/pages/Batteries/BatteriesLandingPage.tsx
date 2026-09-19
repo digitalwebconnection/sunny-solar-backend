@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { BatteriesHeroSection } from './sections/BatteriesHeroSection';
 import { BatteryBenefitsSection } from './sections/BatteryBenefitsSection';
 import { BatteryGridSection } from './sections/BatteryGridSection';
@@ -8,6 +9,13 @@ import { BatteryProcessSection } from './sections/BatteryProcessSection';
 export const BatteriesLandingPage: React.FC = () => {
   return (
     <div className="flex flex-col min-h-screen">
+      <Helmet>
+        <title>Home Solar Battery Storage Systems | Sunny Solar</title>
+        <meta
+          name="description"
+          content="Store your excess daytime solar power for evening use and blackout protection. Tesla Powerwall, Sungrow, Enphase, and AlphaESS battery solutions."
+        />
+      </Helmet>
       {/* 1. Hero with Live Telemetry HUD, Trust Badges & Dual CTA */}
       <BatteriesHeroSection />
 

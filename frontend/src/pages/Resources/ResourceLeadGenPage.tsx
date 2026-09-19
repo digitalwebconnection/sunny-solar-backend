@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { resourcesData } from '../../data/resourcesData';
 import { PageHeader } from '../../components/layout/PageHeader';
 import { Badge } from '../../components/ui/Badge';
 import { Button } from '../../components/ui/Button';
 import { Download, Check, ShieldCheck, Mail, User, Phone, CheckCircle2, FileText } from 'lucide-react';
 import { submitToWeb3Forms } from '../../utils/web3forms';
+import { api } from '../../services/api';
 
 export interface ResourceLeadGenPageProps {
   guideKey: keyof typeof resourcesData;
@@ -27,29 +29,60 @@ export const ResourceLeadGenPage: React.FC<ResourceLeadGenPageProps> = ({ guideK
     setIsSubmitting(true);
     setErrorMessage('');
 
-    const res = await submitToWeb3Forms({
-      name: formData.name,
-      email: formData.email,
-      phone: formData.phone,
-      postcode: formData.postcode,
-      resource_title: guide.title,
-      resource_format: guide.format,
-      page: 'Resource Lead Gen Page',
-    }, {
-      subject: `New Resource Download (${guide.title}) - ${formData.name}`,
-      from_name: 'Sunny Solar Resources',
-    });
-
-    setIsSubmitting(false);
-    if (res.success) {
-      setSubmitted(true);
-    } else {
-      setErrorMessage(res.message || 'Error submitting request. Please try again.');
+    // 1. Persist lead in database
+    let backendSuccess = false;
+    try {
+      await api.createLead({
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        suburb: formData.postcode,
+        service: `Resource Download: ${guide?.title || 'Solar Guide'}`,
+        sourcePage: 'Resource Lead Gen Page',
+      });
+      backendSuccess = true;
+    } catch (dbErr) {
+      console.warn('Database lead notice:', dbErr);
     }
+
+    // 2. Dispatch via Web3Forms
+    try {
+      const res = await submitToWeb3Forms({
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        postcode: formData.postcode,
+        resource_title: guide.title,
+        resource_format: guide.format,
+        page: 'Resource Lead Gen Page',
+      }, {
+        subject: `New Resource Download (${guide.title}) - ${formData.name}`,
+        from_name: 'Sunny Solar Resources',
+      });
+
+      if (res.success || backendSuccess) {
+        setSubmitted(true);
+      } else {
+        setErrorMessage(res.message || 'Error submitting request. Please try again.');
+      }
+    } catch (err: any) {
+      if (backendSuccess) {
+        setSubmitted(true);
+      } else {
+        setErrorMessage('Error submitting request. Please try again.');
+      }
+    }
+    setIsSubmitting(false);
   };
+
+  if (!guide) return null;
 
   return (
     <div className="min-h-screen bg-slate-50 pb-20">
+      <Helmet>
+        <title>{`${guide.title} | Sunny Solar Resources`}</title>
+        <meta name="description" content={guide.description || guide.subtitle} />
+      </Helmet>
       <PageHeader
         badge={guide.format}
         title={guide.title}

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Navigate, Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { Breadcrumbs } from '../../../components/layout/Breadcrumbs';
 import { Badge } from '../../../components/ui/Badge';
 import { Button } from '../../../components/ui/Button';
@@ -259,6 +260,15 @@ export const KnowledgeDetailPage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-slate-50 pt-24 sm:pt-28 pb-24">
+      <Helmet>
+        <title>{article.metaTitle || `${article.title} | Sunny Solar Knowledge Hub`}</title>
+        <meta
+          name="description"
+          content={article.metaDescription || article.excerpt}
+        />
+        {article.keywords && <meta name="keywords" content={article.keywords} />}
+        {article.canonicalUrl && <link rel="canonical" href={article.canonicalUrl} />}
+      </Helmet>
       {/* -------------------------------------------------------------------- */}
       {/* 1. TOP BREADCRUMBS & NAVIGATION BAR                                  */}
       {/* -------------------------------------------------------------------- */}
@@ -743,11 +753,11 @@ export const KnowledgeDetailPage: React.FC = () => {
               </div>
 
               <a
-                href="tel:1300786697"
+                href="tel:1300030479"
                 className="mt-4 pt-3 border-t border-white/20 flex items-center justify-center gap-2 text-xs text-amber-100 hover:text-white transition-colors"
               >
                 <Phone className="w-3.5 h-3.5" />
-                <span>Call 1300 SUNNY (786 697)</span>
+                <span>Call 1300 030 479</span>
               </a>
             </div>
 

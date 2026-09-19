@@ -35,7 +35,9 @@ export async function submitToWeb3Forms(
       formData = new FormData();
       Object.entries(data).forEach(([key, val]) => {
         if (val !== undefined && val !== null) {
-          if (typeof val === 'object' && !(val instanceof File) && !(val instanceof Blob)) {
+          if (val instanceof File || val instanceof Blob) {
+            formData.append(key, val);
+          } else if (typeof val === 'object') {
             formData.append(key, JSON.stringify(val));
           } else {
             formData.append(key, String(val));
@@ -73,3 +75,16 @@ export async function submitToWeb3Forms(
     };
   }
 }
+
+/**
+ * Convert a File object to base64 Data URI string for storage
+ */
+export const fileToBase64 = (file: File): Promise<string> => {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result as string);
+    reader.onerror = (err) => reject(err);
+    reader.readAsDataURL(file);
+  });
+};
+

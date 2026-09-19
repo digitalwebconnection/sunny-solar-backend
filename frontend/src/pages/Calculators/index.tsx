@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { CalculatorsHeroSection } from './sections/CalculatorsHeroSection';
 import { CalculatorsGridSection } from './sections/CalculatorsGridSection';
 import { CalculatorsAddBatterySolarSection } from './sections/CalculatorsAddBatterySolarSection';
@@ -6,6 +7,13 @@ import { CalculatorsAddBatterySolarSection } from './sections/CalculatorsAddBatt
 export const CalculatorsLandingPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-slate-50 pb-20">
+      <Helmet>
+        <title>Interactive Solar & Battery Calculators | Sunny Solar</title>
+        <meta
+          name="description"
+          content="Free online estimation tools for Australian homeowners. Calculate solar savings, system size, payback periods, and battery requirements."
+        />
+      </Helmet>
       {/* 1. Page Hero with Quick Actions */}
       <CalculatorsHeroSection />
 

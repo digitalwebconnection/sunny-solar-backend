@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { SolarPlusBatteryHeroSection } from './sections/SolarPlusBatteryHeroSection';
 import { SolarPlusBatterySavingsSliderSection } from './sections/SolarPlusBatterySavingsSliderSection';
 import { SolarPlusBatteryPackagesSection } from './sections/SolarPlusBatteryPackagesSection';
@@ -7,6 +8,13 @@ import { SolarPlusBatteryAdvantagesSection } from './sections/SolarPlusBatteryAd
 export const SolarPlusBatteryPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-slate-50 pb-20">
+      <Helmet>
+        <title>Combined Solar and Battery Packages | Sunny Solar</title>
+        <meta
+          name="description"
+          content="Maximize your energy independence with bundled solar and battery packages. Slash electricity bills by up to 90% with integrated clean power."
+        />
+      </Helmet>
       {/* 1. Page Header */}
       <SolarPlusBatteryHeroSection />
 

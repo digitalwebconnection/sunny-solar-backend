@@ -1,9 +1,17 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { PageHeader } from '../../components/layout/PageHeader';
 
 export const PrivacyPolicyPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-slate-50 pb-20">
+      <Helmet>
+        <title>Privacy Policy | Sunny Solar</title>
+        <meta
+          name="description"
+          content="Our policy on personal information handling, customer privacy, and data protection in accordance with the Australian Privacy Principles."
+        />
+      </Helmet>
       <PageHeader
         badge="Legal & Compliance"
         title="Sunny Solar"
@@ -43,8 +51,23 @@ export const PrivacyPolicyPage: React.FC = () => {
           <section className="space-y-3">
             <h2 className="text-xl font-bold text-slate-900">4. Contact Us</h2>
             <p>
-              If you wish to review, update, or remove your contact data from our system, please email us at <a href="mailto:privacy@sunnysolar.com.au" className="text-amber-600 underline">privacy@sunnysolar.com.au</a>.
+              If you wish to review, update, or remove your contact data from our system, please contact us:
             </p>
+            <div className="text-sm text-slate-700 space-y-1">
+              <p><strong>Sunny Solar</strong></p>
+              <p>
+                <a
+                  href="https://maps.google.com/?q=10A+Burralong+Dr,+Wondunna+QLD+4655,+Australia"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-amber-600 hover:underline inline-flex items-center gap-1"
+                >
+                  10A Burralong Dr, Wondunna QLD 4655, Australia ↗
+                </a>
+              </p>
+              <p>Phone: <a href="tel:1300030479" className="text-amber-600 hover:underline">1300 030 479</a></p>
+              <p>Email: <a href="mailto:info@sunnysolar.com.au" className="text-amber-600 underline">info@sunnysolar.com.au</a></p>
+            </div>
           </section>
         </div>
       </div>

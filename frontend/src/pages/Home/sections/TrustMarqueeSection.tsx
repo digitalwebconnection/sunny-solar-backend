@@ -1,37 +1,37 @@
 import React from 'react';
 import { 
-  ShieldCheck, 
-  Zap, 
-  CheckCircle2, 
-  Sparkles, 
-  Award, 
-  Sun 
+  Sun, 
+  BatteryCharging, 
+  Calculator, 
+  Scale, 
+  Home, 
+  HeartHandshake 
 } from 'lucide-react';
 
 const trustBeltItems = [
   {
-    icon: ShieldCheck,
-    label: '25-Year Performance Warranty',
-  },
-  {
-    icon: Zap,
-    label: 'Up to 85% Bill Reduction',
-  },
-  {
-    icon: CheckCircle2,
-    label: '$0 Upfront Payment Options',
-  },
-  {
-    icon: Sparkles,
-    label: 'Fast 3D Roof Engineering',
-  },
-  {
-    icon: Award,
-    label: 'Master Electrician Founded',
-  },
-  {
     icon: Sun,
-    label: 'CEC Approved Solar Retailer',
+    label: 'PRACTICAL SOLAR ADVICE',
+  },
+  {
+    icon: BatteryCharging,
+    label: 'SMART BATTERY GUIDANCE',
+  },
+  {
+    icon: Calculator,
+    label: 'UNDERSTAND YOUR ENERGY NUMBERS',
+  },
+  {
+    icon: Scale,
+    label: 'COMPARE BEFORE YOU BUY',
+  },
+  {
+    icon: Home,
+    label: 'SOLUTIONS BUILT AROUND YOUR HOME',
+  },
+  {
+    icon: HeartHandshake,
+    label: 'CLEAR. PRACTICAL. CUSTOMER-FOCUSED.',
   },
 ];
 
@@ -46,7 +46,7 @@ const trustBeltRepeated = [
 export const TrustMarqueeSection: React.FC = () => {
   return (
     <section 
-      className="w-full bg-linear-to-r from-[#ed5001] via-[#f06e02] to-[#f4a304] py-3.5 sm:py-2 relative overflow-hidden z-20 shadow-lg select-none group border-t border-b border-orange-700/20"
+      className="w-full bg-linear-to-r from-[#ed5001] via-[#f06e02] to-[#f4a304] py-3.5 sm:py-4 relative overflow-hidden z-20 shadow-lg select-none group border-t border-b border-orange-700/20"
       aria-label="Sunny Solar Guarantees and Key Benefits"
     >
       {/* Edge gradient masks for seamless fade */}
@@ -61,8 +61,8 @@ export const TrustMarqueeSection: React.FC = () => {
             const Icon = item.icon;
             return (
               <div key={`belt-track1-${idx}`} className="flex items-center">
-                <div className="flex items-center gap-2.5 px-4 sm:px-5 py-1 text-white text-xs sm:text-lg font-bold tracking-wide ">
-                  <Icon className="w-4 h-4 text-white shrink-0" />
+                <div className="flex items-center gap-2.5 px-4 sm:px-5 py-1 text-white text-xs sm:text-2xl font-bold tracking-wide ">
+                  <Icon className="w-10 h-10 text-white shrink-0" />
                   <span className="whitespace-nowrap">{item.label}</span>
                 </div>
                 <span className="w-1.5 h-1.5 rounded-full bg-white/40 mx-2.5 sm:mx-3 shrink-0" />
@@ -77,8 +77,8 @@ export const TrustMarqueeSection: React.FC = () => {
             const Icon = item.icon;
             return (
               <div key={`belt-track2-${idx}`} className="flex items-center">
-                <div className="flex items-center gap-2.5 px-4 sm:px-5 py-1 text-white text-xs sm:text-lg font-bold tracking-wide ">
-                  <Icon className="w-4 h-4 text-white shrink-0" />
+                <div className="flex items-center gap-2.5 px-4 sm:px-5 py-1 text-white text-xs sm:text-2xl font-bold tracking-wide ">
+                  <Icon className="w-10 h-10 text-white shrink-0" />
                   <span className="whitespace-nowrap">{item.label}</span>
                 </div>
                 <span className="w-1.5 h-1.5 rounded-full bg-white/40 mx-2.5 sm:mx-3 shrink-0" />

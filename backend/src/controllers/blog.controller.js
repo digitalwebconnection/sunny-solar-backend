@@ -56,7 +56,7 @@ const initialArticles = [
     publishDate: 'Feb 18, 2025',
     author: 'Elena Vance',
     authorRole: 'Technical Energy Analyst',
-    imageUrl: '/images/blog/rebates-tariffs.jpg',
+    imageUrl: '/images/blog/solar-rebates.jpg',
     keyTakeaways: [
       'Federal STC rebates shave $2,200 to $3,400 off standard residential installations.',
       'Feed-in tariffs have dropped to 4-8c/kWh because daytime wholesale electricity prices often turn negative.',

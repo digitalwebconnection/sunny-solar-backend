@@ -1,9 +1,17 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { PageHeader } from '../../components/layout/PageHeader';
 
 export const TermsOfTradePage: React.FC = () => {
   return (
     <div className="min-h-screen bg-slate-50 pb-20">
+      <Helmet>
+        <title>Terms of Trade & Commercial Agreements | Sunny Solar</title>
+        <meta
+          name="description"
+          content="Standard terms of trade, payment terms, installation guarantees, and NETCC Approved Seller cooling-off policies."
+        />
+      </Helmet>
       <PageHeader
         badge="Legal & Commercial"
         title="Sunny Solar"
@@ -35,7 +43,7 @@ export const TermsOfTradePage: React.FC = () => {
           <section className="space-y-3">
             <h2 className="text-xl font-bold text-slate-900">3. Cooling-Off Period</h2>
             <p>
-              As a CEC Approved Solar Retailer, Sunny Solar provides all residential customers with an unconditional 10-business-day cooling-off period during which contracts can be cancelled with a full refund of any deposit paid.
+              As a NETCC APPROVED SELLER, Sunny Solar provides all residential customers with an unconditional 10-business-day cooling-off period during which contracts can be cancelled with a full refund of any deposit paid.
             </p>
           </section>
 
@@ -62,6 +70,22 @@ export const TermsOfTradePage: React.FC = () => {
             <h2 className="text-xl font-bold text-slate-900">6. Governing Law</h2>
             <p>
               These Terms of Trade are governed by the laws of the State of Queensland and the Commonwealth of Australia.
+            </p>
+          </section>
+
+          <section className="space-y-3">
+            <h2 className="text-xl font-bold text-slate-900">7. Registered Office & Inquiries</h2>
+            <p className="text-slate-700">
+              Sunny Solar —{' '}
+              <a
+                href="https://maps.google.com/?q=10A+Burralong+Dr,+Wondunna+QLD+4655,+Australia"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-amber-600 hover:underline inline-flex items-center gap-1 font-medium"
+              >
+                10A Burralong Dr, Wondunna QLD 4655, Australia ↗
+              </a>{' '}
+              | Phone: <a href="tel:1300030479" className="text-amber-600 hover:underline">1300 030 479</a> | Email: <a href="mailto:info@sunnysolar.com.au" className="text-amber-600 hover:underline">info@sunnysolar.com.au</a>.
             </p>
           </section>
         </div>

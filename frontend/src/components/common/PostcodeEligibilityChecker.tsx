@@ -98,7 +98,7 @@ export const PostcodeEligibilityChecker: React.FC = () => {
         threePhaseLimit: '15.0 kW Export Limit',
       });
     } else {
-      setError(`Postcode ${clean} is outside our direct primary South East Queensland service zone. Call 1300 SUNNY to confirm availability.`);
+      setError(`Postcode ${clean} is outside our direct primary South East Queensland service zone. Call 1300 030 479 to confirm availability.`);
       setResult(null);
     }
   };

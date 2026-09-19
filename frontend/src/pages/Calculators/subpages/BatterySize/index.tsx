@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { BatterySizeHeroSection } from './sections/BatterySizeHeroSection';
 import { BatterySizeCalcSection } from './sections/BatterySizeCalcSection';
 import { BatterySizeSolarPairingSection } from './sections/BatterySizeSolarPairingSection';
@@ -6,6 +7,13 @@ import { BatterySizeSolarPairingSection } from './sections/BatterySizeSolarPairi
 export const BatterySizeCalcPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-slate-50 pb-20">
+      <Helmet>
+        <title>Battery Size & Capacity Calculator | Sunny Solar</title>
+        <meta
+          name="description"
+          content="Find the ideal usable kWh storage capacity to cover your evening electricity usage and provide outage backup."
+        />
+      </Helmet>
       {/* Section 1: Page Header & Hero */}
       <BatterySizeHeroSection />
 

@@ -1,5 +1,35 @@
+# Robots.txt for Sunny Solar (https://sunnysolar.com.au)
+# All search engine crawlers are allowed to index public pages.
+
 User-agent: *
 Allow: /
 Disallow: /admin
+Disallow: /admin/
+Disallow: /thank-you
+Disallow: /api/
 
+# Major Search Engines
+User-agent: Googlebot
+Allow: /
+Disallow: /admin
+Disallow: /admin/
+Disallow: /thank-you
+
+User-agent: Bingbot
+Allow: /
+Disallow: /admin
+Disallow: /admin/
+Disallow: /thank-you
+
+User-agent: Applebot
+Allow: /
+Disallow: /admin
+Disallow: /admin/
+Disallow: /thank-you
+
+# Crawl Delay to prevent server strain
+Crawl-delay: 1
+
+# Host and Canonical XML Sitemap
+Host: https://sunnysolar.com.au
 Sitemap: https://sunnysolar.com.au/sitemap.xml

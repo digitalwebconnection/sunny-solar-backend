@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { KnowledgeHubHeroSection } from './sections/KnowledgeHubHeroSection';
 import { KnowledgeHubGridSection } from './sections/KnowledgeHubGridSection';
 import { api } from '../../../services/api';
 import type { Article } from '../../../types/blog';
+import { articlesData } from '../../../data/blogData';
 
 const categories = [
   'All Guides',
@@ -15,21 +17,28 @@ const categories = [
 
 export const KnowledgeHubPage: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('All Guides');
-  const [articles, setArticles] = useState<Article[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [articles, setArticles] = useState<Article[]>(() => articlesData);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     let isMounted = true;
     const fetchKnowledge = async () => {
-      setLoading(true);
       try {
         const res = await api.getKnowledge(selectedCategory);
-        if (isMounted) {
-          setArticles(res?.data || []);
+        if (isMounted && res?.data && res.data.length > 0) {
+          setArticles(res.data);
+        } else if (isMounted) {
+          const fallback = selectedCategory === 'All Guides'
+            ? articlesData
+            : articlesData.filter((a) => a.category === selectedCategory);
+          setArticles(fallback);
         }
       } catch (err) {
         if (isMounted) {
-          setArticles([]);
+          const fallback = selectedCategory === 'All Guides'
+            ? articlesData
+            : articlesData.filter((a) => a.category === selectedCategory);
+          setArticles(fallback);
         }
       } finally {
         if (isMounted) {
@@ -47,6 +56,13 @@ export const KnowledgeHubPage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-slate-50 pb-20 space-y-2">
+      <Helmet>
+        <title>Solar & Battery Knowledge Hub | Sunny Solar</title>
+        <meta
+          name="description"
+          content="Expert educational guides, technical standards, and consumer advice written by licensed master electricians."
+        />
+      </Helmet>
       {/* 1. Hero & Education Pillars */}
       <KnowledgeHubHeroSection />
 

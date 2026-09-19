@@ -1,11 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { CheckCircle2, Phone, Mail, Clock, ArrowRight, ShieldCheck, Sparkles, Home } from 'lucide-react';
 import { Button } from '../../components/ui/Button';
 
 export const ThankYouPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-slate-50 pt-28 pb-20 overflow-hidden relative">
+      <Helmet>
+        <title>Thank You - Request Received | Sunny Solar</title>
+        <meta
+          name="description"
+          content="Your solar assessment request has been received. Our engineering team is reviewing your roof specs and will be in touch shortly."
+        />
+      </Helmet>
       {/* Background ambient solar glow */}
       <div className="absolute top-10 right-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-20 left-10 w-80 h-80 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
@@ -101,11 +109,11 @@ export const ThankYouPage: React.FC = () => {
 
           <div className="flex flex-col sm:flex-row items-center gap-3 shrink-0 w-full sm:w-auto">
             <a
-              href="tel:1300786697"
+              href="tel:1300030479"
               className="w-full sm:w-auto px-5 py-3 rounded-xl bg-linear-to-r from-[#ed5001] to-[#f06e02] hover:from-[#c84300] hover:to-[#ed5001] text-white font-bold text-sm flex items-center justify-center gap-2 shadow-lg shadow-[#ed5001]/25 transition-all"
             >
               <Phone className="w-4 h-4" />
-              <span>1300 SUNNY (786 697)</span>
+              <span>1300 030 479</span>
             </a>
             <a
               href="mailto:info@sunnysolar.com.au"

@@ -10,7 +10,7 @@ import React from 'react';
 export const PreferSunnySolarSection: React.FC = () => {
   return (
     <section 
-      className="relative py-16 sm:py-20 lg:py-24 bg-linear-to-b from-white via-amber-50/40 to-slate-50 border-y border-amber-100/70 overflow-hidden"
+      className="relative py-8 sm:py-10 lg:py-14 bg-linear-to-b from-white via-amber-50/40 to-slate-50 border-y border-amber-100/70 overflow-hidden"
       aria-label="Why Most Australians Prefer Sunny Solar"
     >
       {/* Dynamic ambient backlight glows */}

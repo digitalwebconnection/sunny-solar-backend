@@ -1,9 +1,17 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { PageHeader } from '../../components/layout/PageHeader';
 
 export const TermsConditionsPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-slate-50 pb-20">
+      <Helmet>
+        <title>Terms & Conditions | Sunny Solar</title>
+        <meta
+          name="description"
+          content="Terms and conditions governing the use of the Sunny Solar website, digital estimators, and inquiry services."
+        />
+      </Helmet>
       <PageHeader
         badge="Terms of Service"
         title="Sunny Solar"
@@ -38,6 +46,22 @@ export const TermsConditionsPage: React.FC = () => {
             <h2 className="text-xl font-bold text-slate-900">4. Governing Law</h2>
             <p>
               These terms are governed by and construed in accordance with the laws of Queensland, Australia.
+            </p>
+          </section>
+
+          <section className="space-y-3">
+            <h2 className="text-xl font-bold text-slate-900">5. Contact Information</h2>
+            <p className="text-slate-700">
+              For any notices or queries, please contact Sunny Solar at{' '}
+              <a
+                href="https://maps.google.com/?q=10A+Burralong+Dr,+Wondunna+QLD+4655,+Australia"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-amber-600 hover:underline inline-flex items-center gap-1 font-medium"
+              >
+                10A Burralong Dr, Wondunna QLD 4655, Australia ↗
+              </a>{' '}
+              | Phone: <a href="tel:1300030479" className="text-amber-600 hover:underline">1300 030 479</a> | Email: <a href="mailto:info@sunnysolar.com.au" className="text-amber-600 hover:underline">info@sunnysolar.com.au</a>.
             </p>
           </section>
         </div>

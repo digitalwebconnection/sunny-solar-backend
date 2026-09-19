@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { HeroSection } from './sections/HeroSection';
 import { TrustMarqueeSection } from './sections/TrustMarqueeSection';
 import { ServicesOverviewSection } from './sections/ServicesOverviewSection';
@@ -15,6 +16,13 @@ import { FAQSection } from './sections/FAQSection';
 export const HomePage: React.FC = () => {
   return (
     <div className="flex flex-col min-h-screen">
+      <Helmet>
+        <title>Sunny Solar | Quality Residential Solar & Battery Solutions Gold Coast & Brisbane</title>
+        <meta
+          name="description"
+          content="Power your home with clean, reliable solar energy and smart battery storage. Master Electrician installed solar systems with 25-year warranty across South East Queensland."
+        />
+      </Helmet>
       {/* 1 */}
       <HeroSection />
       {/* 2 */}

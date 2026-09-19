@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { PageHeader } from '../../components/layout/PageHeader';
 import { reviewsData } from '../../data/reviewsData';
 import type { Review } from '../../data/reviewsData';
@@ -29,20 +30,38 @@ export const ReviewsPage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-slate-50 pb-20">
+      <Helmet>
+        <title>Verified Customer Reviews & Testimonials | Sunny Solar</title>
+        <meta
+          name="description"
+          content="Read verified 4.98-star reviews and customer stories from homeowners across South East Queensland."
+        />
+      </Helmet>
       <PageHeader
         badge="Customer Testimonials"
         title="4.98-Star Customer"
         highlightText="Reviews & Stories"
         description="Read unedited, verified feedback from homeowners across South East Queensland. Filter by installation service or rating."
         actions={
-          <Button
-            to="/get-started/free-assessment"
-            variant="primary"
-            size="md"
-            icon={<ArrowRight className="w-4 h-4" />}
-          >
-            Experience the Sunny Solar Difference
-          </Button>
+          <div className="flex flex-wrap items-center gap-3">
+            <Button
+              to="/get-started/free-assessment"
+              variant="primary"
+              size="md"
+              icon={<ArrowRight className="w-4 h-4" />}
+            >
+              Get Free Solar Assessment
+            </Button>
+            <a
+              href="https://maps.google.com/?q=10A+Burralong+Dr,+Wondunna+QLD+4655,+Australia"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-slate-300 bg-white hover:bg-slate-50 text-slate-800 text-sm font-bold shadow-xs transition-colors"
+            >
+              <Star className="w-4 h-4 text-amber-500 fill-amber-500" />
+              <span>Review on Google</span>
+            </a>
+          </div>
         }
       />
 

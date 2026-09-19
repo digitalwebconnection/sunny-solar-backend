@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, Navigate, Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { motion, AnimatePresence } from 'framer-motion';
 import { projectsData, Project } from '../../data/projectsData';
 import { Breadcrumbs } from '../../components/layout/Breadcrumbs';
@@ -93,6 +94,13 @@ export const ProjectDetailPage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-white pb-20 pt-24 sm:pt-28">
+      <Helmet>
+        <title>{`${project.title} (${project.systemSize}) in ${project.location} | Sunny Solar`}</title>
+        <meta
+          name="description"
+          content={`Explore the ${project.systemSize} solar installation in ${project.location}. Featuring ${project.panels} panels and high-efficiency inverters installed by Master Electricians.`}
+        />
+      </Helmet>
       {/* Breadcrumbs Navigation */}
       <div className="border-b border-slate-100 bg-slate-50/50 py-3">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -459,14 +467,14 @@ export const ProjectDetailPage: React.FC = () => {
               </Button>
 
               <Button
-                href="tel:0756789012"
+                href="tel:1300030479"
                 variant="outline"
                 size="lg"
                 icon={<Phone className="w-4 h-4" />}
                 iconPosition="left"
                 className="border-white/30 text-white hover:border-amber-400 hover:text-amber-400"
               >
-                Call (07) 5678 9012
+                Call 1300 030 479
               </Button>
             </div>
           </div>

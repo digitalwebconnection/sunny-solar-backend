@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { SolarBatteriesHeroSection } from './sections/SolarBatteriesHeroSection';
 import { SolarBatteriesCatalogSection } from './sections/SolarBatteriesCatalogSection';
 import { SolarBatteriesRetrofitGuideSection } from './sections/SolarBatteriesRetrofitGuideSection';
@@ -7,6 +8,13 @@ import { SolarBatteriesSafetyStandardsSection } from './sections/SolarBatteriesS
 export const SolarBatteriesPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-slate-50 pb-20">
+      <Helmet>
+        <title>Solar Battery Storage Options & Compatibility | Sunny Solar</title>
+        <meta
+          name="description"
+          content="Compare premium home battery storage systems. AC-coupled and DC-coupled storage options tailored for South East Queensland households."
+        />
+      </Helmet>
       {/* 1. Page Header */}
       <SolarBatteriesHeroSection />
 

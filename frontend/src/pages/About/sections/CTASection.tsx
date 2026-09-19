@@ -171,7 +171,7 @@ export const CTASection: React.FC = () => {
   return (
     <section ref={sectionRef} className="bg-white relative overflow-hidden">
       {/* Top subtle divider */}
-      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
+      <div className="absolute top-0 left-0 w-full h-px bg-linear-to-r from-transparent via-slate-200 to-transparent" />
 
       {/* Testimonials Slider Section */}
       <div className="py-20 sm:py-24 lg:py-20">
@@ -188,7 +188,7 @@ export const CTASection: React.FC = () => {
 
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-slate-950 tracking-tight leading-[1.12]">
                 Real Words From{' '}
-                <span className="bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 bg-clip-text text-transparent">
+                <span className="bg-linear-to-r from-amber-500 via-orange-500 to-amber-600 bg-clip-text text-transparent">
                   Real Families.
                 </span>
               </h2>
@@ -270,7 +270,7 @@ export const CTASection: React.FC = () => {
                         <Quote className="w-8 h-8 text-amber-400/25 mb-2" />
 
                         {/* Review Body */}
-                        <p className="text-sm sm:text-[15px] text-slate-700 leading-relaxed font-normal mb-6 min-h-[4.5rem]">
+                        <p className="text-sm sm:text-[15px] text-slate-700 leading-relaxed font-normal mb-6 min-h-18">
                           "{t.text}"
                         </p>
                       </div>
@@ -285,7 +285,7 @@ export const CTASection: React.FC = () => {
 
                         {/* Author Profile */}
                         <div className="flex items-center gap-3">
-                          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center text-white font-bold text-sm shadow-sm shrink-0">
+                          <div className="w-10 h-10 rounded-full bg-linear-to-br from-amber-400 to-orange-500 flex items-center justify-center text-white font-bold text-sm shadow-sm shrink-0">
                             {t.name.charAt(0)}
                           </div>
                           <div className="min-w-0">
@@ -345,7 +345,7 @@ export const CTASection: React.FC = () => {
               <h3 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight">
                 Ready to Power Your Home
                 <br />
-                <span className="bg-gradient-to-r from-amber-400 to-orange-400 bg-clip-text text-transparent">
+                <span className="bg-linear-to-r from-amber-400 to-orange-400 bg-clip-text text-transparent">
                   the Right Way?
                 </span>
               </h3>
@@ -364,14 +364,14 @@ export const CTASection: React.FC = () => {
                   Book Free Consultation
                 </Button>
                 <Button
-                  href="tel:0756789012"
+                  href="tel:1300030479"
                   variant="outline"
                   size="lg"
                   icon={<Phone className="w-4 h-4" />}
                   iconPosition="left"
                   className="border-white/30 text-white hover:border-amber-400 hover:text-amber-400"
                 >
-                  Call (07) 5678 9012
+                  Call 1300 030 479
                 </Button>
               </div>
 

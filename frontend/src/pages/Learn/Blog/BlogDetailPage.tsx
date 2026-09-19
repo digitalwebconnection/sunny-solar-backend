@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Navigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { Breadcrumbs } from '../../../components/layout/Breadcrumbs';
 import { Badge } from '../../../components/ui/Badge';
 import { Button } from '../../../components/ui/Button';
@@ -183,6 +184,15 @@ export const BlogDetailPage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-slate-50 pt-24 sm:pt-28 pb-20">
+      <Helmet>
+        <title>{article.metaTitle || `${article.title} | Sunny Solar`}</title>
+        <meta
+          name="description"
+          content={article.metaDescription || article.excerpt}
+        />
+        {article.keywords && <meta name="keywords" content={article.keywords} />}
+        {article.canonicalUrl && <link rel="canonical" href={article.canonicalUrl} />}
+      </Helmet>
       <Breadcrumbs
         customItems={[
           { label: 'Learn', href: '/learn/knowledge-hub' },

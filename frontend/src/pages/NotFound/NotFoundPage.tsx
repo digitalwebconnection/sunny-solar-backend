@@ -1,46 +1,38 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Sun, Home, ArrowLeft } from 'lucide-react';
-import { Button } from '../../components/ui/Button';
+import { Helmet } from 'react-helmet-async';
+import { Home } from 'lucide-react';
 
 export const NotFoundPage: React.FC = () => {
   return (
-    <div className="min-h-[70vh] flex items-center justify-center bg-slate-50 px-4 py-16">
-      <div className="text-center max-w-md mx-auto space-y-6">
-        <div className="w-20 h-20 rounded-3xl bg-amber-500/10 text-amber-600 flex items-center justify-center mx-auto">
-          <Sun className="w-10 h-10 animate-spin-slow" />
-        </div>
-
-        <span className="text-sm font-black text-amber-600 uppercase tracking-widest block">
-          404 Error
-        </span>
-
-        <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900">
-          Page Not Found
+    <div className="min-h-[75vh] flex items-center justify-center bg-white px-4 py-20">
+      <Helmet>
+        <title>404 - Page Not Found | Sunny Solar</title>
+        <meta
+          name="description"
+          content="The page you are looking for does not exist or has been moved."
+        />
+      </Helmet>
+      <div className="text-center space-y-4">
+        {/* 404 in Big Font */}
+        <h1 className="text-8xl sm:text-9xl font-black text-[#ed5001] tracking-tight leading-none">
+          404
         </h1>
 
-        <p className="text-sm text-slate-600 leading-relaxed">
-          The page you are looking for might have been moved, renamed, or is temporarily out of service.
+        {/* Page Not Found in bottom */}
+        <p className="text-2xl sm:text-3xl font-bold text-slate-800 tracking-tight">
+          Page Not Found
         </p>
 
-        <div className="pt-2 flex justify-center gap-3">
-          <Button
+        {/* Go to Home Page */}
+        <div className="pt-4">
+          <Link
             to="/"
-            variant="primary"
-            size="md"
-            icon={<Home className="w-4 h-4" />}
-            iconPosition="left"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-linear-to-r from-[#ed5001] via-[#f06e02] to-[#f4a304] hover:from-[#c84300] hover:to-[#ed5001] text-white font-bold text-sm shadow-md hover:shadow-lg transition-all"
           >
-            Back to Home
-          </Button>
-
-          <Button
-            to="/calculators"
-            variant="outline"
-            size="md"
-          >
-            Browse Calculators
-          </Button>
+            <Home className="w-4 h-4" />
+            <span>Go to Home Page</span>
+          </Link>
         </div>
       </div>
     </div>

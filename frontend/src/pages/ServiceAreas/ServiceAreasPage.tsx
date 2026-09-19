@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { PageHeader } from '../../components/layout/PageHeader';
 import { serviceAreasData } from '../../data/serviceAreasData';
 import { Badge } from '../../components/ui/Badge';
@@ -10,6 +11,13 @@ import { MapPin, Sun, Zap, ArrowRight, ShieldCheck, CheckCircle2 } from 'lucide-
 export const ServiceAreasPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-slate-50 pb-20">
+      <Helmet>
+        <title>Service Areas Across South East Queensland & Northern NSW | Sunny Solar</title>
+        <meta
+          name="description"
+          content="Check solar and battery installation service coverage across Gold Coast, Brisbane, Sunshine Coast, Ipswich, and Northern NSW."
+        />
+      </Helmet>
       <PageHeader
         badge="Coverage Map"
         title="Solar & Battery"

@@ -161,5 +161,25 @@ export const api = {
   restoreKnowledge: (id: string) =>
     request(`/knowledge/${id}/restore`, {
       method: 'PATCH'
+    }),
+
+  // Leads & Assessment Inquiries
+  createLead: (leadData: any) =>
+    request('/leads', {
+      method: 'POST',
+      body: JSON.stringify(leadData)
+    }),
+
+  getLeads: (status?: string, search?: string) => {
+    const params = new URLSearchParams();
+    if (status && status !== 'all') params.append('status', status);
+    if (search) params.append('search', search);
+    return request(`/leads?${params.toString()}`);
+  },
+
+  updateLeadStatus: (id: string, status: string, notes?: string) =>
+    request(`/leads/${id}/status`, {
+      method: 'PATCH',
+      body: JSON.stringify({ status, notes })
     })
 };

@@ -18,7 +18,7 @@ export const MobileStickyActionBar: React.FC = () => {
       <div className="max-w-md mx-auto grid grid-cols-2 gap-2.5">
         {/* Direct Call Button */}
         <a
-          href="tel:1300786697"
+          href="tel:1300030479"
           className="flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl bg-slate-900 active:bg-slate-800 text-white font-bold text-xs shadow-md transition-transform active:scale-[0.98]"
         >
           <div className="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0">
@@ -26,7 +26,7 @@ export const MobileStickyActionBar: React.FC = () => {
           </div>
           <div className="flex flex-col text-left leading-tight">
             <span className="text-[9px] font-semibold text-slate-400 uppercase tracking-wider">Call Electrician</span>
-            <span className="text-xs font-extrabold text-white">1300 SUNNY</span>
+            <span className="text-xs font-extrabold text-white">1300 030 479</span>
           </div>
         </a>
 

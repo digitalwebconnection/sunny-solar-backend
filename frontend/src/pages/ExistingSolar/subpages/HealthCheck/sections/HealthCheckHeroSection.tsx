@@ -23,12 +23,12 @@ export const HealthCheckHeroSection: React.FC = () => {
               Book Health Check ($189 Special)
             </Button>
             <Button
-              href="tel:1300786697"
+              href="tel:1300030479"
               variant="outline"
               size="md"
               icon={<Phone className="w-4 h-4" />}
             >
-              Call 1300 SUNNY (786 697)
+              Call 1300 030 479
             </Button>
           </>
         }

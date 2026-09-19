@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { HealthCheckHeroSection } from './sections/HealthCheckHeroSection';
 import { HealthCheckAuditGridSection } from './sections/HealthCheckAuditGridSection';
 import { HealthCheckReportCTASection } from './sections/HealthCheckReportCTASection';
@@ -6,6 +7,13 @@ import { HealthCheckReportCTASection } from './sections/HealthCheckReportCTASect
 export const HealthCheckPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-slate-50 pb-20">
+      <Helmet>
+        <title>Comprehensive 24-Point Solar Health Check & Audit | Sunny Solar</title>
+        <meta
+          name="description"
+          content="Book an on-site master electrician inspection, thermal imaging scan, and electrical safety audit for your existing solar installation."
+        />
+      </Helmet>
       {/* 1. Page Header & Trust Overview */}
       <HealthCheckHeroSection />
 

@@ -1,6 +1,5 @@
 import React from 'react';
-
-import { ArrowRight, Phone } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { Button } from '../../../components/ui/Button';
 
 export const ParallaxBannerSection: React.FC = () => {
@@ -8,61 +7,67 @@ export const ParallaxBannerSection: React.FC = () => {
     <section
       className="relative bg-fixed bg-cover bg-center overflow-hidden"
       style={{
-        backgroundImage:
-          "url('/images/home/parallax-solar-home.webp')",
+        backgroundImage: "url('/images/home/parallax-solar-home.webp')",
         backgroundAttachment: 'fixed',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
       }}
     >
-      {/* Upper Div Overlay (h-full with dark scrim and backdrop blur) */}
-      <div className="w-full h-full min-h-90 lg:min-h-100 bg-[#071328]/80 backdrop-blur-[2px] flex items-center justify-center text-center py-10 lg:py-14 px-4 sm:px-6 lg:px-8 relative z-10">
+      {/* Dark overlay with subtle backdrop blur for high contrast readability */}
+      <div className="w-full h-full min-h-90 lg:min-h-90 bg-[#071328]/85  flex items-center justify-center text-center py-8 lg:py-14 px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Subtle solar blue radial lighting */}
-        <div className="absolute inset-0 bg-radial from-blue-600/15 via-transparent to-transparent pointer-events-none" />
+        {/* Subtle radial lighting accent */}
+        <div className="absolute inset-0 bg-radial from-[#ed5001]/10 via-transparent to-transparent pointer-events-none" />
 
-        {/* Upper Content */}
-        <div className="max-w-6xl mx-auto relative z-20 space-y-6">
+        {/* Content Container */}
+        <div className="max-w-5xl mx-auto relative z-20 space-y-4">
           
-          
+          {/* Eyebrow */}
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider text-[#f4a304] bg-[#f4a304]/10 border border-[#f4a304]/30 shadow-xs">
+            <span className="w-2 h-2 rounded-full bg-[#f4a304] animate-pulse" />
+            <span>STILL FIGURING OUT SOLAR?</span>
+          </div>
 
           {/* Headline */}
-          <h2 className="text-2xl sm:text-4xl lg:text-5xl xl:text-5xl font-extrabold text-white tracking-tight font-serif leading-[1.15]">
-            Built for Queensland Heat. <br />
-            <span className="text-transparent bg-clip-text bg-linear-to-r from-[#ed5001] via-[#f06e02] to-[#f4a304]">
-              Engineered to Last Decades.
-            </span>
+          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight font-serif leading-[1.15]">
+            Not Sure What You Need?
           </h2>
 
-          {/* Narrative Story */}
-          <p className="mt-2 text-base sm:text-lg text-slate-100 leading-relaxed max-w-6xl mx-auto">
-            While cut-rate solar outfits liquidate and leave thousands with orphaned inverters, Sunny Solar remains 100% privately owned, debt-free, and dedicated to in-house master craftsmanship since 2011.
+          {/* Supporting Copy */}
+          <p className="mt-2 text-base sm:text-xl text-slate-200 leading-relaxed max-w-5xl mx-auto font-normal">
+            Solar, batteries, existing systems — there’s a lot to consider. Sunny Solar can help you work out what makes sense for your home and energy needs.
           </p>
 
           {/* Action Buttons */}
           <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
             <Button
-              to="/contact"
+              to="/get-started/free-assessment"
               variant="primary"
               size="lg"
-              className="w-full sm:w-auto rounded-xl shadow-xl shadow-[#ed5001]/25 bg-linear-to-r from-[#ed5001] via-[#f06e02] to-[#f4a304] hover:from-[#c84300] hover:to-[#ed5001] text-white border-0 font-bold px-8 py-3.5 lg:py-2 transition-all duration-300 hover:shadow-[#ed5001]/40 hover:-translate-y-0.5 text-base justify-center"
+              className="w-full sm:w-auto rounded-xl shadow-xl shadow-[#ed5001]/25 bg-linear-to-r from-[#ed5001] via-[#f06e02] to-[#f4a304] hover:from-[#c84300] hover:to-[#ed5001] text-white border-0 font-bold px-8 py-3.5 transition-all duration-300 hover:shadow-[#ed5001]/40 hover:-translate-y-0.5 text-base justify-center"
               icon={<ArrowRight className="w-5 h-5" />}
             >
-              Claim Your Free Solar Assessment
+              Explore Your Solar Options
             </Button>
 
-            <a
-              href="tel:1300786697"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3 rounded-xl border border-white/20 hover:border-sky-400/60 bg-white/10 hover:bg-sky-500/15 text-white font-bold text-base backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5"
+            <Button
+              to="/contact"
+              variant="outline"
+              size="lg"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-xl border-2 border-white/30 hover:border-[#f4a304] bg-white/10 hover:bg-white/20 text-white hover:text-white font-bold text-base backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 shadow-md"
+              icon={<ArrowRight className="w-4 h-4" />}
             >
-              <Phone className="w-4 h-4 text-sky-400" />
-              <span>Speak to Trent: 1300 SUNNY</span>
-            </a>
+              Talk to Sunny Solar
+            </Button>
           </div>
 
-        </div>
+          {/* Small Reassurance Line */}
+          <p className="pt-2 text-xs sm:text-sm text-slate-300/80 font-medium">
+            No pressure. Just clear information to help you take the next step.
+          </p>
 
+        </div>
       </div>
     </section>
   );

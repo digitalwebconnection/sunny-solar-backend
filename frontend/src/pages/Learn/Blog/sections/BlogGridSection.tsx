@@ -3,6 +3,7 @@ import { ArticleCard } from '../../../../components/cards/ArticleCard';
 import { Newspaper } from 'lucide-react';
 import { api } from '../../../../services/api';
 import type { Article } from '../../../../types/blog';
+import { articlesData } from '../../../../data/blogData';
 
 const categories = [
   'All Articles',
@@ -15,21 +16,28 @@ const categories = [
 
 export const BlogGridSection: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('All Articles');
-  const [articles, setArticles] = useState<Article[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [articles, setArticles] = useState<Article[]>(() => articlesData);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     let isMounted = true;
     const fetchArticles = async () => {
-      setLoading(true);
       try {
         const res = await api.getBlogs(selectedCategory);
-        if (isMounted) {
-          setArticles(res?.data || []);
+        if (isMounted && res?.data && res.data.length > 0) {
+          setArticles(res.data);
+        } else if (isMounted) {
+          const fallbackFiltered = selectedCategory === 'All Articles'
+            ? articlesData
+            : articlesData.filter((a) => a.category === selectedCategory);
+          setArticles(fallbackFiltered);
         }
       } catch (err) {
         if (isMounted) {
-          setArticles([]);
+          const fallbackFiltered = selectedCategory === 'All Articles'
+            ? articlesData
+            : articlesData.filter((a) => a.category === selectedCategory);
+          setArticles(fallbackFiltered);
         }
       } finally {
         if (isMounted) {

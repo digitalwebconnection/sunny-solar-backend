@@ -1,14 +1,15 @@
-import React, { useState } from 'react';
+ import React, { useState } from 'react';
 import { Badge } from '../../../../../components/ui/Badge';
 import { Button } from '../../../../../components/ui/Button';
 import { FileSearch, CheckCircle2, ShieldCheck, Mail, User, Phone, Upload, TrendingDown, DollarSign } from 'lucide-react';
-import { submitToWeb3Forms } from '../../../../../utils/web3forms';
+import { submitToWeb3Forms, fileToBase64 } from '../../../../../utils/web3forms';
+import { api } from '../../../../../services/api';
 
 export const ElectricityBillReviewMainSection: React.FC = () => {
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
-  const [fileName, setFileName] = useState<string | null>(null);
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -23,33 +24,77 @@ export const ElectricityBillReviewMainSection: React.FC = () => {
     setIsSubmitting(true);
     setErrorMessage('');
 
-    const res = await submitToWeb3Forms({
-      name: formData.name,
-      email: formData.email,
-      phone: formData.phone,
-      postcode: formData.postcode,
-      quarterly_bill: formData.quarterlyBill,
-      notes: formData.notes || 'None provided',
-      attached_bill_filename: fileName || 'None attached',
-      page: 'Electricity Bill Review Page',
-    }, {
-      subject: `New Electricity Bill Review Request - ${formData.name} (${formData.postcode})`,
-      from_name: 'Sunny Solar Bill Review',
-    });
+    try {
+      let fileData: string | undefined;
+      if (selectedFile && selectedFile.size <= 5 * 1024 * 1024) {
+        try {
+          fileData = await fileToBase64(selectedFile);
+        } catch (fErr) {
+          console.warn('File reading error:', fErr);
+        }
+      }
 
-    setIsSubmitting(false);
-    if (res.success) {
-      setSubmitted(true);
-    } else {
-      setErrorMessage(res.message || 'Error submitting request. Please try again.');
+      // 1. Save to MongoDB database
+      let backendSuccess = false;
+      try {
+        await api.createLead({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          suburb: formData.postcode,
+          service: `Electricity Bill Audit (${formData.quarterlyBill})`,
+          message: formData.notes || '',
+          sourcePage: 'Electricity Bill Review Page',
+          fileName: selectedFile?.name || '',
+          fileData,
+        });
+        backendSuccess = true;
+      } catch (dbErr) {
+        console.warn('Database lead notice:', dbErr);
+      }
+
+      // 2. Dispatch via Web3Forms
+      const web3Payload: Record<string, any> = {
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        postcode: formData.postcode,
+        quarterly_bill: formData.quarterlyBill,
+        notes: formData.notes || 'None provided',
+        page: 'Electricity Bill Review Page',
+      };
+
+      if (selectedFile) {
+        web3Payload.attachment = selectedFile;
+        web3Payload.attached_bill_filename = selectedFile.name;
+      }
+
+      const res = await submitToWeb3Forms(web3Payload, {
+        subject: `New Electricity Bill Review Request - ${formData.name} (${formData.postcode})`,
+        from_name: 'Sunny Solar Bill Review',
+      });
+
+      setIsSubmitting(false);
+      if (res.success || backendSuccess) {
+        setSubmitted(true);
+      } else {
+        setErrorMessage(res.message || 'Error submitting request. Please try again.');
+      }
+    } catch (err: any) {
+      setIsSubmitting(false);
+      setErrorMessage('Failed to send request. Please check your connection and try again.');
     }
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
-      setFileName(e.target.files[0].name);
+      setSelectedFile(e.target.files[0]);
     }
   };
+
+  function setFileName(arg0: null) {
+    throw new Error('Function not implemented.');
+  }
 
   return (
     <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 mb-16">
@@ -221,8 +266,8 @@ export const ElectricityBillReviewMainSection: React.FC = () => {
                 <label className="border-2 border-dashed border-slate-300 hover:border-amber-400 rounded-lg p-3 text-center block cursor-pointer bg-slate-50 transition-colors">
                   <Upload className="w-5 h-5 text-slate-400 mx-auto mb-1" />
                   <span className="text-xs font-medium text-slate-600 block">
-                    {fileName ? (
-                      <span className="text-emerald-600 font-bold">{fileName}</span>
+                    {selectedFile ? (
+                      <span className="text-emerald-600 font-bold">{selectedFile.name}</span>
                     ) : (
                       'Click to attach electricity bill file (PDF, JPG, PNG)'
                     )}

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { SystemSizeHeroSection } from './sections/SystemSizeHeroSection';
 import { SystemSizeCalcSection } from './sections/SystemSizeCalcSection';
 import { SystemSizeAddBatterySection } from './sections/SystemSizeAddBatterySection';
@@ -6,6 +7,13 @@ import { SystemSizeAddBatterySection } from './sections/SystemSizeAddBatterySect
 export const SystemSizeCalcPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-slate-50 pb-20">
+      <Helmet>
+        <title>Solar System Size Calculator | Sunny Solar</title>
+        <meta
+          name="description"
+          content="Determine the ideal solar panel kW capacity and rooftop layout for your household energy consumption."
+        />
+      </Helmet>
       {/* Section 1: Page Header & Hero */}
       <SystemSizeHeroSection />
 

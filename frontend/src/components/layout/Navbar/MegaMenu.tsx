@@ -93,7 +93,7 @@ export const MegaMenu: React.FC<MegaMenuProps> = ({ section, isOpen, onClose }) 
         <div className="bg-white rounded-lg shadow-[0_20px_50px_-12px_rgba(0,0,0,0.22),0_0_0_1px_rgba(0,0,0,0.06)] border border-slate-100 overflow-hidden">
           
           {/* Top subtle gradient highlight rim with Brand colors (Green to Solar Blue to Solar Orange) */}
-          <div className="h-1 w-full bg-gradient-to-r from-[#265e11] via-[#1d4ed8] via-[#f06e02] to-[#ed5001]" />
+          <div className="h-1 w-full bg-linear-to-r from-[#265e11] via-[#1d4ed8] to-[#ed5001]" />
 
           <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch">
             {/* Left Zone: Nav Items */}
@@ -173,7 +173,7 @@ export const MegaMenu: React.FC<MegaMenuProps> = ({ section, isOpen, onClose }) 
 
             {/* Right Zone: Integrated Featured Panel */}
             {featured && (
-              <div className="lg:col-span-4 bg-gradient-to-br from-[#071328] via-[#0b1f3a] to-slate-950 text-white p-6 flex flex-col justify-between relative overflow-hidden border-t lg:border-t-0 lg:border-l border-slate-800">
+              <div className="lg:col-span-4 bg-linear-to-br from-[#071328] via-[#0b1f3a] to-slate-950 text-white p-6 flex flex-col justify-between relative overflow-hidden border-t lg:border-t-0 lg:border-l border-slate-800">
                 {/* Subtle radial glow */}
                 <div className="absolute top-0 right-0 w-36 h-36 bg-blue-600/15 rounded-full blur-2xl pointer-events-none" />
 
@@ -214,11 +214,11 @@ export const MegaMenu: React.FC<MegaMenuProps> = ({ section, isOpen, onClose }) 
                   </Link>
 
                   <a
-                    href="tel:1300786697"
+                    href="tel:1300030479"
                     className="inline-flex items-center gap-1 text-[11px] text-slate-400 hover:text-white transition-colors"
                   >
                     <Phone className="w-3 h-3 text-[#f06e02]" />
-                    <span>1300 SUNNY</span>
+                    <span>1300 030 479</span>
                   </a>
                 </div>
               </div>

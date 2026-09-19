@@ -442,8 +442,8 @@ export function generateBuyingChecklistPdf(options: ChecklistPdfOptions): { blob
   // Footer
   page.setStrokeColor(0.85, 0.88, 0.92);
   page.drawLine(35, 805, 560, 805);
-  page.drawText('Sunny Solar Australia • Buying Checklist • www.sunnysolar.com.au • 1300 SUNNY', 35, 814, '/F1', 8, 0.5, 0.55, 0.6);
-  page.drawText(`Prepared for ${customerName} • Page 1 of 1`, 430, 814, '/F1', 8, 0.5, 0.55, 0.6);
+  page.drawText('Sunny Solar • 10A Burralong Dr, Wondunna QLD 4655 • 1300 030 479 • www.sunnysolar.com.au', 35, 814, '/F1', 8, 0.5, 0.55, 0.6);
+  page.drawText(`Prepared for ${customerName} • Page 1 of 1`, 420, 814, '/F1', 8, 0.5, 0.55, 0.6);
 
   // Build blob and trigger download
   const blob = doc.buildBlob();

@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter, useLocation } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 import { ScrollToTop } from './components/layout/ScrollToTop';
 import { SmoothScroll } from './components/common/SmoothScroll';
 import { Navbar } from './components/layout/Navbar/Navbar';
@@ -41,9 +42,11 @@ function AppLayout() {
 
 export function App() {
   return (
-    <BrowserRouter>
-      <AppLayout />
-    </BrowserRouter>
+    <HelmetProvider>
+      <BrowserRouter>
+        <AppLayout />
+      </BrowserRouter>
+    </HelmetProvider>
   );
 }
 

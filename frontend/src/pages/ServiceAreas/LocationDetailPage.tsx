@@ -1,5 +1,6 @@
 import React from 'react';
 import { useParams, Navigate, Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { serviceAreasData } from '../../data/serviceAreasData';
 import { Breadcrumbs } from '../../components/layout/Breadcrumbs';
 import { Badge } from '../../components/ui/Badge';
@@ -16,6 +17,13 @@ export const LocationDetailPage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-slate-50 pb-20 pt-24 sm:pt-28">
+      <Helmet>
+        <title>{`Solar & Battery Installations in ${area.name}, ${area.region} | Sunny Solar`}</title>
+        <meta
+          name="description"
+          content={`${area.headline}. Master Electrician solar panel and battery installations across ${area.name} with 25-year warranty.`}
+        />
+      </Helmet>
       <Breadcrumbs
         customItems={[
           { label: 'Service Areas', href: '/service-areas' },
@@ -58,11 +66,11 @@ export const LocationDetailPage: React.FC = () => {
             </Button>
 
             <a
-              href="tel:1300786697"
+              href="tel:1300030479"
               className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl border border-slate-300 font-bold text-slate-800 hover:bg-slate-50 transition-colors w-full sm:w-auto"
             >
               <Phone className="w-4 h-4 text-amber-500" />
-              1300 SUNNY (786 697)
+              1300 030 479
             </a>
           </div>
         </div>

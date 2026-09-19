@@ -83,23 +83,38 @@ export const Footer: React.FC = () => {
             <div>
               <h4 className="text-lg font-semibold text-[#18181b] font-serif mb-4">Contact Us</h4>
               <div className="space-y-3.5 text-sm text-slate-700">
-                <Link to="/service-areas" className="flex items-start gap-2.5 hover:text-[#ed5001] transition-colors group">
+                <a
+                  href="https://maps.google.com/?q=10A+Burralong+Dr,+Wondunna+QLD+4655,+Australia"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-start gap-2.5 hover:text-[#ed5001] transition-colors group"
+                  title="View Sunny Solar location on Google Maps"
+                >
                   <MapPin className="w-4 h-4 text-[#ed5001] mt-0.5 shrink-0 group-hover:scale-110 transition-transform" />
-                  <span>Gold Coast &amp; Brisbane Head Offices, Queensland, Australia</span>
-                </Link>
-                <a href="tel:1300786697" className="flex items-center gap-2.5 hover:text-[#ed5001] transition-colors">
-                  <Phone className="w-4 h-4 text-[#ed5001] shrink-0" />
-                  1300 SUNNY (786 697)
+                  <span>10A Burralong Dr, Wondunna QLD 4655, Australia</span>
                 </a>
-                <a href="mailto:hello@sunnysolar.com.au" className="flex items-center gap-2.5 hover:text-[#ed5001] transition-colors">
+                <a href="tel:1300030479" className="flex items-center gap-2.5 hover:text-[#ed5001] transition-colors">
+                  <Phone className="w-4 h-4 text-[#ed5001] shrink-0" />
+                  1300 030 479
+                </a>
+                <a href="mailto:info@sunnysolar.com.au" className="flex items-center gap-2.5 hover:text-[#ed5001] transition-colors">
                   <Mail className="w-4 h-4 text-[#ed5001] shrink-0" />
-                  hello@sunnysolar.com.au
+                  info@sunnysolar.com.au
                 </a>
 
-                <div className="pt-1">
+                <div className="pt-1 flex flex-col gap-1.5">
+                  <a
+                    href="https://maps.google.com/?q=10A+Burralong+Dr,+Wondunna+QLD+4655,+Australia"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 text-xs font-semibold text-[#ed5001] hover:text-[#c84300] transition-colors"
+                  >
+                    <span>View on Google Maps</span>
+                    <ArrowRight className="w-3 h-3" />
+                  </a>
                   <Link
                     to="/service-areas"
-                    className="inline-flex items-center gap-1 text-xs font-semibold text-[#ed5001] hover:text-[#c84300] transition-colors"
+                    className="inline-flex items-center gap-1 text-xs font-semibold text-slate-500 hover:text-[#ed5001] transition-colors"
                   >
                     <span>View all serviced areas</span>
                     <ArrowRight className="w-3 h-3" />
@@ -205,13 +220,13 @@ export const Footer: React.FC = () => {
 
       {/* Bottom Bar */}
       <div className="bg-[#0a1420] border-t border-white/5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 pb-20 lg:pb-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/90 text-center sm:text-left">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 pb-20 lg:pb-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-white/90 text-center sm:text-left">
           <span>© {new Date().getFullYear()} Sunny Solar Energy Pty Ltd. All rights reserved.</span>
           <div className="flex flex-wrap items-center justify-center gap-4">
-            <Link to="/legal/privacy-policy" className="underline underline-offset-2 hover:text-white transition-colors">Privacy Policy</Link>
-            <Link to="/legal/terms-conditions" className="underline underline-offset-2 hover:text-white transition-colors">Terms &amp; Conditions</Link>
-            <Link to="/legal/terms-of-trade" className="underline underline-offset-2 hover:text-white transition-colors">Terms of Trade</Link>
-            <span>Brand &amp; Website by <a href="https://digitalwebconnection.com" target="_blank" rel="noopener noreferrer" className="text-[#ed5001] font-semibold hover:text-[#f4a304] transition-colors">Digital Web Connection</a></span>
+            <Link to="/legal/privacy-policy" className=" hover:text-white transition-colors">Privacy Policy</Link>
+            <Link to="/legal/terms-conditions" className="hover:text-white transition-colors">Terms &amp; Conditions</Link>
+            <Link to="/legal/terms-of-trade" className="hover:text-white transition-colors">Terms of Trade</Link>
+            <span>Digital Partner <a href="https://digitalwebconnection.com" target="_blank" rel="noopener noreferrer" className="text-[#ed5001] font-semibold hover:text-[#f4a304] transition-colors">Digital Web Connection</a></span>
           </div>
         </div>
       </div>

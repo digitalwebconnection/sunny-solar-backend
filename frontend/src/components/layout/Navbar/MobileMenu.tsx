@@ -148,24 +148,24 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
 
           <div className="pt-2 text-xs text-slate-500 space-y-1.5">
             <a
-              href="tel:1300786697"
+              href="tel:1300030479"
               className="flex items-center gap-2 text-slate-700 font-semibold hover:text-[#ed5001]"
             >
               <Phone className="w-3.5 h-3.5 text-[#ed5001]" />
-              1300 SUNNY (1300 786 697)
+              1300 030 479
             </a>
             <a
-              href="mailto:hello@sunnysolar.com.au"
+              href="mailto:info@sunnysolar.com.au"
               className="flex items-center gap-2 text-slate-500 hover:text-slate-800"
             >
               <Mail className="w-3.5 h-3.5 text-[#ed5001]" />
-              hello@sunnysolar.com.au
+              info@sunnysolar.com.au
             </a>
           </div>
 
           <div className="flex items-center gap-1.5 text-[11px] text-[#265e11] font-medium pt-1">
             <ShieldCheck className="w-3.5 h-3.5 text-[#265e11] shrink-0" />
-            <span>CEC Approved Solar Retailer #A4892</span>
+            <span>NETCC APPROVED SELLER #A4892</span>
           </div>
         </div>
       </div>

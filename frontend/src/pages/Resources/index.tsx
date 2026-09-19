@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { ResourcesHeroSection } from './sections/ResourcesHeroSection';
 import { ResourcesGridSection } from './sections/ResourcesGridSection';
 import { ResourcesAddBatterySection } from './sections/ResourcesAddBatterySection';
@@ -7,6 +8,13 @@ import { ResourcesCTASection } from './sections/ResourcesCTASection';
 export const ResourcesLandingPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col">
+      <Helmet>
+        <title>Free Solar Guides, Checklists & Downloadable Resources | Sunny Solar</title>
+        <meta
+          name="description"
+          content="Download free comprehensive buyer guides, battery decision matrices, and pre-purchase checklists for Queensland homeowners."
+        />
+      </Helmet>
       {/* Section 1: Hero Section */}
       <ResourcesHeroSection />
 

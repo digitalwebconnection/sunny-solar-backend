@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { PageHeader } from '../../components/layout/PageHeader';
 import { Badge } from '../../components/ui/Badge';
 import { Button } from '../../components/ui/Button';
@@ -7,6 +8,13 @@ import { ShieldCheck, Award, Zap, Phone, Mail, ArrowRight, CheckCircle2 } from '
 export const TrentBioPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-slate-50 pb-20">
+      <Helmet>
+        <title>Meet Trent Palmer - Founder & Master Electrician | Sunny Solar</title>
+        <meta
+          name="description"
+          content="Learn about Trent Palmer, Founder and Master Electrician at Sunny Solar, with over 20 years in electrical design and renewable installations."
+        />
+      </Helmet>
       <PageHeader
         badge="Founder Spotlight"
         title="Meet Trent Palmer"

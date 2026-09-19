@@ -1,8 +1,14 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { easeInOut, motion, type Variants } from 'framer-motion';
-import { MapPin, ArrowRight, Sun } from 'lucide-react';
-import { serviceAreasData } from '../../../data/serviceAreasData';
+import { motion, type Variants } from 'framer-motion';
+import {
+  Sun,
+  BatteryCharging,
+  Activity,
+  TrendingUp,
+  Calculator,
+  ArrowRight,
+} from 'lucide-react';
 import { Button } from '../../../components/ui/Button';
 
 const containerVariants: Variants = {
@@ -10,72 +16,157 @@ const containerVariants: Variants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.1,
+      staggerChildren: 0.08,
       delayChildren: 0.05,
     },
   },
 };
 
 const cardVariants: Variants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: 18 },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.45,
+      duration: 0.4,
       ease: [0.22, 1, 0.36, 1],
     },
   },
 };
 
-export const ServiceAreasTeaserSection: React.FC = () => {
-  const [hoveredSlug, setHoveredSlug] = useState<string | null>(null);
+interface SolutionCard {
+  id: string;
+  badge: string;
+  title: string;
+  description: string;
+  cta: string;
+  link: string;
+  icon: React.ComponentType<{ className?: string }>;
+  theme: {
+    borderActive: string;
+    borderHover: string;
+    shadowHover: string;
+    indicator: string;
+    iconBg: string;
+    iconText: string;
+    badgeStyle: string;
+    titleHover: string;
+    actionText: string;
+  };
+}
 
-  const flagshipHubs = serviceAreasData.slice(0, 2);
-  const regionalCorridors = serviceAreasData.slice(2, 5);
-
-  const regionalThemes = [
-    {
-      // Sunshine Coast: Emerald Green
-      borderActive: 'border-[#265e11] ring-2 ring-[#265e11]/20',
-      borderHover: 'hover:border-[#265e11]/60',
-      shadowHover: 'hover:shadow-emerald-500/15',
-      indicator: 'bg-gradient-to-r from-[#265e11] via-emerald-500 to-teal-400',
-      iconBg: 'bg-emerald-50 text-[#265e11] group-hover:bg-[#265e11] group-hover:text-white',
-      titleHover: 'group-hover:text-[#265e11]',
-      badge: 'text-[#265e11] bg-emerald-50/90 group-hover:bg-emerald-100/90 border-emerald-200/80',
-      sunIcon: 'text-[#265e11]',
-      action: 'text-[#265e11] group-hover:text-emerald-800',
-    },
-    {
-      // Ipswich & Western Corridor: Solar Panel Blue
-      borderActive: 'border-[#1d4ed8] ring-2 ring-[#1d4ed8]/20',
-      borderHover: 'hover:border-[#1d4ed8]/60',
-      shadowHover: 'hover:shadow-blue-500/15',
-      indicator: 'bg-gradient-to-r from-[#1d4ed8] via-[#2563eb] to-[#0284c7]',
-      iconBg: 'bg-blue-50 text-[#1d4ed8] group-hover:bg-[#1d4ed8] group-hover:text-white',
-      titleHover: 'group-hover:text-[#1d4ed8]',
-      badge: 'text-[#1d4ed8] bg-blue-50/90 group-hover:bg-blue-100/90 border-blue-200/80',
-      sunIcon: 'text-[#1d4ed8]',
-      action: 'text-[#1d4ed8] group-hover:text-blue-800',
-    },
-    {
-      // Northern NSW: Solar Orange
+const flagshipSolutions: SolutionCard[] = [
+  {
+    id: '01',
+    badge: 'SOLAR',
+    title: 'Residential Solar',
+    description: 'Solar systems designed around your home, energy use and electricity needs.',
+    cta: 'Explore Solar',
+    link: '/solar',
+    icon: Sun,
+    theme: {
       borderActive: 'border-[#ed5001] ring-2 ring-[#ed5001]/20',
       borderHover: 'hover:border-[#ed5001]/60',
       shadowHover: 'hover:shadow-orange-500/15',
-      indicator: 'bg-gradient-to-r from-[#ed5001] via-[#f06e02] to-[#f4a304]',
+      indicator: 'bg-linear-to-r from-[#ed5001] via-[#f06e02] to-[#f4a304]',
       iconBg: 'bg-orange-50 text-[#ed5001] group-hover:bg-[#ed5001] group-hover:text-white',
+      iconText: 'text-[#ed5001]',
+      badgeStyle: 'text-[#ed5001] bg-orange-50/90 group-hover:bg-orange-100/90 border-orange-200/80',
       titleHover: 'group-hover:text-[#ed5001]',
-      badge: 'text-[#ed5001] bg-orange-50/90 group-hover:bg-orange-100/90 border-orange-200/80',
-      sunIcon: 'text-[#ed5001]',
-      action: 'text-[#ed5001] group-hover:text-[#c84300]',
+      actionText: 'text-[#ed5001] group-hover:text-[#c84300]',
     },
-  ];
+  },
+  {
+    id: '02',
+    badge: 'BATTERIES',
+    title: 'Home Battery Storage',
+    description: 'Store more of your solar and make better use of the energy you generate.',
+    cta: 'Explore Batteries',
+    link: '/batteries',
+    icon: BatteryCharging,
+    theme: {
+      borderActive: 'border-[#1d4ed8] ring-2 ring-[#1d4ed8]/20',
+      borderHover: 'hover:border-[#1d4ed8]/60',
+      shadowHover: 'hover:shadow-blue-500/15',
+      indicator: 'bg-linear-to-r from-[#1d4ed8] via-[#2563eb] to-[#0284c7]',
+      iconBg: 'bg-blue-50 text-[#1d4ed8] group-hover:bg-[#1d4ed8] group-hover:text-white',
+      iconText: 'text-[#1d4ed8]',
+      badgeStyle: 'text-[#1d4ed8] bg-blue-50/90 group-hover:bg-blue-100/90 border-blue-200/80',
+      titleHover: 'group-hover:text-[#1d4ed8]',
+      actionText: 'text-[#1d4ed8] group-hover:text-blue-800',
+    },
+  },
+];
+
+const secondarySolutions: SolutionCard[] = [
+  {
+    id: '03',
+    badge: 'EXISTING SOLAR',
+    title: 'Solar Health Check',
+    description: 'Find out how your existing system is performing and what you could do next.',
+    cta: 'Check Your Solar',
+    link: '/existing-solar/health-check',
+    icon: Activity,
+    theme: {
+      borderActive: 'border-[#265e11] ring-2 ring-[#265e11]/20',
+      borderHover: 'hover:border-[#265e11]/60',
+      shadowHover: 'hover:shadow-emerald-500/15',
+      indicator: 'bg-linear-to-r from-[#265e11] via-emerald-500 to-teal-400',
+      iconBg: 'bg-emerald-50 text-[#265e11] group-hover:bg-[#265e11] group-hover:text-white',
+      iconText: 'text-[#265e11]',
+      badgeStyle: 'text-[#265e11] bg-emerald-50/90 group-hover:bg-emerald-100/90 border-emerald-200/80',
+      titleHover: 'group-hover:text-[#265e11]',
+      actionText: 'text-[#265e11] group-hover:text-emerald-800',
+    },
+  },
+  {
+    id: '04',
+    badge: 'UPGRADES',
+    title: 'Get More From Your Solar',
+    description: 'Explore system expansion, battery additions and other upgrade options.',
+    cta: 'Explore Upgrades',
+    link: '/existing-solar/upgrade',
+    icon: TrendingUp,
+    theme: {
+      borderActive: 'border-amber-500 ring-2 ring-amber-500/20',
+      borderHover: 'hover:border-amber-400/60',
+      shadowHover: 'hover:shadow-amber-500/15',
+      indicator: 'bg-linear-to-r from-amber-500 via-amber-400 to-yellow-300',
+      iconBg: 'bg-amber-50 text-amber-600 group-hover:bg-amber-500 group-hover:text-white',
+      iconText: 'text-amber-600',
+      badgeStyle: 'text-amber-700 bg-amber-50/90 group-hover:bg-amber-100/90 border-amber-200/80',
+      titleHover: 'group-hover:text-amber-600',
+      actionText: 'text-amber-700 group-hover:text-amber-900',
+    },
+  },
+  {
+    id: '05',
+    badge: 'SOLAR TOOLS',
+    title: 'Know Your Numbers',
+    description: 'Calculate your potential savings, system size, battery needs and payback.',
+    cta: 'Explore Solar Tools',
+    link: '/calculators',
+    icon: Calculator,
+    theme: {
+      borderActive: 'border-indigo-500 ring-2 ring-indigo-500/20',
+      borderHover: 'hover:border-indigo-400/60',
+      shadowHover: 'hover:shadow-indigo-500/15',
+      indicator: 'bg-linear-to-r from-indigo-500 via-blue-500 to-sky-400',
+      iconBg: 'bg-indigo-50 text-indigo-600 group-hover:bg-indigo-600 group-hover:text-white',
+      iconText: 'text-indigo-600',
+      badgeStyle: 'text-indigo-700 bg-indigo-50/90 group-hover:bg-indigo-100/90 border-indigo-200/80',
+      titleHover: 'group-hover:text-indigo-600',
+      actionText: 'text-indigo-700 group-hover:text-indigo-900',
+    },
+  },
+];
+
+export const ServiceAreasTeaserSection: React.FC = () => {
+  const [hoveredId, setHoveredId] = useState<string | null>(null);
 
   return (
-    <section className="py-10 lg:py-14 bg-linear-to-b from-white via-slate-50/70 to-white relative overflow-hidden border-t border-slate-200/70">
-      {/* Background Animated Atmosphere: Technical Dot-Grid Pattern */}
+    <section className="py-12 lg:py-16 bg-linear-to-b from-white via-slate-50/70 to-white relative overflow-hidden border-t border-slate-200/70">
+      {/* Background Subtle Dot-Grid Pattern */}
       <div
         className="absolute inset-0 opacity-[0.035] pointer-events-none"
         style={{
@@ -85,54 +176,44 @@ export const ServiceAreasTeaserSection: React.FC = () => {
       />
 
       {/* Floating Ambient Brand Glow Orbs */}
-      <motion.div
-        animate={{
-          x: [0, 20, 0],
-          y: [0, -15, 0],
-          scale: [1, 1.06, 1],
-        }}
-        transition={{ duration: 10, repeat: Infinity, ease: easeInOut }}
-        className="absolute top-1/4 -left-28 w-96 h-96 bg-[#265e11]/8 rounded-full blur-3xl pointer-events-none"
-      />
-      <motion.div
-        animate={{
-          x: [0, -20, 0],
-          y: [0, 15, 0],
-          scale: [1, 1.08, 1],
-        }}
-        transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
-        className="absolute bottom-12 -right-28 w-96 h-96 bg-[#ed5001]/8 rounded-full blur-3xl pointer-events-none"
-      />
+      <div className="absolute top-1/4 -left-28 w-96 h-96 bg-[#265e11]/6 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-12 -right-28 w-96 h-96 bg-[#ed5001]/6 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute top-1/2 right-1/3 w-80 h-80 bg-blue-600/5 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
 
-          {/* Left Column: Local Authority Story & Interactive Action */}
+          {/* Left Column: Section Heading & CTA */}
           <motion.div
-            initial={{ opacity: 0, y: 25 }}
+            initial={{ opacity: 0, y: 22 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-50px' }}
-            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="lg:col-span-5 space-y-2"
+            transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+            className="lg:col-span-5 space-y-4"
           >
+            {/* Eyebrow */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider text-[#1d4ed8] bg-blue-50 border border-blue-200/90 shadow-2xs">
+              <span className="w-2 h-2 rounded-full bg-[#1d4ed8] animate-pulse" />
+              <span>SOLAR FOR AUSTRALIAN HOMES</span>
+            </div>
+
             {/* Headline */}
-            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-[#18181b] tracking-tight font-serif leading-[1.15]">
-              Proudly Powering <br />
-              <span className="text-transparent bg-clip-text bg-linear-to-r from-[#ed5001] via-[#f06e02] to-[#f4a304] inline-block hover:scale-[1.01] transition-transform origin-left">
-                South East Queensland
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#18181b] tracking-tight font-serif leading-[1.15]">
+              Solar Solutions Built for <br />
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-[#ed5001] via-[#f06e02] to-[#f4a304] inline-block">
+                Australian Homes.
               </span>
             </h2>
 
-            {/* Narrative */}
-            <p className="text-base text-slate-700 leading-relaxed">
-              We don’t run remote call centres from interstate. Trent Palmer and our in-house master electricians are based directly out of our Gold Coast and Brisbane facilities—ensuring rapid 5-day Energex approvals, marine-grade coastal installations, and genuine local accountability.
+            {/* Supporting Copy */}
+            <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
+              From solar and batteries to existing-system assessments and upgrades, Sunny Solar helps Australian homeowners make the most of their energy.
             </p>
 
-            {/* Action Button with Light Shimmer Sheen */}
-            <div className="">
+            {/* CTA Button */}
+            <div className="pt-2">
               <Button
-                to="/service-areas"
+                to="/solar"
                 variant="primary"
                 size="md"
                 className="w-full sm:w-auto group relative overflow-hidden rounded-xl shadow-lg shadow-[#ed5001]/25 bg-linear-to-r from-[#ed5001] via-[#f06e02] to-[#f4a304] hover:from-[#c84300] hover:to-[#ed5001] text-white border-0 font-bold px-7 py-3.5 transition-all duration-300 hover:shadow-[#ed5001]/40 hover:-translate-y-0.5 justify-center"
@@ -140,13 +221,12 @@ export const ServiceAreasTeaserSection: React.FC = () => {
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform duration-300" />
                 }
               >
-                <span className="absolute top-0 -left-full w-[60%] h-full bg-linear-to-r from-transparent via-white/25 to-transparent -skew-x-12 group-hover:left-[200%] transition-all duration-1000 ease-out pointer-events-none" />
-                <span>Explore All Suburbs & Local Rebates</span>
+                <span>Explore Our Solutions</span>
               </Button>
             </div>
           </motion.div>
 
-          {/* Right Column: Clear, Balanced Regional Hub Cards with Rich Micro-Animations */}
+          {/* Right Column: 5 Solution Cards (2 Top, 3 Bottom) */}
           <motion.div
             variants={containerVariants}
             initial="hidden"
@@ -154,123 +234,69 @@ export const ServiceAreasTeaserSection: React.FC = () => {
             viewport={{ once: true, margin: '-50px' }}
             className="lg:col-span-7 space-y-4"
           >
-            {/* Top Row: 2 Major Flagship Metro Hubs */}
+            {/* Top Row: 2 Major Cards (Card 01 & Card 02) */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {flagshipHubs.map((area, idx) => {
-                const isHovered = hoveredSlug === area.slug;
-                const isBlue = idx === 1; // Brisbane uses Solar Panel Blue
+              {flagshipSolutions.map((card) => {
+                const isHovered = hoveredId === card.id;
+                const IconComponent = card.icon;
 
                 return (
                   <motion.div
-                    key={area.slug}
+                    key={card.id}
                     variants={cardVariants}
                     whileHover={{ y: -5, transition: { duration: 0.25, ease: 'easeOut' } }}
                     whileTap={{ scale: 0.985 }}
                     className="h-full"
                   >
                     <Link
-                      to={`/service-areas/${area.slug}`}
-                      onMouseEnter={() => setHoveredSlug(area.slug)}
-                      onMouseLeave={() => setHoveredSlug(null)}
+                      to={card.link}
+                      onMouseEnter={() => setHoveredId(card.id)}
+                      onMouseLeave={() => setHoveredId(null)}
                       className={`group relative bg-white rounded-2xl p-5 sm:p-6 border transition-all duration-300 flex flex-col justify-between h-full overflow-hidden shadow-md shadow-slate-900/5 hover:shadow-xl ${
-                        isBlue
-                          ? isHovered
-                            ? 'border-[#1d4ed8] ring-2 ring-[#1d4ed8]/20 shadow-blue-500/15'
-                            : 'border-slate-300/80 hover:border-[#1d4ed8]/60 hover:shadow-blue-500/15'
-                          : isHovered
-                            ? 'border-[#ed5001] ring-2 ring-[#ed5001]/20 shadow-orange-500/15'
-                            : 'border-slate-300/80 hover:border-[#ed5001]/60 hover:shadow-orange-500/15'
+                        isHovered
+                          ? `${card.theme.borderActive} ${card.theme.shadowHover}`
+                          : `border-slate-300/80 ${card.theme.borderHover} ${card.theme.shadowHover}`
                       }`}
                     >
-                      {/* Glowing Backlight Aura on Hover */}
-                      <div
-                        className={`absolute -inset-px rounded-2xl opacity-0 group-hover:opacity-100 blur-xs transition-opacity duration-500 -z-10 ${
-                          isBlue
-                            ? 'bg-linear-to-r from-[#1d4ed8]/15 via-[#0284c7]/10 to-[#265e11]/15'
-                            : 'bg-linear-to-r from-[#ed5001]/15 via-[#f4a304]/10 to-[#265e11]/15'
-                        }`}
-                      />
-
                       {/* Top active indicator line on hover */}
                       <div
-                        className={`absolute top-0 left-0 right-0 h-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${
-                          isBlue
-                            ? 'bg-linear-to-r from-[#1d4ed8] via-[#2563eb] to-[#0284c7]'
-                            : 'bg-linear-to-r from-[#ed5001] via-[#f06e02] to-[#f4a304]'
-                        }`}
+                        className={`absolute top-0 left-0 right-0 h-1.25 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${card.theme.indicator}`}
                       />
 
-                      <div className="space-y-4">
-                        {/* Header Row: Icon, Title & Sun Hours Badge */}
-                        <div className="flex items-start justify-between gap-3">
-                          <div className="flex items-center gap-3 min-w-0">
-                            <div
-                              className={`w-10 h-10 rounded-lg border flex items-center justify-center shrink-0 transition-all duration-300 shadow-xs ${
-                                isBlue
-                                  ? 'bg-blue-50/80 border-blue-200/70 text-[#1d4ed8] group-hover:bg-[#1d4ed8] group-hover:text-white group-hover:shadow-blue-500/20'
-                                  : 'bg-orange-50/80 border-orange-200/70 text-[#ed5001] group-hover:bg-[#ed5001] group-hover:text-white group-hover:shadow-orange-500/20'
-                              }`}
-                            >
-                              <MapPin className="w-4 h-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:scale-110" />
-                            </div>
-                            <div className="min-w-0">
-                              <h3
-                                className={`font-bold text-slate-900 transition-colors text-base sm:text-lg truncate ${
-                                  isBlue ? 'group-hover:text-[#1d4ed8]' : 'group-hover:text-[#ed5001]'
-                                }`}
-                              >
-                                {area.name}
-                              </h3>
-                              <div className="flex items-center gap-1.5 text-xs text-emerald-700 font-medium">
-                                <span className="relative flex h-2 w-2">
-                                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-600"></span>
-                                </span>
-                                <span>{area.installerCount.split(' ')[0]} Master Electricians</span>
-                              </div>
-                            </div>
-                          </div>
-
-                          {/* Rotating Sun Badge */}
+                      <div className="space-y-3.5">
+                        {/* Header Row: Badge & Icon */}
+                        <div className="flex items-center justify-between gap-3">
                           <span
-                            className={`inline-flex items-center gap-1.5 text-xs font-bold px-2.5 py-1 rounded-full border shrink-0 transition-all duration-300 shadow-2xs ${
-                              isBlue
-                                ? 'text-[#1d4ed8] bg-blue-50/90 group-hover:bg-blue-100/90 border-blue-200/80'
-                                : 'text-[#ed5001] bg-orange-50/90 group-hover:bg-orange-100/90 border-orange-200/80'
-                            }`}
+                            className={`text-xs font-extrabold tracking-wider px-2.5 py-1 rounded-full border shrink-0 transition-colors duration-300 shadow-2xs ${card.theme.badgeStyle}`}
                           >
-                            <Sun
-                              className={`w-3.5 h-3.5 transition-transform duration-700 ease-out group-hover:rotate-180 group-hover:scale-110 ${
-                                isBlue ? 'text-[#1d4ed8]' : 'text-[#ed5001]'
-                              }`}
-                            />
-                            <span>{area.solarHoursPerDay}h sun</span>
+                            {card.badge}
                           </span>
+                          <div
+                            className={`w-10 h-10 rounded-xl border border-slate-200/70 flex items-center justify-center shrink-0 transition-all duration-300 shadow-xs ${card.theme.iconBg}`}
+                          >
+                            <IconComponent className="w-5 h-5 transition-transform duration-300 group-hover:scale-110" />
+                          </div>
                         </div>
 
-                        {/* Clear Key Suburbs */}
-                        <div className="text-xs text-slate-600 flex items-center gap-1.5 truncate pt-0.5">
-                          <span className="font-semibold text-slate-800 shrink-0">Key Suburbs:</span>
-                          <span className="text-slate-500 truncate">{area.suburbsServed.slice(0, 4).join(', ')}...</span>
+                        {/* Title & Description */}
+                        <div>
+                          <h3
+                            className={`font-bold text-slate-900 font-serif text-lg sm:text-xl transition-colors leading-snug ${card.theme.titleHover}`}
+                          >
+                            {card.title}
+                          </h3>
+                          <p className="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
+                            {card.description}
+                          </p>
                         </div>
                       </div>
 
-                      {/* Bottom Action Strip */}
-                      <div className="mt-5 pt-3.5 border-t border-slate-100 flex items-center justify-between text-xs">
-                        <div className="flex items-center gap-1.5">
-                          <span className="text-slate-400 font-medium">Est. Savings:</span>
-                          <span className="font-bold text-[#265e11] bg-emerald-50 px-2.5 py-0.5 rounded-md border border-emerald-200/60 transition-transform duration-300 group-hover:scale-105">
-                            {area.averageAnnualSolarSavings}
-                          </span>
-                        </div>
+                      {/* Bottom Action CTA Strip */}
+                      <div className="mt-5 pt-3.5 border-t border-slate-100 flex items-center justify-between text-xs sm:text-sm">
                         <span
-                          className={`font-bold inline-flex items-center gap-1 transition-colors ${
-                            isBlue
-                              ? 'text-[#1d4ed8] group-hover:text-blue-800'
-                              : 'text-[#ed5001] group-hover:text-[#c84300]'
-                          }`}
+                          className={`font-bold inline-flex items-center gap-1.5 transition-colors ${card.theme.actionText}`}
                         >
-                          <span>Explore Area</span>
+                          <span>{card.cta}</span>
                           <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1.5" />
                         </span>
                       </div>
@@ -280,73 +306,70 @@ export const ServiceAreasTeaserSection: React.FC = () => {
               })}
             </div>
 
-            {/* Bottom Row: 3 Regional Corridors */}
+            {/* Bottom Row: 3 Cards (Card 03, Card 04, Card 05) */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {regionalCorridors.map((area, idx) => {
-                const isHovered = hoveredSlug === area.slug;
-                const theme = regionalThemes[idx % regionalThemes.length];
+              {secondarySolutions.map((card) => {
+                const isHovered = hoveredId === card.id;
+                const IconComponent = card.icon;
 
                 return (
                   <motion.div
-                    key={area.slug}
+                    key={card.id}
                     variants={cardVariants}
                     whileHover={{ y: -5, transition: { duration: 0.25, ease: 'easeOut' } }}
                     whileTap={{ scale: 0.985 }}
                     className="h-full"
                   >
                     <Link
-                      to={`/service-areas/${area.slug}`}
-                      onMouseEnter={() => setHoveredSlug(area.slug)}
-                      onMouseLeave={() => setHoveredSlug(null)}
-                      className={`group relative bg-white rounded-2xl p-4 sm:p-4.5 border transition-all duration-300 flex flex-col justify-between h-full overflow-hidden shadow-md shadow-slate-900/5 hover:shadow-xl ${
-                        isHovered ? theme.borderActive : `border-slate-300/80 ${theme.borderHover}`
-                      } ${theme.shadowHover}`}
+                      to={card.link}
+                      onMouseEnter={() => setHoveredId(card.id)}
+                      onMouseLeave={() => setHoveredId(null)}
+                      className={`group relative bg-white rounded-2xl p-4 sm:p-5 border transition-all duration-300 flex flex-col justify-between h-full overflow-hidden shadow-md shadow-slate-900/5 hover:shadow-xl ${
+                        isHovered
+                          ? `${card.theme.borderActive} ${card.theme.shadowHover}`
+                          : `border-slate-300/80 ${card.theme.borderHover} ${card.theme.shadowHover}`
+                      }`}
                     >
                       {/* Top active indicator line on hover */}
                       <div
-                        className={`absolute top-0 left-0 right-0 h-1 ${theme.indicator} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
+                        className={`absolute top-0 left-0 right-0 h-1.25 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${card.theme.indicator}`}
                       />
 
-                      <div className="space-y-2.5">
-                        {/* Title & Sun Badge */}
-                        <div className="flex items-center justify-between gap-1.5">
-                          <div className="flex items-center gap-2 min-w-0">
-                            <div
-                              className={`w-7 h-7 rounded-lg border flex items-center justify-center shrink-0 transition-colors duration-300 ${theme.iconBg} border-slate-200/70`}
-                            >
-                              <MapPin className="w-3.5 h-3.5 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:scale-110" />
-                            </div>
-                            <h4
-                              className={`font-bold text-slate-900 ${theme.titleHover} transition-colors text-sm sm:text-[15px] truncate`}
-                            >
-                              {area.name}
-                            </h4>
-                          </div>
+                      <div className="space-y-3">
+                        {/* Header Row: Badge & Icon */}
+                        <div className="flex items-center justify-between gap-2">
                           <span
-                            className={`text-[11px] font-bold ${theme.badge} px-2 py-0.5 rounded-full border shrink-0 inline-flex items-center gap-1 transition-all duration-300`}
+                            className={`text-[11px] font-extrabold tracking-wider px-2 py-0.5 rounded-full border shrink-0 transition-colors duration-300 ${card.theme.badgeStyle}`}
                           >
-                            <Sun
-                              className={`w-3 h-3 ${theme.sunIcon} transition-transform duration-700 ease-out group-hover:rotate-180 group-hover:scale-110`}
-                            />
-                            <span>{area.solarHoursPerDay}h</span>
+                            {card.badge}
                           </span>
+                          <div
+                            className={`w-8 h-8 rounded-lg border border-slate-200/70 flex items-center justify-center shrink-0 transition-all duration-300 shadow-xs ${card.theme.iconBg}`}
+                          >
+                            <IconComponent className="w-4 h-4 transition-transform duration-300 group-hover:scale-110" />
+                          </div>
                         </div>
 
-                        {/* Suburbs line */}
-                        <div className="text-[11px] text-slate-500 truncate">
-                          <span className="font-semibold text-slate-700">Suburbs: </span>
-                          <span>{area.suburbsServed.slice(0, 3).join(', ')}...</span>
+                        {/* Title & Description */}
+                        <div>
+                          <h4
+                            className={`font-bold text-slate-900 font-serif text-sm sm:text-base transition-colors leading-snug ${card.theme.titleHover}`}
+                          >
+                            {card.title}
+                          </h4>
+                          <p className="mt-1.5 text-xs text-slate-600 leading-relaxed line-clamp-3">
+                            {card.description}
+                          </p>
                         </div>
                       </div>
 
-                      {/* Bottom Strip */}
-                      <div className="mt-3.5 pt-2.5 border-t border-slate-100 flex items-center justify-between text-xs">
-                        <span className="font-bold text-[#265e11] bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200/50 truncate">
-                          {area.averageAnnualSolarSavings.split(' - ')[0]}/yr
-                        </span>
-                        <span className={`font-bold inline-flex items-center gap-1 ${theme.action} transition-colors`}>
-                          <span>Explore</span>
-                          <ArrowRight className="w-3 h-3 transition-transform duration-300 group-hover:translate-x-1" />
+                      {/* Bottom Action CTA Strip */}
+                      <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
+                        <span
+                          className={`font-bold inline-flex items-center gap-1 transition-colors ${card.theme.actionText}`}
+                        >
+                          <span>{card.cta}</span>
+                          <ArrowRight className="w-3 h-3 transition-transform duration-300 group-hover:translate-x-1.5" />
                         </span>
                       </div>
                     </Link>

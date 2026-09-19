@@ -50,7 +50,7 @@ export const Navbar: React.FC = () => {
           <div className="flex items-center gap-4 min-w-0">
             <span className="flex items-center gap-1.5 text-[#ed5001] font-semibold shrink-0">
               <ShieldCheck className="w-3.5 h-3.5 text-[#265e11] shrink-0" />
-              <span className="hidden sm:inline">CEC Approved Solar Retailer</span>
+              <span className="hidden sm:inline">NETCC APPROVED SELLER</span>
               <span className="sm:hidden">CEC Approved</span>
             </span>
             <span
@@ -81,15 +81,14 @@ export const Navbar: React.FC = () => {
               Gold Coast • Brisbane • Sunshine Coast
             </Link>
             <a
-              href="tel:1300786697"
+              href="tel:1300030479"
               className={`flex items-center gap-1.5 font-bold transition-colors ${isScrolled || !isHomePage
                 ? 'text-white hover:text-[#ed5001]'
                 : 'text-slate-900 hover:text-[#ed5001]'
                 }`}
             >
               <Phone className="w-3.5 h-3.5 text-[#ed5001] shrink-0" />
-              <span className="hidden sm:inline">1300 SUNNY (786 697)</span>
-              <span className="sm:hidden">1300 SUNNY</span>
+              <span>1300 030 479</span>
             </a>
           </div>
         </div>

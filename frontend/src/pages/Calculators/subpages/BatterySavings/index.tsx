@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { BatterySavingsHeroSection } from './sections/BatterySavingsHeroSection';
 import { BatterySavingsCalcSection } from './sections/BatterySavingsCalcSection';
 import { BatterySavingsSolarSynergySection } from './sections/BatterySavingsSolarSynergySection';
@@ -6,6 +7,13 @@ import { BatterySavingsSolarSynergySection } from './sections/BatterySavingsSola
 export const BatterySavingsCalcPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-slate-50 pb-20">
+      <Helmet>
+        <title>Battery Savings & Peak Tariff Calculator | Sunny Solar</title>
+        <meta
+          name="description"
+          content="Estimate additional savings by storing daytime solar energy and avoiding peak grid tariff rates in South East Queensland."
+        />
+      </Helmet>
       {/* Section 1: Page Header & Hero */}
       <BatterySavingsHeroSection />
 

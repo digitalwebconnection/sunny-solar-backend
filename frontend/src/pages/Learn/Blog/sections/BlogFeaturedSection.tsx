@@ -5,12 +5,16 @@ import type { Article } from '../../../../types/blog';
 import { Badge } from '../../../../components/ui/Badge';
 import { Calendar, Clock, ArrowRight, Sparkles, CheckCircle2 } from 'lucide-react';
 
+import { articlesData } from '../../../../data/blogData';
+
 interface BlogFeaturedSectionProps {
   featuredArticle?: Article | null;
 }
 
 export const BlogFeaturedSection: React.FC<BlogFeaturedSectionProps> = ({ featuredArticle: propFeatured }) => {
-  const [featured, setFeatured] = useState<Article | null>(propFeatured || null);
+  const [featured, setFeatured] = useState<Article | null>(
+    propFeatured !== undefined ? propFeatured : (articlesData[0] || null)
+  );
 
   useEffect(() => {
     if (propFeatured !== undefined) {
@@ -24,9 +28,11 @@ export const BlogFeaturedSection: React.FC<BlogFeaturedSectionProps> = ({ featur
         const res = await api.getBlogs();
         if (isMounted && res?.data && res.data.length > 0) {
           setFeatured(res.data[0]);
+        } else if (isMounted && !featured) {
+          setFeatured(articlesData[0] || null);
         }
       } catch (err) {
-        if (isMounted) setFeatured(null);
+        if (isMounted && !featured) setFeatured(articlesData[0] || null);
       }
     };
 

@@ -29,6 +29,7 @@ interface CalculatorItem {
   description: string;
   highlight: string;
   icon: React.ComponentType<{ className?: string }>;
+  ctaText: string;
 }
 
 const calculators: CalculatorItem[] = [
@@ -38,9 +39,10 @@ const calculators: CalculatorItem[] = [
     number: '01',
     title: 'Solar Savings Calculator',
     description:
-      'Calculate your quarterly and 10-year electricity bill reductions based on your current utility spend.',
-    highlight: '~78% Bill Reduction',
+      'Get an estimate based on your energy use, electricity bill and solar setup.',
+    highlight: 'How Much Could Solar Save You?',
     icon: DollarSign,
+    ctaText: 'Calculate My Savings',
   },
   {
     id: 'system-size',
@@ -48,29 +50,32 @@ const calculators: CalculatorItem[] = [
     number: '02',
     title: 'System Size Calculator',
     description:
-      'Determine the ideal solar array capacity (6.6kW to 15kW+) tailored for your roof geometry, pool, and EV.',
-    highlight: 'Tailored kW Fit',
+      'Find an indicative system size based on your energy use, electricity bill and home.',
+    highlight: 'How Much Solar Does Your Home Need?',
     icon: Layers,
+    ctaText: 'Find My System Size',
   },
   {
     id: 'battery-savings',
     slug: 'battery-savings',
     number: '03',
-    title: 'Battery Savings & Backup',
+    title: 'Battery Calculator',
     description:
-      'Model nighttime peak-tariff avoidance and whole-home storm blackout protection with Tesla or Sungrow.',
-    highlight: 'Peak Tariff Defense',
+      'Explore the battery size that could suit your solar system and energy usage.',
+    highlight: 'What Size Battery Is Right for You?',
     icon: BatteryCharging,
+    ctaText: 'Find My Battery Size',
   },
   {
     id: 'payback',
     slug: 'payback',
     number: '04',
-    title: 'Payback & Break-Even ROI',
+    title: 'Solar Payback Calculator',
     description:
-      'Determine your exact break-even timeline, internal rate of return, and government STC rebate values.',
-    highlight: '3.2 – 4.5 Year Payback',
+      'See how your system cost and estimated savings could affect your indicative payback.',
+    highlight: 'How Long Could Your Solar Take to Pay for Itself?',
     icon: Clock,
+    ctaText: 'Calculate My Payback',
   },
 ];
 
@@ -145,11 +150,14 @@ export const CalculatorsTeaserSection: React.FC = () => {
           className="text-center max-w-5xl mx-auto mb-10 sm:mb-12"
         >
           <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-[#18181b] tracking-tight font-serif leading-[1.15]">
-            Know Your Numbers Before <br />
+            Before You Buy Solar, <br />
             <span className="text-transparent bg-clip-text bg-linear-to-r from-[#ed5001] via-[#f06e02] to-[#f4a304]">
-              Speaking to Anyone
+              Run the Numbers.
             </span>
           </h2>
+          <p className="text-sm sm:text-base text-slate-900 mt-2">
+            See what could work for your home — from system size and savings to battery needs and payback.
+          </p>
         </motion.div>
 
         {/* ══════════════════════════════════════════════════════════════
@@ -305,18 +313,13 @@ export const CalculatorsTeaserSection: React.FC = () => {
                       />
 
                       <div className="relative z-10">
-                        <div
-                          className="text-xs font-bold uppercase tracking-wider"
-                          style={{ color: BRAND.green }}
-                        >
-                          Key Projected Outcome
-                        </div>
+                      
                         <motion.div
                           key={active.highlight}
                           initial={{ scale: 0.9, opacity: 0 }}
                           animate={{ scale: 1, opacity: 1 }}
                           transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-                          className="text-2xl sm:text-3xl lg:text-4xl font-black font-serif tracking-tight mt-0.5"
+                          className="text-2xl sm:text-3xl lg:text-3xl font-black font-serif tracking-tight mt-0.5"
                           style={{ color: BRAND.green }}
                         >
                           {active.highlight}
@@ -353,7 +356,7 @@ export const CalculatorsTeaserSection: React.FC = () => {
                           {/* Animated Shimmer sweep on hover */}
                           <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-linear-to-r from-transparent via-white/25 to-transparent skew-x-12 pointer-events-none" />
                           <Calculator className="w-4 h-4 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6" />
-                          <span>Launch {active.title}</span>
+                          <span>{active.ctaText}</span>
                           <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5" />
                         </Link>
                       </motion.div>
@@ -361,9 +364,7 @@ export const CalculatorsTeaserSection: React.FC = () => {
                   </motion.div>
                 </AnimatePresence>
               </div>
-
             </div>
-
           </div>
 
           {/* Progress Bar with unified tri-color brand gradient & glowing tip */}
@@ -379,10 +380,7 @@ export const CalculatorsTeaserSection: React.FC = () => {
               <div className="absolute right-0 top-0 bottom-0 w-3 bg-white/70 blur-xs" />
             </motion.div>
           </div>
-
         </motion.div>
-
-
       </div>
     </section>
   );
