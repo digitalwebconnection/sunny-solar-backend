@@ -8,7 +8,7 @@ import {
   Award,
 } from 'lucide-react';
 import { Button } from '../../../components/ui/Button';
-import heroBg from '../../../assets/hero-installer.jpg';
+import heroBg from '../../../../public/images/about/gallery/electrician-mounting-inverter.jpg';
 
 export const ServicesOverviewSection: React.FC = () => {
   return (

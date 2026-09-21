@@ -23,7 +23,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
         />
 
         {/* Subtle Dark Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-t from-slate-950/85 via-slate-950/20 to-transparent" />
 
         {/* Top Badges */}
         <div className="absolute top-3.5 inset-x-3.5 flex items-center justify-between pointer-events-none">

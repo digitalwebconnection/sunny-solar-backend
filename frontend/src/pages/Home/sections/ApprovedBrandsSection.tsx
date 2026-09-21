@@ -1,19 +1,19 @@
 import React from 'react';
 import { ShieldCheck } from 'lucide-react';
 
-// Brand logos from assets/logo brand
-import foxLogo from '@/assets/logo brand/fox.png';
-import bydLogo from '@/assets/logo brand/byd.png';
-import alphaLogo from '@/assets/logo brand/alpha.png';
-import canadianSolarLogo from '@/assets/logo brand/CanadianSolar-Australia.png';
-import jinkoLogo from '@/assets/logo brand/jinko-solar.jfif';
-import solaxLogo from '@/assets/logo brand/solax.png';
-import growattLogo from '@/assets/logo brand/growatt.jfif';
-import sigenergyLogo from '@/assets/logo brand/sigenergy.png';
-import teslaLogo from '@/assets/logo brand/Tesla_.png';
-import dasolarLogo from '@/assets/logo brand/dasolar.png';
-import longiLogo from '@/assets/logo brand/longi.jfif';
-import suntechLogo from '@/assets/logo brand/suntech.png';
+// Brand logos from assets/logo-brands
+import foxLogo from '@/assets/logo-brands/fox.png';
+import bydLogo from '@/assets/logo-brands/byd.png';
+import alphaLogo from '@/assets/logo-brands/alpha.png';
+import canadianSolarLogo from '@/assets/logo-brands/canadian-solar-australia.png';
+import jinkoLogo from '@/assets/logo-brands/jinko-solar.jpg';
+import solaxLogo from '@/assets/logo-brands/solax.png';
+import growattLogo from '@/assets/logo-brands/growatt.jpg';
+import sigenergyLogo from '@/assets/logo-brands/sigenergy.png';
+import teslaLogo from '@/assets/logo-brands/tesla.png';
+import dasolarLogo from '@/assets/logo-brands/dasolar.png';
+import longiLogo from '@/assets/logo-brands/longi.jpg';
+import suntechLogo from '@/assets/logo-brands/suntech.png';
 
 interface BrandItem {
   name: string;

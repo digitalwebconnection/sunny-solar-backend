@@ -10,7 +10,7 @@ import {
   Sparkles, 
   Sun 
 } from 'lucide-react';
-import heroBgImage from '../../../assets/hero-installer.jpg';
+const heroBgImage = '/hero-installer.jpg';
 import consultantAvatar from '../../../assets/main-removebg.png';
 
 import { submitToWeb3Forms } from '../../../utils/web3forms';
@@ -107,7 +107,7 @@ export const HeroSection: React.FC = () => {
         />
 
         {/* Light Overlay to keep image clearly visible while ensuring text contrast */}
-        <div className="absolute inset-0 bg-black/55 sm:bg-linear-to-t sm:from-black/85 sm:via-black/50 sm:to-black/30" />
+        <div className="absolute inset-0 bg-black/55 sm:bg-linear-to-t sm:from-black/65 sm:via-black/30 sm:to-black/10" />
         
         {/* Subtle deep solar panel blue ambient aura */}
         <div className="absolute -top-24 right-1/4 w-125 h-125 bg-blue-600/15 rounded-full blur-[140px] pointer-events-none" />

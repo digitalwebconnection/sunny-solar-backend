@@ -39,7 +39,7 @@ export const CollaborationSection: React.FC = () => {
             {/* Main Heading — Custom Sunny Solar data as requested */}
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-semibold text-slate-950 tracking-tight leading-[1.05]">
               Partnering with World-Class Manufacturers for{' '}
-              <span className="bg-gradient-to-r from-sky-600 via-sky-600 to-green-800 bg-clip-text text-transparent">
+              <span className="bg-linear-to-r from-sky-600 via-sky-600 to-green-800 bg-clip-text text-transparent">
                 Uncompromising Solar Performance
               </span>
             </h2>

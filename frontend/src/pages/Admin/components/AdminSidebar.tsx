@@ -11,7 +11,7 @@ import {
   LogOut
 } from 'lucide-react';
 import { AdminTab, StatusFilter } from '../types';
-import logo from "../../../assets/Logo.png"
+const logo = '/logo.png';
 
 interface AdminSidebarProps {
   sidebarOpen: boolean;

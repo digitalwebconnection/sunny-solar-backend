@@ -46,7 +46,7 @@ export const CalculatorCard: React.FC<CalculatorCardProps> = ({ calculator }) =>
       className="group bg-white rounded-2xl border border-slate-200/80 p-6 shadow-xs hover:shadow-xl hover:border-[#2B3CB8]/60 active:border-[#2B3CB8] flex flex-col justify-between relative overflow-hidden h-full cursor-pointer"
     >
       {/* Top Accent Gradient Bar on Hover */}
-      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#2B3CB8] via-[#6F8EE7] to-[#2B3CB8] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+      <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-[#2B3CB8] via-[#6F8EE7] to-[#2B3CB8] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
       {/* Active Tap Solar Flare */}
       <div className="absolute inset-0 bg-radial from-[#2B3CB8]/10 via-transparent to-transparent opacity-0 group-active:opacity-100 transition-opacity duration-150 pointer-events-none" />

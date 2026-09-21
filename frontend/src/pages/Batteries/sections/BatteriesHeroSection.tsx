@@ -97,13 +97,13 @@ export const BatteriesHeroSection: React.FC = () => {
             className="lg:col-span-5 relative"
           >
             {/* Main Visual Image Card */}
-            <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white aspect-[4/3] bg-slate-950 group">
+            <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white aspect-4/3 bg-slate-950 group">
               <img
                 src="/images/solutions/battery-hero.jpg"
                 alt="Tesla Powerwall & Premium Home Battery Storage System"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-slate-950/85 via-slate-950/20 to-transparent" />
               
               {/* Top Floating Badge */}
               <div className="absolute top-4 left-4 flex items-center gap-2 bg-slate-900/80 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/20 text-white text-xs font-semibold">

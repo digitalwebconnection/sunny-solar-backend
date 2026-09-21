@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Phone, Mail, MapPin, ArrowRight, ShieldCheck } from 'lucide-react';
-import logo from "../../../assets/Logo.png";
+const logo = "/logo.png";
 import meaLogo from "../../../assets/mea-logo.png";
 import hiaLogo from "../../../assets/hia-logo.png";
 import necaLogo from "../../../assets/neca-logo.png";

@@ -28,7 +28,7 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
   const isCenter = align === 'center';
 
   return (
-    <div className={`relative overflow-hidden pt-28 sm:pt-32 ${dark ? 'bg-[#0C123E] text-white' : 'bg-gradient-to-b from-[#2B3CB8]/5 via-[#F5F7FD] to-white text-[#0C123E]'} border-b border-slate-200/60`}>
+    <div className={`relative overflow-hidden pt-28 sm:pt-32 ${dark ? 'bg-[#0C123E] text-white' : 'bg-linear-to-b from-[#2B3CB8]/5 via-[#F5F7FD] to-white text-[#0C123E]'} border-b border-slate-200/60`}>
       {/* Background ambient blurs */}
       <div className="absolute top-0 right-1/4 w-64 sm:w-96 h-64 sm:h-96 bg-[#2B3CB8]/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 left-1/4 w-52 sm:w-80 h-52 sm:h-80 bg-[#2B3CB8]/10 rounded-full blur-3xl pointer-events-none" />
