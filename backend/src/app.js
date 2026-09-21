@@ -56,15 +56,21 @@ app.options('*', cors());
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ limit: '50mb', extended: true }));
 
+import { getSitemapXml } from './controllers/sitemap.controller.js';
+
 // Root route
 app.get('/', (req, res) => {
   res.json({
     message: 'Welcome to Sunny Solar API',
     endpoints: {
-      health: '/api/health'
+      health: '/api/health',
+      sitemap: '/sitemap.xml'
     }
   });
 });
+
+// Direct XML Sitemap for search engines and crawlers
+app.get('/sitemap.xml', getSitemapXml);
 
 // API routes
 app.use('/api', apiRouter);

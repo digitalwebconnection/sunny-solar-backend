@@ -5,6 +5,7 @@ import blogRoutes from './blog.routes.js';
 import knowledgeRoutes from './knowledge.routes.js';
 import uploadRoutes from './upload.routes.js';
 import leadRoutes from './lead.routes.js';
+import sitemapRoutes from './sitemap.route.js';
 
 const apiRouter = Router();
 
@@ -15,6 +16,7 @@ apiRouter.use('/blogs', blogRoutes);
 apiRouter.use('/knowledge', knowledgeRoutes);
 apiRouter.use('/upload', uploadRoutes);
 apiRouter.use('/leads', leadRoutes);
+apiRouter.use('/', sitemapRoutes);
 
 export default apiRouter;
 

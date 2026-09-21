@@ -226,6 +226,7 @@ export const Footer: React.FC = () => {
             <Link to="/legal/privacy-policy" className=" hover:text-white transition-colors">Privacy Policy</Link>
             <Link to="/legal/terms-conditions" className="hover:text-white transition-colors">Terms &amp; Conditions</Link>
             <Link to="/legal/terms-of-trade" className="hover:text-white transition-colors">Terms of Trade</Link>
+            <Link to="/sitemap" className="hover:text-white transition-colors">Sitemap</Link>
             <span>Digital Partner <a href="https://digitalwebconnection.com" target="_blank" rel="noopener noreferrer" className="text-[#6F8EE7] font-semibold hover:text-white transition-colors">Digital Web Connection</a></span>
           </div>
         </div>

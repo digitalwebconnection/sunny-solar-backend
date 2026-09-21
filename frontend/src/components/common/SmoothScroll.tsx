@@ -18,34 +18,30 @@ export const SmoothScroll: React.FC<{ children: React.ReactNode }> = ({ children
   const lenisRef = useRef<Lenis | null>(null);
 
   useEffect(() => {
+    // Initialize Lenis with native hardware-accelerated auto-RAF
     const lenis = new Lenis({
+      autoRaf: true,
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: 'vertical',
       gestureOrientation: 'vertical',
       smoothWheel: true,
-      touchMultiplier: 1.5,
+      wheelMultiplier: 1.05,
+      touchMultiplier: 1.6,
+      infinite: false,
     });
 
     lenisRef.current = lenis;
     setLenisInstance(lenis);
     (window as unknown as { __lenis?: Lenis }).__lenis = lenis;
 
-    // Connect Lenis scroll events to GSAP ScrollTrigger
+    // Connect Lenis scroll events directly to GSAP ScrollTrigger
     const handleScroll = () => {
       ScrollTrigger.update();
     };
     lenis.on('scroll', handleScroll);
 
-    // Drive Lenis from GSAP's optimized ticker loop
-    const updateTicker = (time: number) => {
-      lenis.raf(time * 1000);
-    };
-    gsap.ticker.add(updateTicker);
-    gsap.ticker.lagSmoothing(0);
-
     return () => {
-      gsap.ticker.remove(updateTicker);
       lenis.off('scroll', handleScroll);
       lenis.destroy();
       lenisRef.current = null;

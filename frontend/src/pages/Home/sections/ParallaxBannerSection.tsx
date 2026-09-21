@@ -15,10 +15,10 @@ export const ParallaxBannerSection: React.FC = () => {
       }}
     >
       {/* Dark overlay with subtle backdrop blur for high contrast readability */}
-      <div className="w-full h-full min-h-90 lg:min-h-90 bg-[#0C123E]/90 flex items-center justify-center text-center py-8 lg:py-14 px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="w-full h-full min-h-90 lg:min-h-90 bg-black/60 flex items-center justify-center text-center py-8 lg:py-14 px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Subtle radial lighting accent */}
-        <div className="absolute inset-0 bg-radial from-[#2B3CB8]/20 via-transparent to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-radial from-black/20 via-transparent to-transparent pointer-events-none" />
 
         {/* Content Container */}
         <div className="max-w-5xl mx-auto relative z-20 space-y-4">

@@ -60,6 +60,7 @@ const ThankYouPage = lazy(() => import('../pages/ThankYou/ThankYouPage'));
 const PrivacyPolicyPage = lazy(() => import('../pages/Legal/PrivacyPolicyPage'));
 const TermsConditionsPage = lazy(() => import('../pages/Legal/TermsConditionsPage'));
 const TermsOfTradePage = lazy(() => import('../pages/Legal/TermsOfTradePage'));
+
 const AdminPage = lazy(() => import('../pages/Admin/AdminPage'));
 const NotFoundPage = lazy(() => import('../pages/NotFound/NotFoundPage'));
 
@@ -159,11 +160,11 @@ export const AppRoutes: React.FC = () => {
             <Route path="/contact" element={<FreeAssessmentPage />} />
             <Route path="/thank-you" element={<ThankYouPage />} />
 
-            {/* 14. Legal */}
+            {/* 14. Legal & Sitemap */}
             <Route path="/legal/privacy-policy" element={<PrivacyPolicyPage />} />
             <Route path="/legal/terms-conditions" element={<TermsConditionsPage />} />
             <Route path="/legal/terms-of-trade" element={<TermsOfTradePage />} />
-
+         
             {/* 15. Admin Portal */}
             <Route path="/admin" element={<AdminPage />} />
 
