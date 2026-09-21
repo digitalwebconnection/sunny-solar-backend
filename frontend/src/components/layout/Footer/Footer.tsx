@@ -33,13 +33,13 @@ const socialLinks = [
 export const Footer: React.FC = () => {
   return (
     <footer>
-      {/* Tricolor brand accent bar (Eco Green -> Solar Blue -> Solar Orange) */}
-      <div className="h-1 w-full bg-linear-to-r from-[#265e11] via-[#1d4ed8] to-[#ed5001]" />
+      {/* Brand accent bar */}
+      <div className="h-1 w-full bg-[#2B3CB8]" />
 
       {/* Main Footer */}
       <div className="bg-white border-t border-slate-200 relative overflow-hidden">
         {/* Ambient solar blue backdrop aura */}
-        <div className="absolute top-0 right-1/4 w-96 h-96 bg-blue-600/5 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#2B3CB8]/10 rounded-full blur-3xl pointer-events-none" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 relative z-10">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12">
 
@@ -55,13 +55,13 @@ export const Footer: React.FC = () => {
             <div>
               <h4 className="text-lg font-semibold text-[#18181b] font-serif mb-4">Quick Links</h4>
               <ul className="space-y-2.5 text-sm text-slate-700">
-                <li><Link to="/about" className="hover:text-[#ed5001] transition-colors">About Us</Link></li>
-                <li><Link to="/solar" className="hover:text-[#ed5001] transition-colors">Solar Solutions</Link></li>
-                <li><Link to="/batteries" className="hover:text-[#ed5001] transition-colors">Battery Storage</Link></li>
-                <li><Link to="/existing-solar" className="hover:text-[#ed5001] transition-colors">Existing Solar Solutions</Link></li>
-               <li><Link to="/reviews" className="hover:text-[#ed5001] transition-colors">Customer Reviews</Link></li>
-                <li><Link to="/faq" className="hover:text-[#ed5001] transition-colors">FAQs</Link></li>
-                <li><Link to="/contact" className="hover:text-[#ed5001] transition-colors">Contact Us</Link></li>
+                <li><Link to="/about" className="hover:text-[#2B3CB8] transition-colors">About Us</Link></li>
+                <li><Link to="/solar" className="hover:text-[#2B3CB8] transition-colors">Solar Solutions</Link></li>
+                <li><Link to="/batteries" className="hover:text-[#2B3CB8] transition-colors">Battery Storage</Link></li>
+                <li><Link to="/existing-solar" className="hover:text-[#2B3CB8] transition-colors">Existing Solar Solutions</Link></li>
+               <li><Link to="/reviews" className="hover:text-[#2B3CB8] transition-colors">Customer Reviews</Link></li>
+                <li><Link to="/faq" className="hover:text-[#2B3CB8] transition-colors">FAQs</Link></li>
+                <li><Link to="/contact" className="hover:text-[#2B3CB8] transition-colors">Contact Us</Link></li>
               </ul>
             </div>
 
@@ -69,13 +69,13 @@ export const Footer: React.FC = () => {
             <div>
               <h4 className="text-lg font-semibold text-[#18181b] font-serif mb-4">Our Services</h4>
               <ul className="space-y-2.5 text-sm text-slate-700">
-                <li><Link to="/solar/systems" className="hover:text-[#ed5001] transition-colors">Residential Solar Systems</Link></li>
-                <li><Link to="/solar/installation" className="hover:text-[#ed5001] transition-colors">Professional Solar Installation</Link></li>
-                <li><Link to="/batteries/solar-batteries" className="hover:text-[#ed5001] transition-colors">Tesla &amp; Sungrow Batteries</Link></li>
-                <li><Link to="/batteries/solar-plus-battery" className="hover:text-[#ed5001] transition-colors">Solar + Battery Packages</Link></li>
-                <li><Link to="/batteries/battery-backup" className="hover:text-[#ed5001] transition-colors">Blackout Protection &amp; EPS</Link></li>
-               <li><Link to="/existing-solar/health-check" className="hover:text-[#ed5001] transition-colors">24-Point Solar Health Check</Link></li>
-                <li><Link to="/existing-solar/add-battery" className="hover:text-[#ed5001] transition-colors">Add Battery to Existing Solar</Link></li>
+                <li><Link to="/solar/systems" className="hover:text-[#2B3CB8] transition-colors">Residential Solar Systems</Link></li>
+                <li><Link to="/solar/installation" className="hover:text-[#2B3CB8] transition-colors">Professional Solar Installation</Link></li>
+                <li><Link to="/batteries/solar-batteries" className="hover:text-[#2B3CB8] transition-colors">Tesla &amp; Sungrow Batteries</Link></li>
+                <li><Link to="/batteries/solar-plus-battery" className="hover:text-[#2B3CB8] transition-colors">Solar + Battery Packages</Link></li>
+                <li><Link to="/batteries/battery-backup" className="hover:text-[#2B3CB8] transition-colors">Blackout Protection &amp; EPS</Link></li>
+               <li><Link to="/existing-solar/health-check" className="hover:text-[#2B3CB8] transition-colors">24-Point Solar Health Check</Link></li>
+                <li><Link to="/existing-solar/add-battery" className="hover:text-[#2B3CB8] transition-colors">Add Battery to Existing Solar</Link></li>
               </ul>
             </div>
 
@@ -87,18 +87,18 @@ export const Footer: React.FC = () => {
                   href="https://maps.google.com/?q=10A+Burralong+Dr,+Wondunna+QLD+4655,+Australia"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-start gap-2.5 hover:text-[#ed5001] transition-colors group"
+                  className="flex items-start gap-2.5 hover:text-[#2B3CB8] transition-colors group"
                   title="View Sunny Solar location on Google Maps"
                 >
-                  <MapPin className="w-4 h-4 text-[#ed5001] mt-0.5 shrink-0 group-hover:scale-110 transition-transform" />
+                  <MapPin className="w-4 h-4 text-[#2B3CB8] mt-0.5 shrink-0 group-hover:scale-110 transition-transform" />
                   <span>10A Burralong Dr, Wondunna QLD 4655, Australia</span>
                 </a>
-                <a href="tel:1300030479" className="flex items-center gap-2.5 hover:text-[#ed5001] transition-colors">
-                  <Phone className="w-4 h-4 text-[#ed5001] shrink-0" />
+                <a href="tel:1300030479" className="flex items-center gap-2.5 hover:text-[#2B3CB8] transition-colors">
+                  <Phone className="w-4 h-4 text-[#2B3CB8] shrink-0" />
                   1300 030 479
                 </a>
-                <a href="mailto:info@sunnysolar.com.au" className="flex items-center gap-2.5 hover:text-[#ed5001] transition-colors">
-                  <Mail className="w-4 h-4 text-[#ed5001] shrink-0" />
+                <a href="mailto:info@sunnysolar.com.au" className="flex items-center gap-2.5 hover:text-[#2B3CB8] transition-colors">
+                  <Mail className="w-4 h-4 text-[#2B3CB8] shrink-0" />
                   info@sunnysolar.com.au
                 </a>
 
@@ -107,14 +107,14 @@ export const Footer: React.FC = () => {
                     href="https://maps.google.com/?q=10A+Burralong+Dr,+Wondunna+QLD+4655,+Australia"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-xs font-semibold text-[#ed5001] hover:text-[#c84300] transition-colors"
+                    className="inline-flex items-center gap-1 text-xs font-semibold text-[#2B3CB8] hover:text-[#1D2984] transition-colors"
                   >
                     <span>View on Google Maps</span>
                     <ArrowRight className="w-3 h-3" />
                   </a>
                   <Link
                     to="/service-areas"
-                    className="inline-flex items-center gap-1 text-xs font-semibold text-slate-500 hover:text-[#ed5001] transition-colors"
+                    className="inline-flex items-center gap-1 text-xs font-semibold text-slate-500 hover:text-[#2B3CB8] transition-colors"
                   >
                     <span>View all serviced areas</span>
                     <ArrowRight className="w-3 h-3" />
@@ -130,7 +130,7 @@ export const Footer: React.FC = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={`Follow Sunny Solar on ${social.label}`}
-                      className="w-11 h-11 lg:w-9 lg:h-9 rounded-full border border-slate-300 flex items-center justify-center text-slate-500 hover:bg-[#1d4ed8] hover:border-[#1d4ed8] hover:text-white transition-all duration-200 shadow-2xs"
+                      className="w-11 h-11 lg:w-9 lg:h-9 rounded-full border border-slate-300 flex items-center justify-center text-slate-500 hover:bg-[#2B3CB8] hover:border-[#2B3CB8] hover:text-white transition-all duration-200 shadow-2xs"
                     >
                       <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                         <path d={social.path} />
@@ -146,9 +146,9 @@ export const Footer: React.FC = () => {
       </div>
 
       {/* Accreditation & Licence Strip */}
-      <div className="bg-[#071328] border-t border-blue-500/20 relative overflow-hidden">
+      <div className="bg-[#0C123E] border-t border-[#2B3CB8]/20 relative overflow-hidden">
         {/* Subtle deep solar blue ambient glow */}
-        <div className="absolute inset-0 bg-radial from-blue-600/15 via-transparent to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-radial from-[#2B3CB8]/15 via-transparent to-transparent pointer-events-none" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 relative z-10">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
 
@@ -219,14 +219,14 @@ export const Footer: React.FC = () => {
       </div>
 
       {/* Bottom Bar */}
-      <div className="bg-[#0a1420] border-t border-white/5">
+      <div className="bg-[#070A24] border-t border-white/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 pb-20 lg:pb-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-white/90 text-center sm:text-left">
           <span>© {new Date().getFullYear()} Sunny Solar Energy Pty Ltd. All rights reserved.</span>
           <div className="flex flex-wrap items-center justify-center gap-4">
             <Link to="/legal/privacy-policy" className=" hover:text-white transition-colors">Privacy Policy</Link>
             <Link to="/legal/terms-conditions" className="hover:text-white transition-colors">Terms &amp; Conditions</Link>
             <Link to="/legal/terms-of-trade" className="hover:text-white transition-colors">Terms of Trade</Link>
-            <span>Digital Partner <a href="https://digitalwebconnection.com" target="_blank" rel="noopener noreferrer" className="text-[#ed5001] font-semibold hover:text-[#f4a304] transition-colors">Digital Web Connection</a></span>
+            <span>Digital Partner <a href="https://digitalwebconnection.com" target="_blank" rel="noopener noreferrer" className="text-[#6F8EE7] font-semibold hover:text-white transition-colors">Digital Web Connection</a></span>
           </div>
         </div>
       </div>

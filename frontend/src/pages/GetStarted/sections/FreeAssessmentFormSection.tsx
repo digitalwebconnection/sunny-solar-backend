@@ -351,7 +351,7 @@ export const FreeAssessmentFormSection: React.FC = () => {
                       href="https://maps.google.com/?q=10A+Burralong+Dr,+Wondunna+QLD+4655,+Australia"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-xs font-semibold text-[#ed5001] hover:underline mt-1"
+                      className="inline-flex items-center gap-1 text-xs font-semibold text-[#2B3CB8] hover:underline mt-1"
                     >
                       <span>Open in Google Maps</span>
                       <ArrowRight className="w-3 h-3" />
@@ -653,8 +653,8 @@ export const FreeAssessmentFormSection: React.FC = () => {
                       onDrop={handleDrop}
                       onClick={() => fileInputRef.current?.click()}
                       className={`border-2 border-dashed rounded-xl p-4 text-center cursor-pointer transition-all ${isDraggingFile
-                          ? 'border-[#ed5001] bg-orange-50/50'
-                          : 'border-slate-300 hover:border-amber-500 hover:bg-slate-50/70 bg-white'
+                          ? 'border-[#2B3CB8] bg-[#F5F7FD]'
+                          : 'border-slate-300 hover:border-[#2B3CB8] hover:bg-slate-50/70 bg-white'
                         }`}
                     >
                       <input
@@ -665,11 +665,11 @@ export const FreeAssessmentFormSection: React.FC = () => {
                         className="hidden"
                       />
                       <div className="flex flex-col items-center justify-center gap-1.5 pointer-events-none">
-                        <div className="w-8 h-8 rounded-full bg-amber-500/10 text-[#ed5001] flex items-center justify-center">
+                        <div className="w-8 h-8 rounded-full bg-[#2B3CB8]/10 text-[#2B3CB8] flex items-center justify-center">
                           <UploadCloud className="w-4 h-4" />
                         </div>
                         <p className="text-xs font-medium text-slate-800">
-                          <span className="font-bold text-[#ed5001]">Click to upload</span> or drag and drop your bill
+                          <span className="font-bold text-[#2B3CB8]">Click to upload</span> or drag and drop your bill
                         </p>
                         <span className="text-[11px] text-slate-500">
                           PDF, PNG, JPG up to 15MB • 100% confidential & secure

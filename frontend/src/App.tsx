@@ -17,7 +17,7 @@ function AppLayout() {
     return (
       <>
         <ScrollToTop />
-        <div className="min-h-screen bg-white text-slate-900 font-sans selection:bg-amber-500 selection:text-slate-950">
+        <div className="min-h-screen bg-white text-slate-900 font-sans selection:bg-[#2B3CB8] selection:text-white">
           <AppRoutes />
         </div>
       </>
@@ -28,7 +28,7 @@ function AppLayout() {
   return (
     <SmoothScroll>
       <ScrollToTop />
-      <div className="flex flex-col min-h-screen selection:bg-[#1d4ed8] selection:text-white relative">
+      <div className="flex flex-col min-h-screen selection:bg-[#2B3CB8] selection:text-white relative">
         <Navbar />
         <main className="grow">
           <AppRoutes />

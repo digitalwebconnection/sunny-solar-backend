@@ -49,7 +49,7 @@ export const BlogFeaturedSection: React.FC<BlogFeaturedSectionProps> = ({ featur
     <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10">
       <Link
         to={`/learn/blog/${featured.slug}`}
-        className="block bg-white border border-slate-200/90 shadow-sm overflow-hidden hover:border-amber-400 hover:shadow-md transition-all group cursor-pointer"
+        className="block bg-white border border-slate-200/90 shadow-sm overflow-hidden hover:border-[#2B3CB8] hover:shadow-md transition-all group cursor-pointer"
       >
         <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch">
           {/* Image Side */}
@@ -62,7 +62,7 @@ export const BlogFeaturedSection: React.FC<BlogFeaturedSectionProps> = ({ featur
             <div className="absolute inset-0 bg-linear-to-t from-slate-950/80 via-slate-950/20 to-transparent" />
             
             <div className="absolute top-4 left-4">
-              <span className="text-xs font-black uppercase tracking-wider bg-amber-500 text-slate-950 px-3 py-1 rounded-md shadow-xs flex items-center gap-1.5">
+              <span className="text-xs font-black uppercase tracking-wider bg-[#2B3CB8] text-white px-3 py-1 rounded-md shadow-xs flex items-center gap-1.5">
                 <Sparkles className="w-3.5 h-3.5" />
                 Featured Editorial
               </span>
@@ -89,7 +89,7 @@ export const BlogFeaturedSection: React.FC<BlogFeaturedSectionProps> = ({ featur
                 <span>By {featured.author}</span>
               </div>
 
-              <h2 className="text-xl sm:text-2xl font-bold text-slate-900 group-hover:text-amber-600 transition-colors tracking-tight leading-snug">
+              <h2 className="text-xl sm:text-2xl font-bold text-slate-900 group-hover:text-[#2B3CB8] transition-colors tracking-tight leading-snug">
                 {featured.title}
               </h2>
 
@@ -99,12 +99,12 @@ export const BlogFeaturedSection: React.FC<BlogFeaturedSectionProps> = ({ featur
 
               {/* Key Takeaways snippet */}
               {featured.keyTakeaways && featured.keyTakeaways.length > 0 && (
-                <div className="mt-4 bg-amber-50/60 border border-amber-200/60 rounded-xl p-3 text-xs text-amber-950 space-y-1.5">
-                  <span className="font-bold block text-[11px] uppercase tracking-wider text-amber-800">
+                <div className="mt-4 bg-[#F5F7FD] border border-[#D1DCF8] rounded-xl p-3 text-xs text-[#0C123E] space-y-1.5">
+                  <span className="font-bold block text-[11px] uppercase tracking-wider text-[#1D2984]">
                     Quick Takeaway:
                   </span>
                   <div className="flex items-start gap-1.5 text-[11px] text-slate-700">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-amber-600 shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-3.5 h-3.5 text-[#2B3CB8] shrink-0 mt-0.5" />
                     <span>{featured.keyTakeaways[0]}</span>
                   </div>
                 </div>
@@ -115,7 +115,7 @@ export const BlogFeaturedSection: React.FC<BlogFeaturedSectionProps> = ({ featur
               <span className="text-xs font-semibold text-slate-500">
                 {featured.authorRole}
               </span>
-              <span className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#f97316] text-white text-xs font-bold group-hover:bg-[#ea580c] transition-colors">
+              <span className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#2B3CB8] text-white text-xs font-bold group-hover:bg-[#1D2984] transition-colors">
                 <span>Read Article</span>
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
               </span>

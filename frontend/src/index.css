@@ -1,42 +1,165 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand-green: #265e11;
-  --color-brand-green-hover: #1c470d;
-  --color-brand-green-light: #f1f8ee;
-  --color-brand-orange: #ed5001;
-  --color-brand-orange-mid: #f06e02;
-  --color-brand-orange-light: #f4a304;
-  --color-brand-blue: #1d4ed8;
-  --color-solar-blue: #1d4ed8;
-  --color-solar-blue-deep: #0b1f3a;
-  --color-solar-blue-mid: #2563eb;
-  --color-solar-blue-light: #eff6ff;
-  --color-primary: #ed5001;
-  --color-accent: #265e11;
+  --color-brand-green: #2B3CB8;
+  --color-brand-green-hover: #2433A1;
+  --color-brand-green-light: #F5F7FD;
+  --color-brand-orange: #2B3CB8;
+  --color-brand-orange-mid: #2433A1;
+  --color-brand-orange-light: #6F8EE7;
+  --color-brand-blue: #2B3CB8;
+  --color-solar-blue: #2B3CB8;
+  --color-solar-blue-deep: #0C123E;
+  --color-solar-blue-mid: #2433A1;
+  --color-solar-blue-light: #F5F7FD;
+  --color-primary: #2B3CB8;
+  --color-accent: #2B3CB8;
+
+  /* Monochromatic Color Scales mapped directly to #2B3CB8 */
+  --color-blue-50: #F5F7FD;
+  --color-blue-100: #E8EDFB;
+  --color-blue-200: #D1DCF8;
+  --color-blue-300: #A4B9F1;
+  --color-blue-400: #6F8EE7;
+  --color-blue-500: #2B3CB8;
+  --color-blue-600: #2433A1;
+  --color-blue-700: #1D2984;
+  --color-blue-800: #151E64;
+  --color-blue-900: #0C123E;
+  --color-blue-950: #070A24;
+
+  --color-sky-50: #F5F7FD;
+  --color-sky-100: #E8EDFB;
+  --color-sky-200: #D1DCF8;
+  --color-sky-300: #A4B9F1;
+  --color-sky-400: #6F8EE7;
+  --color-sky-500: #2B3CB8;
+  --color-sky-600: #2433A1;
+  --color-sky-700: #1D2984;
+  --color-sky-800: #151E64;
+  --color-sky-900: #0C123E;
+  --color-sky-950: #070A24;
+
+  --color-indigo-50: #F5F7FD;
+  --color-indigo-100: #E8EDFB;
+  --color-indigo-200: #D1DCF8;
+  --color-indigo-300: #A4B9F1;
+  --color-indigo-400: #6F8EE7;
+  --color-indigo-500: #2B3CB8;
+  --color-indigo-600: #2433A1;
+  --color-indigo-700: #1D2984;
+  --color-indigo-800: #151E64;
+  --color-indigo-900: #0C123E;
+  --color-indigo-950: #070A24;
+
+  --color-orange-50: #F5F7FD;
+  --color-orange-100: #E8EDFB;
+  --color-orange-200: #D1DCF8;
+  --color-orange-300: #A4B9F1;
+  --color-orange-400: #6F8EE7;
+  --color-orange-500: #2B3CB8;
+  --color-orange-600: #2433A1;
+  --color-orange-700: #1D2984;
+  --color-orange-800: #151E64;
+  --color-orange-900: #0C123E;
+  --color-orange-950: #070A24;
+
+  --color-amber-50: #F5F7FD;
+  --color-amber-100: #E8EDFB;
+  --color-amber-200: #D1DCF8;
+  --color-amber-300: #A4B9F1;
+  --color-amber-400: #6F8EE7;
+  --color-amber-500: #2B3CB8;
+  --color-amber-600: #2433A1;
+  --color-amber-700: #1D2984;
+  --color-amber-800: #151E64;
+  --color-amber-900: #0C123E;
+  --color-amber-950: #070A24;
+
+  --color-yellow-50: #F5F7FD;
+  --color-yellow-100: #E8EDFB;
+  --color-yellow-200: #D1DCF8;
+  --color-yellow-300: #A4B9F1;
+  --color-yellow-400: #6F8EE7;
+  --color-yellow-500: #2B3CB8;
+  --color-yellow-600: #2433A1;
+  --color-yellow-700: #1D2984;
+  --color-yellow-800: #151E64;
+  --color-yellow-900: #0C123E;
+  --color-yellow-950: #070A24;
+
+  --color-emerald-50: #F5F7FD;
+  --color-emerald-100: #E8EDFB;
+  --color-emerald-200: #D1DCF8;
+  --color-emerald-300: #A4B9F1;
+  --color-emerald-400: #6F8EE7;
+  --color-emerald-500: #2B3CB8;
+  --color-emerald-600: #2433A1;
+  --color-emerald-700: #1D2984;
+  --color-emerald-800: #151E64;
+  --color-emerald-900: #0C123E;
+  --color-emerald-950: #070A24;
+
+  --color-green-50: #F5F7FD;
+  --color-green-100: #E8EDFB;
+  --color-green-200: #D1DCF8;
+  --color-green-300: #A4B9F1;
+  --color-green-400: #6F8EE7;
+  --color-green-500: #2B3CB8;
+  --color-green-600: #2433A1;
+  --color-green-700: #1D2984;
+  --color-green-800: #151E64;
+  --color-green-900: #0C123E;
+  --color-green-950: #070A24;
+
+  --color-slate-50: #F5F7FD;
+  --color-slate-100: #E8EDFB;
+  --color-slate-200: #D1DCF8;
+  --color-slate-300: #A4B9F1;
+  --color-slate-400: #6F8EE7;
+  --color-slate-500: #2B3CB8;
+  --color-slate-600: #2433A1;
+  --color-slate-700: #1D2984;
+  --color-slate-800: #151E64;
+  --color-slate-900: #0C123E;
+  --color-slate-950: #070A24;
+
+  --color-neutral-50: #F5F7FD;
+  --color-neutral-100: #E8EDFB;
+  --color-neutral-200: #D1DCF8;
+  --color-neutral-300: #A4B9F1;
+  --color-neutral-400: #6F8EE7;
+  --color-neutral-500: #2B3CB8;
+  --color-neutral-600: #2433A1;
+  --color-neutral-700: #1D2984;
+  --color-neutral-800: #151E64;
+  --color-neutral-900: #0C123E;
+  --color-neutral-950: #070A24;
 }
 
 :root {
-  --color-brand-green: #265e11;
-  --color-brand-green-hover: #1c470d;
-  --color-brand-green-light: #f1f8ee;
-  --color-brand-orange: #ed5001;
-  --color-brand-orange-mid: #f06e02;
-  --color-brand-orange-light: #f4a304;
-  --color-brand-blue: #1d4ed8;
-  --color-solar-blue: #1d4ed8;
-  --color-solar-blue-deep: #0b1f3a;
-  --color-solar-blue-mid: #2563eb;
-  --color-solar-blue-light: #eff6ff;
-  --color-primary: #ed5001;
-  --color-accent: #265e11;
+  --color-brand-blue: #2B3CB8;
+  --color-brand-blue-hover: #2433A1;
+  --color-brand-blue-light: #F5F7FD;
+  --color-brand-green: #2B3CB8;
+  --color-brand-green-hover: #2433A1;
+  --color-brand-green-light: #F5F7FD;
+  --color-brand-orange: #2B3CB8;
+  --color-brand-orange-mid: #2433A1;
+  --color-brand-orange-light: #6F8EE7;
+  --color-solar-blue: #2B3CB8;
+  --color-solar-blue-deep: #0C123E;
+  --color-solar-blue-mid: #2433A1;
+  --color-solar-blue-light: #F5F7FD;
+  --color-primary: #2B3CB8;
+  --color-accent: #2B3CB8;
 }
 
 @layer base {
   body {
     font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    color: #0f172a;
-    background-color: #f8fafc;
+    color: #0C123E;
+    background-color: #FFFFFF;
     overflow-x: hidden;
   }
 
@@ -57,54 +180,52 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f5f9;
+  background: #F5F7FD;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
+  background: #D1DCF8;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
+  background: #6F8EE7;
 }
 
 /* Glassmorphism helpers */
 .glass-panel {
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(209, 220, 248, 0.6);
 }
 
 .glass-panel-dark {
-  background: rgba(15, 23, 42, 0.85);
+  background: rgba(12, 18, 62, 0.9);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
-/* Sun glow - exact logo orange */
+/* Glow effects - Brand Blue */
 .sun-glow {
-  box-shadow: 0 0 50px -10px rgba(237, 80, 1, 0.35);
+  box-shadow: 0 0 50px -10px rgba(43, 60, 184, 0.35);
 }
 
-/* Green glow - exact logo green */
 .green-glow {
-  box-shadow: 0 0 50px -10px rgba(38, 94, 17, 0.25);
+  box-shadow: 0 0 50px -10px rgba(43, 60, 184, 0.25);
 }
 
-/* Solar Blue glow - photovoltaic blue */
 .solar-blue-glow {
-  box-shadow: 0 0 50px -10px rgba(29, 78, 216, 0.28);
+  box-shadow: 0 0 50px -10px rgba(43, 60, 184, 0.32);
 }
 
 .solar-blue-gradient {
-  background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 50%, #0284c7 100%);
+  background: linear-gradient(135deg, #2B3CB8 0%, #2433A1 50%, #6F8EE7 100%);
 }
 
 .text-gradient-blue {
-  background: linear-gradient(135deg, #1d4ed8 0%, #0284c7 100%);
+  background: linear-gradient(135deg, #2B3CB8 0%, #6F8EE7 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -337,7 +458,7 @@
 .rich-blog-content h1 {
   font-size: 1.875rem;
   font-weight: 800;
-  color: #0f172a;
+  color: #0C123E;
   margin-top: 1.5rem;
   margin-bottom: 0.75rem;
   line-height: 1.25;
@@ -345,7 +466,7 @@
 .rich-blog-content h2 {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #0f172a;
+  color: #0C123E;
   margin-top: 1.25rem;
   margin-bottom: 0.5rem;
   line-height: 1.3;
@@ -353,28 +474,28 @@
 .rich-blog-content h3 {
   font-size: 1.25rem;
   font-weight: 700;
-  color: #1e293b;
+  color: #151E64;
   margin-top: 1rem;
   margin-bottom: 0.5rem;
 }
 .rich-blog-content h4 {
   font-size: 1.125rem;
   font-weight: 600;
-  color: #1e293b;
+  color: #151E64;
   margin-top: 0.75rem;
   margin-bottom: 0.25rem;
 }
 .rich-blog-content h5 {
   font-size: 1rem;
   font-weight: 600;
-  color: #334155;
+  color: #1D2984;
   margin-top: 0.5rem;
   margin-bottom: 0.25rem;
 }
 .rich-blog-content h6 {
   font-size: 0.875rem;
   font-weight: 600;
-  color: #475569;
+  color: #2B3CB8;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   margin-top: 0.5rem;
@@ -399,18 +520,18 @@
   line-height: 1.6;
 }
 .rich-blog-content a {
-  color: #ed5001;
+  color: #2B3CB8;
   text-decoration: underline;
   font-weight: 600;
   transition: color 0.2s;
 }
 .rich-blog-content a:hover {
-  color: #c2410c;
+  color: #2433A1;
 }
 .rich-blog-content strong,
 .rich-blog-content b {
   font-weight: 700;
-  color: #0f172a;
+  color: #0C123E;
 }
 .rich-blog-content em,
 .rich-blog-content i {
@@ -420,9 +541,9 @@
   text-decoration: underline;
 }
 .rich-blog-content blockquote {
-  border-left: 4px solid #f97316;
+  border-left: 4px solid #2B3CB8;
   padding-left: 1rem;
   margin: 1rem 0;
   font-style: italic;
-  color: #475569;
+  color: #1D2984;
 }

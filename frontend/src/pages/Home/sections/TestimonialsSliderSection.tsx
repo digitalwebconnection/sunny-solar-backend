@@ -35,7 +35,7 @@ const testimonials: TestimonialSlide[] = [
       'Trent personally inspected our roof cavity and designed the perfect system. Power bill dropped from $940 to $22 last month! Cleanest tradesmen we have ever had on site.',
     systemSummary: '10.5kW REC + Tesla Powerwall 3',
     keyMetric: '$940 → $22/mo',
-    avatarBg: 'bg-[#6366f1] text-white',
+    avatarBg: 'bg-[#2B3CB8] text-white',
   },
   {
     id: 't-2',
@@ -48,7 +48,7 @@ const testimonials: TestimonialSlide[] = [
       'With 3 teenagers and ducted A/C in summer heatwaves, our solar system slashed our electricity bills by 82% from day one. Communication with the team was exceptional.',
     systemSummary: '13.2kW AIKO All-Black + Fronius',
     keyMetric: '82% Bill Cut',
-    avatarBg: 'bg-[#0f766e] text-white',
+    avatarBg: 'bg-[#1D2984] text-white',
   },
   {
     id: 't-3',
@@ -61,7 +61,7 @@ const testimonials: TestimonialSlide[] = [
       'Added a Sungrow battery to our 6-year-old system. Entire rebate paperwork was handled seamlessly by their office team. Now completely blackout-proof.',
     systemSummary: '9.6kWh Sungrow SBR Battery',
     keyMetric: '0% Evening Grid Draw',
-    avatarBg: 'bg-[#be185d] text-white',
+    avatarBg: 'bg-[#151E64] text-white',
   },
   {
     id: 't-4',
@@ -74,7 +74,7 @@ const testimonials: TestimonialSlide[] = [
       'Their technician found a hazardous degraded DC isolator with thermal imaging. Safely replaced and restored to 100% capacity! Truly honest electricians.',
     systemSummary: '24-Point Health Check & Repair',
     keyMetric: '100% Restored',
-    avatarBg: 'bg-[#b45309] text-white',
+    avatarBg: 'bg-[#2433A1] text-white',
   },
   {
     id: 't-5',
@@ -87,7 +87,7 @@ const testimonials: TestimonialSlide[] = [
       'Replaced an old 2013 inverter with modern high-efficiency equipment. Double the power output for a fraction of the roof space. Highly recommend Sunny Solar.',
     systemSummary: '8.8kW Trina Vertex + Sungrow Hybrid',
     keyMetric: '2x Daily Output',
-    avatarBg: 'bg-[#4338ca] text-white',
+    avatarBg: 'bg-[#2B3CB8] text-white',
   },
   {
     id: 't-6',
@@ -100,7 +100,7 @@ const testimonials: TestimonialSlide[] = [
       'During recent storm blackouts while our whole street was dark, our lights, refrigeration and Wi-Fi stayed on seamlessly. Best investment for our Queensland home.',
     systemSummary: '11.4kW Solar + Tesla Powerwall 3',
     keyMetric: 'Zero Blackout Downtime',
-    avatarBg: 'bg-[#0284c7] text-white',
+    avatarBg: 'bg-[#1D2984] text-white',
   },
   {
     id: 't-7',
@@ -113,7 +113,7 @@ const testimonials: TestimonialSlide[] = [
       'Warehouse installation executed over a planned weekend. Immediate demand charge reduction and effortless Energex approval. Prompt and professional.',
     systemSummary: '66kW Commercial Warehouse Solar',
     keyMetric: '$1,500+ Saved Monthly',
-    avatarBg: 'bg-[#15803d] text-white',
+    avatarBg: 'bg-[#151E64] text-white',
   },
   {
     id: 't-8',
@@ -126,7 +126,7 @@ const testimonials: TestimonialSlide[] = [
       'Our neighbors lose power for days during mountain storms. We do not even notice the lights flicker. Outstanding craftsmanship and aftercare.',
     systemSummary: '19.8kW Ground Array + BYD Battery',
     keyMetric: '96% Self-Sufficiency',
-    avatarBg: 'bg-[#0e7490] text-white',
+    avatarBg: 'bg-[#2433A1] text-white',
   },
 ];
 
@@ -203,7 +203,7 @@ export const TestimonialsSliderSection: React.FC = () => {
   return (
     <section className="py-10 lg:py-14 bg-slate-50 relative overflow-hidden border-t border-slate-200/80">
       {/* Ambient solar blue backdrop */}
-      <div className="absolute top-0 right-1/4 w-96 h-96 bg-blue-600/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#2B3CB8]/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header with Title & Controls */}
@@ -212,7 +212,7 @@ export const TestimonialsSliderSection: React.FC = () => {
          
             <h2 className="text-2xl sm:text-4xl text-left font-serif font-extrabold text-slate-900 tracking-tight">
               Real Installations.{' '}
-              <span className="bg-linear-to-r from-[#ed5001] via-[#f06e02] to-[#f4a304] bg-clip-text text-transparent">
+              <span className="bg-linear-to-r from-[#2B3CB8] via-[#4658D9] to-[#6F8EE7] bg-clip-text text-transparent">
                 Real Customer Savings.
               </span>
             </h2>
@@ -224,7 +224,7 @@ export const TestimonialsSliderSection: React.FC = () => {
               type="button"
               onClick={prevSlide}
               aria-label="Previous review"
-              className="w-9 h-9 rounded-xl bg-white border border-slate-200 text-slate-700 hover:text-[#ed5001] hover:border-amber-300 flex items-center justify-center transition-all shadow-xs active:scale-95 cursor-pointer"
+              className="w-9 h-9 rounded-xl bg-white border border-slate-200 text-slate-700 hover:text-[#2B3CB8] hover:border-[#2B3CB8] flex items-center justify-center transition-all shadow-xs active:scale-95 cursor-pointer"
             >
               <ChevronLeft className="w-4 h-4" />
             </button>
@@ -232,7 +232,7 @@ export const TestimonialsSliderSection: React.FC = () => {
               type="button"
               onClick={nextSlide}
               aria-label="Next review"
-              className="w-9 h-9 rounded-xl bg-white border border-slate-200 text-slate-700 hover:text-[#ed5001] hover:border-amber-300 flex items-center justify-center transition-all shadow-xs active:scale-95 cursor-pointer"
+              className="w-9 h-9 rounded-xl bg-white border border-slate-200 text-slate-700 hover:text-[#2B3CB8] hover:border-[#2B3CB8] flex items-center justify-center transition-all shadow-xs active:scale-95 cursor-pointer"
             >
               <ChevronRight className="w-4 h-4" />
             </button>
@@ -258,7 +258,7 @@ export const TestimonialsSliderSection: React.FC = () => {
                 className="px-2 sm:px-2.5 shrink-0"
                 style={{ width: `${100 / visibleCount}%` }}
               >
-                <div className="h-full bg-white rounded-xl border border-slate-200/90  hover:shadow-xl shadow-black/40 shadow-lg hover:border-amber-300 transition-all duration-300 flex flex-col justify-between p-5 group min-h-65">
+                <div className="h-full bg-white rounded-xl border border-slate-200/90 hover:shadow-xl shadow-black/40 shadow-lg hover:border-[#2B3CB8] transition-all duration-300 flex flex-col justify-between p-5 group min-h-65">
                   <div className="space-y-3">
                     {/* Author Header Row: Avatar + Name + Time + Verified Chip */}
                     <div className="flex items-center justify-between gap-2">
@@ -273,7 +273,7 @@ export const TestimonialsSliderSection: React.FC = () => {
                           <div className="flex items-center gap-1 font-bold text-slate-900 text-sm truncate">
                             <span className="truncate">{item.author}</span>
                             <CheckCircle2
-                              className="w-3.5 h-3.5 text-emerald-600 shrink-0"
+                              className="w-3.5 h-3.5 text-[#2B3CB8] shrink-0"
                               // title="Verified Customer"
                             />
                           </div>
@@ -283,7 +283,7 @@ export const TestimonialsSliderSection: React.FC = () => {
                         </div>
                       </div>
 
-                      <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200/80 shrink-0">
+                      <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-[#F5F7FD] text-[#2B3CB8] border border-[#D1DCF8] shrink-0">
                         Verified
                       </span>
                     </div>
@@ -293,7 +293,7 @@ export const TestimonialsSliderSection: React.FC = () => {
                       {[...Array(item.rating)].map((_, i) => (
                         <Star
                           key={i}
-                          className="w-4 h-4 fill-amber-400 text-amber-400"
+                          className="w-4 h-4 fill-[#2B3CB8] text-[#2B3CB8]"
                         />
                       ))}
                       <span className="ml-1 text-xs font-bold text-slate-700">5.0</span>
@@ -301,7 +301,7 @@ export const TestimonialsSliderSection: React.FC = () => {
 
                     {/* Review Title & Body */}
                     <div className="space-y-1">
-                      <h3 className="font-bold text-sm text-slate-900 line-clamp-1 group-hover:text-[#ed5001] transition-colors">
+                      <h3 className="font-bold text-sm text-slate-900 line-clamp-1 group-hover:text-[#2B3CB8] transition-colors">
                         "{item.title}"
                       </h3>
                       <p className="text-xs text-slate-600 leading-relaxed line-clamp-3">
@@ -328,7 +328,7 @@ export const TestimonialsSliderSection: React.FC = () => {
                 aria-label={`Slide ${idx + 1}`}
                 className={`transition-all duration-300 rounded-full cursor-pointer ${
                   currentIndex === idx
-                    ? 'w-6 h-2 bg-[#ed5001]'
+                    ? 'w-6 h-2 bg-[#2B3CB8]'
                     : 'w-2 h-2 bg-slate-300 hover:bg-slate-400'
                 }`}
               />
@@ -337,7 +337,7 @@ export const TestimonialsSliderSection: React.FC = () => {
 
           <Link
             to="/reviews"
-            className="text-xs font-bold text-slate-600 hover:text-[#ed5001] transition-colors flex items-center gap-1"
+            className="text-xs font-bold text-slate-600 hover:text-[#2B3CB8] transition-colors flex items-center gap-1"
           >
             <span>View All Verified Reviews</span>
             <ArrowRight className="w-3.5 h-3.5" />

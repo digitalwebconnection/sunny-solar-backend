@@ -15,7 +15,7 @@ export const NotFoundPage: React.FC = () => {
       </Helmet>
       <div className="text-center space-y-4">
         {/* 404 in Big Font */}
-        <h1 className="text-8xl sm:text-9xl font-black text-[#ed5001] tracking-tight leading-none">
+        <h1 className="text-8xl sm:text-9xl font-black text-[#2B3CB8] tracking-tight leading-none">
           404
         </h1>
 
@@ -28,7 +28,7 @@ export const NotFoundPage: React.FC = () => {
         <div className="pt-4">
           <Link
             to="/"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-linear-to-r from-[#ed5001] via-[#f06e02] to-[#f4a304] hover:from-[#c84300] hover:to-[#ed5001] text-white font-bold text-sm shadow-md hover:shadow-lg transition-all"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-linear-to-r from-[#2B3CB8] via-[#4658D9] to-[#2B3CB8] hover:from-[#1D2984] hover:to-[#2B3CB8] text-white font-bold text-sm shadow-md hover:shadow-lg transition-all"
           >
             <Home className="w-4 h-4" />
             <span>Go to Home Page</span>

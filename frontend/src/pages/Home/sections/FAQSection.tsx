@@ -102,8 +102,8 @@ export const FAQSection: React.FC = () => {
                         >
                           <span
                             className={`font-bold text-base sm:text-lg transition-colors duration-150 pr-2 ${isOpen
-                              ? 'text-[#ed5001]'
-                              : 'text-slate-800 group-hover:text-[#ed5001]'
+                              ? 'text-[#2B3CB8]'
+                              : 'text-slate-800 group-hover:text-[#2B3CB8]'
                               }`}
                           >
                             {faq.question}
@@ -111,7 +111,7 @@ export const FAQSection: React.FC = () => {
 
                           <div className="shrink-0 flex items-center justify-center w-6 h-6 text-slate-400 group-hover:text-slate-600 transition-colors">
                             {isOpen ? (
-                              <Minus className="w-4 h-4 text-[#ed5001] stroke-[2.5]" />
+                              <Minus className="w-4 h-4 text-[#2B3CB8] stroke-[2.5]" />
                             ) : (
                               <Plus className="w-4 h-4 text-slate-400 group-hover:text-slate-600 stroke-[2.5]" />
                             )}
@@ -151,14 +151,14 @@ export const FAQSection: React.FC = () => {
                     <button
                       type="button"
                       onClick={() => setSearchQuery('')}
-                      className="text-sm font-semibold text-[#ed5001] hover:underline cursor-pointer"
+                      className="text-sm font-semibold text-[#2B3CB8] hover:underline cursor-pointer"
                     >
                       Clear search filter
                     </button>
                     <span className="text-slate-300">•</span>
                     <Link
                       to="/contact"
-                      className="text-sm font-semibold text-[#1d4ed8] hover:underline"
+                      className="text-sm font-semibold text-[#2B3CB8] hover:underline"
                     >
                       Contact our team
                     </Link>

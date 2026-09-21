@@ -15,25 +15,25 @@ export const ThankYouPage: React.FC = () => {
         />
       </Helmet>
       {/* Background ambient solar glow */}
-      <div className="absolute top-10 right-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-20 left-10 w-80 h-80 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-10 right-1/4 w-96 h-96 bg-[#2B3CB8]/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-20 left-10 w-80 h-80 bg-[#2B3CB8]/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 relative z-10 text-center">
         {/* Animated Checkmark Badge */}
-        <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-emerald-100 text-emerald-600 shadow-xl shadow-emerald-500/20 mb-6 border-2 border-emerald-300">
+        <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-[#E8EDFB] text-[#2B3CB8] shadow-xl shadow-[#2B3CB8]/15 mb-6 border-2 border-[#D1DCF8]">
           <CheckCircle2 className="w-10 h-10 animate-bounce" />
         </div>
 
         {/* Eyebrow */}
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider text-emerald-800 bg-emerald-50 border border-emerald-200 shadow-2xs mb-4">
-          <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider text-[#1D2984] bg-[#F5F7FD] border border-[#D1DCF8] shadow-2xs mb-4">
+          <ShieldCheck className="w-3.5 h-3.5 text-[#2B3CB8]" />
           <span>Inquiry Successfully Received</span>
         </div>
 
         {/* Heading */}
         <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-slate-950 tracking-tight leading-tight">
           Thank You! We’ve Received Your{' '}
-          <span className="bg-linear-to-r from-[#ed5001] via-[#f06e02] to-[#f4a304] bg-clip-text text-transparent">
+          <span className="bg-linear-to-r from-[#2B3CB8] via-[#4658D9] to-[#6F8EE7] bg-clip-text text-transparent">
             Solar & Battery Request
           </span>
         </h1>
@@ -46,7 +46,7 @@ export const ThankYouPage: React.FC = () => {
         <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-5 text-left">
           {/* Step 1 */}
           <div className="bg-white rounded-2xl p-6 border border-slate-200/90 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden">
-            <div className="w-9 h-9 rounded-xl bg-orange-50 border border-orange-200 text-[#ed5001] flex items-center justify-center font-bold text-sm mb-4">
+            <div className="w-9 h-9 rounded-xl bg-[#F5F7FD] border border-[#D1DCF8] text-[#2B3CB8] flex items-center justify-center font-bold text-sm mb-4">
               01
             </div>
             <h3 className="font-bold text-slate-900 text-base mb-1.5 flex items-center gap-2">
@@ -55,14 +55,14 @@ export const ThankYouPage: React.FC = () => {
             <p className="text-xs text-slate-600 leading-relaxed">
               We analyze your roof pitch, orientation, sun hours, and any nearby shading using high-resolution aerial mapping.
             </p>
-            <span className="inline-block mt-3 text-[11px] font-semibold text-orange-700 bg-orange-50 px-2 py-0.5 rounded-md">
+            <span className="inline-block mt-3 text-[11px] font-semibold text-[#1D2984] bg-[#F5F7FD] px-2 py-0.5 rounded-md">
               Within 2–4 Hours
             </span>
           </div>
 
           {/* Step 2 */}
           <div className="bg-white rounded-2xl p-6 border border-slate-200/90 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden">
-            <div className="w-9 h-9 rounded-xl bg-blue-50 border border-blue-200 text-[#1d4ed8] flex items-center justify-center font-bold text-sm mb-4">
+            <div className="w-9 h-9 rounded-xl bg-[#F5F7FD] border border-[#D1DCF8] text-[#2B3CB8] flex items-center justify-center font-bold text-sm mb-4">
               02
             </div>
             <h3 className="font-bold text-slate-900 text-base mb-1.5 flex items-center gap-2">
@@ -71,14 +71,14 @@ export const ThankYouPage: React.FC = () => {
             <p className="text-xs text-slate-600 leading-relaxed">
               You receive an itemized proposal with tier-1 equipment options, expected bill reductions, and verified government rebates.
             </p>
-            <span className="inline-block mt-3 text-[11px] font-semibold text-blue-700 bg-blue-50 px-2 py-0.5 rounded-md">
+            <span className="inline-block mt-3 text-[11px] font-semibold text-[#1D2984] bg-[#F5F7FD] px-2 py-0.5 rounded-md">
               Same-Day Delivery
             </span>
           </div>
 
           {/* Step 3 */}
           <div className="bg-white rounded-2xl p-6 border border-slate-200/90 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden">
-            <div className="w-9 h-9 rounded-xl bg-emerald-50 border border-emerald-200 text-[#265e11] flex items-center justify-center font-bold text-sm mb-4">
+            <div className="w-9 h-9 rounded-xl bg-[#F5F7FD] border border-[#D1DCF8] text-[#2B3CB8] flex items-center justify-center font-bold text-sm mb-4">
               03
             </div>
             <h3 className="font-bold text-slate-900 text-base mb-1.5 flex items-center gap-2">
@@ -87,16 +87,16 @@ export const ThankYouPage: React.FC = () => {
             <p className="text-xs text-slate-600 leading-relaxed">
               No high-pressure sales reps. Speak directly with licensed electrical installers to ask any technical or financial questions.
             </p>
-            <span className="inline-block mt-3 text-[11px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md">
+            <span className="inline-block mt-3 text-[11px] font-semibold text-[#1D2984] bg-[#F5F7FD] px-2 py-0.5 rounded-md">
               Master Electrician direct
             </span>
           </div>
         </div>
 
         {/* Immediate Contact Box */}
-        <div className="mt-10 bg-linear-to-r from-slate-900 via-slate-950 to-slate-900 rounded-2xl p-6 sm:p-8 text-white border border-slate-800 shadow-xl flex flex-col sm:flex-row items-center justify-between gap-6 text-left">
+        <div className="mt-10 bg-linear-to-r from-[#0C123E] via-[#070A24] to-[#0C123E] rounded-2xl p-6 sm:p-8 text-white border border-[#151E64] shadow-xl flex flex-col sm:flex-row items-center justify-between gap-6 text-left">
           <div>
-            <span className="text-xs font-mono font-bold text-amber-400 uppercase tracking-wider block mb-1">
+            <span className="text-xs font-mono font-bold text-[#D1DCF8] uppercase tracking-wider block mb-1">
               Need Immediate Assistance?
             </span>
             <h4 className="text-lg sm:text-xl font-bold text-white">
@@ -110,7 +110,7 @@ export const ThankYouPage: React.FC = () => {
           <div className="flex flex-col sm:flex-row items-center gap-3 shrink-0 w-full sm:w-auto">
             <a
               href="tel:1300030479"
-              className="w-full sm:w-auto px-5 py-3 rounded-xl bg-linear-to-r from-[#ed5001] to-[#f06e02] hover:from-[#c84300] hover:to-[#ed5001] text-white font-bold text-sm flex items-center justify-center gap-2 shadow-lg shadow-[#ed5001]/25 transition-all"
+              className="w-full sm:w-auto px-5 py-3 rounded-xl bg-linear-to-r from-[#2B3CB8] to-[#1D2984] hover:from-[#1D2984] hover:to-[#151E64] text-white font-bold text-sm flex items-center justify-center gap-2 shadow-lg shadow-[#2B3CB8]/25 transition-all"
             >
               <Phone className="w-4 h-4" />
               <span>1300 030 479</span>

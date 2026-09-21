@@ -88,23 +88,23 @@ export const FeaturedProjectsSection: React.FC = () => {
   return (
     <section className="py-12 lg:py-16 bg-slate-50 relative overflow-hidden border-t border-slate-200/70">
       {/* Ambient background glows */}
-      <div className="absolute top-1/4 right-0 w-125 h-125 bg-[#ed5001]/5 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-10 left-0 w-125 h-125 bg-[#265e11]/5 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute top-1/2 left-1/4 w-125 h-125 bg-blue-600/10 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute top-1/4 right-0 w-125 h-125 bg-[#2B3CB8]/5 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-10 left-0 w-125 h-125 bg-[#2B3CB8]/5 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/4 w-125 h-125 bg-[#2B3CB8]/5 rounded-full blur-[140px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
         <div className="text-center max-w-4xl mx-auto mb-8 sm:mb-10">
           {/* Eyebrow Pill Badge */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider text-[#1d4ed8] bg-blue-50 border border-blue-200/90 shadow-2xs mb-4">
-            <span className="w-2 h-2 rounded-full bg-[#1d4ed8] animate-pulse" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider text-[#2B3CB8] bg-[#F5F7FD] border border-[#D1DCF8] shadow-2xs mb-4">
+            <span className="w-2 h-2 rounded-full bg-[#2B3CB8] animate-pulse" />
             <span>WHY SUNNY SOLAR</span>
           </div>
 
           <h2 className="text-2xl sm:text-5xl lg:text-5xl font-extrabold text-[#18181b] tracking-tight font-serif leading-[1.15]">
             More Clarity. Better Solar Decisions. <br className="hidden sm:block" />
-            <span className="text-transparent bg-clip-text bg-linear-to-r from-[#ed5001] via-[#f06e02] to-[#f4a304]">
+            <span className="text-[#2B3CB8]">
               Supporting copy
             </span>
           </h2>
@@ -125,7 +125,7 @@ export const FeaturedProjectsSection: React.FC = () => {
                   onClick={() => setCurrentSlide(idx)}
                   className={`px-3 sm:px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold transition-all whitespace-nowrap cursor-pointer ${
                     isActive
-                      ? 'bg-[#ed5001] text-white shadow-sm'
+                      ? 'bg-[#2B3CB8] text-white shadow-sm'
                       : 'text-slate-600 hover:text-slate-900 hover:bg-white/80'
                   }`}
                 >
@@ -158,7 +158,7 @@ export const FeaturedProjectsSection: React.FC = () => {
             variant="outline"
             size="lg"
             icon={<ArrowRight className="w-4 h-4" />}
-            className="w-full sm:w-auto bg-white border-slate-300 hover:border-[#ed5001] hover:text-[#ed5001] shadow-xs font-semibold"
+            className="w-full sm:w-auto bg-white border-slate-300 hover:border-[#2B3CB8] hover:text-[#2B3CB8] shadow-xs font-semibold"
           >
             Explore Our Projects 
           </Button>

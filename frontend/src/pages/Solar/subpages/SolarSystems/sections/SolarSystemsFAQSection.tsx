@@ -52,12 +52,12 @@ export const SolarSystemsFAQSection: React.FC = () => {
               >
                 <button
                   onClick={() => setOpenIndex(isOpen ? null : idx)}
-                  className="w-full text-left p-5 sm:p-6 flex items-center justify-between gap-4 font-serif font-bold text-base sm:text-lg text-slate-900 hover:text-amber-600 transition-colors cursor-pointer"
+                  className="w-full text-left p-5 sm:p-6 flex items-center justify-between gap-4 font-serif font-bold text-base sm:text-lg text-slate-900 hover:text-[#2B3CB8] transition-colors cursor-pointer"
                 >
                   <span>{faq.q}</span>
                   <ChevronDown
                     className={`w-5 h-5 text-slate-400 shrink-0 transition-transform duration-200 ${
-                      isOpen ? 'rotate-180 text-amber-500' : ''
+                      isOpen ? 'rotate-180 text-[#2B3CB8]' : ''
                     }`}
                   />
                 </button>
@@ -76,7 +76,7 @@ export const SolarSystemsFAQSection: React.FC = () => {
         <div className="mt-10 pt-6 border-t border-slate-200 flex flex-wrap items-center justify-between gap-4 text-sm font-semibold">
           <Link
             to="/calculators/system-size"
-            className="inline-flex items-center gap-1.5 text-amber-700 hover:text-amber-600 transition-colors"
+            className="inline-flex items-center gap-1.5 text-[#2B3CB8] hover:text-[#1D2984] transition-colors"
           >
             <span>Size your optimal solar array</span>
             <ArrowRight className="w-4 h-4" />
@@ -90,7 +90,7 @@ export const SolarSystemsFAQSection: React.FC = () => {
             </Link>
             <Link
               to="/contact"
-              className="text-[#1d4ed8] hover:underline"
+              className="text-[#2B3CB8] hover:underline"
             >
               Ask Our Electricians →
             </Link>

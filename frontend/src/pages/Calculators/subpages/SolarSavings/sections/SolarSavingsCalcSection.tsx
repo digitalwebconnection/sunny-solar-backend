@@ -263,7 +263,7 @@ export const SolarSavingsCalcSection: React.FC = () => {
                 <span>Want to see battery impact?</span>
                 <Link
                   to="/calculators/battery-savings"
-                  className="text-[#ed5001] font-semibold hover:underline"
+                  className="text-[#2B3CB8] font-semibold hover:underline"
                 >
                   Model battery ROI →
                 </Link>

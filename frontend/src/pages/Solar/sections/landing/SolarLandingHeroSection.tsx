@@ -36,24 +36,24 @@ export const SolarLandingHeroSection: React.FC = () => {
               transition={{ duration: 0.4 }}
               className="flex items-center gap-2.5 flex-wrap"
             >
-              <Badge variant="blue" icon={<Sun className="w-3.5 h-3.5 text-[#1d4ed8]" />}>
+              <Badge variant="blue" icon={<Sun className="w-3.5 h-3.5 text-[#2B3CB8]" />}>
                 Master Electrician Engineered
               </Badge>
 
               <Link
                 to="/reviews"
-                className="inline-flex items-center gap-1 text-xs font-semibold text-slate-700 bg-white/90 hover:bg-white px-3 py-0.5 rounded-full border border-slate-200 hover:border-amber-300 shadow-2xs transition-all duration-200 hover:scale-105 group/rev"
+                className="inline-flex items-center gap-1 text-xs font-semibold text-slate-700 bg-white/90 hover:bg-white px-3 py-0.5 rounded-full border border-slate-200 hover:border-[#2B3CB8] shadow-2xs transition-all duration-200 hover:scale-105 group/rev"
                 title="Read 420+ Verified Customer Reviews"
               >
-                <div className="flex text-amber-500">
-                  <Star className="w-3 h-3 fill-amber-500" />
-                  <Star className="w-3 h-3 fill-amber-500" />
-                  <Star className="w-3 h-3 fill-amber-500" />
-                  <Star className="w-3 h-3 fill-amber-500" />
-                  <Star className="w-3 h-3 fill-amber-500" />
+                <div className="flex text-[#2B3CB8]">
+                  <Star className="w-3 h-3 fill-[#2B3CB8]" />
+                  <Star className="w-3 h-3 fill-[#2B3CB8]" />
+                  <Star className="w-3 h-3 fill-[#2B3CB8]" />
+                  <Star className="w-3 h-3 fill-[#2B3CB8]" />
+                  <Star className="w-3 h-3 fill-[#2B3CB8]" />
                 </div>
                 <span className="font-bold text-slate-900 ml-1">4.98</span>
-                <span className="text-slate-500 group-hover/rev:text-amber-600 transition-colors">(420+ Reviews)</span>
+                <span className="text-slate-500 group-hover/rev:text-[#2B3CB8] transition-colors">(420+ Reviews)</span>
               </Link>
             </motion.div>
 
@@ -65,7 +65,7 @@ export const SolarLandingHeroSection: React.FC = () => {
               className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-slate-950 tracking-tight leading-[1.12]"
             >
               High-Yield Solar{' '}
-              <span className="bg-linear-to-r from-amber-500 via-amber-600 to-orange-600 bg-clip-text text-transparent">
+              <span className="bg-linear-to-r from-[#2B3CB8] via-[#4658D9] to-[#6F8EE7] bg-clip-text text-transparent">
                 Engineered for Peak Sun.
               </span>
             </motion.h1>
@@ -129,10 +129,10 @@ export const SolarLandingHeroSection: React.FC = () => {
               {/* Bottom Clean Status Strip */}
               <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white text-xs bg-slate-950/75 backdrop-blur-md px-3.5 py-2 rounded-xl border border-white/10">
                 <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                  <span className="w-2 h-2 rounded-full bg-[#2B3CB8] animate-pulse" />
                   <span className="font-serif font-bold text-white">8.6 kW Peak Generation</span>
                 </div>
-                <span className="text-[11px] font-mono text-amber-400 font-semibold">Palm Beach, QLD</span>
+                <span className="text-[11px] font-mono text-[#D1DCF8] font-semibold">Palm Beach, QLD</span>
               </div>
             </div>
           </motion.div>

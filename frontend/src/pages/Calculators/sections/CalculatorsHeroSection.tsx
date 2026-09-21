@@ -10,10 +10,10 @@ import { Button } from '../../../components/ui/Button';
 
 export const CalculatorsHeroSection: React.FC = () => {
   return (
-    <section className="relative pt-24 sm:pt-36 pb-12 sm:pb-16 bg-gradient-to-b from-amber-500/10 via-amber-500/5 to-white border-b border-slate-200/60 overflow-hidden">
+    <section className="relative pt-24 sm:pt-36 pb-12 sm:pb-16 bg-linear-to-b from-[#2B3CB8]/10 via-[#2B3CB8]/5 to-white border-b border-slate-200/60 overflow-hidden">
       {/* Subtle ambient solar lighting glow */}
-      <div className="absolute top-10 right-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute top-36 left-10 w-80 h-80 bg-orange-300/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-10 right-1/4 w-96 h-96 bg-[#2B3CB8]/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-36 left-10 w-80 h-80 bg-[#2B3CB8]/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
@@ -24,8 +24,8 @@ export const CalculatorsHeroSection: React.FC = () => {
           <div className="lg:col-span-7 space-y-5">
             
             {/* Top Micro Eyebrow Badge */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider text-[#1d4ed8] bg-blue-50/90 border border-blue-200/70 shadow-2xs">
-              <Calculator className="w-3.5 h-3.5 text-[#1d4ed8]" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider text-[#2B3CB8] bg-[#F5F7FD] border border-[#D1DCF8] shadow-2xs">
+              <Calculator className="w-3.5 h-3.5 text-[#2B3CB8]" />
               <span>Independent Energy Sizing Engine</span>
             </div>
        
@@ -38,7 +38,7 @@ export const CalculatorsHeroSection: React.FC = () => {
               className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-slate-950 tracking-tight leading-[1.12]"
             >
               Interactive Solar & Battery{' '}
-              <span className="bg-gradient-to-r from-amber-500 via-amber-600 to-orange-600 bg-clip-text text-transparent">
+              <span className="bg-linear-to-r from-[#2B3CB8] via-[#4658D9] to-[#6F8EE7] bg-clip-text text-transparent">
                 Calculators & Sizing Tools.
               </span>
             </motion.h1>
@@ -61,14 +61,14 @@ export const CalculatorsHeroSection: React.FC = () => {
               className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1 text-xs text-slate-700"
             >
               <div className="flex items-center gap-2">
-                <div className="w-5 h-5 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center shrink-0">
+                <div className="w-5 h-5 rounded-full bg-[#E8EDFB] text-[#2B3CB8] flex items-center justify-center shrink-0">
                   <Sun className="w-3 h-3" />
                 </div>
                 <span>4.8 – 5.4 SEQ Daily Peak Sun Hours</span>
               </div>
 
               <div className="flex items-center gap-2">
-                <div className="w-5 h-5 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0">
+                <div className="w-5 h-5 rounded-full bg-[#E8EDFB] text-[#2B3CB8] flex items-center justify-center shrink-0">
                   <ShieldCheck className="w-3 h-3" />
                 </div>
                 <span>100% Free • No Personal Info Needed</span>
@@ -97,7 +97,7 @@ export const CalculatorsHeroSection: React.FC = () => {
                 to="/calculators/battery-savings"
                 variant="outline"
                 size="md"
-                icon={<Calculator className="w-4 h-4 text-emerald-600" />}
+                icon={<Calculator className="w-4 h-4 text-[#2B3CB8]" />}
               >
                 Calculate Battery ROI
               </Button>
@@ -124,10 +124,10 @@ export const CalculatorsHeroSection: React.FC = () => {
               {/* Bottom Status Strip */}
               <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white text-xs bg-slate-950/80 backdrop-blur-md px-3.5 py-2 rounded-xl border border-white/10">
                 <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                  <span className="w-2 h-2 rounded-full bg-[#2B3CB8] animate-pulse" />
                   <span className="font-semibold text-white">Clean Energy Council Math</span>
                 </div>
-                <span className="text-[11px] font-mono text-amber-400 font-semibold">SEQ Irradiance</span>
+                <span className="text-[11px] font-mono text-[#D1DCF8] font-semibold">SEQ Irradiance</span>
               </div>
             </div>
 

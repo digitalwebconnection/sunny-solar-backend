@@ -7,15 +7,15 @@ export const SolarUpgradesHeroSection: React.FC = () => {
   return (
     <section className="relative bg-white text-slate-900 pt-14 pb-16 lg:pb-24 border-b border-slate-200/80 overflow-hidden">
       {/* Subtle atmospheric solar radiance */}
-      <div className="absolute -top-32 right-1/4 w-150 h-87.5 bg-blue-600/10 rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute bottom-10 -left-28 w-112.5 h-75 bg-emerald-400/5 rounded-full blur-[130px] pointer-events-none" />
+      <div className="absolute -top-32 right-1/4 w-150 h-87.5 bg-[#2B3CB8]/10 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-10 -left-28 w-112.5 h-75 bg-[#2B3CB8]/5 rounded-full blur-[130px] pointer-events-none" />
 
       {/* Subtle engineering blueprint dot grid backdrop */}
       <div
         className="absolute inset-0 opacity-[0.025] pointer-events-none"
         style={{
           backgroundImage:
-            'radial-gradient(circle at 1px 1px, #0f172a 1px, transparent 0)',
+            'radial-gradient(circle at 1px 1px, #2B3CB8 1px, transparent 0)',
           backgroundSize: '28px 28px',
         }}
       />
@@ -27,14 +27,14 @@ export const SolarUpgradesHeroSection: React.FC = () => {
           {/* Left Column: Editorial Information */}
           <div className="lg:col-span-7 space-y-6">
             {/* Eyebrow Badge */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider text-[#1d4ed8] bg-blue-50 border border-blue-200/90 shadow-2xs">
-              <span className="w-2 h-2 rounded-full bg-[#1d4ed8] animate-pulse" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider text-[#2B3CB8] bg-[#F5F7FD] border border-[#D1DCF8] shadow-2xs">
+              <span className="w-2 h-2 rounded-full bg-[#2B3CB8] animate-pulse" />
               <span>Modernize Aging Solar Systems</span>
             </div>
 
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-slate-950 tracking-tight leading-[1.12]">
               Upgrade & Re-Power Your{' '}
-              <span className="bg-linear-to-r from-amber-500 via-amber-600 to-orange-500 bg-clip-text text-transparent">
+              <span className="bg-linear-to-r from-[#2B3CB8] via-[#4658D9] to-[#6F8EE7] bg-clip-text text-transparent">
                 Existing Solar Setup
               </span>
             </h1>
@@ -74,7 +74,7 @@ export const SolarUpgradesHeroSection: React.FC = () => {
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-slate-950/80 via-transparent to-transparent" />
                 <div className="absolute bottom-5 left-5 right-5 text-white">
-                  <span className="font-mono text-xs font-bold text-amber-400 uppercase tracking-wider">
+                  <span className="font-mono text-xs font-bold text-[#D1DCF8] uppercase tracking-wider">
                     Precision Upgrade
                   </span>
                   <div className="text-sm font-semibold mt-0.5">

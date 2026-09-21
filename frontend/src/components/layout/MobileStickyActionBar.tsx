@@ -19,9 +19,9 @@ export const MobileStickyActionBar: React.FC = () => {
         {/* Direct Call Button */}
         <a
           href="tel:1300030479"
-          className="flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl bg-slate-900 active:bg-slate-800 text-white font-bold text-xs shadow-md transition-transform active:scale-[0.98]"
+          className="flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl bg-[#0C123E] active:bg-[#070A24] text-white font-bold text-xs shadow-md transition-transform active:scale-[0.98]"
         >
-          <div className="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0">
+          <div className="w-6 h-6 rounded-full bg-white/20 text-[#D1DCF8] flex items-center justify-center shrink-0">
             <Phone className="w-3.5 h-3.5" />
           </div>
           <div className="flex flex-col text-left leading-tight">
@@ -33,11 +33,11 @@ export const MobileStickyActionBar: React.FC = () => {
         {/* Free Quote Button */}
         <Link
           to="/get-started/free-assessment"
-          className="flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl bg-linear-to-r from-[#ed5001] via-[#f06e02] to-[#f4a304] active:from-[#c84300] active:to-[#ed5001] text-white font-bold text-xs shadow-md shadow-[#ed5001]/25 transition-transform active:scale-[0.98]"
+          className="flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl bg-[#2B3CB8] active:bg-[#1D2984] text-white font-bold text-xs shadow-md shadow-[#2B3CB8]/25 transition-transform active:scale-[0.98]"
         >
-          <Sparkles className="w-4 h-4 shrink-0 text-amber-200" />
+          <Sparkles className="w-4 h-4 shrink-0 text-[#D1DCF8]" />
           <div className="flex flex-col text-left leading-tight">
-            <span className="text-[9px] font-semibold text-amber-100 uppercase tracking-wider">100% Free</span>
+            <span className="text-[9px] font-semibold text-[#D1DCF8] uppercase tracking-wider">100% Free</span>
             <span className="text-xs font-extrabold text-white">3D Roof Quote</span>
           </div>
         </Link>

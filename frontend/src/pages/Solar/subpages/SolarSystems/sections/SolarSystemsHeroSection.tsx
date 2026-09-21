@@ -39,15 +39,15 @@ export const SolarSystemsHeroSection: React.FC = () => {
   };
 
   return (
-    <section className="relative pt-28 sm:pt-40 pb-16 sm:pb-20 bg-linear-to-b from-amber-500/10 via-amber-500/5 to-white overflow-hidden border-b border-slate-200/60">
+    <section className="relative pt-28 sm:pt-40 pb-16 sm:pb-20 bg-linear-to-b from-[#2B3CB8]/10 via-[#2B3CB8]/5 to-white overflow-hidden border-b border-slate-200/60">
       {/* Ambient background glow discs */}
-      <div className="absolute top-10 right-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute top-36 left-10 w-80 h-80 bg-amber-400/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-10 right-1/4 w-96 h-96 bg-[#2B3CB8]/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-36 left-10 w-80 h-80 bg-[#2B3CB8]/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
         {/* Eyebrow badge */}
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider text-[#1d4ed8] bg-blue-50 border border-blue-200/90 shadow-2xs mb-4">
-          <span className="w-2 h-2 rounded-full bg-[#1d4ed8] animate-pulse" />
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider text-[#2B3CB8] bg-[#F5F7FD] border border-[#D1DCF8] shadow-2xs mb-4">
+          <span className="w-2 h-2 rounded-full bg-[#2B3CB8] animate-pulse" />
           <span>Tier-1 N-Type Photovoltaics &amp; Inverters</span>
         </div>
 
@@ -59,7 +59,7 @@ export const SolarSystemsHeroSection: React.FC = () => {
           className="text-4xl sm:text-5xl lg:text-5xl font-serif font-bold text-slate-950 tracking-tight leading-[1.12] max-w-4xl mx-auto"
         >
           Engineered Solar Systems{' '} <br />
-          <span className="bg-linear-to-r from-amber-500 via-orange-500 to-amber-600 bg-clip-text text-transparent">
+          <span className="bg-linear-to-r from-[#2B3CB8] via-[#4658D9] to-[#6F8EE7] bg-clip-text text-transparent">
             Built for Peak Yield.
           </span>
         </motion.h1>

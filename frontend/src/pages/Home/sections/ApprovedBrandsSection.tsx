@@ -51,7 +51,7 @@ export const ApprovedBrandsSection: React.FC = () => {
         {/* Main Heading */}
         <h2 className="text-2xl sm:text-4xl lg:text-[40px] font-serif font-extrabold text-slate-950 tracking-tight leading-[1.15]">
           We Install CEC Approved <br className="hidden sm:inline" />
-          <span className="text-transparent bg-clip-text bg-linear-to-r from-[#ed5001] via-[#f06e02] to-[#f4a304]">
+          <span className="text-[#2B3CB8]">
             Panels, Inverters &amp; Batteries
           </span>
         </h2>

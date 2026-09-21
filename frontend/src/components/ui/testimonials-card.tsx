@@ -183,29 +183,29 @@ export function TestimonialsCard({
                             {(activeItem.badge || activeItem.subtitle) && (
                                 <div className="flex flex-wrap items-center gap-2 mb-3">
                                     {activeItem.badge && (
-                                        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-[#ed5001] bg-orange-50 border border-orange-200/80">
+                                        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-[#2B3CB8] bg-[#E8EDFB] border border-[#D1DCF8]">
                                             <span>{activeItem.badge}</span>
                                         </div>
                                     )}
                                     {activeItem.subtitle && (
-                                        <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold text-slate-600 bg-slate-100 border border-slate-200/80">
+                                        <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold text-[#1D2984] bg-[#F5F7FD] border border-[#D1DCF8]">
                                             {activeItem.subtitle}
                                         </span>
                                     )}
                                 </div>
                             )}
 
-                            <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-neutral-900 font-serif mb-3 leading-snug">
+                            <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#0C123E] font-serif mb-3 leading-snug">
                                 {activeItem.title}
                             </h3>
 
-                            <p className="text-sm sm:text-base text-neutral-600 mt-2 leading-relaxed">
+                            <p className="text-sm sm:text-base text-[#151E64] mt-2 leading-relaxed">
                                 {activeItem.description}
                             </p>
 
                             {activeItem.highlight && (
-                                <div className="mt-4 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-emerald-50 border border-emerald-200 text-xs sm:text-sm font-bold text-[#265e11]">
-                                    <span className="w-2 h-2 rounded-full bg-[#265e11] shrink-0" />
+                                <div className="mt-4 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-[#E8EDFB] border border-[#D1DCF8] text-xs sm:text-sm font-bold text-[#2B3CB8]">
+                                    <span className="w-2 h-2 rounded-full bg-[#2B3CB8] shrink-0" />
                                     <span>{activeItem.highlight}</span>
                                 </div>
                             )}
@@ -216,24 +216,24 @@ export function TestimonialsCard({
                 {/* Navigation Controls: ← 01 / 05 → */}
                 <div className="col-start-1 md:col-start-2 md:row-start-3 flex items-center gap-3 m-auto -mt-2 md:mt-6 md:m-0 pl-0 sm:pl-4">
                     {showNavigation && items.length > 1 && (
-                        <div className="inline-flex items-center gap-3 bg-white border border-slate-200/90 rounded-full px-2 py-1.5 shadow-sm">
+                        <div className="inline-flex items-center gap-3 bg-white border border-[#D1DCF8] rounded-full px-2 py-1.5 shadow-sm">
                             <button
                                 onClick={handlePrev}
-                                className="flex items-center justify-center w-9 h-9 rounded-full bg-slate-100 hover:bg-[#ed5001] text-slate-700 hover:text-white transition-all cursor-pointer active:scale-95"
+                                className="flex items-center justify-center w-9 h-9 rounded-full bg-[#F5F7FD] hover:bg-[#2B3CB8] text-[#1D2984] hover:text-white transition-all cursor-pointer active:scale-95"
                                 aria-label="Previous slide"
                             >
                                 <ArrowLeft className="w-4 h-4" />
                             </button>
 
                             {showCounter && (
-                                <span className="font-mono text-xs sm:text-sm font-bold text-slate-700 select-none tracking-wider px-2">
+                                <span className="font-mono text-xs sm:text-sm font-bold text-[#1D2984] select-none tracking-wider px-2">
                                     {String(activeIndex + 1).padStart(2, '0')} / {String(items.length).padStart(2, '0')}
                                 </span>
                             )}
 
                             <button
                                 onClick={handleNext}
-                                className="flex items-center justify-center w-9 h-9 rounded-full bg-slate-100 hover:bg-[#ed5001] text-slate-700 hover:text-white transition-all cursor-pointer active:scale-95"
+                                className="flex items-center justify-center w-9 h-9 rounded-full bg-[#F5F7FD] hover:bg-[#2B3CB8] text-[#1D2984] hover:text-white transition-all cursor-pointer active:scale-95"
                                 aria-label="Next slide"
                             >
                                 <ArrowRight className="w-4 h-4" />

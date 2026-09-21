@@ -19,9 +19,9 @@ export const ExistingSolarWarningSignsSection: React.FC = () => {
   const warnings: WarningSign[] = [
     {
       icon: AlertTriangle,
-      iconColor: 'text-amber-600 bg-amber-500/10',
+      iconColor: 'text-[#2B3CB8] bg-[#2B3CB8]/10',
       badge: 'Unnoticed Loss',
-      badgeColor: 'bg-amber-50 text-amber-700 border-amber-200',
+      badgeColor: 'bg-[#F5F7FD] text-[#2B3CB8] border-[#D1DCF8]',
       title: 'Silent Inverter Trips & Fault Codes',
       symptom:
         'The inverter shows an intermittent red error LED, ground fault error, or shuts down during hot midday hours without alerting you.',
@@ -31,9 +31,9 @@ export const ExistingSolarWarningSignsSection: React.FC = () => {
     },
     {
       icon: Flame,
-      iconColor: 'text-rose-600 bg-rose-500/10',
+      iconColor: 'text-[#1D2984] bg-[#2B3CB8]/10',
       badge: 'Critical Fire Hazard',
-      badgeColor: 'bg-rose-50 text-rose-700 border-rose-200',
+      badgeColor: 'bg-[#F5F7FD] text-[#1D2984] border-[#D1DCF8]',
       title: 'Degraded or Recalled DC Isolators',
       symptom:
         'Queensland summer UV cracks switch housings, causing water ingress, internal arcing, and severe switchboard fire hazards.',
@@ -43,9 +43,9 @@ export const ExistingSolarWarningSignsSection: React.FC = () => {
     },
     {
       icon: TrendingDown,
-      iconColor: 'text-indigo-600 bg-indigo-500/10',
+      iconColor: 'text-[#2B3CB8] bg-[#2B3CB8]/10',
       badge: 'Financial Drain',
-      badgeColor: 'bg-indigo-50 text-indigo-700 border-indigo-200',
+      badgeColor: 'bg-[#F5F7FD] text-[#2B3CB8] border-[#D1DCF8]',
       title: 'The 5¢ Feed-In Tariff Cliff',
       symptom:
         'Legacy high feed-in tariffs have expired. You export surplus solar for just 3¢–5¢ while purchasing peak evening power at 45¢/kWh.',
@@ -55,9 +55,9 @@ export const ExistingSolarWarningSignsSection: React.FC = () => {
     },
     {
       icon: SunDim,
-      iconColor: 'text-orange-600 bg-orange-500/10',
+      iconColor: 'text-[#1D2984] bg-[#2B3CB8]/10',
       badge: 'Generation Loss',
-      badgeColor: 'bg-orange-50 text-orange-700 border-orange-200',
+      badgeColor: 'bg-[#F5F7FD] text-[#1D2984] border-[#D1DCF8]',
       title: 'Micro-Cracks & Diode Hotspots',
       symptom:
         'Subtle snail trails, yellowing backsheets, and cracked silicon wafers can cut total panel output by 25% to 40%.',
@@ -67,9 +67,9 @@ export const ExistingSolarWarningSignsSection: React.FC = () => {
     },
     {
       icon: CloudRain,
-      iconColor: 'text-sky-600 bg-sky-500/10',
+      iconColor: 'text-[#2B3CB8] bg-[#2B3CB8]/10',
       badge: 'Moisture Leakage',
-      badgeColor: 'bg-sky-50 text-sky-700 border-sky-200',
+      badgeColor: 'bg-[#F5F7FD] text-[#2B3CB8] border-[#D1DCF8]',
       title: 'Safety Trips During Storms & Rain',
       symptom:
         'Your main switchboard or solar safety switch trips whenever it rains or morning humidity rises above 85%.',
@@ -99,7 +99,7 @@ export const ExistingSolarWarningSignsSection: React.FC = () => {
           return (
             <div
               key={idx}
-              className="bg-white rounded-xl p-6 border border-slate-200/80 shadow-sm hover:shadow-md hover:border-slate-300 transition-all flex flex-col justify-between group"
+              className="bg-white rounded-xl p-6 border border-slate-200/80 shadow-sm hover:shadow-md hover:border-[#2B3CB8]/50 transition-all flex flex-col justify-between group"
             >
               <div>
                 <div className="flex items-center justify-between mb-4">
@@ -111,7 +111,7 @@ export const ExistingSolarWarningSignsSection: React.FC = () => {
                   </span>
                 </div>
 
-                <h3 className="text-lg font-bold font-serif text-slate-950 mb-2 group-hover:text-amber-700 transition-colors">
+                <h3 className="text-lg font-bold font-serif text-slate-950 mb-2 group-hover:text-[#2B3CB8] transition-colors">
                   {item.title}
                 </h3>
 
@@ -127,7 +127,7 @@ export const ExistingSolarWarningSignsSection: React.FC = () => {
                 </div>
                 <Link
                   to={item.linkTo}
-                  className="inline-flex items-center gap-1 font-bold text-[#ed5001] hover:text-[#c44200] hover:underline transition-colors text-xs pt-1 group/wlink"
+                  className="inline-flex items-center gap-1 font-bold text-[#2B3CB8] hover:text-[#1D2984] hover:underline transition-colors text-xs pt-1 group/wlink"
                 >
                   <span>{item.linkText}</span>
                   <ArrowRight className="w-3 h-3 group-hover/wlink:translate-x-1 transition-transform" />
@@ -138,9 +138,9 @@ export const ExistingSolarWarningSignsSection: React.FC = () => {
         })}
 
         {/* 6th Card: Direct Health Check Booking Card */}
-        <div className="bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900 text-white rounded-2xl p-6 border border-slate-800 shadow-md flex flex-col justify-between">
+        <div className="bg-linear-to-br from-[#0C123E] via-[#070A24] to-[#0C123E] text-white rounded-2xl p-6 border border-[#151E64] shadow-md flex flex-col justify-between">
           <div>
-            <span className="text-xs font-mono font-bold text-amber-400 uppercase tracking-wider block mb-2">
+            <span className="text-xs font-mono font-bold text-[#D1DCF8] uppercase tracking-wider block mb-2">
               Comprehensive Audit
             </span>
             <h3 className="text-xl font-bold font-serif mb-2">
@@ -149,7 +149,7 @@ export const ExistingSolarWarningSignsSection: React.FC = () => {
             <p className="text-xs text-slate-300 leading-relaxed mb-4">
               Our CEC Master Electricians conduct infrared thermal scans, string voltage audits, and isolator safety checks across Brisbane and Gold Coast.
             </p>
-            <div className="text-2xl font-bold font-mono text-emerald-400 mb-1">
+            <div className="text-2xl font-bold font-mono text-[#D1DCF8] mb-1">
               $189 Fixed Price
             </div>
             <span className="text-[11px] text-slate-400 block mb-4">

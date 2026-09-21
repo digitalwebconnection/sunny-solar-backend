@@ -11,8 +11,8 @@ const stats = [
     decimals: 0,
     label: 'Homes & Sites Powered',
     description: 'Queensland residential and commercial installations completed with zero subcontractors.',
-    accentColor: '#ed5001',
-    iconBg: 'bg-orange-500/10',
+    accentColor: '#2B3CB8',
+    iconBg: 'bg-[#2B3CB8]/10',
     linkTo: '/projects',
     linkText: 'Explore Project Portfolio',
   },
@@ -24,8 +24,8 @@ const stats = [
     decimals: 0,
     label: 'Master Electrician Owned',
     description: 'Owner-operated by Trent Palmer, a licensed master electrician — not a sales company.',
-    accentColor: '#265e11',
-    iconBg: 'bg-emerald-500/10',
+    accentColor: '#2B3CB8',
+    iconBg: 'bg-[#2B3CB8]/10',
     linkTo: '/about/trent',
     linkText: 'Meet Trent Palmer',
   },
@@ -37,8 +37,8 @@ const stats = [
     decimals: 0,
     label: 'Performance Guarantee',
     description: 'Industry-leading workmanship and performance warranty for total peace of mind.',
-    accentColor: '#2563eb',
-    iconBg: 'bg-blue-500/10',
+    accentColor: '#2B3CB8',
+    iconBg: 'bg-[#2B3CB8]/10',
     linkTo: '/solar/systems',
     linkText: 'View Guaranteed Systems',
   },
@@ -49,8 +49,8 @@ const stats = [
     decimals: 1,
     label: 'Google Customer Rating',
     description: 'Hundreds of verified 5-star reviews from homeowners across South East Queensland.',
-    accentColor: '#f59e0b',
-    iconBg: 'bg-amber-500/10',
+    accentColor: '#2B3CB8',
+    iconBg: 'bg-[#2B3CB8]/10',
     linkTo: '/reviews',
     linkText: 'Read Verified Reviews',
   },
@@ -265,7 +265,7 @@ export const TrustBarSection: React.FC = () => {
 
           {/* ── RIGHT: Fixed Summary Card ── */}
           <div className="order-1 lg:order-2">
-            <div className="bg-slate-950 rounded-lg p-4 sm:p-10 lg:p-6 relative overflow-hidden shadow-2xl">
+            <div className="bg-[#0C123E] rounded-lg p-4 sm:p-10 lg:p-6 relative overflow-hidden shadow-2xl">
               {/* Decorative glow */}
               <div className="absolute -top-20 -right-20 w-60 h-60 rounded-full blur-[80px] pointer-events-none" style={{ background: `${active.accentColor}25` }} />
               <div className="absolute -bottom-20 -left-20 w-60 h-60 bg-white/5 rounded-full blur-[80px] pointer-events-none" />
@@ -276,7 +276,7 @@ export const TrustBarSection: React.FC = () => {
 
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-extrabold text-white tracking-tight leading-[1.1] mb-5">
                   Real Numbers.<br />
-                  <span className="text-transparent bg-clip-text bg-linear-to-r from-[#ed5001] to-[#f4a304]">
+                  <span className="text-[#D1DCF8]">
                     Proven Impact.
                   </span>
                 </h2>
@@ -330,7 +330,7 @@ export const TrustBarSection: React.FC = () => {
                   <span className="text-xs text-slate-400">See your home's numbers:</span>
                   <Link
                     to="/calculators/solar-savings"
-                    className="inline-flex items-center gap-1.5 text-xs font-bold text-amber-400 hover:text-amber-300 hover:underline transition-colors"
+                    className="inline-flex items-center gap-1.5 text-xs font-bold text-[#D1DCF8] hover:text-white hover:underline transition-colors"
                   >
                     <span>Run Savings Calculator</span>
                     <ArrowRight className="w-3.5 h-3.5" />

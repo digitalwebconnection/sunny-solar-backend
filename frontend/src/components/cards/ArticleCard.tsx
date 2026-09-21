@@ -16,7 +16,7 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
   return (
     <Link
       to={`${basePath}/${article.slug}`}
-      className="group bg-white rounded-lg border border-slate-200/80 overflow-hidden shadow-lg hover:shadow-xl shadow-black/50 hover:border-[#1d4ed8]/70 hover:shadow-blue-500/10 transition-all duration-300 flex flex-col cursor-pointer"
+      className="group bg-white rounded-lg border border-slate-200/80 overflow-hidden shadow-lg hover:shadow-xl shadow-black/50 hover:border-[#2B3CB8]/70 hover:shadow-[#2B3CB8]/10 transition-all duration-300 flex flex-col cursor-pointer"
     >
       <div className="relative aspect-video lg:aspect-auto lg:h-48 overflow-hidden bg-slate-100">
         <img
@@ -46,7 +46,7 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
             </span>
           </div>
 
-          <h3 className="font-bold text-lg text-slate-900 group-hover:text-[#1d4ed8] transition-colors line-clamp-2 leading-snug">
+          <h3 className="font-bold text-lg text-slate-900 group-hover:text-[#2B3CB8] transition-colors line-clamp-2 leading-snug">
             {article.title}
           </h3>
 
@@ -60,7 +60,7 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
             By <span className="font-semibold text-slate-700">{article.author}</span>
           </div>
           <span
-            className="inline-flex items-center gap-1 text-xs font-bold text-[#1d4ed8] group-hover:text-blue-700 transition-colors"
+            className="inline-flex items-center gap-1 text-xs font-bold text-[#2B3CB8] group-hover:text-[#1D2984] transition-colors"
           >
             Read Guide
             <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />

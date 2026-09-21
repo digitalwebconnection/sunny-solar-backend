@@ -48,18 +48,18 @@ export const Navbar: React.FC = () => {
       >
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-4 min-w-0">
-            <span className="flex items-center gap-1.5 text-[#ed5001] font-semibold shrink-0">
-              <ShieldCheck className="w-3.5 h-3.5 text-[#265e11] shrink-0" />
+            <span className="flex items-center gap-1.5 text-[#2B3CB8] font-semibold shrink-0">
+              <ShieldCheck className="w-3.5 h-3.5 text-[#2B3CB8] shrink-0" />
               <span className="hidden sm:inline">NETCC APPROVED SELLER</span>
               <span className="sm:hidden">CEC Approved</span>
             </span>
             <span
               className={`hidden md:inline-flex items-center gap-1.5 font-bold text-[11px] px-2.5 py-0.5 rounded-full transition-all ${isScrolled || !isHomePage
-                ? 'text-sky-300 bg-sky-950/80 border border-sky-500/40 shadow-xs'
-                : 'text-blue-700 bg-blue-50 border border-blue-200/90 shadow-2xs'
+                ? 'text-[#D1DCF8] bg-[#0C123E] border border-[#2B3CB8]/40 shadow-xs'
+                : 'text-[#2B3CB8] bg-[#F5F7FD] border border-[#D1DCF8] shadow-2xs'
                 }`}
             >
-              <span className="w-1.5 h-1.5 rounded-full bg-[#1d4ed8] inline-block animate-pulse" />
+              <span className="w-1.5 h-1.5 rounded-full bg-[#2B3CB8] inline-block animate-pulse" />
               25-Year Performance Warranty
             </span>
             <span
@@ -74,8 +74,8 @@ export const Navbar: React.FC = () => {
             <Link
               to="/service-areas"
               className={`transition-colors hidden sm:inline ${isScrolled || !isHomePage
-                ? 'text-slate-200 hover:text-[#ed5001]'
-                : 'text-slate-700 hover:text-[#ed5001]'
+                ? 'text-slate-200 hover:text-[#2B3CB8]'
+                : 'text-slate-700 hover:text-[#2B3CB8]'
                 }`}
             >
               Gold Coast • Brisbane • Sunshine Coast
@@ -83,11 +83,11 @@ export const Navbar: React.FC = () => {
             <a
               href="tel:1300030479"
               className={`flex items-center gap-1.5 font-bold transition-colors ${isScrolled || !isHomePage
-                ? 'text-white hover:text-[#ed5001]'
-                : 'text-slate-900 hover:text-[#ed5001]'
+                ? 'text-white hover:text-[#2B3CB8]'
+                : 'text-slate-900 hover:text-[#2B3CB8]'
                 }`}
             >
-              <Phone className="w-3.5 h-3.5 text-[#ed5001] shrink-0" />
+              <Phone className="w-3.5 h-3.5 text-[#2B3CB8] shrink-0" />
               <span>1300 030 479</span>
             </a>
           </div>
@@ -135,27 +135,27 @@ export const Navbar: React.FC = () => {
                     onClick={() => !hasChildren && setActiveMenu(null)}
                     className={`px-2 py-1 rounded-lg text-base font-semibold tracking-wide flex items-center gap-1.5 transition-all duration-150 ${isActive
                       ? isScrolled
-                        ? 'text-[#265e11] bg-[#265e11]/10 font-bold'
-                        : 'text-[#265e11] bg-white/15 font-bold'
+                        ? 'text-[#2B3CB8] bg-[#2B3CB8]/10 font-bold'
+                        : 'text-[#2B3CB8] bg-[#2B3CB8]/10 font-bold'
                       : isMenuOpen
-                        ? 'text-[#ed5001] bg-orange-50/80 font-semibold'
+                        ? 'text-[#2B3CB8] bg-[#F5F7FD] font-semibold'
                         : isScrolled
-                          ? 'text-[#18181b] hover:text-[#ed5001] hover:bg-orange-50/60'
-                          : 'text-black hover:text-[#ed5001] hover:bg-white/10'
+                          ? 'text-[#0C123E] hover:text-[#2B3CB8] hover:bg-[#F5F7FD]'
+                          : 'text-[#0C123E] hover:text-[#2B3CB8] hover:bg-[#F5F7FD]'
                       }`}
                   >
                     <span>{section.title}</span>
                     {hasChildren && (
                       <ChevronDown
                         className={`w-3.5 h-3.5 transition-transform duration-200 ${isMenuOpen
-                          ? 'rotate-180 text-[#ed5001]'
+                          ? 'rotate-180 text-[#2B3CB8]'
                           : isActive
                             ? isScrolled
-                              ? 'text-[#265e11]'
-                              : 'text-[#265e11]'
+                              ? 'text-[#2B3CB8]'
+                              : 'text-[#2B3CB8]'
                             : isScrolled
-                              ? 'text-[#18181b]/70 group-hover:text-[#ed5001]'
-                              : 'text-black/80 group-hover:text-[#ed5001]'
+                              ? 'text-[#0C123E]/70 group-hover:text-[#2B3CB8]'
+                              : 'text-[#0C123E]/80 group-hover:text-[#2B3CB8]'
                           }`}
                       />
                     )}
@@ -165,13 +165,13 @@ export const Navbar: React.FC = () => {
             })}
           </div>
 
-          {/* Right Action Buttons (Matching logo solar orange pill style) */}
+          {/* Right Action Buttons */}
           <div className="flex items-center gap-3">
             <Button
               to="/get-started/free-assessment"
               variant="primary"
               size="md"
-              className="hidden lg:inline-flex rounded-full text-xs uppercase tracking-wider font-extrabold shadow-lg shadow-[#ed5001]/25 bg-linear-to-r from-[#ed5001] via-[#f06e02] to-[#f4a304] hover:from-[#c84300] hover:to-[#ed5001] text-white border-0"
+              className="hidden lg:inline-flex rounded-full text-xs uppercase tracking-wider font-extrabold shadow-lg shadow-[#2B3CB8]/25 bg-linear-to-r from-[#2B3CB8] via-[#2433A1] to-[#1D2984] hover:from-[#1D2984] hover:to-[#2B3CB8] text-white border-0"
               icon={<ArrowRight className="w-4 h-4" />}
             >
               Free Assessment

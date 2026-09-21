@@ -125,10 +125,9 @@ export const HeroSection: React.FC = () => {
           >
             {/* Top Micro Eyebrow Badge */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold text-white bg-slate-900/80 border border-white/20 backdrop-blur-md shadow-lg">
-              <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
-              <span className="text-blue-300 font-bold">SOLAR PANELS • SOLAR BATTERY • </span>
-              
-              <span className="text-amber-300 font-bold">ENERGY SOLUTIONS</span>
+              <span className="w-2 h-2 rounded-full bg-[#6F8EE7] animate-pulse" />
+              <span className="text-[#D1DCF8] font-bold">SOLAR PANELS • SOLAR BATTERY • </span>
+              <span className="text-white font-bold">ENERGY SOLUTIONS</span>
             </div>
 
             {/* Animated Headline with Dynamic Cycling Highlight */}
@@ -143,7 +142,7 @@ export const HeroSection: React.FC = () => {
                     animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
                     exit={{ opacity: 0, y: -16, filter: 'blur(5px)' }}
                     transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                    className="inline-block bg-linear-to-r from-[#ed5001] via-[#f06e02] to-[#f4a304] bg-clip-text text-transparent drop-shadow-[0_2px_14px_rgba(237,80,1,0.4)] font-extrabold"
+                    className="inline-block text-[#2B3CB8] drop-shadow-[0_2px_14px_rgba(43,60,184,0.4)] font-extrabold bg-white/90 px-2 rounded-lg"
                   >
                     Solar Made Simple.
                   </motion.span>
@@ -170,7 +169,7 @@ export const HeroSection: React.FC = () => {
             >
               <a
                 href="#hero-quote-form"
-                className="group inline-flex items-center justify-center gap-2 font-bold px-6 py-2.5 rounded-lg bg-linear-to-r from-[#ed5001] via-[#f06e02] to-[#f4a304] text-white shadow-md hover:shadow-xl hover:shadow-[#ed5001]/30 hover:scale-[1.02] active:scale-[0.98] transition-all text-sm cursor-pointer w-full sm:w-auto"
+                className="group inline-flex items-center justify-center gap-2 font-bold px-6 py-2.5 rounded-lg bg-[#2B3CB8] hover:bg-[#1D2984] text-white shadow-md hover:shadow-xl hover:shadow-[#2B3CB8]/30 hover:scale-[1.02] active:scale-[0.98] transition-all text-sm cursor-pointer w-full sm:w-auto"
               >
                 <span>Explore Solar Options</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
@@ -193,7 +192,7 @@ export const HeroSection: React.FC = () => {
 
                 {/* Cutout with subtle ambient glow and 3D shadow */}
                 <div className="relative">
-                  <div className="absolute inset-0 bg-[#ed5001]/15 rounded-full blur-md scale-90 -z-10" />
+                  <div className="absolute inset-0 bg-[#2B3CB8]/15 rounded-full blur-md scale-90 -z-10" />
                   <img
                     src={consultantAvatar}
                     alt="Sunny Solar Energy Consultant"
@@ -218,7 +217,7 @@ export const HeroSection: React.FC = () => {
                   onClick={() => setSystemType('combo')}
                   className={`py-1.5 px-2 rounded-md transition-all flex items-center justify-center gap-1 cursor-pointer ${
                     systemType === 'combo'
-                      ? 'bg-linear-to-r from-[#ed5001] to-[#f06e02] text-white shadow-xs'
+                      ? 'bg-[#2B3CB8] text-white shadow-xs'
                       : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/60'
                   }`}
                 >
@@ -231,7 +230,7 @@ export const HeroSection: React.FC = () => {
                   onClick={() => setSystemType('solar')}
                   className={`py-1.5 px-2 rounded-md transition-all flex items-center justify-center gap-1 cursor-pointer ${
                     systemType === 'solar'
-                      ? 'bg-[#1d4ed8] text-white shadow-xs'
+                      ? 'bg-[#2B3CB8] text-white shadow-xs'
                       : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/60'
                   }`}
                 >
@@ -243,7 +242,7 @@ export const HeroSection: React.FC = () => {
                   onClick={() => setSystemType('battery')}
                   className={`py-1.5 px-2 rounded-md transition-all flex items-center justify-center gap-1 cursor-pointer ${
                     systemType === 'battery'
-                      ? 'bg-[#265e11] text-white shadow-xs'
+                      ? 'bg-[#2B3CB8] text-white shadow-xs'
                       : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/60'
                   }`}
                 >
@@ -254,7 +253,7 @@ export const HeroSection: React.FC = () => {
 
               {isSubmitted ? (
                 <div className="py-6 text-center space-y-2">
-                  <CheckCircle2 className="w-9 h-9 text-[#265e11] mx-auto" />
+                  <CheckCircle2 className="w-9 h-9 text-[#2B3CB8] mx-auto" />
                   <h4 className="text-sm font-bold text-slate-900">
                     Quote Request Sent!
                   </h4>
@@ -267,7 +266,7 @@ export const HeroSection: React.FC = () => {
                       setIsSubmitted(false);
                       setFormData({ name: '', phone: '', email: '', postcode: '', address: '' });
                     }}
-                    className="text-xs font-semibold text-[#ed5001] hover:underline pt-1 cursor-pointer"
+                    className="text-xs font-semibold text-[#2B3CB8] hover:underline pt-1 cursor-pointer"
                   >
                     Submit another
                   </button>
@@ -283,7 +282,7 @@ export const HeroSection: React.FC = () => {
                         value={formData.name}
                         onChange={handleChange}
                         placeholder="Full Name *"
-                        className="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-lg text-xs sm:text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#ed5001] focus:ring-1 focus:ring-[#ed5001] transition-all"
+                        className="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-lg text-xs sm:text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#2B3CB8] focus:ring-1 focus:ring-[#2B3CB8] transition-all"
                       />
                     </div>
 
@@ -295,7 +294,7 @@ export const HeroSection: React.FC = () => {
                         value={formData.phone}
                         onChange={handleChange}
                         placeholder="Phone Number *"
-                        className="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-lg text-xs sm:text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#ed5001] focus:ring-1 focus:ring-[#ed5001] transition-all"
+                        className="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-lg text-xs sm:text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#2B3CB8] focus:ring-1 focus:ring-[#2B3CB8] transition-all"
                       />
                     </div>
 
@@ -307,7 +306,7 @@ export const HeroSection: React.FC = () => {
                         value={formData.email}
                         onChange={handleChange}
                         placeholder="Email Address *"
-                        className="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-lg text-xs sm:text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#ed5001] focus:ring-1 focus:ring-[#ed5001] transition-all"
+                        className="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-lg text-xs sm:text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#2B3CB8] focus:ring-1 focus:ring-[#2B3CB8] transition-all"
                       />
                     </div>
 
@@ -319,7 +318,7 @@ export const HeroSection: React.FC = () => {
                         value={formData.postcode}
                         onChange={handleChange}
                         placeholder="Post Code *"
-                        className="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-lg text-xs sm:text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#ed5001] focus:ring-1 focus:ring-[#ed5001] transition-all"
+                        className="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-lg text-xs sm:text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#2B3CB8] focus:ring-1 focus:ring-[#2B3CB8] transition-all"
                       />
                     </div>
 
@@ -331,13 +330,13 @@ export const HeroSection: React.FC = () => {
                         value={formData.address}
                         onChange={handleChange}
                         placeholder="House Address *"
-                        className="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-lg text-xs sm:text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#ed5001] focus:ring-1 focus:ring-[#ed5001] transition-all"
+                        className="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-lg text-xs sm:text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#2B3CB8] focus:ring-1 focus:ring-[#2B3CB8] transition-all"
                       />
                     </div>
                   </div>
 
                   {errorMessage && (
-                    <div className="p-2 rounded bg-red-50 border border-red-200 text-red-600 text-xs text-center">
+                    <div className="p-2 rounded bg-[#F5F7FD] border border-[#2B3CB8] text-[#0C123E] text-xs text-center">
                       {errorMessage}
                     </div>
                   )}
@@ -345,7 +344,7 @@ export const HeroSection: React.FC = () => {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full py-2.5 px-4 rounded-lg font-bold text-xs sm:text-sm text-white bg-linear-to-r from-[#ed5001] via-[#f06e02] to-[#f4a304] hover:shadow-md hover:brightness-105 transition-all flex items-center justify-center gap-1.5 cursor-pointer disabled:opacity-75 pt-2"
+                    className="w-full py-2.5 px-4 rounded-lg font-bold text-xs sm:text-sm text-white bg-[#2B3CB8] hover:bg-[#1D2984] hover:shadow-md hover:brightness-105 transition-all flex items-center justify-center gap-1.5 cursor-pointer disabled:opacity-75 pt-2"
                   >
                     {isSubmitting ? (
                       <span>Submitting to Web3Forms...</span>

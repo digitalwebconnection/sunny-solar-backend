@@ -65,15 +65,15 @@ const flagshipSolutions: SolutionCard[] = [
     link: '/solar',
     icon: Sun,
     theme: {
-      borderActive: 'border-[#ed5001] ring-2 ring-[#ed5001]/20',
-      borderHover: 'hover:border-[#ed5001]/60',
-      shadowHover: 'hover:shadow-orange-500/15',
-      indicator: 'bg-linear-to-r from-[#ed5001] via-[#f06e02] to-[#f4a304]',
-      iconBg: 'bg-orange-50 text-[#ed5001] group-hover:bg-[#ed5001] group-hover:text-white',
-      iconText: 'text-[#ed5001]',
-      badgeStyle: 'text-[#ed5001] bg-orange-50/90 group-hover:bg-orange-100/90 border-orange-200/80',
-      titleHover: 'group-hover:text-[#ed5001]',
-      actionText: 'text-[#ed5001] group-hover:text-[#c84300]',
+      borderActive: 'border-[#2B3CB8] ring-2 ring-[#2B3CB8]/20',
+      borderHover: 'hover:border-[#2B3CB8]/60',
+      shadowHover: 'hover:shadow-[#2B3CB8]/15',
+      indicator: 'bg-[#2B3CB8]',
+      iconBg: 'bg-[#F5F7FD] text-[#2B3CB8] group-hover:bg-[#2B3CB8] group-hover:text-white',
+      iconText: 'text-[#2B3CB8]',
+      badgeStyle: 'text-[#2B3CB8] bg-[#F5F7FD] group-hover:bg-[#E8EDFB] border-[#D1DCF8]',
+      titleHover: 'group-hover:text-[#2B3CB8]',
+      actionText: 'text-[#2B3CB8] group-hover:text-[#1D2984]',
     },
   },
   {
@@ -85,15 +85,15 @@ const flagshipSolutions: SolutionCard[] = [
     link: '/batteries',
     icon: BatteryCharging,
     theme: {
-      borderActive: 'border-[#1d4ed8] ring-2 ring-[#1d4ed8]/20',
-      borderHover: 'hover:border-[#1d4ed8]/60',
-      shadowHover: 'hover:shadow-blue-500/15',
-      indicator: 'bg-linear-to-r from-[#1d4ed8] via-[#2563eb] to-[#0284c7]',
-      iconBg: 'bg-blue-50 text-[#1d4ed8] group-hover:bg-[#1d4ed8] group-hover:text-white',
-      iconText: 'text-[#1d4ed8]',
-      badgeStyle: 'text-[#1d4ed8] bg-blue-50/90 group-hover:bg-blue-100/90 border-blue-200/80',
-      titleHover: 'group-hover:text-[#1d4ed8]',
-      actionText: 'text-[#1d4ed8] group-hover:text-blue-800',
+      borderActive: 'border-[#2B3CB8] ring-2 ring-[#2B3CB8]/20',
+      borderHover: 'hover:border-[#2B3CB8]/60',
+      shadowHover: 'hover:shadow-[#2B3CB8]/15',
+      indicator: 'bg-[#2B3CB8]',
+      iconBg: 'bg-[#F5F7FD] text-[#2B3CB8] group-hover:bg-[#2B3CB8] group-hover:text-white',
+      iconText: 'text-[#2B3CB8]',
+      badgeStyle: 'text-[#2B3CB8] bg-[#F5F7FD] group-hover:bg-[#E8EDFB] border-[#D1DCF8]',
+      titleHover: 'group-hover:text-[#2B3CB8]',
+      actionText: 'text-[#2B3CB8] group-hover:text-[#1D2984]',
     },
   },
 ];
@@ -108,15 +108,15 @@ const secondarySolutions: SolutionCard[] = [
     link: '/existing-solar/health-check',
     icon: Activity,
     theme: {
-      borderActive: 'border-[#265e11] ring-2 ring-[#265e11]/20',
-      borderHover: 'hover:border-[#265e11]/60',
-      shadowHover: 'hover:shadow-emerald-500/15',
-      indicator: 'bg-linear-to-r from-[#265e11] via-emerald-500 to-teal-400',
-      iconBg: 'bg-emerald-50 text-[#265e11] group-hover:bg-[#265e11] group-hover:text-white',
-      iconText: 'text-[#265e11]',
-      badgeStyle: 'text-[#265e11] bg-emerald-50/90 group-hover:bg-emerald-100/90 border-emerald-200/80',
-      titleHover: 'group-hover:text-[#265e11]',
-      actionText: 'text-[#265e11] group-hover:text-emerald-800',
+      borderActive: 'border-[#2B3CB8] ring-2 ring-[#2B3CB8]/20',
+      borderHover: 'hover:border-[#2B3CB8]/60',
+      shadowHover: 'hover:shadow-[#2B3CB8]/15',
+      indicator: 'bg-[#2B3CB8]',
+      iconBg: 'bg-[#F5F7FD] text-[#2B3CB8] group-hover:bg-[#2B3CB8] group-hover:text-white',
+      iconText: 'text-[#2B3CB8]',
+      badgeStyle: 'text-[#2B3CB8] bg-[#F5F7FD] group-hover:bg-[#E8EDFB] border-[#D1DCF8]',
+      titleHover: 'group-hover:text-[#2B3CB8]',
+      actionText: 'text-[#2B3CB8] group-hover:text-[#1D2984]',
     },
   },
   {
@@ -128,15 +128,15 @@ const secondarySolutions: SolutionCard[] = [
     link: '/existing-solar/upgrade',
     icon: TrendingUp,
     theme: {
-      borderActive: 'border-amber-500 ring-2 ring-amber-500/20',
-      borderHover: 'hover:border-amber-400/60',
-      shadowHover: 'hover:shadow-amber-500/15',
-      indicator: 'bg-linear-to-r from-amber-500 via-amber-400 to-yellow-300',
-      iconBg: 'bg-amber-50 text-amber-600 group-hover:bg-amber-500 group-hover:text-white',
-      iconText: 'text-amber-600',
-      badgeStyle: 'text-amber-700 bg-amber-50/90 group-hover:bg-amber-100/90 border-amber-200/80',
-      titleHover: 'group-hover:text-amber-600',
-      actionText: 'text-amber-700 group-hover:text-amber-900',
+      borderActive: 'border-[#2B3CB8] ring-2 ring-[#2B3CB8]/20',
+      borderHover: 'hover:border-[#2B3CB8]/60',
+      shadowHover: 'hover:shadow-[#2B3CB8]/15',
+      indicator: 'bg-[#2B3CB8]',
+      iconBg: 'bg-[#F5F7FD] text-[#2B3CB8] group-hover:bg-[#2B3CB8] group-hover:text-white',
+      iconText: 'text-[#2B3CB8]',
+      badgeStyle: 'text-[#2B3CB8] bg-[#F5F7FD] group-hover:bg-[#E8EDFB] border-[#D1DCF8]',
+      titleHover: 'group-hover:text-[#2B3CB8]',
+      actionText: 'text-[#2B3CB8] group-hover:text-[#1D2984]',
     },
   },
   {
@@ -148,15 +148,15 @@ const secondarySolutions: SolutionCard[] = [
     link: '/calculators',
     icon: Calculator,
     theme: {
-      borderActive: 'border-indigo-500 ring-2 ring-indigo-500/20',
-      borderHover: 'hover:border-indigo-400/60',
-      shadowHover: 'hover:shadow-indigo-500/15',
-      indicator: 'bg-linear-to-r from-indigo-500 via-blue-500 to-sky-400',
-      iconBg: 'bg-indigo-50 text-indigo-600 group-hover:bg-indigo-600 group-hover:text-white',
-      iconText: 'text-indigo-600',
-      badgeStyle: 'text-indigo-700 bg-indigo-50/90 group-hover:bg-indigo-100/90 border-indigo-200/80',
-      titleHover: 'group-hover:text-indigo-600',
-      actionText: 'text-indigo-700 group-hover:text-indigo-900',
+      borderActive: 'border-[#2B3CB8] ring-2 ring-[#2B3CB8]/20',
+      borderHover: 'hover:border-[#2B3CB8]/60',
+      shadowHover: 'hover:shadow-[#2B3CB8]/15',
+      indicator: 'bg-[#2B3CB8]',
+      iconBg: 'bg-[#F5F7FD] text-[#2B3CB8] group-hover:bg-[#2B3CB8] group-hover:text-white',
+      iconText: 'text-[#2B3CB8]',
+      badgeStyle: 'text-[#2B3CB8] bg-[#F5F7FD] group-hover:bg-[#E8EDFB] border-[#D1DCF8]',
+      titleHover: 'group-hover:text-[#2B3CB8]',
+      actionText: 'text-[#2B3CB8] group-hover:text-[#1D2984]',
     },
   },
 ];
@@ -176,9 +176,9 @@ export const ServiceAreasTeaserSection: React.FC = () => {
       />
 
       {/* Floating Ambient Brand Glow Orbs */}
-      <div className="absolute top-1/4 -left-28 w-96 h-96 bg-[#265e11]/6 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-12 -right-28 w-96 h-96 bg-[#ed5001]/6 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute top-1/2 right-1/3 w-80 h-80 bg-blue-600/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/4 -left-28 w-96 h-96 bg-[#2B3CB8]/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-12 -right-28 w-96 h-96 bg-[#2B3CB8]/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/2 right-1/3 w-80 h-80 bg-[#2B3CB8]/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
@@ -192,15 +192,15 @@ export const ServiceAreasTeaserSection: React.FC = () => {
             className="lg:col-span-5 space-y-4"
           >
             {/* Eyebrow */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider text-[#1d4ed8] bg-blue-50 border border-blue-200/90 shadow-2xs">
-              <span className="w-2 h-2 rounded-full bg-[#1d4ed8] animate-pulse" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider text-[#2B3CB8] bg-[#F5F7FD] border border-[#D1DCF8] shadow-2xs">
+              <span className="w-2 h-2 rounded-full bg-[#2B3CB8] animate-pulse" />
               <span>SOLAR FOR AUSTRALIAN HOMES</span>
             </div>
 
             {/* Headline */}
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#18181b] tracking-tight font-serif leading-[1.15]">
               Solar Solutions Built for <br />
-              <span className="text-transparent bg-clip-text bg-linear-to-r from-[#ed5001] via-[#f06e02] to-[#f4a304] inline-block">
+              <span className="text-[#2B3CB8] inline-block">
                 Australian Homes.
               </span>
             </h2>
@@ -216,7 +216,7 @@ export const ServiceAreasTeaserSection: React.FC = () => {
                 to="/solar"
                 variant="primary"
                 size="md"
-                className="w-full sm:w-auto group relative overflow-hidden rounded-xl shadow-lg shadow-[#ed5001]/25 bg-linear-to-r from-[#ed5001] via-[#f06e02] to-[#f4a304] hover:from-[#c84300] hover:to-[#ed5001] text-white border-0 font-bold px-7 py-3.5 transition-all duration-300 hover:shadow-[#ed5001]/40 hover:-translate-y-0.5 justify-center"
+                className="w-full sm:w-auto group relative overflow-hidden rounded-xl shadow-lg shadow-[#2B3CB8]/25 bg-[#2B3CB8] hover:bg-[#1D2984] text-white border-0 font-bold px-7 py-3.5 transition-all duration-300 hover:shadow-[#2B3CB8]/40 hover:-translate-y-0.5 justify-center"
                 icon={
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform duration-300" />
                 }

@@ -36,7 +36,7 @@ export const ScrollToTop: React.FC = () => {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
           style={{ originX: 0 }}
-          className="fixed top-0 left-0 right-0 h-1 bg-linear-to-r from-[#ed5001] via-[#f06e02] to-[#f4a304] z-9999 shadow-sm shadow-[#ed5001]/50 pointer-events-none"
+          className="fixed top-0 left-0 right-0 h-1 bg-[#2B3CB8] z-9999 shadow-sm shadow-[#2B3CB8]/50 pointer-events-none"
         />
       )}
     </AnimatePresence>

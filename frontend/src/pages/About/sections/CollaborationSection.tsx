@@ -106,7 +106,7 @@ export const CollaborationSection: React.FC = () => {
                 </div>
 
                 {/* Subtle Divider */}
-                <div className="w-full h-px bg-linear-to-r from-transparent via-[#d7e7f5] to-transparent" />
+                <div className="w-full h-px bg-linear-to-r from-transparent via-[#D1DCF8] to-transparent" />
 
                 {/* 2. Jinko Solar Brand Block */}
                 <div className="group flex flex-col items-center text-center p-6 rounded-2xl bg-white/70 border border-sky-100/60 shadow-sm hover:bg-white hover:shadow-md transition-all duration-300">
@@ -145,7 +145,7 @@ const SolaxLogo: React.FC = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       {/* SolaX Geometric 'X' Icon */}
-      <g fill="#002d4b">
+      <g fill="#2B3CB8">
         {/* Top-Left to Center Arm */}
         <path d="M12 8 L32 37.5 L46 37.5 L26 8 Z" />
         {/* Top-Right to Center Arm */}
@@ -160,7 +160,7 @@ const SolaxLogo: React.FC = () => {
       <text
         x="88"
         y="45"
-        fill="#002d4b"
+        fill="#2B3CB8"
         fontFamily="'Plus Jakarta Sans', 'Outfit', sans-serif"
         fontWeight="900"
         fontSize="38"
@@ -173,7 +173,7 @@ const SolaxLogo: React.FC = () => {
       <text
         x="180"
         y="64"
-        fill="#002d4b"
+        fill="#2B3CB8"
         fontFamily="'Plus Jakarta Sans', sans-serif"
         fontWeight="800"
         fontSize="13"
@@ -195,7 +195,7 @@ const JinkoLogo: React.FC = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       {/* Stylized JinkO Wordmark */}
-      <g fill="#002b40">
+      <g fill="#2B3CB8">
         {/* Dot on J */}
         <circle cx="26" cy="38" r="7" />
         {/* J stem & curve */}

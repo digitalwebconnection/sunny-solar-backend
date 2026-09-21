@@ -266,18 +266,18 @@ export function generateBuyingChecklistPdf(options: ChecklistPdfOptions): { blob
   const page = doc.addPage();
 
   // Top Dark Header Banner
-  page.setFillColor(0.06, 0.09, 0.16); // Slate-950
+  page.setFillColor(0.047, 0.071, 0.243); // #0C123E
   page.drawRect(35, 28, 525, 52, true, false);
 
-  // Solar Orange brand accent bar
-  page.setFillColor(0.93, 0.31, 0.0); // Brand Solar Orange #ed5001
+  // Brand Blue accent bar
+  page.setFillColor(0.169, 0.235, 0.722); // Brand Blue #2B3CB8
   page.drawRect(35, 80, 525, 3, true, false);
 
   // Logo & Header text
   page.drawText('SUNNY SOLAR SOLUTIONS', 46, 42, '/F2', 14, 1, 1, 1);
-  page.drawText('SOLAR QUOTE BUYING & VETTING CHECKLIST', 46, 60, '/F1', 8.5, 0.96, 0.64, 0.02);
-  page.drawText('OFFICIAL AUDIT COPY', 438, 44, '/F2', 8, 0.75, 0.8, 0.9);
-  page.drawText(currentDate, 438, 60, '/F1', 8, 0.96, 0.64, 0.02);
+  page.drawText('SOLAR QUOTE BUYING & VETTING CHECKLIST', 46, 60, '/F1', 8.5, 0.82, 0.86, 0.97);
+  page.drawText('OFFICIAL AUDIT COPY', 438, 44, '/F2', 8, 0.82, 0.86, 0.97);
+  page.drawText(currentDate, 438, 60, '/F1', 8, 0.82, 0.86, 0.97);
 
   // Page Header (from this page)
   page.drawText('Critical Questions to Vet Any Solar Quote', 35, 96, '/F2', 15, 0.08, 0.12, 0.2);
@@ -293,13 +293,13 @@ export function generateBuyingChecklistPdf(options: ChecklistPdfOptions): { blob
   );
 
   // Customer Form Details Box (Right Side Form Data)
-  page.setFillColor(0.97, 0.98, 1.0);
-  page.setStrokeColor(0.82, 0.86, 0.92);
+  page.setFillColor(0.96, 0.97, 0.99);
+  page.setStrokeColor(0.82, 0.86, 0.97);
   page.setLineWidth(1);
   page.drawRect(35, 126, 525, 56, true, true);
 
   // Left column: Form Details
-  page.drawText('CUSTOMER DETAILS', 46, 137, '/F2', 8, 0.18, 0.4, 0.8);
+  page.drawText('CUSTOMER DETAILS', 46, 137, '/F2', 8, 0.169, 0.235, 0.722);
   page.drawText('Full Name:', 46, 150, '/F2', 8.5, 0.25, 0.3, 0.35);
   page.drawText(customerName, 125, 150, '/F1', 8.5, 0.08, 0.12, 0.2);
 
@@ -310,9 +310,9 @@ export function generateBuyingChecklistPdf(options: ChecklistPdfOptions): { blob
   page.drawText(customerPostcode, 125, 175, '/F1', 8.5, 0.08, 0.12, 0.2);
 
   // Right column: Progress Scorecard (from left side)
-  page.drawText('INTERACTIVE VETTING PROGRESS', 335, 137, '/F2', 8, 0.93, 0.31, 0.0);
+  page.drawText('INTERACTIVE VETTING PROGRESS', 335, 137, '/F2', 8, 0.169, 0.235, 0.722);
   page.drawText('Criteria Verified:', 335, 150, '/F2', 8.5, 0.25, 0.3, 0.35);
-  page.drawText(`${checkedCount} of ${totalCount} Verified (${percent}%)`, 418, 150, '/F2', 8.5, 0.15, 0.37, 0.07);
+  page.drawText(`${checkedCount} of ${totalCount} Verified (${percent}%)`, 418, 150, '/F2', 8.5, 0.169, 0.235, 0.722);
 
   page.drawText('Status:', 335, 163, '/F2', 8.5, 0.25, 0.3, 0.35);
   page.drawText(percent === 100 ? 'Audit Complete' : 'In Progress', 418, 163, '/F1', 8.5, 0.25, 0.3, 0.35);
@@ -321,17 +321,17 @@ export function generateBuyingChecklistPdf(options: ChecklistPdfOptions): { blob
   page.setFillColor(0.88, 0.9, 0.94);
   page.drawRect(335, 173, 210, 6, true, false);
   if (percent > 0) {
-    page.setFillColor(0.93, 0.31, 0.0);
+    page.setFillColor(0.169, 0.235, 0.722);
     page.drawRect(335, 173, Math.min(210, (210 * percent) / 100), 6, true, false);
   }
 
   // Master Electrician Guarantee (from bottom left of page)
-  page.setFillColor(0.94, 0.98, 0.95);
-  page.setStrokeColor(0.65, 0.85, 0.7);
+  page.setFillColor(0.96, 0.97, 0.99);
+  page.setStrokeColor(0.82, 0.86, 0.97);
   page.setLineWidth(1);
   page.drawRect(35, 190, 525, 30, true, true);
 
-  page.drawText('MASTER ELECTRICIAN GUARANTEE', 46, 199, '/F2', 7.5, 0.15, 0.37, 0.07);
+  page.drawText('MASTER ELECTRICIAN GUARANTEE', 46, 199, '/F2', 7.5, 0.169, 0.235, 0.722);
   page.drawText(
     'Never sign a contract on the spot. Legitimate Australian installers give you 7-14 days to review engineering drawings and DNSP connection offers.',
     46,
@@ -353,8 +353,8 @@ export function generateBuyingChecklistPdf(options: ChecklistPdfOptions): { blob
     const isChecked = !!checkedMap[item.id];
 
     // Card background
-    page.setFillColor(isChecked ? 0.99 : 1.0, isChecked ? 0.98 : 1.0, isChecked ? 0.95 : 1.0);
-    page.setStrokeColor(isChecked ? 0.93 : 0.88, isChecked ? 0.5 : 0.88, isChecked ? 0.2 : 0.88);
+    page.setFillColor(isChecked ? 0.96 : 1.0, isChecked ? 0.97 : 1.0, isChecked ? 0.99 : 1.0);
+    page.setStrokeColor(isChecked ? 0.169 : 0.88, isChecked ? 0.235 : 0.88, isChecked ? 0.722 : 0.88);
     page.setLineWidth(0.8);
     page.drawRect(35, currentY, 525, 78, true, true);
 
@@ -362,8 +362,8 @@ export function generateBuyingChecklistPdf(options: ChecklistPdfOptions): { blob
     const boxX = 46;
     const boxY = currentY + 12;
     if (isChecked) {
-      page.setFillColor(0.93, 0.31, 0.0);
-      page.setStrokeColor(0.93, 0.31, 0.0);
+      page.setFillColor(0.169, 0.235, 0.722);
+      page.setStrokeColor(0.169, 0.235, 0.722);
       page.drawRect(boxX, boxY, 14, 14, true, true);
       page.drawCheckmark(boxX, boxY, 14, 1, 1, 1);
     } else {
@@ -382,13 +382,13 @@ export function generateBuyingChecklistPdf(options: ChecklistPdfOptions): { blob
 
     // Status Badge
     if (isChecked) {
-      page.setFillColor(0.9, 0.96, 0.92);
+      page.setFillColor(0.96, 0.97, 0.99);
       page.drawRect(470, currentY + 10, 80, 13, true, false);
-      page.drawText('VERIFIED', 490, currentY + 13, '/F2', 7, 0.08, 0.5, 0.25);
+      page.drawText('VERIFIED', 490, currentY + 13, '/F2', 7, 0.169, 0.235, 0.722);
     } else {
-      page.setFillColor(0.98, 0.93, 0.93);
+      page.setFillColor(0.94, 0.95, 0.98);
       page.drawRect(470, currentY + 10, 80, 13, true, false);
-      page.drawText('PENDING', 490, currentY + 13, '/F2', 7, 0.75, 0.2, 0.15);
+      page.drawText('PENDING', 490, currentY + 13, '/F2', 7, 0.5, 0.55, 0.65);
     }
 
     // Question Title
@@ -412,12 +412,12 @@ export function generateBuyingChecklistPdf(options: ChecklistPdfOptions): { blob
   });
 
   // Bottom Summary Box
-  page.setFillColor(0.97, 0.98, 1.0);
-  page.setStrokeColor(0.85, 0.88, 0.92);
+  page.setFillColor(0.96, 0.97, 0.99);
+  page.setStrokeColor(0.82, 0.86, 0.97);
   page.setLineWidth(1);
   page.drawRect(35, currentY + 10, 525, 46, true, true);
 
-  page.drawText('OFFICIAL VETTING SUMMARY', 46, currentY + 20, '/F2', 8, 0.18, 0.4, 0.8);
+  page.drawText('OFFICIAL VETTING SUMMARY', 46, currentY + 20, '/F2', 8, 0.169, 0.235, 0.722);
   page.drawText(
     `Prepared for ${customerName} (${customerEmail}, ${customerPostcode}) • ${checkedCount} of ${totalCount} criteria verified (${percent}%).`,
     46,

@@ -15,17 +15,17 @@ export const ParallaxBannerSection: React.FC = () => {
       }}
     >
       {/* Dark overlay with subtle backdrop blur for high contrast readability */}
-      <div className="w-full h-full min-h-90 lg:min-h-90 bg-[#071328]/85  flex items-center justify-center text-center py-8 lg:py-14 px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="w-full h-full min-h-90 lg:min-h-90 bg-[#0C123E]/90 flex items-center justify-center text-center py-8 lg:py-14 px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Subtle radial lighting accent */}
-        <div className="absolute inset-0 bg-radial from-[#ed5001]/10 via-transparent to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-radial from-[#2B3CB8]/20 via-transparent to-transparent pointer-events-none" />
 
         {/* Content Container */}
         <div className="max-w-5xl mx-auto relative z-20 space-y-4">
           
           {/* Eyebrow */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider text-[#f4a304] bg-[#f4a304]/10 border border-[#f4a304]/30 shadow-xs">
-            <span className="w-2 h-2 rounded-full bg-[#f4a304] animate-pulse" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider text-[#D1DCF8] bg-[#2B3CB8]/30 border border-[#6F8EE7]/40 shadow-xs">
+            <span className="w-2 h-2 rounded-full bg-[#D1DCF8] animate-pulse" />
             <span>STILL FIGURING OUT SOLAR?</span>
           </div>
 
@@ -45,7 +45,7 @@ export const ParallaxBannerSection: React.FC = () => {
               to="/get-started/free-assessment"
               variant="primary"
               size="lg"
-              className="w-full sm:w-auto rounded-xl shadow-xl shadow-[#ed5001]/25 bg-linear-to-r from-[#ed5001] via-[#f06e02] to-[#f4a304] hover:from-[#c84300] hover:to-[#ed5001] text-white border-0 font-bold px-8 py-3.5 transition-all duration-300 hover:shadow-[#ed5001]/40 hover:-translate-y-0.5 text-base justify-center"
+              className="w-full sm:w-auto rounded-xl shadow-xl shadow-[#2B3CB8]/25 bg-[#2B3CB8] hover:bg-[#1D2984] text-white border-0 font-bold px-8 py-3.5 transition-all duration-300 hover:shadow-[#2B3CB8]/40 hover:-translate-y-0.5 text-base justify-center"
               icon={<ArrowRight className="w-5 h-5" />}
             >
               Explore Your Solar Options
@@ -55,7 +55,7 @@ export const ParallaxBannerSection: React.FC = () => {
               to="/contact"
               variant="outline"
               size="lg"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-xl border-2 border-white/30 hover:border-[#f4a304] bg-white/10 hover:bg-white/20 text-white hover:text-white font-bold text-base backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 shadow-md"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-xl border-2 border-white/30 hover:border-white bg-white/10 hover:bg-white/20 text-white hover:text-white font-bold text-base backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 shadow-md"
               icon={<ArrowRight className="w-4 h-4" />}
             >
               Talk to Sunny Solar

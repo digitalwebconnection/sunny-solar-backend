@@ -20,7 +20,7 @@ export const HeroSection: React.FC = () => {
   return (
     <section ref={sectionRef} className="relative min-h-0 lg:min-h-160 bg-white overflow-hidden">
       {/* Ambient solar blue backdrop aura */}
-      <div className="absolute top-10 left-10 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-10 left-10 w-96 h-96 bg-[#2B3CB8]/10 rounded-full blur-3xl pointer-events-none" />
 
       {/* Left side — typography and Right side image */}
       <div className="relative grid grid-cols-1 lg:grid-cols-2 min-h-0 lg:min-h-155">
@@ -29,8 +29,8 @@ export const HeroSection: React.FC = () => {
           <div className="max-w-2xl ">
 
             {/* Eyebrow Badge */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider text-[#1d4ed8] bg-blue-50 border border-blue-200/90 shadow-2xs mt-24 mb-4">
-              <span className="w-2 h-2 rounded-full bg-[#1d4ed8] animate-pulse" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider text-[#2B3CB8] bg-[#F5F7FD] border border-[#D1DCF8] shadow-2xs mt-24 mb-4">
+              <span className="w-2 h-2 rounded-full bg-[#2B3CB8] animate-pulse" />
               <span>Master Electrician Founded • Est. 2011</span>
             </div>
 
@@ -44,7 +44,7 @@ export const HeroSection: React.FC = () => {
               <FlipText className="text-slate-950">
                 Solar Built by Electricians,
               </FlipText>{' '}
-              <FlipText className="text-amber-500" delay={0.3}>
+              <FlipText className="text-[#2B3CB8]" delay={0.3}>
                 Powered by Pure Trust.
               </FlipText>
             </motion.h1>
