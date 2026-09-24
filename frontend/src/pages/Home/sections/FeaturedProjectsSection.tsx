@@ -109,13 +109,13 @@ export const FeaturedProjectsSection: React.FC = () => {
             </span>
           </h2>
 
-          <p className="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto">
+          <p className="mt-4 text-base sm:text-lg  text-slate-600 leading-relaxed max-w-6xl mx-auto">
             Solar can be complicated. We make the important parts easier to understand — from your system and battery to performance, savings and what comes next.
           </p>
         </div>
 
         {/* Progression Stepper Buttons */}
-        <div className="mb-8 sm:mb-10 flex items-center justify-center overflow-x-auto pb-2 scrollbar-none">
+        <div className="mb-8 sm:mb-10 hidden md:flex items-center justify-center overflow-x-auto pb-2 scrollbar-none">
           <div className="inline-flex items-center gap-1.5 sm:gap-2 p-1.5 bg-slate-200/60 backdrop-blur-xs rounded-full border border-slate-200/80 max-w-full overflow-x-auto">
             {claritySlides.map((slide, idx) => {
               const isActive = idx === currentSlide;
@@ -137,7 +137,7 @@ export const FeaturedProjectsSection: React.FC = () => {
         </div>
 
         {/* Stacked Animation Carousel with Navigation: ← 01 / 05 → */}
-        <div className="flex justify-center w-full">
+        <div className="flex justify-center w-full px-1 sm:px-0">
           <TestimonialsCard 
             items={items} 
             width={400} 
@@ -152,7 +152,7 @@ export const FeaturedProjectsSection: React.FC = () => {
         </div>
 
         {/* Fixed Buttons Under Carousel */}
-        <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4 text-center">
+        <div className="mt-8 sm:mt-12 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 text-center">
           <Button
             to="/projects"
             variant="outline"

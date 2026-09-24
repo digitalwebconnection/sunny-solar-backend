@@ -18,27 +18,25 @@ export const PreferSunnySolarSection: React.FC = () => {
       <div className="absolute bottom-10 left-10 w-72 h-72 bg-[#2B3CB8]/5 blur-3xl rounded-full pointer-events-none" />
       <div className="absolute top-10 right-10 w-72 h-72 bg-[#2B3CB8]/5 blur-3xl rounded-full pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-6xl mx-auto mb-12 sm:mb-10">
-          
-
-          <h2 className="text-3xl sm:text-4xl font-serif lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
-            Why Most Australians Prefer{' '} <br />
+        <div className="text-center max-w-6xl mx-auto mb-6 sm:mb-10">
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-serif font-extrabold text-slate-900 tracking-tight leading-tight">
+            Why Most Australians Prefer{' '} <br className="hidden sm:inline" />
             <span className="text-[#2B3CB8] inline-block">
              Sunny Solar
             </span>
             ?
           </h2>
 
-          <p className="mt-3.5 text-base sm:text-lg text-slate-600 font-medium max-w-5xl mx-auto leading-relaxed">
+          <p className="mt-2 sm:mt-3.5 text-xs sm:text-base lg:text-lg text-slate-600 font-medium max-w-4xl mx-auto leading-relaxed">
             Delivering engineering excellence across Queensland — backed by Master Electricians, Tier-1 hardware, and thousands of verified five-star homeowners.
           </p>
         </div>
 
-        {/* 4 Authority Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-7">
+        {/* 4 Authority Cards: 4 in one line on mobile */}
+        <div className="grid grid-cols-4 gap-1.5 xs:gap-2.5 sm:gap-6 lg:gap-7">
           
           {/* ══════════════════════════════════════════════════════════════
               CARD 1: #1 RATED SOLAR RETAILER (SOVEREIGN CREST)
@@ -48,7 +46,7 @@ export const PreferSunnySolarSection: React.FC = () => {
             <div className="absolute inset-x-0 top-0 h-1 bg-linear-to-r from-transparent via-[#2B3CB8] to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-t-2xl" />
 
             {/* Emblem Container */}
-            <div className="w-36 h-40 sm:w-40 sm:h-44 relative flex items-center justify-center filter drop-shadow-[0_8px_18px_rgba(43,60,184,0.22)] group-hover:drop-shadow-[0_14px_28px_rgba(43,60,184,0.32)] transition-all transform group-hover:scale-105 duration-300">
+            <div className="w-18 h-22 xs:w-22 xs:h-26 sm:w-36 sm:h-40 lg:w-40 lg:h-44 relative flex items-center justify-center filter drop-shadow-[0_4px_10px_rgba(43,60,184,0.18)] sm:drop-shadow-[0_8px_18px_rgba(43,60,184,0.22)] group-hover:drop-shadow-[0_14px_28px_rgba(43,60,184,0.32)] transition-all transform group-hover:scale-105 duration-300">
               <svg viewBox="0 0 160 170" className="w-full h-full overflow-visible" aria-label="Australia's #1 Solar Retailer">
                 <defs>
                   {/* Shield Outer Blue/White Chrome Gradient */}
@@ -182,17 +180,15 @@ export const PreferSunnySolarSection: React.FC = () => {
 
             {/* Stat Callout */}
             <div className="mt-1">
-              <span className="text-2xl sm:text-3xl font-serif font-black text-slate-900 tracking-tight">
+              <span className="text-sm xs:text-base sm:text-2xl lg:text-3xl font-serif font-black text-slate-900 tracking-tight leading-tight">
                 #1 Rated
               </span>
             </div>
 
             {/* Title */}
-            <h3 className="mt-1 text-base font-bold text-slate-800">
+            <h3 className="mt-0.5 sm:mt-1 text-[10px] xs:text-xs sm:text-base font-bold text-slate-800 leading-tight">
               Leading Solar Retailer
             </h3>
-
-            
 
           </div>
 
@@ -203,7 +199,7 @@ export const PreferSunnySolarSection: React.FC = () => {
             <div className="absolute inset-x-0 top-0 h-1 bg-linear-to-r from-transparent via-[#2B3CB8] to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-t-2xl" />
 
             {/* Emblem Container */}
-            <div className="w-36 h-40 sm:w-40 sm:h-44 relative flex items-center justify-center filter drop-shadow-[0_8px_18px_rgba(43,60,184,0.25)] group-hover:drop-shadow-[0_14px_28px_rgba(43,60,184,0.38)] transition-all transform group-hover:scale-105 duration-300">
+            <div className="w-18 h-22 xs:w-22 xs:h-26 sm:w-36 sm:h-40 lg:w-40 lg:h-44 relative flex items-center justify-center filter drop-shadow-[0_4px_10px_rgba(43,60,184,0.2)] sm:drop-shadow-[0_8px_18px_rgba(43,60,184,0.25)] group-hover:drop-shadow-[0_14px_28px_rgba(43,60,184,0.38)] transition-all transform group-hover:scale-105 duration-300">
               <svg viewBox="0 0 160 170" className="w-full h-full overflow-visible" aria-label="72,000+ Families Powered">
                 <defs>
                   {/* Outer Dial Blue/White Gradient */}
@@ -322,13 +318,13 @@ export const PreferSunnySolarSection: React.FC = () => {
 
             {/* Stat Callout */}
             <div className="mt-1">
-              <span className="text-2xl sm:text-3xl font-serif font-black text-slate-900 tracking-tight">
+              <span className="text-sm xs:text-base sm:text-2xl lg:text-3xl font-serif font-black text-slate-900 tracking-tight leading-tight">
                 72,000+
               </span>
             </div>
 
             {/* Title */}
-            <h3 className="mt-1 text-base font-bold text-slate-800">
+            <h3 className="mt-0.5 sm:mt-1 text-[10px] xs:text-xs sm:text-base font-bold text-slate-800 leading-tight">
               Happy Australian Families
             </h3>
 
@@ -341,7 +337,7 @@ export const PreferSunnySolarSection: React.FC = () => {
             <div className="absolute inset-x-0 top-0 h-1 bg-linear-to-r from-transparent via-[#2B3CB8] to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-t-2xl" />
 
             {/* Emblem Container */}
-            <div className="w-36 h-40 sm:w-40 sm:h-44 relative flex items-center justify-center filter drop-shadow-[0_8px_18px_rgba(43,60,184,0.22)] group-hover:drop-shadow-[0_14px_28px_rgba(43,60,184,0.36)] transition-all transform group-hover:scale-105 duration-300">
+            <div className="w-18 h-22 xs:w-22 xs:h-26 sm:w-36 sm:h-40 lg:w-40 lg:h-44 relative flex items-center justify-center filter drop-shadow-[0_4px_10px_rgba(43,60,184,0.18)] sm:drop-shadow-[0_8px_18px_rgba(43,60,184,0.22)] group-hover:drop-shadow-[0_14px_28px_rgba(43,60,184,0.36)] transition-all transform group-hover:scale-105 duration-300">
               <svg viewBox="0 0 160 170" className="w-full h-full overflow-visible" aria-label="1.3M+ Solar Panels Installed">
                 <defs>
                   {/* Laurel Blue Gradient */}
@@ -461,17 +457,16 @@ export const PreferSunnySolarSection: React.FC = () => {
 
             {/* Stat Callout */}
             <div className="mt-1">
-              <span className="text-2xl sm:text-3xl font-serif font-black text-slate-900 tracking-tight">
+              <span className="text-sm xs:text-base sm:text-2xl lg:text-3xl font-serif font-black text-slate-900 tracking-tight leading-tight">
                 1.3M+
               </span>
             </div>
 
             {/* Title */}
-            <h3 className="mt-1 text-base font-bold text-slate-800">
+            <h3 className="mt-0.5 sm:mt-1 text-[10px] xs:text-xs sm:text-base font-bold text-slate-800 leading-tight">
               Solar Panels Installed
             </h3>
 
-          
           </div>
 
           {/* ══════════════════════════════════════════════════════════════
@@ -481,7 +476,7 @@ export const PreferSunnySolarSection: React.FC = () => {
             <div className="absolute inset-x-0 top-0 h-1 bg-linear-to-r from-transparent via-[#2B3CB8] to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-t-2xl" />
 
             {/* Emblem Container */}
-            <div className="w-36 h-40 sm:w-40 sm:h-44 relative flex items-center justify-center filter drop-shadow-[0_8px_18px_rgba(43,60,184,0.22)] group-hover:drop-shadow-[0_14px_28px_rgba(43,60,184,0.36)] transition-all transform group-hover:scale-105 duration-300">
+            <div className="w-18 h-22 xs:w-22 xs:h-26 sm:w-36 sm:h-40 lg:w-40 lg:h-44 relative flex items-center justify-center filter drop-shadow-[0_4px_10px_rgba(43,60,184,0.18)] sm:drop-shadow-[0_8px_18px_rgba(43,60,184,0.22)] group-hover:drop-shadow-[0_14px_28px_rgba(43,60,184,0.36)] transition-all transform group-hover:scale-105 duration-300">
               <svg viewBox="0 0 160 170" className="w-full h-full overflow-visible" aria-label="800MW+ Clean Energy Generated">
                 <defs>
                   {/* Clean Energy Blue/White Gradient */}
@@ -598,17 +593,16 @@ export const PreferSunnySolarSection: React.FC = () => {
 
             {/* Stat Callout */}
             <div className="mt-1">
-              <span className="text-2xl sm:text-3xl font-serif font-black text-slate-900 tracking-tight">
+              <span className="text-sm xs:text-base sm:text-2xl lg:text-3xl font-serif font-black text-slate-900 tracking-tight leading-tight">
                 800MW+
               </span>
             </div>
 
             {/* Title */}
-            <h3 className="mt-1 text-base font-bold text-slate-800">
+            <h3 className="mt-0.5 sm:mt-1 text-[10px] xs:text-xs sm:text-base font-bold text-slate-800 leading-tight">
               Clean Energy &amp; Battery
             </h3>
 
-            
           </div>
 
         </div>

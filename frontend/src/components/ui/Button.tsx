@@ -24,7 +24,8 @@ export const Button: React.FC<ButtonProps> = ({
   disabled,
   ...props
 }) => {
-  const baseStyles = 'inline-flex items-center justify-center font-semibold rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed shadow-sm active:scale-[0.98] min-h-[44px] lg:min-h-0';
+  const hasDisplayOverride = /\b(hidden|block|inline-block|flex|grid)\b/.test(className);
+  const baseStyles = `${hasDisplayOverride ? '' : 'inline-flex '}items-center justify-center font-semibold rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed shadow-sm active:scale-[0.98] min-h-[44px] lg:min-h-0`;
 
   const sizeStyles = {
     sm: 'px-3.5 py-1.5 text-xs tracking-wide gap-1.5',
@@ -42,7 +43,7 @@ export const Button: React.FC<ButtonProps> = ({
   };
 
   const widthStyle = fullWidth ? 'w-full' : '';
-  const combinedClasses = `${baseStyles} ${sizeStyles[size]} ${variantStyles[variant]} ${widthStyle} ${className}`;
+  const combinedClasses = `${baseStyles} ${sizeStyles[size]} ${variantStyles[variant]} ${widthStyle} ${className}`.trim();
 
   const content = (
     <>

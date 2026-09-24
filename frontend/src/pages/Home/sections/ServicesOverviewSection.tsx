@@ -8,7 +8,7 @@ import {
   Award,
 } from 'lucide-react';
 import { Button } from '../../../components/ui/Button';
-import heroBg from '../../../../public/images/about/gallery/electrician-mounting-inverter.jpg';
+const heroBg = '/images/about/gallery/electrician-mounting-inverter.jpg';
 
 export const ServicesOverviewSection: React.FC = () => {
   return (
@@ -19,10 +19,10 @@ export const ServicesOverviewSection: React.FC = () => {
       <div className="absolute top-1/3 right-1/4 w-80 h-80 bg-[#2B3CB8]/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-6 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-6 items-center">
           
-          {/* Left Column: Story & Information */}
-          <div className="lg:col-span-6 space-y-6">
+          {/* Left Column: Story & Information (order-2 on mobile, order-1 on lg) */}
+          <div className="order-2 lg:order-1 lg:col-span-6 space-y-6">
             {/* Eyebrow Pill Badge */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider text-[#2B3CB8] bg-[#F5F7FD] border border-[#D1DCF8] shadow-xs">
               <span className="w-2 h-2 rounded-full bg-[#2B3CB8] animate-pulse" />
@@ -31,7 +31,7 @@ export const ServicesOverviewSection: React.FC = () => {
             </div>
 
             {/* Main Headline */}
-            <h2 className="text-2xl sm:text-4xl lg:text-5xl text-center  md:text-left font-serif font-bold text-[#18181b] tracking-tight leading-[1.15]">
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl text-center md:text-left font-serif font-bold text-[#18181b] tracking-tight leading-[1.15]">
               Solar Is More Than Panels. <br />
               <span className="text-[#2B3CB8]">
                 It’s About Making the Right Energy Decision.
@@ -39,12 +39,12 @@ export const ServicesOverviewSection: React.FC = () => {
             </h2>
 
             {/* Narrative Story */}
-            <div className="space-y-4 text-slate-600 text-base leading-relaxed">
+            <div className="space-y-4 text-slate-600 text-justify text-base leading-relaxed">
               <p>
               Solar is a major investment.
 Sunny Solar believes you should understand your options before you commit.
               </p>
-              <p>
+              <p className='text-justify'>
 From choosing the right solar system and battery to understanding your savings and existing system performance, we give you practical advice built around your energy needs.              </p>
             </div>
 
@@ -72,8 +72,8 @@ From choosing the right solar system and battery to understanding your savings a
             </div>
           </div>
 
-          {/* Right Column: Sleek Modern Visual Showcase */}
-          <div className="lg:col-span-6 relative">
+          {/* Right Column: Sleek Modern Visual Showcase (order-1 on mobile, order-2 on lg) */}
+          <div className="order-1 lg:order-2 lg:col-span-6 relative">
             {/* Offset Decorative Layered Backdrop */}
             <div className="absolute -bottom-4 -right-4 w-full h-full rounded-xl bg-[#2B3CB8]/10 border border-slate-200/50 -z-10 hidden lg:block" />
 

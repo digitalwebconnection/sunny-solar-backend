@@ -25,6 +25,7 @@ interface CalculatorItem {
   id: string;
   slug: string;
   number: string;
+  shortTitle: string;
   title: string;
   description: string;
   highlight: string;
@@ -37,6 +38,7 @@ const calculators: CalculatorItem[] = [
     id: 'solar-savings',
     slug: 'solar-savings',
     number: '01',
+    shortTitle: 'Savings',
     title: 'Solar Savings Calculator',
     description:
       'Get an estimate based on your energy use, electricity bill and solar setup.',
@@ -48,6 +50,7 @@ const calculators: CalculatorItem[] = [
     id: 'system-size',
     slug: 'system-size',
     number: '02',
+    shortTitle: 'System Size',
     title: 'System Size Calculator',
     description:
       'Find an indicative system size based on your energy use, electricity bill and home.',
@@ -59,6 +62,7 @@ const calculators: CalculatorItem[] = [
     id: 'battery-savings',
     slug: 'battery-savings',
     number: '03',
+    shortTitle: 'Battery',
     title: 'Battery Calculator',
     description:
       'Explore the battery size that could suit your solar system and energy usage.',
@@ -70,6 +74,7 @@ const calculators: CalculatorItem[] = [
     id: 'payback',
     slug: 'payback',
     number: '04',
+    shortTitle: 'Payback',
     title: 'Solar Payback Calculator',
     description:
       'See how your system cost and estimated savings could affect your indicative payback.',
@@ -168,13 +173,13 @@ export const CalculatorsTeaserSection: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-30px' }}
           transition={{ duration: 0.6, ease: 'easeOut', delay: 0.1 }}
-          className="relative border border-slate-200/90 bg-white shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden group/card"
+          className="relative border border-slate-200/90 rounded-2xl bg-white shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group/card"
         >
 
           <div className="grid grid-cols-1 lg:grid-cols-12 min-h-110">
 
             {/* ── LEFT SIDE: AVATAR ── */}
-            <div className="lg:col-span-4 relative bg-linear-to-b from-[#2B3CB8] via-[#1D2984] to-[#0C123E] overflow-hidden flex flex-col justify-end min-h-95 lg:min-h-full group/avatar">
+            <div className="lg:col-span-4 relative bg-linear-to-b from-[#2B3CB8] via-[#1D2984] to-[#0C123E] overflow-hidden flex flex-col justify-end h-auto lg:min-h-full group/avatar">
               <motion.div
                 animate={{ scale: [1, 1.25, 1], opacity: [0.15, 0.35, 0.15] }}
                 transition={{ repeat: Infinity, duration: 6, ease: 'easeInOut' }}
@@ -185,18 +190,23 @@ export const CalculatorsTeaserSection: React.FC = () => {
                 transition={{ repeat: Infinity, duration: 7, ease: 'easeInOut', delay: 1 }}
                 className="absolute bottom-0 left-0 w-64 h-64 bg-[#2B3CB8]/30 rounded-full blur-2xl pointer-events-none"
               />
+
+              
+
               <img
                 src={advisorAvatar}
                 alt="Trent Palmer - Sunny Solar Master Electrician Advisor"
-                className="w-full h-full object-fill object-top max-h-115 sm:max-h-100 lg:max-h-none lg:absolute lg:inset-0 transition-transform duration-700 ease-out group-hover/avatar:scale-105"
+                className="w-full h-full object-contain object-bottom lg:object-cover lg:object-top lg:absolute lg:inset-0 transition-transform duration-700 ease-out group-hover/avatar:scale-105"
               />
             </div>
 
             {/* ── RIGHT SIDE: CALCULATOR DETAILS ── */}
             <div
-              className="lg:col-span-8 p-6 sm:p-8 lg:p-10 flex flex-col justify-between relative bg-white"
+              className="lg:col-span-8 p-4 sm:p-8 lg:p-10 flex flex-col justify-between relative bg-white"
               onMouseEnter={() => setIsPaused(true)}
               onMouseLeave={() => setIsPaused(false)}
+              onTouchStart={() => setIsPaused(true)}
+              onTouchEnd={() => setIsPaused(false)}
             >
               {/* Subtle ambient glows for brand colors */}
               <div
@@ -210,29 +220,29 @@ export const CalculatorsTeaserSection: React.FC = () => {
 
               <div>
                 {/* ── Tab Selector: Circular Number + Short Title ── */}
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3 mb-7">
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3 mb-6 sm:mb-7">
                   {calculators.map((calc, idx) => {
                     const isActive = idx === activeIndex;
                     return (
                       <motion.button
                         key={calc.id}
+                        type="button"
                         onClick={() => handleSelect(idx)}
-                        whileHover={{ y: -2, scale: 1.01 }}
-                        whileTap={{ scale: 0.98 }}
-                        className={`relative flex items-center gap-2.5 sm:gap-3 px-3 py-3 rounded-xl font-semibold text-sm transition-all duration-300 cursor-pointer overflow-hidden border text-left ${
+                        whileTap={{ scale: 0.97 }}
+                        className={`relative flex items-center gap-2 sm:gap-2.5 p-2 sm:p-3 rounded-xl font-semibold text-xs sm:text-sm transition-all duration-300 cursor-pointer overflow-hidden border text-left min-h-[44px] ${
                           isActive
-                            ? 'bg-[#F5F7FD] border-[#2B3CB8] shadow-sm shadow-[#2B3CB8]/15'
+                            ? 'bg-[#F5F7FD] border-[#2B3CB8] shadow-xs'
                             : 'bg-slate-50/80 hover:bg-[#F5F7FD] border-slate-200/80 hover:border-[#D1DCF8]'
                         }`}
                       >
                         {/* Circular Number Badge in Brand Blue with animated pop */}
                         <motion.span
-                          animate={isActive ? { scale: [1, 1.1, 1] } : { scale: 1 }}
+                          animate={isActive ? { scale: [1, 1.08, 1] } : { scale: 1 }}
                           transition={{ duration: 0.3 }}
-                          className={`shrink-0 w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center text-xs font-extrabold transition-all duration-300 ${
+                          className={`shrink-0 w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center text-[11px] sm:text-xs font-extrabold transition-all duration-300 ${
                             isActive
-                              ? 'bg-[#2B3CB8] text-white shadow-md shadow-[#2B3CB8]/30'
-                              : 'bg-slate-200/70 text-slate-600'
+                              ? 'bg-[#2B3CB8] text-white shadow-xs'
+                              : 'bg-slate-200/80 text-slate-600'
                           }`}
                         >
                           {calc.number}
@@ -244,7 +254,7 @@ export const CalculatorsTeaserSection: React.FC = () => {
                             isActive ? 'text-[#2B3CB8]' : 'text-slate-700'
                           }`}
                         >
-                          {calc.title.split(' ')[0]}
+                          {calc.shortTitle}
                         </span>
 
                         {/* Active bottom accent bar */}
@@ -264,39 +274,40 @@ export const CalculatorsTeaserSection: React.FC = () => {
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={active.id}
-                    initial={{ opacity: 0, y: 16, filter: 'blur(3px)' }}
+                    initial={{ opacity: 0, y: 14, filter: 'blur(2px)' }}
                     animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-                    exit={{ opacity: 0, y: -16, filter: 'blur(3px)' }}
-                    transition={{ duration: 0.32, ease: 'easeOut' }}
-                    className="flex flex-col gap-5"
+                    exit={{ opacity: 0, y: -14, filter: 'blur(2px)' }}
+                    transition={{ duration: 0.28, ease: 'easeOut' }}
+                    className="flex flex-col gap-4 sm:gap-5"
                   >
                     {/* Number / Icon Badge in Brand Blue + Title Row */}
-                    <div className="flex items-center gap-3.5 sm:gap-4">
+                    <div className="flex items-center gap-3 sm:gap-4">
                       <motion.div
-                        initial={{ scale: 0.75, rotate: -10 }}
+                        initial={{ scale: 0.8, rotate: -8 }}
                         animate={{ scale: 1, rotate: 0 }}
                         transition={{ type: 'spring', damping: 14, stiffness: 220 }}
+                        className="shrink-0"
                       >
                         {React.createElement(active.icon, {
                           className:
-                            'w-10 h-10 sm:w-11 sm:h-11 p-2.5 rounded-xl bg-gradient-to-br from-[#2B3CB8] to-[#1D2984] text-white shrink-0 shadow-md shadow-[#2B3CB8]/25',
+                            'w-9 h-9 sm:w-11 sm:h-11 p-2 sm:p-2.5 rounded-xl bg-gradient-to-br from-[#2B3CB8] to-[#1D2984] text-white shadow-md shadow-[#2B3CB8]/25',
                         })}
                       </motion.div>
-                      <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 font-serif tracking-tight">
+                      <h3 className="text-xl sm:text-3xl font-extrabold text-slate-900 font-serif tracking-tight leading-snug">
                         {active.title}
                       </h3>
                     </div>
 
                     {/* Description */}
-                    <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+                    <p className="text-xs sm:text-base text-slate-600 leading-relaxed text-justify sm:text-left">
                       {active.description}
                     </p>
 
                     {/* Key Projected Outcome Box */}
                     <motion.div
-                      initial={{ scale: 0.97, opacity: 0 }}
+                      initial={{ scale: 0.98, opacity: 0 }}
                       animate={{ scale: 1, opacity: 1 }}
-                      transition={{ duration: 0.3, delay: 0.08 }}
+                      transition={{ duration: 0.25, delay: 0.05 }}
                       className="rounded-2xl p-4 sm:p-5 lg:p-6 border border-[#2B3CB8]/20 bg-linear-to-br from-[#2B3CB8]/5 via-[#F5F7FD] to-white relative overflow-hidden flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 shadow-xs group/outcome"
                     >
                       {/* Ambient soft glow */}
@@ -313,20 +324,19 @@ export const CalculatorsTeaserSection: React.FC = () => {
                       />
 
                       <div className="relative z-10">
-                      
                         <motion.div
                           key={active.highlight}
-                          initial={{ scale: 0.9, opacity: 0 }}
+                          initial={{ scale: 0.92, opacity: 0 }}
                           animate={{ scale: 1, opacity: 1 }}
                           transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-                          className="text-2xl sm:text-3xl lg:text-3xl font-black font-serif tracking-tight mt-0.5"
+                          className="text-lg sm:text-2xl lg:text-3xl font-black font-serif tracking-tight leading-snug"
                           style={{ color: BRAND.green }}
                         >
                           {active.highlight}
                         </motion.div>
                       </div>
 
-                      <div className="relative z-10 flex items-center">
+                      <div className="relative z-10 shrink-0 self-start sm:self-auto">
                         <div
                           className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border text-xs font-bold shadow-xs"
                           style={{ borderColor: '#D1DCF8', color: BRAND.green }}
@@ -343,7 +353,7 @@ export const CalculatorsTeaserSection: React.FC = () => {
                     </motion.div>
 
                     {/* Launch Button in Brand Blue */}
-                    <div className="pt-2 flex flex-wrap items-center gap-3">
+                    <div className="pt-2 flex flex-col sm:flex-row sm:items-center gap-3">
                       <motion.div
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
@@ -351,7 +361,7 @@ export const CalculatorsTeaserSection: React.FC = () => {
                       >
                         <Link
                           to={`/calculators/${active.slug}`}
-                          className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 sm:px-7 py-3.5 rounded-xl text-white font-bold text-sm sm:text-base bg-[#2B3CB8] hover:bg-[#1D2984] shadow-md shadow-[#2B3CB8]/25 hover:shadow-xl hover:shadow-[#2B3CB8]/35 transition-all duration-300 group relative overflow-hidden"
+                          className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 sm:px-7 py-3.5 rounded-xl text-white font-bold text-sm sm:text-base bg-[#2B3CB8] hover:bg-[#1D2984] shadow-md shadow-[#2B3CB8]/25 hover:shadow-xl hover:shadow-[#2B3CB8]/35 transition-all duration-300 group relative overflow-hidden min-h-[48px]"
                         >
                           {/* Animated Shimmer sweep on hover */}
                           <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-linear-to-r from-transparent via-white/25 to-transparent skew-x-12 pointer-events-none" />

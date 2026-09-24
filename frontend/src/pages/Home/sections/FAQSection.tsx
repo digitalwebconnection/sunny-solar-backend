@@ -62,22 +62,26 @@ export const FAQSection: React.FC = () => {
   }, [searchQuery]);
 
   return (
-    <section className="py-8 sm:py-10 lg:py-14 bg-white relative overflow-hidden border-t border-slate-200/80">
+    <section className="py-10 sm:py-12 lg:py-16 bg-white relative overflow-hidden border-t border-slate-200/80">
       {/* Subtle Background Glow Elements */}
       <div className="absolute top-10 left-1/4 w-96 h-96 bg-amber-100/30 rounded-full blur-3xl -z-10 pointer-events-none" />
       <div className="absolute bottom-10 right-10 w-96 h-96 bg-blue-500/15 rounded-full blur-3xl -z-10 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
 
           {/* Left Column: Heading, Search Bar & Accordions */}
           <div className="lg:col-span-7 flex flex-col justify-center">
-
+            {/* Eyebrow */}
+            <div className="inline-flex items-center gap-2 px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-bold uppercase tracking-wider text-[#2B3CB8] bg-[#F5F7FD] border border-[#D1DCF8] shadow-2xs mb-3 self-center md:self-start">
+              <HelpCircle className="w-3.5 h-3.5 text-[#2B3CB8]" />
+              <span>FREQUENTLY ASKED QUESTIONS</span>
+            </div>
 
             {/* Main Headline */}
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl text-center md:text-left font-serif font-extrabold text-[#232d4b] tracking-tight leading-[1.15] mb-8">
+            <h2 className="text-2xl xs:text-3xl sm:text-4xl lg:text-5xl text-center md:text-left font-serif font-extrabold text-[#232d4b] tracking-tight leading-[1.18] sm:leading-[1.15] mb-6 sm:mb-8">
               Frequently Asked <br className="hidden sm:inline" />
-              Questions
+              <span className="text-[#2B3CB8]">Questions</span>
             </h2>
 
             {/* Accordion Questions List */}
@@ -97,11 +101,11 @@ export const FAQSection: React.FC = () => {
                         <button
                           type="button"
                           onClick={() => toggleFAQ(index)}
-                          className="w-full py-4 sm:py-5 flex items-center justify-between gap-4 text-left cursor-pointer focus:outline-none group"
+                          className="w-full py-3.5 sm:py-5 flex items-center justify-between gap-3 sm:gap-4 text-left cursor-pointer focus:outline-none group active:opacity-80"
                           aria-expanded={isOpen}
                         >
                           <span
-                            className={`font-bold text-base sm:text-lg transition-colors duration-150 pr-2 ${isOpen
+                            className={`font-bold text-sm sm:text-base lg:text-lg transition-colors duration-150 pr-2 ${isOpen
                               ? 'text-[#2B3CB8]'
                               : 'text-slate-800 group-hover:text-[#2B3CB8]'
                               }`}
@@ -109,11 +113,11 @@ export const FAQSection: React.FC = () => {
                             {faq.question}
                           </span>
 
-                          <div className="shrink-0 flex items-center justify-center w-6 h-6 text-slate-400 group-hover:text-slate-600 transition-colors">
+                          <div className="shrink-0 flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-slate-100/90 group-hover:bg-[#2B3CB8]/10 text-slate-500 group-hover:text-[#2B3CB8] transition-colors">
                             {isOpen ? (
                               <Minus className="w-4 h-4 text-[#2B3CB8] stroke-[2.5]" />
                             ) : (
-                              <Plus className="w-4 h-4 text-slate-400 group-hover:text-slate-600 stroke-[2.5]" />
+                              <Plus className="w-4 h-4 stroke-[2.5]" />
                             )}
                           </div>
                         </button>
@@ -129,9 +133,20 @@ export const FAQSection: React.FC = () => {
                             transition={{ duration: 0.25, ease: 'easeInOut' }}
                             className="overflow-hidden"
                           >
-                            <p className="pb-5 pt-0.5 pr-6 text-slate-500 text-sm sm:text-base leading-relaxed">
-                              {faq.answer}
-                            </p>
+                            <div className="pb-5 pt-0.5 sm:pr-6 text-slate-600 text-xs sm:text-sm lg:text-base leading-relaxed space-y-3">
+                              <p>{faq.answer}</p>
+                              {/* Mobile Image Preview */}
+                              <div className="sm:hidden flex items-center gap-2.5 p-2 rounded-xl bg-slate-50 border border-slate-200/80">
+                                <img
+                                  src={faq.image}
+                                  alt={faq.description}
+                                  className="w-12 h-12 rounded-lg object-cover shrink-0 shadow-2xs"
+                                />
+                                <p className="text-[11px] text-slate-500 font-medium leading-tight">
+                                  {faq.description}
+                                </p>
+                              </div>
+                            </div>
                           </motion.div>
                         )}
                       </AnimatePresence>
@@ -167,16 +182,31 @@ export const FAQSection: React.FC = () => {
               )}
             </div>
 
-           
-
+            {/* Mobile Contact Specialist CTA Card */}
+            <div className="mt-6 p-4 rounded-xl sm:rounded-2xl bg-[#F5F7FD] border border-[#D1DCF8] flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
+              <div>
+                <h4 className="font-bold text-slate-900 text-xs sm:text-sm">
+                  Still have questions about solar or batteries?
+                </h4>
+                <p className="text-[11px] sm:text-xs text-slate-500 mt-0.5">
+                  Speak directly with an accredited clean energy specialist.
+                </p>
+              </div>
+              <Link
+                to="/contact"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-[#2B3CB8] text-white text-xs sm:text-sm font-bold shadow-xs hover:bg-[#1D2984] active:scale-95 transition-all shrink-0 min-h-[40px]"
+              >
+                <span>Ask Our Experts</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+            </div>
           </div>
 
           {/* Right Column: High-Res FAQ 3D Character Illustration */}
-          <div className="lg:col-span-5 hidden  md:flex items-center justify-center">
+          <div className="lg:col-span-5 hidden md:flex items-center justify-center">
             <div className="relative w-full max-w-sm sm:max-w-md lg:max-w-none">
-
               {/* Soft warm aura glow behind the illustration */}
-              <div className="absolute -inset-4 bg-linear-to-tr from-amber-100/40 via-orange-50/25 to-slate-100/50  blur-2xl -z-10 pointer-events-none" />
+              <div className="absolute -inset-4 bg-linear-to-tr from-amber-100/40 via-orange-50/25 to-slate-100/50 blur-2xl -z-10 pointer-events-none" />
 
               {/* Illustration container */}
               <motion.div
@@ -189,11 +219,10 @@ export const FAQSection: React.FC = () => {
                 <img
                   src="/images/home/faq-illustration.jpg"
                   alt="Frequently Asked Questions - Sunny Solar Help & Advice"
-                  className="w-full h-auto object-contain max-h-125 sm:max-h-147.5  transition-transform duration-500 "
+                  className="w-full h-auto object-contain max-h-125 sm:max-h-147.5 transition-transform duration-500"
                   loading="lazy"
                 />
               </motion.div>
-
             </div>
           </div>
 

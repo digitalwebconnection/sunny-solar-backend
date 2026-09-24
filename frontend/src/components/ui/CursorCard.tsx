@@ -37,6 +37,10 @@ export function CursorCard({
   }, []);
 
   const handleMouseMove = (e: React.MouseEvent) => {
+    if (typeof window !== 'undefined' && !window.matchMedia('(hover: hover)').matches) {
+      return;
+    }
+
     const cardWidth = 240;
     const cardHeight = 180;
     const padding = 16;
@@ -58,6 +62,13 @@ export function CursorCard({
     y.set(targetY);
   };
 
+  const handleMouseEnter = () => {
+    if (typeof window !== 'undefined' && !window.matchMedia('(hover: hover)').matches) {
+      return;
+    }
+    setIsHovered(true);
+  };
+
   const Component = as;
 
   return (
@@ -66,7 +77,7 @@ export function CursorCard({
         {...(as === 'a' ? { href: href || '#' } : {})}
         onClick={onClick}
         className={cn('relative transition-colors', className)}
-        onMouseEnter={() => setIsHovered(true)}
+        onMouseEnter={handleMouseEnter}
         onMouseLeave={() => setIsHovered(false)}
         onMouseMove={handleMouseMove}
       >

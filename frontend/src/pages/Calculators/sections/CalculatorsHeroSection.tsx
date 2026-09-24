@@ -20,13 +20,13 @@ export const CalculatorsHeroSection: React.FC = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           
-          {/* Left Column: High-Impact Typography & Action Group */}
-          <div className="lg:col-span-7 space-y-5">
+          {/* Content Column (Bottom on mobile, Left on desktop) */}
+          <div className="order-2 lg:order-1 lg:col-span-7 space-y-4 sm:space-y-5 text-center lg:text-left flex flex-col items-center lg:items-start">
             
             {/* Top Micro Eyebrow Badge */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider text-[#2B3CB8] bg-[#F5F7FD] border border-[#D1DCF8] shadow-2xs">
-              <Calculator className="w-3.5 h-3.5 text-[#2B3CB8]" />
-              <span>Independent Energy Sizing Engine</span>
+            <div className="inline-flex items-center gap-2 px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-bold uppercase tracking-wider text-[#2B3CB8] bg-[#F5F7FD] border border-[#D1DCF8] shadow-2xs max-w-full">
+              <Calculator className="w-3.5 h-3.5 text-[#2B3CB8] shrink-0" />
+              <span className="truncate xs:whitespace-normal">Independent Energy Sizing Engine</span>
             </div>
        
 
@@ -35,9 +35,10 @@ export const CalculatorsHeroSection: React.FC = () => {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.08 }}
-              className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-slate-950 tracking-tight leading-[1.12]"
+              className="text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-slate-950 tracking-tight leading-[1.18] sm:leading-[1.12]"
             >
               Interactive Solar & Battery{' '}
+              <br className="hidden sm:inline" />
               <span className="bg-linear-to-r from-[#2B3CB8] via-[#4658D9] to-[#6F8EE7] bg-clip-text text-transparent">
                 Calculators & Sizing Tools.
               </span>
@@ -48,7 +49,7 @@ export const CalculatorsHeroSection: React.FC = () => {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.14 }}
-              className="text-sm sm:text-base text-slate-600 leading-relaxed max-w-xl"
+              className="text-xs xs:text-sm sm:text-base text-slate-600 leading-relaxed max-w-xl mx-auto lg:mx-0"
             >
               Calculate estimated quarterly bill savings, ideal system capacity, battery payback horizons, and quote comparisons with transparent formulas built on real Queensland solar radiation data and network tariffs.
             </motion.p>
@@ -58,16 +59,16 @@ export const CalculatorsHeroSection: React.FC = () => {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.2 }}
-              className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1 text-xs text-slate-700"
+              className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-2.5 pt-1 text-[11px] sm:text-xs text-slate-700 w-full max-w-md lg:max-w-none"
             >
-              <div className="flex items-center gap-2">
+              <div className="flex items-center justify-center lg:justify-start gap-2">
                 <div className="w-5 h-5 rounded-full bg-[#E8EDFB] text-[#2B3CB8] flex items-center justify-center shrink-0">
                   <Sun className="w-3 h-3" />
                 </div>
                 <span>4.8 – 5.4 SEQ Daily Peak Sun Hours</span>
               </div>
 
-              <div className="flex items-center gap-2">
+              <div className="flex items-center justify-center lg:justify-start gap-2">
                 <div className="w-5 h-5 rounded-full bg-[#E8EDFB] text-[#2B3CB8] flex items-center justify-center shrink-0">
                   <ShieldCheck className="w-3 h-3" />
                 </div>
@@ -81,13 +82,13 @@ export const CalculatorsHeroSection: React.FC = () => {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.26 }}
-              className="flex flex-wrap items-center gap-3 pt-2"
+              className="flex flex-col xs:flex-row items-stretch xs:items-center justify-center lg:justify-start gap-3 w-full xs:w-auto pt-2"
             >
               <Button
                 to="/calculators/solar-savings"
                 variant="primary"
                 size="md"
-                className="font-bold shadow-md"
+                className="w-full xs:w-auto font-bold shadow-md justify-center text-center"
                 icon={<ArrowRight className="w-4 h-4" />}
               >
                 Start with Solar Savings
@@ -97,6 +98,7 @@ export const CalculatorsHeroSection: React.FC = () => {
                 to="/calculators/battery-savings"
                 variant="outline"
                 size="md"
+                className="w-full xs:w-auto justify-center text-center font-semibold"
                 icon={<Calculator className="w-4 h-4 text-[#2B3CB8]" />}
               >
                 Calculate Battery ROI
@@ -105,14 +107,14 @@ export const CalculatorsHeroSection: React.FC = () => {
 
           </div>
 
-          {/* Right Column: Clean Visual Showcase Frame */}
+          {/* Image Column (Top on mobile, Right on desktop) */}
           <motion.div
             initial={{ opacity: 0, scale: 0.98 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.15 }}
-            className="lg:col-span-5 relative"
+            className="order-1 lg:order-2 lg:col-span-5 relative w-full"
           >
-            <div className="relative rounded-2xl overflow-hidden shadow-xl border border-slate-200/90 bg-slate-950 group aspect-4/3 max-w-lg mx-auto">
+            <div className="relative rounded-2xl overflow-hidden shadow-xl sm:shadow-2xl border-2 sm:border-4 border-white bg-slate-950 group aspect-16/10 xs:aspect-4/3 max-w-lg mx-auto lg:max-w-none">
               <img
                 src="/images/solutions/net-metering.jpg"
                 alt="Solar and battery smart energy generation telemetry"

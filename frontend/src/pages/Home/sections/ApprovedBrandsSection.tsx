@@ -40,22 +40,21 @@ const repeatedBrands = [...brands, ...brands];
 
 export const ApprovedBrandsSection: React.FC = () => {
   return (
-    <section className="py-12 sm:py-16 bg-white relative overflow-hidden border-t border-slate-200/70 select-none group">
-      {/* Edge gradient fade masks for smooth entrance/exit */}
-      <div className="pointer-events-none absolute inset-y-0 left-0 w-16 sm:w-32 bg-linear-to-r from-white via-white/80 to-transparent z-10" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 w-16 sm:w-32 bg-linear-to-l from-white via-white/80 to-transparent z-10" />
+    <section className="py-10 sm:py-16 bg-white relative overflow-hidden border-t border-slate-200/70 select-none group">
+      {/* Edge gradient fade masks for smooth entrance/exit (narrower on mobile so logos stay visible) */}
+      <div className="pointer-events-none absolute inset-y-0 left-0 w-8 sm:w-24 md:w-32 bg-linear-to-r from-white via-white/80 to-transparent z-10" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 w-8 sm:w-24 md:w-32 bg-linear-to-l from-white via-white/80 to-transparent z-10" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8 sm:mb-10 text-center">
-        
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6 sm:mb-10 text-center">
+   
 
         {/* Main Heading */}
-        <h2 className="text-2xl sm:text-4xl lg:text-[40px] font-serif font-extrabold text-slate-950 tracking-tight leading-[1.15]">
+        <h2 className="text-xl sm:text-3xl lg:text-[40px] font-serif font-extrabold text-slate-950 tracking-tight leading-[1.2]">
           We Install CEC Approved <br className="hidden sm:inline" />
           <span className="text-[#2B3CB8]">
             Panels, Inverters &amp; Batteries
           </span>
         </h2>
-
       </div>
 
       {/* Infinite Marquee Running Belt (Full Color Logos, No Boxes) */}
@@ -66,13 +65,13 @@ export const ApprovedBrandsSection: React.FC = () => {
             {repeatedBrands.map((brand, idx) => (
               <div
                 key={`brand-t1-${idx}`}
-                className="mx-6 sm:mx-10 md:mx-12 flex items-center justify-center shrink-0 hover:scale-108 transition-transform duration-300"
+                className="mx-4 sm:mx-8 md:mx-12 flex items-center justify-center shrink-0 hover:scale-108 transition-transform duration-300"
                 title={`${brand.name} - CEC Approved`}
               >
                 <img
                   src={brand.logo}
                   alt={`${brand.name} Logo`}
-                  className="h-9 sm:h-12 md:h-14 w-auto max-w-37.5 sm:max-w-45 object-contain drop-shadow-2xs select-none"
+                  className="h-8 sm:h-11 md:h-14 w-auto max-w-[110px] sm:max-w-45 object-contain drop-shadow-2xs select-none"
                   loading="lazy"
                 />
               </div>
@@ -84,13 +83,13 @@ export const ApprovedBrandsSection: React.FC = () => {
             {repeatedBrands.map((brand, idx) => (
               <div
                 key={`brand-t2-${idx}`}
-                className="mx-6 sm:mx-10 md:mx-12 flex items-center justify-center shrink-0 hover:scale-108 transition-transform duration-300"
+                className="mx-4 sm:mx-8 md:mx-12 flex items-center justify-center shrink-0 hover:scale-108 transition-transform duration-300"
                 title={`${brand.name} - CEC Approved`}
               >
                 <img
                   src={brand.logo}
                   alt={`${brand.name} Logo`}
-                  className="h-9 sm:h-12 md:h-14 w-auto max-w-37.5 sm:max-w-45 object-contain drop-shadow-2xs select-none"
+                  className="h-8 sm:h-11 md:h-14 w-auto max-w-[110px] sm:max-w-45 object-contain drop-shadow-2xs select-none"
                   loading="lazy"
                 />
               </div>

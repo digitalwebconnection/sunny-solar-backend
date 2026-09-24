@@ -57,6 +57,8 @@ interface ProcessStep {
 export const BatteryProcessSection: React.FC = () => {
   const [activeStep, setActiveStep] = useState<number>(0);
   const [isPaused, setIsPaused] = useState<boolean>(false);
+  const touchStartX = React.useRef<number | null>(null);
+  const touchEndX = React.useRef<number | null>(null);
 
   const steps: ProcessStep[] = [
     {
@@ -229,24 +231,45 @@ export const BatteryProcessSection: React.FC = () => {
     return () => clearInterval(interval);
   }, [isPaused, activeStep, steps.length]);
 
-  return (
-    <section className="relative py-20 lg:py-14 bg-linear-to-b from-slate-50 via-white to-slate-50/70 border-t border-slate-200/80 overflow-hidden">
-     
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.targetTouches[0].clientX;
+  };
 
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.targetTouches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStartX.current || !touchEndX.current) return;
+    const diff = touchStartX.current - touchEndX.current;
+    if (diff > 40) {
+      // Swiped left -> next step
+      setActiveStep((prev) => (prev + 1) % steps.length);
+    } else if (diff < -40) {
+      // Swiped right -> prev step
+      setActiveStep((prev) => (prev === 0 ? steps.length - 1 : prev - 1));
+    }
+    touchStartX.current = null;
+    touchEndX.current = null;
+  };
+
+  return (
+    <section className="relative py-12 sm:py-16 lg:py-20 bg-linear-to-b from-slate-50 via-white to-slate-50/70 border-t border-slate-200/80 overflow-hidden">
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-6xl mx-auto mb-12 sm:mb-6">
-        
-          
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl max-w-3xl mx-auto font-serif font-bold text-slate-950 tracking-tight leading-[1.15]">
+        <div className="text-center max-w-4xl mx-auto mb-8 sm:mb-12">
+          <Badge variant="emerald" className="mb-2.5 sm:mb-3">
+            Installation Protocol
+          </Badge>
+          <h2 className="text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-slate-950 tracking-tight leading-[1.18] sm:leading-[1.15]">
             How We Install Your <br className="hidden sm:inline" />
             <span className="bg-linear-to-r from-emerald-600 via-teal-600 to-amber-600 bg-clip-text text-transparent">
               Home Battery System
             </span>
           </h2>
           
-          <p className="mt-4 text-slate-600 text-base sm:text-lg leading-relaxed max-w-6xl mx-auto">
+          <p className="mt-2.5 sm:mt-4 text-slate-600 text-xs xs:text-sm sm:text-base lg:text-lg leading-relaxed max-w-2xl mx-auto px-1 sm:px-0">
             From pre-install switchboard safety audits to a live blackout simulation in front of your eyes, our in-house licensed tradesmen handle every step without third-party contractors.
           </p>
         </div>
@@ -355,7 +378,10 @@ export const BatteryProcessSection: React.FC = () => {
         <div
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
-          className="bg-white rounded-xl border border-slate-200/90 shadow-xl shadow-slate-900/5 overflow-hidden mb-12 relative group/card"
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+          className="bg-white rounded-xl border border-slate-200/90 shadow-xl shadow-slate-900/5 overflow-hidden mb-8 sm:mb-12 relative group/card select-none"
         >
           {/* 8-Second Auto-Rotation Progress Bar */}
           <div className="w-full bg-slate-100 h-1.5 relative overflow-hidden">
@@ -382,35 +408,32 @@ export const BatteryProcessSection: React.FC = () => {
               className="grid grid-cols-1 lg:grid-cols-12 divide-y lg:divide-y-0 lg:divide-x divide-slate-200/80"
             >
               {/* Left Column: Detailed Engineering Narrative */}
-              <div className="lg:col-span-7 p-6 sm:p-8 lg:p-10 flex flex-col justify-between">
+              <div className="lg:col-span-7 p-5 xs:p-6 sm:p-8 lg:p-10 flex flex-col justify-between">
                 <div>
-                
-
                   {/* Title & Tagline */}
-                  <h3 className="text-2xl sm:text-3xl font-serif font-bold text-slate-950 tracking-tight leading-snug">
+                  <h3 className="text-xl xs:text-2xl sm:text-3xl font-serif font-bold text-slate-950 tracking-tight leading-snug">
                     {current.title}
                   </h3>
                   
-                  <p className="mt-2 text-sm font-medium text-emerald-700 flex items-center gap-1.5">
+                  <p className="mt-2 text-xs xs:text-sm font-medium text-emerald-700 flex items-center gap-1.5">
                     <Sparkles className="w-4 h-4 text-emerald-600 shrink-0" />
                     <span>{current.tagline}</span>
                   </p>
 
-                  <p className="mt-4 text-slate-600 text-sm sm:text-base leading-relaxed">
+                  <p className="mt-3 sm:mt-4 text-slate-600 text-xs xs:text-sm sm:text-base leading-relaxed">
                     {current.desc}
                   </p>
-
                 </div>
 
                 {/* Bottom Standard & Stage Pagination */}
-                <div className="mt-8 pt-6 border-t border-slate-100 flex flex-wrap items-center justify-between gap-4">
-                  <div className="flex items-center gap-2 text-xs font-semibold text-slate-700 bg-slate-50 px-3 py-1.5 rounded-lg border border-slate-200">
+                <div className="mt-6 sm:mt-8 pt-5 sm:pt-6 border-t border-slate-100 flex flex-wrap items-center justify-between gap-3 sm:gap-4">
+                  <div className="flex items-center gap-2 text-xs font-semibold text-slate-700 bg-slate-50 px-2.5 sm:px-3 py-1.5 rounded-lg border border-slate-200">
                     <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
-                    <span>{current.complianceStandard}</span>
+                    <span className="truncate max-w-[200px] xs:max-w-none">{current.complianceStandard}</span>
                   </div>
 
                   {/* Stage Stepper Controls */}
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-2 ml-auto">
                     <button
                       onClick={() => setIsPaused((prev) => !prev)}
                       className="px-2.5 py-1.5 rounded-lg border border-slate-200 text-slate-600 hover:bg-slate-100 transition-colors cursor-pointer flex items-center gap-1.5 text-xs font-semibold"
@@ -451,35 +474,35 @@ export const BatteryProcessSection: React.FC = () => {
               </div>
 
               {/* Right Column: Master Electrician Live Commissioning HUD */}
-              <div className="lg:col-span-5 bg-slate-950 p-6 sm:p-8 text-white flex flex-col justify-between relative overflow-hidden">
+              <div className="lg:col-span-5 bg-slate-950 p-5 xs:p-6 sm:p-8 text-white flex flex-col justify-between relative overflow-hidden">
                 {/* Background Tech Glow */}
                 <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
                 <div className="absolute bottom-0 left-0 w-64 h-64 bg-teal-500/10 rounded-full blur-3xl pointer-events-none" />
 
-                <div className="relative z-10 space-y-6">
+                <div className="relative z-10 space-y-4 sm:space-y-6">
                   {/* Terminal Header */}
-                  <div className="flex items-center justify-between border-b border-slate-800 pb-4">
-                    <div className="flex items-center gap-2">
-                      <div className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
-                      <span className="font-mono text-xs font-bold tracking-wider text-slate-300 uppercase">
+                  <div className="flex items-center justify-between gap-2 border-b border-slate-800 pb-3 sm:pb-4">
+                    <div className="flex items-center gap-2 min-w-0">
+                      <div className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse shrink-0" />
+                      <span className="font-mono text-[11px] sm:text-xs font-bold tracking-wider text-slate-300 uppercase truncate">
                         {current.hudTelemetry.statusTitle}
                       </span>
                     </div>
 
-                    <span className="font-mono text-[11px] px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-semibold tracking-wide">
+                    <span className="font-mono text-[10px] sm:text-[11px] px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-semibold tracking-wide shrink-0">
                       {current.hudTelemetry.statusBadge}
                     </span>
                   </div>
 
                   {/* Telemetry Metrics Grid */}
-                  <div className="space-y-2.5">
+                  <div className="space-y-2 sm:space-y-2.5">
                     {current.hudTelemetry.metrics.map((m, mIdx) => (
                       <div
                         key={mIdx}
-                        className="bg-slate-900/90 border border-slate-800/80 rounded-xl p-3.5 flex items-center justify-between hover:border-slate-700 transition-colors"
+                        className="bg-slate-900/90 border border-slate-800/80 rounded-xl p-3 sm:p-3.5 flex items-center justify-between gap-2 hover:border-slate-700 transition-colors"
                       >
-                        <span className="text-xs text-slate-400 font-medium">{m.label}</span>
-                        <div className="flex items-center gap-2">
+                        <span className="text-xs text-slate-400 font-medium truncate">{m.label}</span>
+                        <div className="flex items-center gap-2 shrink-0">
                           <span className="font-mono text-xs sm:text-sm font-bold text-white">
                             {m.value}
                           </span>
@@ -490,7 +513,7 @@ export const BatteryProcessSection: React.FC = () => {
                   </div>
 
                   {/* Technician Sign-Off Note */}
-                  <div className="bg-slate-900/60 border border-emerald-500/20 rounded-xl p-4">
+                  <div className="bg-slate-900/60 border border-emerald-500/20 rounded-xl p-3.5 sm:p-4">
                     <div className="flex items-start gap-2.5">
                       <Zap className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
                       <p className="text-xs text-slate-300 italic leading-relaxed">
@@ -501,22 +524,27 @@ export const BatteryProcessSection: React.FC = () => {
                 </div>
 
                 {/* Bottom Verification Seal */}
-                <div className="relative z-10 mt-6 pt-5 border-t border-slate-800/80 flex items-center justify-between text-xs">
-                  <div className="flex items-center gap-2">
-                    <FileCheck className="w-4 h-4 text-emerald-400" />
-                    <span className="text-slate-300 font-medium">
+                <div className="relative z-10 mt-5 sm:mt-6 pt-4 sm:pt-5 border-t border-slate-800/80 flex items-center justify-between text-xs gap-2">
+                  <div className="flex items-center gap-2 min-w-0">
+                    <FileCheck className="w-4 h-4 text-emerald-400 shrink-0" />
+                    <span className="text-slate-300 font-medium text-xs truncate">
                       {current.hudTelemetry.certificationTag}
                     </span>
                   </div>
 
-                  <span className="font-mono text-[10px] text-slate-500 uppercase tracking-wider">
-                    Sign-off: 100% Passed
+                  <span className="font-mono text-[10px] text-slate-500 uppercase tracking-wider shrink-0">
+                    100% Passed
                   </span>
                 </div>
               </div>
             </motion.div>
           </AnimatePresence>
         </div>
+
+        {/* Mobile Swipe Hint */}
+        <p className="block md:hidden text-center text-[11px] text-slate-400 -mt-4 mb-8 font-medium">
+          ← Swipe or tap stages above to explore all 4 phases →
+        </p>
 
 
 

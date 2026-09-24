@@ -93,6 +93,24 @@ export function TestimonialsCard({
     // Pre-calculate rotations for visual variety
     const rotations = useMemo(() => [4, -2, -9, 7], []);
 
+    // Touch swipe handling for mobile devices
+    const [touchStartX, setTouchStartX] = useState<number | null>(null);
+
+    const handleTouchStart = (e: React.TouchEvent) => {
+        setTouchStartX(e.touches[0].clientX);
+    };
+
+    const handleTouchEnd = (e: React.TouchEvent) => {
+        if (touchStartX === null) return;
+        const diffX = e.changedTouches[0].clientX - touchStartX;
+        if (diffX > 45) {
+            handlePrev();
+        } else if (diffX < -45) {
+            handleNext();
+        }
+        setTouchStartX(null);
+    };
+
     if (!items || items.length === 0) {
         return null;
     }
@@ -100,13 +118,20 @@ export function TestimonialsCard({
     const activeItem = items[activeIndex] || items[0];
 
     return (
-        <div className={cn("flex items-center justify-center", className)}>
+        <div 
+            className={cn("flex items-center justify-center w-full overflow-hidden md:overflow-visible py-2", className)}
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
+        >
             <div
-                className="relative grid grid-cols-[1fr] md:grid-cols-[1fr_1fr] md:grid-rows-[auto_auto_auto] gap-x-6 gap-y-4 w-full"
+                className="relative grid grid-cols-1 md:grid-cols-2 md:grid-rows-[auto_auto_auto] gap-x-8 gap-y-6 w-full"
                 style={{ perspective: "1400px", maxWidth: `${width * 2.5}px` }}
             >
-                {/* Image Card Stack */}
-                <div className="row-start-2 col-start-1 md:row-start-1 mt-6 md:mt-0 row-span-3 relative w-full aspect-square" style={{ maxWidth: `${width}px` }}>
+                {/* 1. Image Card Stack (On mobile: top row-start-1, centered) */}
+                <div 
+                    className="row-start-1 md:row-start-1 col-start-1 md:row-span-3 relative w-full aspect-square mx-auto max-w-[280px] xs:max-w-[320px] sm:max-w-[360px] md:max-w-none" 
+                    style={{ maxWidth: `${width}px` }}
+                >
                     <AnimatePresence custom={direction}>
                         {items.map((item, index) => {
                             const isActive = index === activeIndex;
@@ -115,12 +140,12 @@ export function TestimonialsCard({
                             return (
                                 <motion.div
                                     key={item.id}
-                                    className="absolute inset-0 w-full h-full overflow-hidden bg-neutral-200 border border-slate-200 shadow-2xl rounded-2xl"
+                                    className="absolute inset-0 w-full h-full overflow-hidden bg-neutral-200 border border-slate-200 shadow-xl rounded-2xl select-none"
                                     initial={{
-                                        x: offset * 15,
-                                        y: Math.abs(offset) * 6,
-                                        z: -150 * Math.abs(offset),
-                                        scale: 0.85 - Math.abs(offset) * 0.04,
+                                        x: offset * 12,
+                                        y: Math.abs(offset) * 4,
+                                        z: -120 * Math.abs(offset),
+                                        scale: 0.88 - Math.abs(offset) * 0.04,
                                         rotateZ: rotations[index % 4],
                                         opacity: isActive ? 1 : 0.5,
                                         zIndex: 10 - Math.abs(offset),
@@ -128,40 +153,40 @@ export function TestimonialsCard({
                                     animate={
                                         isActive
                                             ? {
-                                                x: [offset * 15, direction === 1 ? -200 : 200, 0],
-                                                y: [Math.abs(offset) * 6, 0, 0],
-                                                z: [-200, 150, 250],
-                                                scale: [0.85, 1.05, 1],
-                                                rotateZ: [rotations[index % 4], -5, 0],
+                                                x: [offset * 12, direction === 1 ? -120 : 120, 0],
+                                                y: [Math.abs(offset) * 4, 0, 0],
+                                                z: [-180, 100, 200],
+                                                scale: [0.88, 1.03, 1],
+                                                rotateZ: [rotations[index % 4], -4, 0],
                                                 opacity: 1,
                                                 zIndex: 100,
                                             }
                                             : {
-                                                x: offset * 15,
-                                                y: Math.abs(offset) * 6,
-                                                z: -150 * Math.abs(offset),
+                                                x: offset * 12,
+                                                y: Math.abs(offset) * 4,
+                                                z: -120 * Math.abs(offset),
                                                 rotateZ: rotations[index % 4],
-                                                scale: 0.85 - Math.abs(offset) * 0.04,
+                                                scale: 0.88 - Math.abs(offset) * 0.04,
                                                 opacity: 0.55,
                                                 zIndex: 10 - Math.abs(offset),
                                             }
                                     }
                                     exit={{
-                                        x: direction === 1 ? -250 : 250,
-                                        z: -260,
+                                        x: direction === 1 ? -160 : 160,
+                                        z: -200,
                                         scale: 0.75,
-                                        rotateZ: direction === 1 ? -10 : 10,
+                                        rotateZ: direction === 1 ? -8 : 8,
                                         opacity: 0,
                                     }}
                                     transition={{
-                                        duration: 0.75,
+                                        duration: 0.65,
                                         ease: [0.22, 1, 0.36, 1],
                                     }}
                                 >
                                     <img
                                         src={item.image}
                                         alt={item.title}
-                                        className="w-full h-full object-cover"
+                                        className="w-full h-full object-cover pointer-events-none"
                                         draggable={false}
                                     />
                                 </motion.div>
@@ -170,41 +195,41 @@ export function TestimonialsCard({
                     </AnimatePresence>
                 </div>
 
-                {/* Text Area */}
-                <div className="col-start-1 md:col-start-2 md:row-start-1 flex flex-col justify-center min-h-48 pl-0 sm:pl-4 text-left">
+                {/* 2. Text Area (On mobile: row-start-2 underneath image) */}
+                <div className="row-start-2 col-start-1 md:col-start-2 md:row-start-1 flex flex-col justify-center min-h-36 sm:min-h-48 px-1 md:pl-4 text-left">
                     <AnimatePresence mode="wait">
                         <motion.div
                             key={activeItem.id}
-                            initial={{ opacity: 0, y: 20 }}
+                            initial={{ opacity: 0, y: 16 }}
                             animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -20 }}
-                            transition={{ duration: 0.35 }}
+                            exit={{ opacity: 0, y: -16 }}
+                            transition={{ duration: 0.3 }}
                         >
                             {(activeItem.badge || activeItem.subtitle) && (
-                                <div className="flex flex-wrap items-center gap-2 mb-3">
+                                <div className="flex flex-wrap items-center gap-2 mb-2 sm:mb-3">
                                     {activeItem.badge && (
-                                        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-[#2B3CB8] bg-[#E8EDFB] border border-[#D1DCF8]">
+                                        <div className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full text-[11px] sm:text-xs font-bold uppercase tracking-wider text-[#2B3CB8] bg-[#E8EDFB] border border-[#D1DCF8]">
                                             <span>{activeItem.badge}</span>
                                         </div>
                                     )}
                                     {activeItem.subtitle && (
-                                        <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold text-[#1D2984] bg-[#F5F7FD] border border-[#D1DCF8]">
+                                        <span className="inline-flex items-center px-2.5 py-1 rounded-full text-[11px] sm:text-xs font-semibold text-[#1D2984] bg-[#F5F7FD] border border-[#D1DCF8]">
                                             {activeItem.subtitle}
                                         </span>
                                     )}
                                 </div>
                             )}
 
-                            <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#0C123E] font-serif mb-3 leading-snug">
+                            <h3 className="text-xl sm:text-3xl lg:text-4xl font-bold text-[#0C123E] font-serif mb-2 sm:mb-3 leading-snug">
                                 {activeItem.title}
                             </h3>
 
-                            <p className="text-sm sm:text-base text-[#151E64] mt-2 leading-relaxed">
+                            <p className="text-xs sm:text-base text-slate-600 leading-relaxed text-justify sm:text-left">
                                 {activeItem.description}
                             </p>
 
                             {activeItem.highlight && (
-                                <div className="mt-4 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-[#E8EDFB] border border-[#D1DCF8] text-xs sm:text-sm font-bold text-[#2B3CB8]">
+                                <div className="mt-3 sm:mt-4 inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#E8EDFB] border border-[#D1DCF8] text-xs sm:text-sm font-bold text-[#2B3CB8]">
                                     <span className="w-2 h-2 rounded-full bg-[#2B3CB8] shrink-0" />
                                     <span>{activeItem.highlight}</span>
                                 </div>
@@ -213,11 +238,12 @@ export function TestimonialsCard({
                     </AnimatePresence>
                 </div>
 
-                {/* Navigation Controls: ← 01 / 05 → */}
-                <div className="col-start-1 md:col-start-2 md:row-start-3 flex items-center gap-3 m-auto -mt-2 md:mt-6 md:m-0 pl-0 sm:pl-4">
+                {/* 3. Navigation Controls: ← 01 / 05 → (On mobile: row-start-3, centered) */}
+                <div className="row-start-3 col-start-1 md:col-start-2 md:row-start-3 flex justify-center md:justify-start items-center gap-3 w-full md:w-auto mt-2 md:mt-6 px-1 md:pl-4">
                     {showNavigation && items.length > 1 && (
                         <div className="inline-flex items-center gap-3 bg-white border border-[#D1DCF8] rounded-full px-2 py-1.5 shadow-sm">
                             <button
+                                type="button"
                                 onClick={handlePrev}
                                 className="flex items-center justify-center w-9 h-9 rounded-full bg-[#F5F7FD] hover:bg-[#2B3CB8] text-[#1D2984] hover:text-white transition-all cursor-pointer active:scale-95"
                                 aria-label="Previous slide"
@@ -232,6 +258,7 @@ export function TestimonialsCard({
                             )}
 
                             <button
+                                type="button"
                                 onClick={handleNext}
                                 className="flex items-center justify-center w-9 h-9 rounded-full bg-[#F5F7FD] hover:bg-[#2B3CB8] text-[#1D2984] hover:text-white transition-all cursor-pointer active:scale-95"
                                 aria-label="Next slide"

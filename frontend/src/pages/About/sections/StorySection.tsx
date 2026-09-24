@@ -70,45 +70,45 @@ export const StorySection: React.FC = () => {
   ];
 
   return (
-    <section className="bg-slate-50 py-24 sm:py-14 relative overflow-hidden">
+    <section className="bg-slate-50 py-12 xs:py-14 sm:py-16 lg:py-20 relative overflow-hidden">
       {/* Top divider */}
       <div className="absolute top-0 left-0 w-full h-px bg-linear-to-r from-transparent via-slate-200 to-transparent" />
 
       {/* Subtle ambient light glow */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-96 h-96 bg-amber-200/20 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section header */}
         <motion.div
-          className="text-center mb-16 sm:mb-14"
+          className="text-center mb-10 sm:mb-14"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.4 }}
           transition={{ duration: 0.6 }}
         >
-          <div className="flex items-center justify-center gap-3 mb-5">
+          <div className="flex items-center justify-center gap-3 mb-3.5 sm:mb-5">
             <motion.div
-              className="w-8 h-px bg-amber-500"
+              className="w-6 xs:w-8 h-px bg-amber-500"
               initial={{ width: 0 }}
               whileInView={{ width: 32 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
             />
-            <span className="text-xs font-bold uppercase tracking-[0.3em] text-amber-600">
+            <span className="text-[11px] xs:text-xs font-bold uppercase tracking-[0.25em] text-amber-600">
               Our Journey
             </span>
             <motion.div
-              className="w-8 h-px bg-amber-500"
+              className="w-6 xs:w-8 h-px bg-amber-500"
               initial={{ width: 0 }}
               whileInView={{ width: 32 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
             />
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-950 tracking-tight leading-tight">
-            14 Years of Doing Things
-            <br />
-            <span className="bg-gradient-to-r from-amber-500 to-orange-500 bg-clip-text text-transparent">
+          <h2 className="text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-slate-950 tracking-tight leading-[1.2] sm:leading-tight">
+            14 Years of Doing Things{' '}
+            <br className="hidden xs:inline" />
+            <span className="bg-gradient-to-r from-amber-500 via-amber-600 to-orange-500 bg-clip-text text-transparent">
               The Right Way
             </span>
           </h2>
@@ -125,17 +125,17 @@ export const StorySection: React.FC = () => {
             style={{ scaleY }}
           />
 
-          {/* Base track line (Mobile) */}
-          <div className="md:hidden absolute left-6 top-4 bottom-8 w-0.5 bg-slate-200" />
+          {/* Base track line (Mobile - centered precisely on node at left: 26px) */}
+          <div className="md:hidden absolute left-[26px] -translate-x-1/2 top-4 bottom-8 w-0.5 bg-slate-200" />
 
           {/* Active progressive line (Mobile) */}
           <motion.div
-            className="md:hidden absolute left-6 top-4 bottom-8 w-1 bg-gradient-to-b from-amber-400 via-orange-400 to-amber-500 rounded-full shadow-sm shadow-amber-400/50 origin-top"
+            className="md:hidden absolute left-[26px] -translate-x-1/2 top-4 bottom-8 w-1 bg-gradient-to-b from-amber-400 via-orange-400 to-amber-500 rounded-full shadow-sm shadow-amber-400/50 origin-top"
             style={{ scaleY }}
           />
 
           {/* Milestones List */}
-          <div className="space-y-12 md:space-y-6">
+          <div className="space-y-6 sm:space-y-8 md:space-y-6">
             {milestones.map((m, idx) => {
               const isLeft = idx % 2 === 0;
               const Icon = m.icon;
@@ -246,7 +246,7 @@ export const StorySection: React.FC = () => {
                   </div>
 
                   {/* Mobile Layout (< md) */}
-                  <div className="md:hidden flex items-start gap-5 pl-2">
+                  <div className="md:hidden flex items-start gap-3.5 xs:gap-4.5 pl-2">
                     {/* Node on mobile spine */}
                     <motion.div
                       className="relative z-10 shrink-0 mt-3"
@@ -260,30 +260,30 @@ export const StorySection: React.FC = () => {
                         delay: 0.08,
                       }}
                     >
-                      <div className="w-9 h-9 rounded-xl bg-white border-2 border-amber-400 text-amber-600 flex items-center justify-center shadow-sm">
-                        <Icon className="w-4 h-4 stroke-[2]" />
+                      <div className="w-9 h-9 rounded-xl bg-white border-2 border-amber-400 text-amber-600 flex items-center justify-center shadow-xs">
+                        <Icon className="w-4 h-4 stroke-[2.2]" />
                       </div>
                     </motion.div>
 
                     {/* Mobile Content Card */}
                     <motion.div
                       className="flex-1 min-w-0"
-                      initial={{ opacity: 0, x: 45, scale: 0.96 }}
-                      whileInView={{ opacity: 1, x: 0, scale: 1 }}
-                      viewport={{ once: true, amount: 0.25 }}
+                      initial={{ opacity: 0, y: 16 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, amount: 0.2 }}
                       transition={{
-                        duration: 0.6,
+                        duration: 0.5,
                         ease: [0.22, 1, 0.36, 1],
                       }}
                     >
-                      <div className="bg-white rounded-2xl border border-slate-200/80 p-5 shadow-md shadow-slate-300/60 active:scale-[0.99] transition-transform">
-                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-black uppercase tracking-[0.18em] bg-amber-50 text-amber-600 border border-amber-200/80 mb-2.5">
+                      <div className="bg-white rounded-xl sm:rounded-2xl border border-slate-200/90 p-4 xs:p-5 shadow-xs hover:shadow-sm active:scale-[0.99] transition-all">
+                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] xs:text-xs font-bold uppercase tracking-[0.16em] bg-amber-50 text-amber-600 border border-amber-200/80 mb-2">
                           {m.year}
                         </span>
-                        <h4 className="text-base font-extrabold text-slate-900">
+                        <h4 className="text-base xs:text-lg font-bold text-slate-900 leading-snug">
                           {m.title}
                         </h4>
-                        <p className="mt-1.5 text-sm text-slate-500 leading-relaxed">
+                        <p className="mt-1.5 text-xs xs:text-sm text-slate-600 leading-relaxed font-normal">
                           {m.description}
                         </p>
                       </div>

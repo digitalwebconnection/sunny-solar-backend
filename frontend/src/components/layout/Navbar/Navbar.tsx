@@ -41,14 +41,14 @@ export const Navbar: React.FC = () => {
     <header className="fixed top-0 left-0 w-full z-40 transition-all duration-300">
       {/* Top Notification / Trust Bar (Semi-transparent & minimal) */}
       <div
-        className={`text-xs py-1.5 px-4 sm:px-6 transition-colors duration-300 border-b ${isScrolled || !isHomePage
+        className={`text-[11px] sm:text-xs py-1.5 px-3 sm:px-6 transition-colors duration-300 border-b ${isScrolled || !isHomePage
           ? 'bg-slate-950 text-white border-slate-800 backdrop-blur-md'
           : 'bg-white text-slate-900 border-slate-200/60 backdrop-blur-sm'
           }`}
       >
         <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <div className="flex items-center gap-4 min-w-0">
-            <span className="flex items-center gap-1.5 text-[#2B3CB8] font-semibold shrink-0">
+          <div className="flex items-center gap-3 sm:gap-4 min-w-0">
+            <span className="flex items-center gap-1 text-[#2B3CB8] font-bold shrink-0">
               <ShieldCheck className="w-3.5 h-3.5 text-[#2B3CB8] shrink-0" />
               <span className="hidden sm:inline">NETCC APPROVED SELLER</span>
               <span className="sm:hidden">CEC Approved</span>
@@ -97,20 +97,20 @@ export const Navbar: React.FC = () => {
       {/* Main Transparent / Glass Navbar */}
       <nav
         className={`w-full transition-all duration-300 ${isScrolled
-          ? 'bg-[#ffffff]/95 backdrop-blur-xl text-black shadow-2xl py-1'
+          ? 'bg-white/95 backdrop-blur-xl text-black shadow-lg py-1.5'
           : isHomePage
-            ? 'bg-white  py-3 sm:py-1 text-black'
-            : 'bg-[#ffffff]/90 backdrop-blur-md py-1 text-black'
+            ? 'bg-white py-2 sm:py-1 text-black'
+            : 'bg-white/95 backdrop-blur-md py-2 sm:py-1 text-black'
           }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-2 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 flex items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-3 group">
-            <div className="  flex items-center justify-center">
+          <Link to="/" className="flex items-center gap-3 group shrink-0">
+            <div className="flex items-center justify-center">
               <img
                 src={logo}
                 alt="Sunny Solar"
-                className="h-11 sm:h-20 w-auto object-contain"
+                className="h-10 sm:h-14 lg:h-18 w-auto object-contain transition-all duration-200"
               />
             </div>
           </Link>
@@ -166,23 +166,29 @@ export const Navbar: React.FC = () => {
           </div>
 
           {/* Right Action Buttons */}
-          <div className="flex items-center gap-3">
-            <Button
-              to="/get-started/free-assessment"
-              variant="primary"
-              size="md"
-              className="hidden lg:inline-flex rounded-full text-xs uppercase tracking-wider font-extrabold shadow-lg shadow-[#2B3CB8]/25 bg-linear-to-r from-[#2B3CB8] via-[#2433A1] to-[#1D2984] hover:from-[#1D2984] hover:to-[#2B3CB8] text-white border-0"
-              icon={<ArrowRight className="w-4 h-4" />}
-            >
-              Free Assessment
-            </Button>
+          <div className="flex items-center gap-2 sm:gap-3">
+            {/* Desktop CTA Button */}
+            <div className="hidden lg:block">
+              <Button
+                to="/get-started/free-assessment"
+                variant="primary"
+                size="md"
+                className="rounded-full text-xs uppercase tracking-wider font-extrabold shadow-lg shadow-[#2B3CB8]/25 bg-linear-to-r from-[#2B3CB8] via-[#2433A1] to-[#1D2984] hover:from-[#1D2984] hover:to-[#2B3CB8] text-white border-0"
+                icon={<ArrowRight className="w-4 h-4" />}
+              >
+                Free Assessment
+              </Button>
+            </div>
+
+          
 
             {/* Mobile Hamburger Button */}
             <button
               type="button"
               onClick={() => setMobileMenuOpen(true)}
-              className="p-2.5 min-w-11 min-h-11 flex items-center justify-center rounded-xl transition-colors lg:hidden cursor-pointer text-slate-900 hover:bg-slate-100"
+              className="p-2.5 min-w-11 min-h-11 flex items-center justify-center rounded-xl transition-all lg:hidden cursor-pointer text-slate-800 hover:bg-slate-100 hover:text-[#2B3CB8] active:scale-95 border border-slate-200/80 shadow-2xs"
               aria-label="Open navigation menu"
+              aria-expanded={mobileMenuOpen}
             >
               <Menu className="w-6 h-6" />
             </button>

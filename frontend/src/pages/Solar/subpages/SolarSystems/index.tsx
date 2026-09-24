@@ -1,9 +1,10 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { SolarSystemsHeroSection } from './sections/SolarSystemsHeroSection';
-import { SolarPackagesGridSection } from './sections/SolarPackagesGridSection';
+// import { SolarPackagesGridSection } from './sections/SolarPackagesGridSection';
 import { SolarHardwareComparisonSection } from './sections/SolarHardwareComparisonSection';
 import { SolarSystemsFAQSection } from './sections/SolarSystemsFAQSection';
+import { SolarLandingPackagesSection } from '../../sections/landing/SolarLandingPackagesSection';
 
 export const SolarSystemsPage: React.FC = () => {
   return (
@@ -16,7 +17,8 @@ export const SolarSystemsPage: React.FC = () => {
         />
       </Helmet>
       <SolarSystemsHeroSection />
-      <SolarPackagesGridSection />
+       <SolarLandingPackagesSection />
+      {/* <SolarPackagesGridSection /> */}
       <SolarHardwareComparisonSection />
       <SolarSystemsFAQSection />
     </div>

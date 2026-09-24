@@ -95,7 +95,18 @@ export const ValuesSection: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const [activeIndex, setActiveIndex] = useState<number>(0);
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
-  const [isAutoPlaying, setIsAutoPlaying] = useState<boolean>(false);
+  const [isPaused, setIsPaused] = useState<boolean>(false);
+  const touchStartX = useRef<number | null>(null);
+  const touchEndX = useRef<number | null>(null);
+
+  // Auto-hover / auto-play cycling through cards on mobile every 4s
+  useEffect(() => {
+    if (isPaused || lightboxIndex !== null) return;
+    const timer = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % ACCORDION_ITEMS.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, [isPaused, lightboxIndex]);
 
   // Lock body scroll when lightbox is open
   useEffect(() => {
@@ -139,37 +150,60 @@ export const ValuesSection: React.FC = () => {
     setActiveIndex((prev) => (prev + 1) % ACCORDION_ITEMS.length);
   }, []);
 
+  // Touch handlers for mobile swipe
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setIsPaused(true);
+    touchStartX.current = e.targetTouches[0].clientX;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.targetTouches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStartX.current || !touchEndX.current) return;
+    const diff = touchStartX.current - touchEndX.current;
+    if (diff > 40) {
+      handleNextCard();
+    } else if (diff < -40) {
+      handlePrevCard();
+    }
+    touchStartX.current = null;
+    touchEndX.current = null;
+    setTimeout(() => setIsPaused(false), 5000);
+  };
+
   return (
     <section
       ref={sectionRef}
-      className="bg-white py-20 sm:py-28 lg:py-14 relative overflow-hidden"
+      className="bg-white py-12 xs:py-14 sm:py-20 lg:py-20 relative overflow-hidden"
     >
       {/* Top subtle divider */}
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Header section with top-tier copy and dual CTAs */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-12 sm:mb-14">
+        {/* Header section with top-tier copy */}
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-8 xs:mb-10 sm:mb-14">
           <motion.div
-            className="max-w-5xl mx-auto text-center"
+            className="max-w-5xl mx-auto text-center flex flex-col items-center"
             initial={{ opacity: 0, y: 25 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6 }}
           >
-            
+            {/* Eyebrow Badge */}
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[11px] sm:text-xs font-bold uppercase tracking-wider text-amber-700 bg-amber-50 border border-amber-200/80 shadow-2xs mb-3.5 sm:mb-4 w-fit">
+              <Sparkles className="w-3.5 h-3.5 text-amber-500" />
+              <span>Installation Standards</span>
+            </div>
 
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-slate-950 tracking-tight leading-[1.12]">
+            <h2 className="text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-slate-950 tracking-tight leading-[1.2] sm:leading-[1.12]">
               Craftsmanship We Put Our Name On —{' '}
               <span className="bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 bg-clip-text text-transparent">
                 Zero Subcontractors.
               </span>
             </h2>
-
-          
           </motion.div>
-
-          
         </div>
 
         {/* ============================================================ */}
@@ -218,24 +252,7 @@ export const ValuesSection: React.FC = () => {
                   }`}
                 >
                   {/* Top Bar inside Active Card */}
-                  <div className="flex items-center justify-between">
-                    <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500 text-slate-950 text-xs font-bold uppercase tracking-wider shadow-md">
-                      <Icon className="w-3.5 h-3.5" />
-                      <span>{item.category}</span>
-                    </div>
-
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setLightboxIndex(index);
-                      }}
-                      className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white/20 hover:bg-white/30 backdrop-blur-md border border-white/30 text-white text-xs font-semibold transition-all duration-200 cursor-pointer shadow-lg hover:scale-105"
-                      title="Inspect photo in fullscreen"
-                    >
-                      <ZoomIn className="w-3.5 h-3.5" />
-                      <span>Inspect</span>
-                    </button>
-                  </div>
+                 
 
                   {/* Bottom Text inside Active Card */}
                   <div className="max-w-2xl">
@@ -254,7 +271,7 @@ export const ValuesSection: React.FC = () => {
 
                     <div className="mt-5 flex items-center gap-4 pt-4 border-t border-white/15">
                       <span className="text-xs font-mono text-white/50 font-bold uppercase tracking-widest">
-                        Standard {item.number} of 06
+                        Standard {item.number} of 0{ACCORDION_ITEMS.length}
                       </span>
                       <span className="w-1 h-1 rounded-full bg-amber-400" />
                       <span className="text-xs text-amber-300 font-semibold">
@@ -301,99 +318,129 @@ export const ValuesSection: React.FC = () => {
         </div>
 
         {/* ============================================================ */}
-        {/* MOBILE ACCORDION (< md)                                      */}
+        {/* MOBILE SHOWCASE & AUTO-HOVER (< md)                          */}
         {/* ============================================================ */}
         <div className="flex md:hidden flex-col gap-3.5">
-          {ACCORDION_ITEMS.map((item, index) => {
-            const isActive = activeIndex === index;
-            const Icon = item.icon;
+          
 
-            return (
-              <div
-                key={item.id}
-                onClick={() => setActiveIndex(index)}
-                className={`rounded-2xl overflow-hidden border transition-all duration-300 ${
-                  isActive
-                    ? 'border-amber-400 shadow-xl bg-slate-900'
-                    : 'border-slate-200 bg-white hover:border-slate-300 shadow-sm'
-                }`}
-              >
-                {/* Header Strip for Collapsed / Active State */}
-                <div
-                  className={`p-4 flex items-center justify-between cursor-pointer ${
-                    isActive ? 'bg-slate-900/90 text-white' : 'text-slate-800'
-                  }`}
-                >
-                  <div className="flex items-center gap-3">
-                    <span
-                      className={`text-xs font-mono font-bold px-2 py-0.5 rounded-md ${
-                        isActive
-                          ? 'bg-amber-500 text-slate-950'
-                          : 'bg-slate-100 text-slate-600'
-                      }`}
-                    >
-                      {item.number}
-                    </span>
-                    <span className="text-sm font-bold">{item.shortTitle}</span>
-                  </div>
+          {/* Active Standard Card with Auto-Hover & Swipe (Fixed Height) */}
+          <div
+            className="relative rounded-2xl overflow-hidden border border-slate-200/90 shadow-md bg-slate-950 text-white flex flex-col h-[450px] xs:h-[470px] sm:h-[490px]"
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+          >
+            {/* Image Container with Ambient Gradient (Fixed Height) */}
+            <div className="relative h-48 xs:h-52 sm:h-56 w-full overflow-hidden bg-slate-900 shrink-0">
+              <AnimatePresence mode="wait">
+                <motion.img
+                  key={ACCORDION_ITEMS[activeIndex].id}
+                  src={ACCORDION_ITEMS[activeIndex].image}
+                  alt={ACCORDION_ITEMS[activeIndex].title}
+                  initial={{ opacity: 0, scale: 1.04 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.35 }}
+                  className="w-full h-full object-cover"
+                />
+              </AnimatePresence>
 
-                  <div className="flex items-center gap-2">
-                    <div
-                      className={`w-8 h-8 rounded-full flex items-center justify-center ${
-                        isActive
-                          ? 'bg-white/20 text-amber-400'
-                          : 'bg-slate-100 text-slate-600'
-                      }`}
-                    >
-                      <Icon className="w-4 h-4" />
-                    </div>
-                  </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-black/25 pointer-events-none" />
+
+              {/* Top badges inside image */}
+              <div className="absolute top-3 inset-x-3 flex items-center justify-between z-10">
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500 text-slate-950 text-[11px] font-bold uppercase tracking-wider shadow-md">
+                  {React.createElement(ACCORDION_ITEMS[activeIndex].icon, { className: 'w-3.5 h-3.5' })}
+                  <span>{ACCORDION_ITEMS[activeIndex].category}</span>
+                </div>
+              </div>
+
+              {/* Auto-Hover Progress Bar */}
+              <div className="absolute bottom-0 inset-x-0 h-1 bg-white/20 overflow-hidden">
+                <motion.div
+                  key={`${activeIndex}-${isPaused ? 'paused' : 'running'}`}
+                  className="h-full bg-amber-400"
+                  initial={{ width: '0%' }}
+                  animate={{ width: isPaused ? '100%' : '100%' }}
+                  transition={{ duration: isPaused ? 0 : 4, ease: 'linear' }}
+                />
+              </div>
+            </div>
+
+            {/* Content Details (Flex-1 with Fixed Internal Distribution) */}
+            <div className="p-4 xs:p-5 flex-1 flex flex-col justify-between bg-slate-950 min-h-0">
+              <div className="flex-1 flex flex-col justify-start min-h-0">
+                <div className="inline-flex items-center gap-1.5 text-[11px] font-mono text-amber-400 mb-2 font-semibold bg-white/5 px-2.5 py-0.5 rounded-full border border-amber-400/25 max-w-full w-fit shrink-0">
+                  <ShieldCheck className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+                  <span className="truncate">{ACCORDION_ITEMS[activeIndex].specs}</span>
                 </div>
 
-                {/* Expanded Details on Mobile */}
-                {isActive && (
-                  <motion.div
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: 'auto' }}
-                    exit={{ opacity: 0, height: 0 }}
-                    transition={{ duration: 0.3 }}
-                    className="relative overflow-hidden"
-                  >
-                    <div className="relative h-64 w-full">
-                      <img
-                        src={item.image}
-                        alt={item.title}
-                        className="w-full h-full object-cover"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent" />
+                <h3 className="text-base xs:text-lg font-serif font-bold text-white leading-snug line-clamp-2 min-h-[2.5rem] xs:min-h-[2.75rem] flex items-center shrink-0">
+                  {ACCORDION_ITEMS[activeIndex].title}
+                </h3>
 
-                      <button
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          setLightboxIndex(index);
-                        }}
-                        className="absolute top-3 right-3 p-2 rounded-full bg-white/20 backdrop-blur-md text-white border border-white/30"
-                      >
-                        <ZoomIn className="w-4 h-4" />
-                      </button>
-                    </div>
-
-                    <div className="p-5 bg-slate-950 text-white">
-                      <span className="inline-block text-[11px] font-mono text-amber-400 mb-1 font-semibold">
-                        {item.specs}
-                      </span>
-                      <h4 className="text-lg font-serif font-bold text-white">
-                        {item.title}
-                      </h4>
-                      <p className="mt-2 text-xs text-slate-300 leading-relaxed font-normal">
-                        {item.description}
-                      </p>
-                    </div>
-                  </motion.div>
-                )}
+                <p className="mt-1.5 text-xs xs:text-sm text-slate-300 leading-relaxed font-normal line-clamp-3">
+                  {ACCORDION_ITEMS[activeIndex].description}
+                </p>
               </div>
-            );
-          })}
+
+              {/* Navigation Footer with Arrows & Counter (Pinned at Bottom) */}
+              <div className="mt-3 pt-3 border-t border-white/10 flex items-center justify-between shrink-0">
+                <div className="flex items-center gap-2">
+                  <span className="text-xs font-mono text-white/50 font-bold uppercase tracking-wider">
+                    {ACCORDION_ITEMS[activeIndex].number} / 0{ACCORDION_ITEMS.length}
+                  </span>
+                  <span className="w-1 h-1 rounded-full bg-amber-400" />
+                  <span className="text-[11px] text-amber-300 font-semibold">
+                    Verified
+                  </span>
+                </div>
+
+                {/* Prev / Next Chevrons */}
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={handlePrevCard}
+                    aria-label="Previous standard"
+                    className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 active:scale-95 text-white flex items-center justify-center transition-all cursor-pointer border border-white/15"
+                  >
+                    <ChevronLeft className="w-4 h-4" />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={handleNextCard}
+                    aria-label="Next standard"
+                    className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 active:scale-95 text-white flex items-center justify-center transition-all cursor-pointer border border-white/15"
+                  >
+                    <ChevronRight className="w-4 h-4" />
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Active Indicator Dots */}
+          <div className="flex items-center justify-center gap-1.5 pt-1">
+            {ACCORDION_ITEMS.map((_, idx) => (
+              <button
+                key={idx}
+                type="button"
+                onClick={() => {
+                  setActiveIndex(idx);
+                  setIsPaused(true);
+                  setTimeout(() => setIsPaused(false), 5000);
+                }}
+                aria-label={`Go to slide ${idx + 1}`}
+                className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
+                  activeIndex === idx
+                    ? 'w-6 bg-amber-500'
+                    : 'w-2 bg-slate-300 hover:bg-slate-400'
+                }`}
+              />
+            ))}
+          </div>
         </div>
 
       

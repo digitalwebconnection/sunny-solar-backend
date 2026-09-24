@@ -1,8 +1,25 @@
-import React from 'react';
-import { Clock, CheckCircle2, ShieldCheck, Wrench, Cable, Gauge, Smartphone, Sparkles, ArrowRight } from 'lucide-react';
+import React, { useState, useRef } from 'react';
+import { 
+  Clock, 
+  CheckCircle2, 
+  ShieldCheck, 
+  Wrench, 
+  Cable, 
+  Gauge, 
+  Smartphone, 
+  Sparkles, 
+  ArrowRight,
+  ChevronLeft,
+  ChevronRight
+} from 'lucide-react';
 import { Button } from '@/components/ui/Button';
+import { Badge } from '@/components/ui/Badge';
 
 export const SolarInstallationTimelineSection: React.FC = () => {
+  const [activeSlide, setActiveSlide] = useState(0);
+  const touchStartX = useRef<number | null>(null);
+  const touchEndX = useRef<number | null>(null);
+
   const steps = [
     {
       time: '07:00 AM',
@@ -54,33 +71,195 @@ export const SolarInstallationTimelineSection: React.FC = () => {
     },
   ];
 
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.targetTouches[0].clientX;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.targetTouches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStartX.current || !touchEndX.current) return;
+    const diff = touchStartX.current - touchEndX.current;
+    if (diff > 40) {
+      nextSlide();
+    } else if (diff < -40) {
+      prevSlide();
+    }
+    touchStartX.current = null;
+    touchEndX.current = null;
+  };
+
+  const prevSlide = () => {
+    setActiveSlide((prev) => Math.max(0, prev - 1));
+  };
+
+  const nextSlide = () => {
+    setActiveSlide((prev) => Math.min(steps.length - 1, prev + 1));
+  };
+
   return (
-    <section className="py-20 bg-white">
+    <section className="py-12 sm:py-16 lg:py-20 bg-white border-t border-slate-200/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-6">
-          <h2 className="text-3xl sm:text-4xl font-serif font-bold text-slate-950 mt-3 tracking-tight">
+        <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
+          <Badge variant="amber" className="mb-2.5 sm:mb-3">
+            Single-Day Turnaround
+          </Badge>
+          <h2 className="text-2xl xs:text-3xl sm:text-4xl font-serif font-bold text-slate-950 mt-2 sm:mt-3 tracking-tight leading-tight">
             What Happens on Your Installation Day
           </h2>
-          <p className="mt-4 text-slate-600 text-base sm:text-lg leading-relaxed">
-            Most residential systems are fully installed, safety-tested, and commissioned in a single seamless day by our full-time tradesmen.
+          <p className="mt-2.5 sm:mt-4 text-slate-600 text-xs xs:text-sm sm:text-base lg:text-lg leading-relaxed max-w-2xl mx-auto px-1 sm:px-0">
+            Most residential systems are fully installed, safety-tested, and commissioned in a single seamless day by our full-time in-house tradesmen.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Mobile Sliding Carousel (< md) */}
+        <div className="block md:hidden">
+          {/* Step Progress Bar Indicator */}
+          <div className="grid grid-cols-6 gap-1.5 mb-4 px-0.5">
+            {steps.map((_, i) => (
+              <button
+                key={i}
+                type="button"
+                onClick={() => setActiveSlide(i)}
+                aria-label={`Jump to step ${i + 1}`}
+                className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
+                  i === activeSlide
+                    ? 'bg-amber-500'
+                    : i < activeSlide
+                    ? 'bg-[#2B3CB8]'
+                    : 'bg-slate-200'
+                }`}
+              />
+            ))}
+          </div>
+
+          {/* Swipeable Slide Window */}
+          <div
+            className="overflow-hidden select-none cursor-grab active:cursor-grabbing"
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+          >
+            <div
+              className="flex transition-transform duration-300 ease-out"
+              style={{ transform: `translateX(-${activeSlide * 100}%)` }}
+            >
+              {steps.map((step, idx) => {
+                const Icon = step.icon;
+                return (
+                  <div key={idx} className="w-full shrink-0 px-0.5">
+                    <div className="bg-slate-50 border border-slate-200/90 rounded-2xl p-5 shadow-xs flex flex-col justify-between min-h-[300px]">
+                      <div>
+                        <div className="flex items-center justify-between gap-2 mb-3.5">
+                          <div className="flex items-center gap-1.5">
+                            <span className="text-[10px] font-mono font-bold text-slate-500 bg-slate-200/80 px-2 py-0.5 rounded-md">
+                              STEP 0{idx + 1}
+                            </span>
+                            <span className="flex items-center gap-1.5 font-mono text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-700 border border-amber-500/20">
+                              <Clock className="w-3 h-3 shrink-0" />
+                              {step.time}
+                            </span>
+                          </div>
+                          <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider truncate">
+                            {step.tag}
+                          </span>
+                        </div>
+
+                        <div className="w-11 h-11 rounded-2xl bg-amber-500/10 text-amber-600 flex items-center justify-center mb-3">
+                          <Icon className="w-5.5 h-5.5" />
+                        </div>
+
+                        <h3 className="font-serif font-bold text-base text-slate-950 mb-1.5 leading-snug">
+                          {step.title}
+                        </h3>
+                        <p className="text-xs text-slate-600 leading-relaxed">
+                          {step.description}
+                        </p>
+                      </div>
+
+                      <div className="mt-4 pt-3 border-t border-slate-200/60 flex items-center gap-1.5 text-[11px] font-semibold text-emerald-700">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                        <span>Quality Inspection Sign-Off</span>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Slider Controls (Dots + Prev/Next Buttons) */}
+          <div className="flex items-center justify-between mt-4 px-1">
+            <div className="flex items-center gap-1.5">
+              {steps.map((_, dotIdx) => (
+                <button
+                  key={dotIdx}
+                  type="button"
+                  onClick={() => setActiveSlide(dotIdx)}
+                  aria-label={`Go to step ${dotIdx + 1}`}
+                  className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
+                    activeSlide === dotIdx
+                      ? 'w-6 bg-[#2B3CB8]'
+                      : 'w-2 bg-slate-300 hover:bg-slate-400'
+                  }`}
+                />
+              ))}
+            </div>
+
+            <div className="flex items-center gap-2">
+              <span className="text-xs font-mono font-bold text-slate-500 mr-1">
+                0{activeSlide + 1} / 0{steps.length}
+              </span>
+              <button
+                type="button"
+                onClick={prevSlide}
+                disabled={activeSlide === 0}
+                aria-label="Previous step"
+                className="w-8 h-8 rounded-full bg-white border border-slate-200 text-slate-700 flex items-center justify-center shadow-2xs active:scale-95 transition-all cursor-pointer hover:bg-slate-50 disabled:opacity-35 disabled:cursor-not-allowed"
+              >
+                <ChevronLeft className="w-4 h-4" />
+              </button>
+              <button
+                type="button"
+                onClick={nextSlide}
+                disabled={activeSlide === steps.length - 1}
+                aria-label="Next step"
+                className="w-8 h-8 rounded-full bg-white border border-slate-200 text-slate-700 flex items-center justify-center shadow-2xs active:scale-95 transition-all cursor-pointer hover:bg-slate-50 disabled:opacity-35 disabled:cursor-not-allowed"
+              >
+                <ChevronRight className="w-4 h-4" />
+              </button>
+            </div>
+          </div>
+
+          {/* Swipe Hint */}
+          <p className="text-center text-[11px] text-slate-400 mt-2.5 font-medium">
+            ← Swipe to explore full installation day →
+          </p>
+        </div>
+
+        {/* Desktop & Tablet Grid (>= md) */}
+        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {steps.map((step, idx) => {
             const Icon = step.icon;
             return (
               <div
                 key={idx}
-                className="bg-slate-50 border border-slate-200/80 rounded-xl p-6 sm:p-6 hover:border-amber-400 hover:bg-white shadow-black/50 shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col justify-between group"
+                className="bg-slate-50 border border-slate-200/80 rounded-2xl p-6 hover:border-amber-400 hover:bg-white shadow-2xs hover:shadow-md transition-all duration-300 flex flex-col justify-between group"
               >
                 <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="flex items-center gap-1.5 font-mono text-xs font-bold px-3 py-1 rounded-full bg-amber-500/10 text-amber-700 border border-amber-500/20">
-                      <Clock className="w-3.5 h-3.5" />
-                      {step.time}
-                    </span>
-                    <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">
+                  <div className="flex items-center justify-between gap-2 mb-4">
+                    <div className="flex items-center gap-2">
+                      <span className="text-[10px] font-mono font-bold text-slate-400 bg-slate-200/70 px-1.5 py-0.5 rounded">
+                        0{idx + 1}
+                      </span>
+                      <span className="flex items-center gap-1.5 font-mono text-xs font-bold px-3 py-1 rounded-full bg-amber-500/10 text-amber-700 border border-amber-500/20">
+                        <Clock className="w-3.5 h-3.5 shrink-0" />
+                        {step.time}
+                      </span>
+                    </div>
+                    <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider truncate">
                       {step.tag}
                     </span>
                   </div>
@@ -89,7 +268,7 @@ export const SolarInstallationTimelineSection: React.FC = () => {
                     <Icon className="w-6 h-6" />
                   </div>
 
-                  <h3 className="font-serif font-bold text-lg text-slate-950 mb-2">
+                  <h3 className="font-serif font-bold text-lg text-slate-950 mb-2 leading-snug">
                     {step.title}
                   </h3>
                   <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
@@ -107,13 +286,13 @@ export const SolarInstallationTimelineSection: React.FC = () => {
         </div>
 
         {/* Bottom CTA Row */}
-        <div className="mt-14 pt-8 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-center gap-4 text-center">
+        <div className="mt-10 sm:mt-14 pt-6 sm:pt-8 border-t border-slate-200/80 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 max-w-md sm:max-w-none mx-auto w-full text-center">
           <Button
             to="/get-started/free-assessment"
             variant="primary"
             size="md"
             icon={<ArrowRight className="w-4 h-4" />}
-            className="w-full sm:w-auto shadow-md"
+            className="w-full sm:w-auto font-bold shadow-md justify-center text-center sm:text-base sm:py-3.5 sm:px-6"
           >
             Book My Free 3D Roof Assessment
           </Button>
@@ -122,7 +301,7 @@ export const SolarInstallationTimelineSection: React.FC = () => {
             variant="outline"
             size="md"
             icon={<ArrowRight className="w-4 h-4" />}
-            className="w-full sm:w-auto"
+            className="w-full sm:w-auto font-semibold justify-center text-center sm:text-base sm:py-3.5 sm:px-6"
           >
             Meet Trent Palmer, Lead Electrician
           </Button>
@@ -131,3 +310,5 @@ export const SolarInstallationTimelineSection: React.FC = () => {
     </section>
   );
 };
+
+export default SolarInstallationTimelineSection;

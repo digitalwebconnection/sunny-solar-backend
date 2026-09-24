@@ -133,6 +133,7 @@ const testimonials: TestimonialSlide[] = [
 export const TestimonialsSliderSection: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [visibleCount, setVisibleCount] = useState(4);
+  const [isPaused, setIsPaused] = useState(false);
   const touchStartX = useRef<number | null>(null);
   const touchEndX = useRef<number | null>(null);
 
@@ -171,16 +172,18 @@ export const TestimonialsSliderSection: React.FC = () => {
     setCurrentIndex((prev) => (prev <= 0 ? maxIndex : prev - 1));
   }, [maxIndex]);
 
-  // Auto sliding every 4 seconds
+  // Auto sliding every 4.5 seconds with pause support
   useEffect(() => {
+    if (isPaused) return;
     const timer = setInterval(() => {
       nextSlide();
-    }, 4000);
+    }, 4500);
     return () => clearInterval(timer);
-  }, [nextSlide]);
+  }, [nextSlide, isPaused]);
 
   // Touch swipe handlers for mobile
   const handleTouchStart = (e: React.TouchEvent) => {
+    setIsPaused(true);
     touchStartX.current = e.targetTouches[0].clientX;
   };
 
@@ -191,26 +194,26 @@ export const TestimonialsSliderSection: React.FC = () => {
   const handleTouchEnd = () => {
     if (!touchStartX.current || !touchEndX.current) return;
     const diff = touchStartX.current - touchEndX.current;
-    if (diff > 40) {
+    if (diff > 35) {
       nextSlide();
-    } else if (diff < -40) {
+    } else if (diff < -35) {
       prevSlide();
     }
     touchStartX.current = null;
     touchEndX.current = null;
+    setTimeout(() => setIsPaused(false), 4000);
   };
 
   return (
-    <section className="py-10 lg:py-14 bg-slate-50 relative overflow-hidden border-t border-slate-200/80">
+    <section className="py-10 sm:py-12 lg:py-16 bg-slate-50 relative overflow-hidden border-t border-slate-200/80">
       {/* Ambient solar blue backdrop */}
       <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#2B3CB8]/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Header with Title & Controls */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
-          <div>
-         
-            <h2 className="text-2xl sm:text-4xl text-left font-serif font-extrabold text-slate-900 tracking-tight">
+        {/* Header with Title & Desktop Controls */}
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6 sm:mb-8">
+          <div className="text-center sm:text-left">
+            <h2 className="text-2xl xs:text-3xl sm:text-4xl font-serif font-extrabold text-slate-900 tracking-tight leading-tight">
               Real Installations.{' '}
               <span className="bg-linear-to-r from-[#2B3CB8] via-[#4658D9] to-[#6F8EE7] bg-clip-text text-transparent">
                 Real Customer Savings.
@@ -218,8 +221,8 @@ export const TestimonialsSliderSection: React.FC = () => {
             </h2>
           </div>
 
-          {/* Slider Arrow Controls */}
-          <div className="flex items-center gap-2 self-end sm:self-auto">
+          {/* Desktop Slider Arrow Controls */}
+          <div className="hidden sm:flex items-center gap-2">
             <button
               type="button"
               onClick={prevSlide}
@@ -245,6 +248,8 @@ export const TestimonialsSliderSection: React.FC = () => {
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
         >
           <div
             className="flex transition-transform duration-500 ease-out"
@@ -255,31 +260,31 @@ export const TestimonialsSliderSection: React.FC = () => {
             {testimonials.map((item) => (
               <div
                 key={item.id}
-                className="px-2 sm:px-2.5 shrink-0"
+                className="px-1.5 sm:px-2.5 shrink-0"
                 style={{ width: `${100 / visibleCount}%` }}
               >
-                <div className="h-full bg-white rounded-xl border border-slate-200/90 hover:shadow-xl shadow-black/40 shadow-lg hover:border-[#2B3CB8] transition-all duration-300 flex flex-col justify-between p-5 group min-h-65">
+                <div className="h-full bg-white rounded-2xl border border-slate-200/90 hover:shadow-xl shadow-xs sm:shadow-md shadow-slate-900/5 hover:border-[#2B3CB8] transition-all duration-300 flex flex-col justify-between p-4.5 sm:p-5 group min-h-[260px]">
                   <div className="space-y-3">
                     {/* Author Header Row: Avatar + Name + Time + Verified Chip */}
                     <div className="flex items-center justify-between gap-2">
                       <div className="flex items-center gap-2.5 min-w-0">
                         {/* Initial letter avatar */}
                         <div
-                          className={`w-10 h-10 rounded-xl ${item.avatarBg} flex items-center justify-center font-extrabold text-sm shadow-xs shrink-0 select-none`}
+                          className={`w-9 h-9 sm:w-10 sm:h-10 rounded-xl ${item.avatarBg} flex items-center justify-center font-extrabold text-sm shadow-xs shrink-0 select-none`}
                         >
                           {item.author.charAt(0)}
                         </div>
                         <div className="min-w-0">
-                          <div className="flex items-center gap-1 font-bold text-slate-900 text-sm truncate">
+                          <div className="flex items-center gap-1 font-bold text-slate-900 text-xs sm:text-sm truncate">
                             <span className="truncate">{item.author}</span>
-                            <CheckCircle2
-                              className="w-3.5 h-3.5 text-[#2B3CB8] shrink-0"
-                              // title="Verified Customer"
-                            />
+                            <CheckCircle2 className="w-3.5 h-3.5 text-[#2B3CB8] shrink-0" />
                           </div>
-                          <p className="text-[11px] text-slate-400 font-medium truncate">
-                            {item.timeAgo}
-                          </p>
+                          <div className="flex items-center gap-1 text-[11px] text-slate-400 font-medium truncate">
+                            <MapPin className="w-3 h-3 text-slate-400 shrink-0" />
+                            <span className="truncate">{item.location}</span>
+                            <span>•</span>
+                            <span className="shrink-0">{item.timeAgo}</span>
+                          </div>
                         </div>
                       </div>
 
@@ -293,7 +298,7 @@ export const TestimonialsSliderSection: React.FC = () => {
                       {[...Array(item.rating)].map((_, i) => (
                         <Star
                           key={i}
-                          className="w-4 h-4 fill-[#2B3CB8] text-[#2B3CB8]"
+                          className="w-3.5 h-3.5 fill-[#2B3CB8] text-[#2B3CB8]"
                         />
                       ))}
                       <span className="ml-1 text-xs font-bold text-slate-700">5.0</span>
@@ -301,46 +306,83 @@ export const TestimonialsSliderSection: React.FC = () => {
 
                     {/* Review Title & Body */}
                     <div className="space-y-1">
-                      <h3 className="font-bold text-sm text-slate-900 line-clamp-1 group-hover:text-[#2B3CB8] transition-colors">
+                      <h3 className="font-bold text-sm sm:text-base text-slate-900 line-clamp-1 group-hover:text-[#2B3CB8] transition-colors">
                         "{item.title}"
                       </h3>
-                      <p className="text-xs text-slate-600 leading-relaxed line-clamp-3">
+                      <p className="text-xs sm:text-sm text-slate-600 leading-relaxed line-clamp-3">
                         {item.comment}
                       </p>
                     </div>
                   </div>
 
-              
+                  {/* Bottom System & Metric Strip */}
+                  <div className="mt-3.5 pt-3 border-t border-slate-100 flex items-center justify-between gap-2 text-xs">
+                    <div className="flex items-center gap-1 text-slate-500 truncate text-[11px]">
+                      <Zap className="w-3 h-3 text-[#2B3CB8] shrink-0" />
+                      <span className="truncate">{item.systemSummary}</span>
+                    </div>
+                    <span className="px-2 py-0.5 rounded-md font-bold text-[10px] sm:text-[11px] bg-emerald-50 text-emerald-700 border border-emerald-200/60 shrink-0">
+                      {item.keyMetric}
+                    </span>
+                  </div>
                 </div>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Navigation Dots & Link */}
-        <div className="mt-5 flex items-center justify-between">
-          <div className="flex items-center gap-1.5">
-            {Array.from({ length: maxIndex + 1 }).map((_, idx) => (
+        {/* Navigation Controls, Dots & Link */}
+        <div className="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="flex items-center justify-between w-full sm:w-auto gap-3">
+            {/* Arrows for mobile */}
+            <div className="flex sm:hidden items-center gap-1.5">
               <button
-                key={idx}
                 type="button"
-                onClick={() => setCurrentIndex(idx)}
-                aria-label={`Slide ${idx + 1}`}
-                className={`transition-all duration-300 rounded-full cursor-pointer ${
-                  currentIndex === idx
-                    ? 'w-6 h-2 bg-[#2B3CB8]'
-                    : 'w-2 h-2 bg-slate-300 hover:bg-slate-400'
-                }`}
-              />
-            ))}
+                onClick={prevSlide}
+                aria-label="Previous review"
+                className="w-8 h-8 rounded-full bg-white border border-slate-200 text-slate-700 flex items-center justify-center shadow-2xs active:scale-95 cursor-pointer"
+              >
+                <ChevronLeft className="w-4 h-4" />
+              </button>
+              <button
+                type="button"
+                onClick={nextSlide}
+                aria-label="Next review"
+                className="w-8 h-8 rounded-full bg-white border border-slate-200 text-slate-700 flex items-center justify-center shadow-2xs active:scale-95 cursor-pointer"
+              >
+                <ChevronRight className="w-4 h-4" />
+              </button>
+            </div>
+
+            {/* Dots */}
+            <div className="flex items-center gap-1.5">
+              {Array.from({ length: maxIndex + 1 }).map((_, idx) => (
+                <button
+                  key={idx}
+                  type="button"
+                  onClick={() => setCurrentIndex(idx)}
+                  aria-label={`Slide ${idx + 1}`}
+                  className={`transition-all duration-300 rounded-full cursor-pointer ${
+                    currentIndex === idx
+                      ? 'w-5 sm:w-6 h-2 bg-[#2B3CB8]'
+                      : 'w-2 h-2 bg-slate-300 hover:bg-slate-400'
+                  }`}
+                />
+              ))}
+            </div>
+
+            {/* Mobile slide counter */}
+            <span className="sm:hidden text-xs font-semibold text-slate-400 font-mono">
+              0{currentIndex + 1} / 0{testimonials.length}
+            </span>
           </div>
 
           <Link
             to="/reviews"
-            className="text-xs font-bold text-slate-600 hover:text-[#2B3CB8] transition-colors flex items-center gap-1"
+            className="text-xs sm:text-sm font-bold text-[#2B3CB8] hover:text-[#1D2984] transition-colors flex items-center gap-1 group"
           >
             <span>View All Verified Reviews</span>
-            <ArrowRight className="w-3.5 h-3.5" />
+            <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
       </div>

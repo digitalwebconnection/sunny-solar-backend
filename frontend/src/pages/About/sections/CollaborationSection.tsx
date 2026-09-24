@@ -1,13 +1,42 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import { ShieldCheck, Zap, Award, CheckCircle2, ArrowRight } from 'lucide-react';
+import { ShieldCheck, CheckCircle2, ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '../../../components/ui/Button';
-import xsolaar from "../../../assets/xsolar.png"
-import jinko from "../../../assets/jinkosolar.png"
+import xsolaar from "../../../assets/xsolar.png";
+import jinko from "../../../assets/jinkosolar.png";
+
+interface PartnerBrand {
+  name: string;
+  logo: string;
+  badge: string;
+  category: string;
+  details: string;
+}
 
 export const CollaborationSection: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const [isVisible, setIsVisible] = useState(false);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const touchStartX = useRef<number | null>(null);
+  const touchEndX = useRef<number | null>(null);
+
+  const partners: PartnerBrand[] = [
+    {
+      name: 'SolaX Power',
+      logo: xsolaar,
+      badge: 'Tier-1 Hybrid Inverters',
+      category: 'Hybrid Inverters & High-Voltage Storage',
+      details: 'Up to 98.4% Efficiency • Sub-10ms Blackout Switchover',
+    },
+    {
+      name: 'JinkoSolar',
+      logo: jinko,
+      badge: 'Tier-1 Solar PV Modules',
+      category: "World's #1 N-Type TOPCon Solar PV Modules",
+      details: '25-Year Product & 30-Year Linear Power Guarantee',
+    },
+  ];
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -20,24 +49,68 @@ export const CollaborationSection: React.FC = () => {
     return () => observer.disconnect();
   }, []);
 
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev === 0 ? partners.length - 1 : prev - 1));
+  };
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev === partners.length - 1 ? 0 : prev + 1));
+  };
+
+  // Auto-switch partner cards every 3.8s on mobile when not paused
+  useEffect(() => {
+    if (isPaused) return;
+    const timer = setInterval(() => {
+      nextSlide();
+    }, 3800);
+    return () => clearInterval(timer);
+  }, [isPaused, currentSlide]);
+
+  // Touch handlers for mobile swipe
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setIsPaused(true);
+    touchStartX.current = e.targetTouches[0].clientX;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.targetTouches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStartX.current || !touchEndX.current) return;
+    const diff = touchStartX.current - touchEndX.current;
+    if (diff > 35) {
+      nextSlide();
+    } else if (diff < -35) {
+      prevSlide();
+    }
+    touchStartX.current = null;
+    touchEndX.current = null;
+    setTimeout(() => setIsPaused(false), 4000);
+  };
+
   return (
     <section
       ref={sectionRef}
-      className="relative py-20 sm:py-28 lg:py-14 bg-white overflow-hidden "
+      className="relative py-12 xs:py-14 sm:py-20 lg:py-20 bg-white overflow-hidden"
     >
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-16 items-center">
           {/* Left Column — Custom Authoritative Data & Value Pillars */}
           <motion.div
-            className="lg:col-span-7 flex flex-col justify-center"
+            className="lg:col-span-7 flex flex-col justify-center items-center lg:items-start text-center lg:text-left"
             initial={{ opacity: 0, x: -30 }}
             animate={isVisible ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6 }}
           >
-         
+            {/* Eyebrow Badge */}
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[11px] sm:text-xs font-bold uppercase tracking-wider text-[#2B3CB8] bg-[#F5F7FD] border border-[#D1DCF8] shadow-2xs mb-3.5 sm:mb-4 w-fit">
+              <ShieldCheck className="w-3.5 h-3.5 text-[#2B3CB8]" />
+              <span>Tier-1 Manufacturing Partnerships</span>
+            </div>
 
             {/* Main Heading — Custom Sunny Solar data as requested */}
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-semibold text-slate-950 tracking-tight leading-[1.05]">
+            <h2 className="text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-slate-950 tracking-tight leading-[1.2] sm:leading-[1.12] lg:leading-[1.05] text-center lg:text-left">
               Partnering with World-Class Manufacturers for{' '}
               <span className="bg-linear-to-r from-sky-600 via-sky-600 to-green-800 bg-clip-text text-transparent">
                 Uncompromising Solar Performance
@@ -45,7 +118,7 @@ export const CollaborationSection: React.FC = () => {
             </h2>
 
             {/* Narrative Copy */}
-            <p className="mt-6 text-base sm:text-lg text-slate-900 leading-relaxed font-normal">
+            <p className="mt-3.5 sm:mt-5 text-sm sm:text-base lg:text-lg text-slate-700 leading-relaxed font-normal text-center lg:text-left max-w-2xl lg:max-w-none">
               We reject cheap clearance hardware. Sunny Solar collaborates directly with global Tier-1 pioneers like{' '}
               <strong className="text-slate-900 font-semibold">SolaX Power</strong> and{' '}
               <strong className="text-slate-900 font-semibold">JinkoSolar</strong> to deliver high-yield N-Type TOPCon
@@ -53,14 +126,13 @@ export const CollaborationSection: React.FC = () => {
               cyclonic winds, and coastal salt mist.
             </p>
 
-          
-
             {/* CTAs */}
-            <div className="mt-8 flex flex-wrap items-center gap-4">
+            <div className="mt-6 sm:mt-8 flex flex-col xs:flex-row items-center justify-center lg:justify-start gap-3 sm:gap-4 w-full xs:w-auto">
               <Button
                 to="/solar/systems"
                 variant="primary"
                 size="md"
+                className="w-full xs:w-auto text-center"
                 icon={<ArrowRight className="w-4 h-4" />}
               >
                 Explore Tier-1 Systems
@@ -69,63 +141,148 @@ export const CollaborationSection: React.FC = () => {
                 to="/resources/buying-checklist"
                 variant="outline"
                 size="md"
+                className="w-full xs:w-auto text-center"
               >
                 View Quality Checklist
               </Button>
             </div>
           </motion.div>
 
-          {/* Right Column — Matches User's Image Layout (SolaX & Jinko Showcase on Pale Blue Canvas) */}
+          {/* Right Column — SolaX & Jinko Showcase */}
           <motion.div
             className="lg:col-span-5 flex flex-col justify-center"
             initial={{ opacity: 0, x: 30 }}
             animate={isVisible ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.15 }}
           >
-            <div className=" relative overflow-hidden">
-              {/* Subtle ambient light gradient */}
-              <div className="absolute top-0 right-0 w-64 h-64 bg-sky-200/20 rounded-full blur-3xl pointer-events-none" />
-              <div className="absolute bottom-0 left-0 w-48 h-48 bg-amber-200/15 rounded-full blur-3xl pointer-events-none" />
+            {/* Mobile View: One-by-One Sliding Carousel with Auto-Rotate */}
+            <div className="block lg:hidden">
+              <div
+                className="relative overflow-hidden "
+                onTouchStart={handleTouchStart}
+                onTouchMove={handleTouchMove}
+                onTouchEnd={handleTouchEnd}
+                onMouseEnter={() => setIsPaused(true)}
+                onMouseLeave={() => setIsPaused(false)}
+              >
+                {/* Ambient backdrop glow */}
+                <div className="absolute top-0 right-0 w-44 h-44 bg-sky-200/30 rounded-full blur-3xl pointer-events-none" />
+                <div className="absolute bottom-0 left-0 w-36 h-36 bg-amber-200/25 rounded-full blur-3xl pointer-events-none" />
 
-              <div className="relative z-10 flex flex-col gap-10 sm:gap-4">
-                {/* 1. SolaX Power Brand Block */}
-                <div className="group flex flex-col items-center text-center p-6 rounded-2xl bg-white/70 border border-sky-100/60 shadow-sm hover:bg-white hover:shadow-md transition-all duration-300">
-                  <div className="h-16 sm:h-20 flex items-center justify-center w-full">
-                    {/* SolaX Vector Logo */}
-                    <img src={xsolaar} alt="solaax" className='w-60 h-60 object-contain'/>
-                  </div>
+                {/* Sliding single-card carousel */}
+                <div className="relative z-10 overflow-hidden">
+                  <div
+                    className="flex transition-transform duration-500 ease-out"
+                    style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+                  >
+                    {partners.map((partner, idx) => (
+                      <div key={idx} className="w-full shrink-0 px-0.5">
+                        <div className="group flex flex-col items-center text-center p-5 rounded-xl bg-white/95 border border-sky-100/80 shadow-xs">
+                          {/* Mini partner badge */}
+                          <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-semibold text-[#2B3CB8] bg-[#F5F7FD] border border-[#D1DCF8] mb-3">
+                            <span className="w-1.5 h-1.5 rounded-full bg-[#2B3CB8]" />
+                            <span>{partner.badge}</span>
+                          </div>
 
-                  <div className="mt-4 pt-4 border-t border-sky-100/80 w-full flex flex-col items-center">
-                    <span className="text-xs font-bold text-slate-800 uppercase tracking-wider">
-                      Hybrid Inverters & High-Voltage Storage
-                    </span>
-                    <span className="text-[11px] text-slate-500 mt-1">
-                      Up to 98.4% Efficiency • Sub-10ms Blackout Switchover
-                    </span>
+                          {/* Brand Logo */}
+                          <div className="h-16 flex items-center justify-center w-full px-2">
+                            <img
+                              src={partner.logo}
+                              alt={partner.name}
+                              className="max-h-14 max-w-[210px] w-auto h-auto object-contain"
+                            />
+                          </div>
+
+                          {/* Specs / Meta */}
+                          <div className="mt-3.5 pt-3.5 border-t border-sky-100/80 w-full flex flex-col items-center">
+                            <span className="text-xs font-bold text-slate-800 uppercase tracking-wider">
+                              {partner.category}
+                            </span>
+                            <span className="text-[11px] text-slate-500 mt-1 leading-relaxed">
+                              {partner.details}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
                   </div>
                 </div>
 
-                {/* Subtle Divider */}
-                <div className="w-full h-px bg-linear-to-r from-transparent via-[#D1DCF8] to-transparent" />
+                {/* Mobile Controls: Previous, Indicators, Next */}
+                <div className="relative z-10 flex items-center justify-between mt-3.5 pt-1 px-1">
+                  <button
+                    type="button"
+                    onClick={prevSlide}
+                    aria-label="Previous partner"
+                    className="w-8 h-8 rounded-full bg-white border border-slate-200 text-slate-700 flex items-center justify-center shadow-2xs active:scale-95 transition-all cursor-pointer hover:bg-slate-50"
+                  >
+                    <ChevronLeft className="w-4 h-4" />
+                  </button>
 
-                {/* 2. Jinko Solar Brand Block */}
-                <div className="group flex flex-col items-center text-center p-6 rounded-2xl bg-white/70 border border-sky-100/60 shadow-sm hover:bg-white hover:shadow-md transition-all duration-300">
-                  <div className="h-16 sm:h-20 flex items-center justify-center w-full">
-                    {/* Jinko Vector Logo */}
-                    <img src={jinko} alt="jinko" className='w-60 h-60 object-contain'/>
+                  {/* Active Dots */}
+                  <div className="flex items-center gap-1.5">
+                    {partners.map((_, idx) => (
+                      <button
+                        key={idx}
+                        type="button"
+                        onClick={() => setCurrentSlide(idx)}
+                        aria-label={`Partner ${idx + 1}`}
+                        className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
+                          currentSlide === idx
+                            ? 'w-6 bg-[#2B3CB8]'
+                            : 'w-2 bg-slate-300 hover:bg-slate-400'
+                        }`}
+                      />
+                    ))}
                   </div>
 
-                  <div className="mt-4 pt-4 border-t border-sky-100/80 w-full flex flex-col items-center">
-                    <span className="text-xs font-bold text-slate-800 uppercase tracking-wider">
-                      World's #1 N-Type TOPCon Solar PV Modules
-                    </span>
-                    <span className="text-[11px] text-slate-500 mt-1">
-                      25-Year Product & 30-Year Linear Power Guarantee
-                    </span>
-                  </div>
+                  <button
+                    type="button"
+                    onClick={nextSlide}
+                    aria-label="Next partner"
+                    className="w-8 h-8 rounded-full bg-white border border-slate-200 text-slate-700 flex items-center justify-center shadow-2xs active:scale-95 transition-all cursor-pointer hover:bg-slate-50"
+                  >
+                    <ChevronRight className="w-4 h-4" />
+                  </button>
                 </div>
+              </div>
+            </div>
 
-            
+            {/* Desktop View: Stacked Brand Showcase */}
+            <div className="hidden lg:block">
+              <div className="relative overflow-hidden rounded-2xl bg-sky-50/50 p-6 border border-sky-100/70">
+                {/* Subtle ambient light gradient */}
+                <div className="absolute top-0 right-0 w-64 h-64 bg-sky-200/25 rounded-full blur-3xl pointer-events-none" />
+                <div className="absolute bottom-0 left-0 w-48 h-48 bg-amber-200/20 rounded-full blur-3xl pointer-events-none" />
+
+                <div className="relative z-10 flex flex-col gap-4">
+                  {partners.map((partner, idx) => (
+                    <React.Fragment key={idx}>
+                      <div className="group flex flex-col items-center text-center p-6 rounded-2xl bg-white/95 border border-sky-100/80 shadow-xs hover:shadow-md transition-all duration-300">
+                        <div className="h-20 flex items-center justify-center w-full px-2">
+                          <img
+                            src={partner.logo}
+                            alt={partner.name}
+                            className="max-h-16 max-w-[240px] w-auto h-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                          />
+                        </div>
+
+                        <div className="mt-4 pt-4 border-t border-sky-100/80 w-full flex flex-col items-center">
+                          <span className="text-xs font-bold text-slate-800 uppercase tracking-wider">
+                            {partner.category}
+                          </span>
+                          <span className="text-xs text-slate-500 mt-1 leading-relaxed">
+                            {partner.details}
+                          </span>
+                        </div>
+                      </div>
+
+                      {idx < partners.length - 1 && (
+                        <div className="w-full h-px bg-linear-to-r from-transparent via-[#D1DCF8] to-transparent" />
+                      )}
+                    </React.Fragment>
+                  ))}
+                </div>
               </div>
             </div>
           </motion.div>

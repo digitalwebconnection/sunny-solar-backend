@@ -114,39 +114,30 @@ export const HeroSection: React.FC = () => {
       </div>
 
       {/* Hero Content & Small Form Grid */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 pt-28 sm:pt-36 lg:pt-52 pb-10 sm:pb-24">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 items-center">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 pt-28 sm:pt-36 lg:pt-48 pb-20 sm:pb-14">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-4 items-center">
           {/* Upper-Left Concise Content Block with Text Animations */}
           <motion.div
             initial={{ opacity: 0, y: 22 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="lg:col-span-6 text-left space-y-4"
+            className="lg:col-span-6 text-left space-y-3.5 sm:space-y-4"
           >
             {/* Top Micro Eyebrow Badge */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold text-white bg-slate-900/80 border border-white/20 backdrop-blur-md shadow-lg">
-              <span className="w-2 h-2 rounded-full bg-[#6F8EE7] animate-pulse" />
-              <span className="text-[#D1DCF8] font-bold">SOLAR PANELS • SOLAR BATTERY • </span>
-              <span className="text-white font-bold">ENERGY SOLUTIONS</span>
+            <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-semibold text-white bg-slate-900/80 border border-white/20 backdrop-blur-md shadow-lg">
+              <span className="w-2 h-2 rounded-full bg-[#6F8EE7] animate-pulse shrink-0" />
+              <span className="text-[#D1DCF8] font-bold">SOLAR • BATTERY • </span>
+              <span className="text-white font-bold">SOLUTIONS</span>
             </div>
 
             {/* Animated Headline with Dynamic Cycling Highlight */}
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-white tracking-tight leading-[1.18] drop-shadow-md min-h-19 sm:min-h-23 lg:min-h-29">
+            <h1 className="text-2xl sm:text-4xl lg:text-5xl font-serif font-bold text-white tracking-tight leading-[1.2] drop-shadow-md">
               Make Your Solar Decision With Confidence.{' '}
               <br className="hidden sm:inline" />
-              <span className="inline-block relative">
-                <AnimatePresence mode="wait">
-                  <motion.span
-                    key={phraseIndex}
-                    initial={{ opacity: 0, y: 16, filter: 'blur(5px)' }}
-                    animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-                    exit={{ opacity: 0, y: -16, filter: 'blur(5px)' }}
-                    transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                    className="inline-block text-[#2B3CB8] drop-shadow-[0_2px_14px_rgba(43,60,184,0.4)] font-extrabold bg-white/90 px-2 rounded-lg"
-                  >
-                    Solar Made Simple.
-                  </motion.span>
-                </AnimatePresence>
+              <span className="inline-block relative mt-1 sm:mt-0">
+                <span className="inline-block text-[#2B3CB8] drop-shadow-[0_2px_14px_rgba(43,60,184,0.4)] font-extrabold bg-white/95 px-2.5 py-0.5 rounded-lg text-xl sm:text-3xl lg:text-4xl">
+                  Solar Made Simple.
+                </span>
               </span>
             </h1>
 
@@ -155,7 +146,7 @@ export const HeroSection: React.FC = () => {
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-              className="text-sm sm:text-base text-white leading-relaxed max-w-lg drop-shadow-sm"
+              className="text-xs sm:text-base text-justify text-slate-100 sm:text-white leading-relaxed max-w-lg drop-shadow-sm"
             >
               Solar solutions designed around your home, your energy use and your goals. Understand your options. Choose what works for your home.
             </motion.p>
@@ -165,11 +156,11 @@ export const HeroSection: React.FC = () => {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
-              className="pt-1 flex flex-col sm:flex-row sm:items-center gap-4"
+              className="pt-1 flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4"
             >
               <a
                 href="#hero-quote-form"
-                className="group inline-flex items-center justify-center gap-2 font-bold px-6 py-2.5 rounded-lg bg-[#2B3CB8] hover:bg-[#1D2984] text-white shadow-md hover:shadow-xl hover:shadow-[#2B3CB8]/30 hover:scale-[1.02] active:scale-[0.98] transition-all text-sm cursor-pointer w-full sm:w-auto"
+                className="group inline-flex items-center justify-center gap-2 font-bold px-5 sm:px-6 py-2.5 rounded-lg bg-[#2B3CB8] hover:bg-[#1D2984] text-white shadow-md hover:shadow-xl hover:shadow-[#2B3CB8]/30 hover:scale-[1.02] active:scale-[0.98] transition-all text-xs sm:text-sm cursor-pointer w-full sm:w-auto"
               >
                 <span>Explore Solar Options</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
@@ -182,26 +173,24 @@ export const HeroSection: React.FC = () => {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
-            className="lg:col-span-6 flex justify-center lg:justify-end mt-12 sm:mt-14 lg:mt-0"
+            className="lg:col-span-6 flex justify-center lg:justify-end mt-6 sm:mt-10 lg:mt-0"
           >
-            <div id="hero-quote-form" className="relative w-full max-w-lg bg-white/95 backdrop-blur-md rounded-xl p-6 shadow-2xl border border-white/50 text-slate-900">
+            <div id="hero-quote-form" className="scroll-mt-24 sm:scroll-mt-32 relative w-full max-w-lg bg-white/95 backdrop-blur-md rounded-xl p-4 sm:p-6 shadow-2xl border border-white/50 text-slate-900">
               
               {/* Friendly Solar Specialist Avatar on Top-Right */}
-              <div className="absolute -top-14 sm:-top-12 right-2 sm:right-7 pointer-events-none z-20 flex flex-col items-end select-none">
-                
-
+              <div className="absolute -top-10 sm:-top-8 right-2 sm:right-6 pointer-events-none z-20 flex flex-col items-end select-none">
                 {/* Cutout with subtle ambient glow and 3D shadow */}
                 <div className="relative">
                   <div className="absolute inset-0 bg-[#2B3CB8]/15 rounded-full blur-md scale-90 -z-10" />
                   <img
                     src={consultantAvatar}
                     alt="Sunny Solar Energy Consultant"
-                    className="w-24 sm:w-28 md:w-44.5 h-auto object-contain drop-shadow-[0_12px_18px_rgba(0,0,0,0.3)] filter"
+                    className="w-36 md:w-40 h-auto object-contain drop-shadow-[0_12px_18px_rgba(0,0,0,0.3)] filter"
                   />
                 </div>
               </div>
 
-              <div className="mb-3 text-left pr-24 sm:pr-28">
+              <div className="mb-2.5 sm:mb-3 text-left pr-20 sm:pr-28">
                 <h3 className="text-base sm:text-2xl font-bold font-serif text-slate-900 leading-snug">
                   Get a Free Quote
                 </h3>
@@ -211,43 +200,42 @@ export const HeroSection: React.FC = () => {
               </div>
 
               {/* Interactive System Type Selector */}
-              <div className="mb-3 grid grid-cols-3 gap-2 p-1 bg-slate-100 rounded-lg text-xs font-semibold">
+              <div className="mb-3 grid grid-cols-3 gap-1 sm:gap-2 p-1 bg-slate-100 rounded-lg text-xs font-semibold">
                 <button
                   type="button"
                   onClick={() => setSystemType('combo')}
-                  className={`py-1.5 px-2 rounded-md transition-all flex items-center justify-center gap-1 cursor-pointer ${
+                  className={`py-1.5 px-1 sm:px-2 rounded-md transition-all flex items-center justify-center gap-1 cursor-pointer text-[10px] sm:text-xs font-bold ${
                     systemType === 'combo'
                       ? 'bg-[#2B3CB8] text-white shadow-xs'
                       : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/60'
                   }`}
                 >
-                  <Sun className="w-3 h-3" />
-                  <span>+</span>
-                  <Zap className="w-3 h-3" />
+                  <Sun className="w-3 h-3 shrink-0" />
+                  <span className="truncate">Solar + Battery</span>
                 </button>
                 <button
                   type="button"
                   onClick={() => setSystemType('solar')}
-                  className={`py-1.5 px-2 rounded-md transition-all flex items-center justify-center gap-1 cursor-pointer ${
+                  className={`py-1.5 px-1 sm:px-2 rounded-md transition-all flex items-center justify-center gap-1 cursor-pointer text-[10px] sm:text-xs font-bold ${
                     systemType === 'solar'
                       ? 'bg-[#2B3CB8] text-white shadow-xs'
                       : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/60'
                   }`}
                 >
-                  <Sun className="w-3 h-3" />
-                  <span>Solar</span>
+                  <Sun className="w-3 h-3 shrink-0" />
+                  <span className="truncate">Solar Only</span>
                 </button>
                 <button
                   type="button"
                   onClick={() => setSystemType('battery')}
-                  className={`py-1.5 px-2 rounded-md transition-all flex items-center justify-center gap-1 cursor-pointer ${
+                  className={`py-1.5 px-1 sm:px-2 rounded-md transition-all flex items-center justify-center gap-1 cursor-pointer text-[10px] sm:text-xs font-bold ${
                     systemType === 'battery'
                       ? 'bg-[#2B3CB8] text-white shadow-xs'
                       : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/60'
                   }`}
                 >
-                  <Zap className="w-3 h-3" />
-                  <span></span>
+                  <Zap className="w-3 h-3 shrink-0" />
+                  <span className="truncate">Battery Only</span>
                 </button>
               </div>
 
@@ -272,8 +260,8 @@ export const HeroSection: React.FC = () => {
                   </button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-4 text-left">
-                  <div className="grid grid-cols-2 gap-4">
+                <form onSubmit={handleSubmit} className="space-y-2.5 sm:space-y-4 text-left">
+                  <div className="grid grid-cols-2 gap-2 sm:gap-3">
                     <div>
                       <input
                         type="text"
@@ -282,7 +270,7 @@ export const HeroSection: React.FC = () => {
                         value={formData.name}
                         onChange={handleChange}
                         placeholder="Full Name *"
-                        className="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-lg text-xs sm:text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#2B3CB8] focus:ring-1 focus:ring-[#2B3CB8] transition-all"
+                        className="w-full px-2.5 sm:px-3 py-1.5 sm:py-2.5 bg-slate-50 border border-slate-300 rounded-lg text-xs sm:text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#2B3CB8] focus:ring-1 focus:ring-[#2B3CB8] transition-all"
                       />
                     </div>
 
@@ -294,7 +282,7 @@ export const HeroSection: React.FC = () => {
                         value={formData.phone}
                         onChange={handleChange}
                         placeholder="Phone Number *"
-                        className="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-lg text-xs sm:text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#2B3CB8] focus:ring-1 focus:ring-[#2B3CB8] transition-all"
+                        className="w-full px-2.5 sm:px-3 py-1.5 sm:py-2.5 bg-slate-50 border border-slate-300 rounded-lg text-xs sm:text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#2B3CB8] focus:ring-1 focus:ring-[#2B3CB8] transition-all"
                       />
                     </div>
 
@@ -306,7 +294,7 @@ export const HeroSection: React.FC = () => {
                         value={formData.email}
                         onChange={handleChange}
                         placeholder="Email Address *"
-                        className="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-lg text-xs sm:text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#2B3CB8] focus:ring-1 focus:ring-[#2B3CB8] transition-all"
+                        className="w-full px-2.5 sm:px-3 py-1.5 sm:py-2.5 bg-slate-50 border border-slate-300 rounded-lg text-xs sm:text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#2B3CB8] focus:ring-1 focus:ring-[#2B3CB8] transition-all"
                       />
                     </div>
 
@@ -318,7 +306,7 @@ export const HeroSection: React.FC = () => {
                         value={formData.postcode}
                         onChange={handleChange}
                         placeholder="Post Code *"
-                        className="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-lg text-xs sm:text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#2B3CB8] focus:ring-1 focus:ring-[#2B3CB8] transition-all"
+                        className="w-full px-2.5 sm:px-3 py-1.5 sm:py-2.5 bg-slate-50 border border-slate-300 rounded-lg text-xs sm:text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#2B3CB8] focus:ring-1 focus:ring-[#2B3CB8] transition-all"
                       />
                     </div>
 
@@ -330,7 +318,7 @@ export const HeroSection: React.FC = () => {
                         value={formData.address}
                         onChange={handleChange}
                         placeholder="House Address *"
-                        className="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-lg text-xs sm:text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#2B3CB8] focus:ring-1 focus:ring-[#2B3CB8] transition-all"
+                        className="w-full px-2.5 sm:px-3 py-1.5 sm:py-2.5 bg-slate-50 border border-slate-300 rounded-lg text-xs sm:text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#2B3CB8] focus:ring-1 focus:ring-[#2B3CB8] transition-all"
                       />
                     </div>
                   </div>
@@ -344,10 +332,10 @@ export const HeroSection: React.FC = () => {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full py-2.5 px-4 rounded-lg font-bold text-xs sm:text-sm text-white bg-[#2B3CB8] hover:bg-[#1D2984] hover:shadow-md hover:brightness-105 transition-all flex items-center justify-center gap-1.5 cursor-pointer disabled:opacity-75 pt-2"
+                    className="w-full py-2.5 sm:py-3 px-4 rounded-lg font-bold text-xs sm:text-sm text-white bg-[#2B3CB8] hover:bg-[#1D2984] hover:shadow-md hover:brightness-105 transition-all flex items-center justify-center gap-1.5 cursor-pointer disabled:opacity-75"
                   >
                     {isSubmitting ? (
-                      <span>Submitting to Web3Forms...</span>
+                      <span>Submitting...</span>
                     ) : (
                       <>
                         <span>Get Free Quote</span>
@@ -356,7 +344,7 @@ export const HeroSection: React.FC = () => {
                     )}
                   </button>
 
-                  <p className="text-[11px] text-center text-slate-400 pt-0.5">
+                  <p className="text-[10px] sm:text-[11px] text-center text-slate-500 pt-0.5">
                     🔒 100% privacy protected • No spam
                   </p>
                 </form>
